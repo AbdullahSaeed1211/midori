@@ -1,26 +1,308 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-midori-DEFAULT: #3A5F40;
+  --color-midori-50: #E6EDE7;
+  --color-midori-100: #C5D6C8;
+  --color-midori-200: #A4BFA8;
+  --color-midori-300: #83A889;
+  --color-midori-400: #629169;
+  --color-midori-500: #3A5F40; /* Primary */
+  --color-midori-600: #314E35;
+  --color-midori-700: #283E2B;
+  --color-midori-800: #1E2D20;
+  --color-midori-900: #141D15;
+  --color-midori-950: #0A0F0B;
+
+  --color-gold-DEFAULT: #FFD700; /* Accent */
+  --color-gold-50: #FFFBE6;
+  --color-gold-100: #FFF6B3;
+  --color-gold-200: #FFF180;
+  --color-gold-300: #FFEC4D;
+  --color-gold-400: #FFE71A;
+  --color-gold-500: #FFD700;
+  --color-gold-600: #CCAC00;
+  --color-gold-700: #998100;
+  --color-gold-800: #665600;
+  --color-gold-900: #332B00;
+  --color-gold-950: #191500;
+
+  --color-code-black-DEFAULT: #1A1A1A; /* Secondary / Neutrals */
+  --color-code-black-50: #F4F4F4;
+  --color-code-black-100: #D7D7D7;
+  --color-code-black-200: #B9B9B9;
+  --color-code-black-300: #9C9C9C;
+  --color-code-black-400: #7F7F7F;
+  --color-code-black-500: #626262;
+  --color-code-black-600: #4F4F4F;
+  --color-code-black-700: #3C3C3C;
+  --color-code-black-800: #292929;
+  --color-code-black-900: #171717;
+  --color-code-black-950: #0A0A0A;
+
+  /* New Palette Definitions */
+  --color-charcoal-black: #181A1B; /* Main BG */
+  --color-deep-gray: #23272A;    /* Card BG */
+  --color-off-white: #F5F6FA;    /* Text */
+  --color-verdant-green: #4CAF50; /* Primary Accent */
+  --color-secondary-green: #3A5F40;/* Secondary Accent (same as midori-DEFAULT) */
+
+  /* Font Family Definitions (using variables set in layout) */
+  --font-heading: var(--font-space-grotesk);
+  --font-body: var(--font-noto-sans-jp);
+
+  /* Container settings (example, adjust as needed) */
+  /* --container-center: true; */
+  /* --container-padding: 2rem; */
+  /* --breakpoint-2xl: 1400px; */
+
+  --animation-scroll-x-normal: scroll-x-normal 25s linear infinite;
+  --animation-scroll-x-reverse: scroll-x-reverse 25s linear infinite;
+  --animation-infinite-scroll: infinite-scroll 60s linear infinite;
+  --animation-infinite-scroll-reverse: infinite-scroll-reverse 60s linear infinite;
+
+  /* Updated Semantic Variables */
+  --background: var(--color-charcoal-black); /* Use new Main BG */
+  --foreground: var(--color-off-white);     /* Use new Text color */
+  --card: var(--color-deep-gray);           /* Use new Card BG */
+  --card-foreground: var(--color-off-white);/* Use new Text color for cards */
+  --popover: var(--color-deep-gray);        /* Use new Card BG for popovers */
+  --popover-foreground: var(--color-off-white);/* Use new Text color for popovers */
+  --primary: var(--color-verdant-green);    /* Use new Primary Accent */
+  --primary-foreground: var(--color-charcoal-black); /* Contrast for verdant-green */
+  --secondary: var(--color-secondary-green);  /* Use new Secondary Accent */
+  --secondary-foreground: var(--color-off-white); /* Contrast for secondary-green */
+  --muted: var(--color-code-black-800);     /* Keep existing muted (adjust if needed) */
+  --muted-foreground: var(--color-code-black-400); /* Keep existing muted-fg (adjust if needed) */
+  --accent: var(--color-gold-DEFAULT);      /* Use existing Gold */
+  --accent-foreground: var(--color-charcoal-black); /* Contrast for gold */
+  --destructive: var(--color-red-500, oklch(0.637 0.237 25.331)); /* Default fallback needed */
+  --destructive-foreground: var(--color-red-50, oklch(0.971 0.013 17.38)); /* Default fallback needed */
+  --border: var(--color-code-black-700);    /* Existing subtle border */
+  --input: var(--color-deep-gray);          /* Use new Card BG for inputs */
+  --ring: var(--color-verdant-green);       /* Use new Primary Accent for focus rings */
+  --radius: 0.5rem;
+}
+
+/* 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--color-code-black-950, #0A0A0A); 
+  --foreground: var(--color-code-black-50, #F4F4F4); 
+  --card: var(--color-code-black-950, #0A0A0A);
+  --card-foreground: var(--color-code-black-50, #F4F4F4);
+  --popover: var(--color-code-black-950, #0A0A0A);
+  --popover-foreground: var(--color-code-black-50, #F4F4F4);
+  --primary: #83A889; 
+  --primary-foreground: #0A0F0B; 
+  --secondary: var(--color-code-black-800, #292929); 
+  --secondary-foreground: var(--color-code-black-50, #F4F4F4); 
+  --muted: var(--color-code-black-800, #292929);
+  --muted-foreground: var(--color-code-black-400, #7F7F7F); 
+  --accent: #FFE71A; 
+  --accent-foreground: #191500; 
+  --destructive: var(--color-red-500, oklch(0.637 0.237 25.331)); 
+  --destructive-foreground: var(--color-red-50, oklch(0.971 0.013 17.38)); 
+  --border: var(--color-code-black-700, #3C3C3C); 
+  --input: var(--color-code-black-700, #3C3C3C);
+  --ring: var(--color-midori-500, #3A5F40); 
+
+  --radius: 0.5rem; 
+} 
+*/
+
+/* Base body styles */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+}
+
+/* Remove default browser focus outline when using custom ring */
+*:focus {
+    outline: none;
+}
+
+/* Apply custom focus ring using the --ring variable */
+*:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Keep existing styles below if needed */
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Text gradient */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Cal.com modal styling */
+.cal-modal-shown {
+  overflow: hidden !important;
+}
+
+.cal-modal-shown .fixed-positioned-cal-overlay {
+  overflow-y: scroll;
+  overscroll-behavior-y: none;
+}
+
+/* Custom animations */
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-down {
+  0% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes line-shadow {
+  0% { background-position: 0 0; }
+  100% { background-position: 140px 0; }
+}
+
+@keyframes scroll-x-normal {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes scroll-x-reverse {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0%); }
+}
+
+@keyframes scroll-y-normal {
+  0% { transform: translateY(0%); }
+  100% { transform: translateY(-100%); }
+}
+
+@keyframes scroll-y-reverse {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(0%); }
+}
+
+@keyframes aurora {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-aurora {
+  animation: aurora 10s ease infinite;
+}
+
+@keyframes shiny-text {
+  0% { background-position: calc(var(--shiny-width) * -1) 0; }
+  100% { background-position: calc(100% + var(--shiny-width)) 0; }
+}
+
+.animate-shiny-text {
+  animation: shiny-text 3s ease-in-out infinite;
+}
+
+/* Define animations for use with utilities */
+@theme {
+  --animation-fade-up: fade-up 0.5s ease-out;
+  --animation-fade-down: fade-down 0.5s ease-out;
+  --animation-line-shadow: line-shadow 3s linear infinite;
+}
+
+/* Apply Space Grotesk to headings (example) */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700; /* Corresponds to the bold weight loaded */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --animate-grid: grid 15s linear infinite;
+  @keyframes grid {
+  0% {
+    transform: translateY(-50%);
+    }
+  100% {
+    transform: translateY(0);
+    }
   }
+  --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
+  --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear
+;
+  @keyframes shimmer-slide {
+  to {
+    transform: translate(calc(100cqw - 100%), 0);
+    }
+  }
+  @keyframes spin-around {
+  0% {
+    transform: translateZ(0) rotate(0);
+    }
+  15%, 35% {
+    transform: translateZ(0) rotate(90deg);
+    }
+  65%, 85% {
+    transform: translateZ(0) rotate(270deg);
+    }
+  100% {
+    transform: translateZ(0) rotate(360deg);
+    }
+  }
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  @keyframes marquee {
+  from {
+    transform: translateX(0);
+    }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+    }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+  --animate-shine: shine var(--duration) infinite linear
+;
+  @keyframes shine {
+  0% {
+    background-position: 0% 0%;
+    }
+  50% {
+    background-position: 100% 100%;
+    }
+  to {
+    background-position: 0% 0%;
+    }
+  }}
+
+/* Explicit utility definition for border-border */
+@utility border-border {
+  border-color: var(--border);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Explicit utility definition for outline-ring */
+@utility outline-ring {
+  outline-color: var(--ring);
 }

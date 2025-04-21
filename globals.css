@@ -1,0 +1,154 @@
+@import "tailwindcss/preflight";
+/* @tailwind components; NO LONGER NEEDED IN V4 */
+@tailwind utilities;
+
+@layer base {
+  @theme {
+    /* Custom Colors */
+    --color-midori-DEFAULT: #A3FF99; /* Slightly desaturated vibrant green */
+    --color-midori-50: #F2FFF0;
+    --color-midori-100: #E6FFE2;
+    --color-midori-200: #CCFFC6;
+    --color-midori-300: #B3FFAB;
+    --color-midori-400: #A3FF99; /* DEFAULT */
+    --color-midori-500: #8AE67D;
+    --color-midori-600: #70CC62;
+    --color-midori-700: #57B34A;
+    --color-midori-800: #3D9933;
+    --color-midori-900: #24801E;
+    --color-midori-950: #10660C;
+    
+    --color-gold-DEFAULT: #FFD700; /* Standard gold */
+    --color-gold-50: #FFFCEC;
+    --color-gold-100: #FFF8D9;
+    --color-gold-200: #FFF1B3;
+    --color-gold-300: #FFE98C;
+    --color-gold-400: #FFDF66;
+    --color-gold-500: #FFD700; /* DEFAULT */
+    --color-gold-600: #E6BF00;
+    --color-gold-700: #CCAA00;
+    --color-gold-800: #B39400;
+    --color-gold-900: #997F00;
+    --color-gold-950: #806A00;
+
+    --color-code-black-DEFAULT: #1A1A1A; /* Slightly off-black */
+    --color-code-black-50: #F7F7F7;
+    --color-code-black-100: #EFEFEF;
+    --color-code-black-200: #E0E0E0;
+    --color-code-black-300: #C8C8C8;
+    --color-code-black-400: #A8A8A8;
+    --color-code-black-500: #8B8B8B;
+    --color-code-black-600: #6A6A6A;
+    --color-code-black-700: #4E4E4E;
+    --color-code-black-800: #333333;
+    --color-code-black-900: #222222;
+    --color-code-black-950: #0A0A0A; /* Deep black */
+
+    /* Neutral Gray Palette */
+    --color-gray-50: #F4F4F4; /* Slightly warmer light gray */
+    --color-gray-100: #EAEAEA;
+    --color-gray-200: #DCDCDC;
+    --color-gray-300: #C3C3C3;
+    --color-gray-400: #A6A6A6;
+    --color-gray-500: #8B8B8B; /* Mid-gray */
+    --color-gray-600: #6F6F6F;
+    --color-gray-700: #555555;
+    --color-gray-800: #3C3C3C; /* Darker gray */
+    --color-gray-900: #2A2A2A;
+    --color-gray-950: #1B1B1B; /* Near black */
+  }
+
+  :root {
+    /* Shadcn Light Mode Variables */
+    --background: 0 0% 100%; /* white */
+    --foreground: 240 10% 3.9%; /* near black */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%; /* Default primary - dark */
+    --primary-foreground: 0 0% 98%; /* Default primary text - light */
+    --secondary: 240 4.8% 95.9%; /* light gray */
+    --secondary-foreground: 240 5.9% 10%; /* near black */
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%; /* mid gray */
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%; /* red */
+    --destructive-foreground: 0 0% 98%; /* light */
+    --border: 240 5.9% 90%; /* light gray border */
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%; /* Focus ring - near black */
+    --radius: 0.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      /* Shadcn Dark Mode Variables - Aligned with Custom Theme */
+      /* Using code-black as base background */
+      --background: 0 0% 6%; /* code-black-950 #0A0A0A */
+      --foreground: 0 0% 96%; /* gray-50 #F4F4F4 */
+
+      /* Using slightly darker code-black for cards */
+      --card: 0 0% 6%; /* code-black-950 #0A0A0A */
+      --card-foreground: 0 0% 96%; /* gray-50 #F4F4F4 */
+
+      /* Popovers slightly lighter */
+      --popover: 0 0% 10%; /* code-black-900 #1A1A1A (DEFAULT) */
+      --popover-foreground: 0 0% 96%; /* gray-50 #F4F4F4 */
+      
+      /* Midori as primary */
+      --primary: 115 100% 80%; /* midori-400 #A3FF99 */
+      --primary-foreground: 0 0% 6%; /* code-black-950 for contrast */
+
+      /* Gray for secondary */
+      --secondary: 0 0% 15%; /* gray-900 #2A2A2A */
+      --secondary-foreground: 0 0% 96%; /* gray-50 #F4F4F4 */
+      
+      /* Muted slightly lighter gray */
+      --muted: 0 0% 15%; /* gray-900 #2A2A2A */
+      --muted-foreground: 0 0% 65%; /* gray-400 #A6A6A6 */
+
+      /* Gold as accent */
+      --accent: 51 100% 50%; /* gold-500 #FFD700 */
+      --accent-foreground: 0 0% 6%; /* code-black-950 for contrast */
+
+      /* Standard destructive */
+      --destructive: 0 62.8% 30.6%; /* Adjusted red for dark mode */
+      --destructive-foreground: 0 0% 98%;
+
+      /* Gray for borders/inputs */
+      --border: 0 0% 23%; /* gray-800 #3C3C3C */
+      --input: 0 0% 23%; /* gray-800 #3C3C3C */
+      
+      /* Midori for focus ring */
+      --ring: 115 100% 80%; /* midori-400 #A3FF99 */
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Additional custom base styles if needed */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+} 
