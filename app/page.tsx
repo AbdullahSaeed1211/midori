@@ -26,6 +26,10 @@ export default function Home() {
       
       <HeroSection />
       
+      <div id="client-wins">
+        <TestimonialsSection />
+      </div>
+      
       <div id="services">
         <ServicesSection />
       </div>
@@ -44,16 +48,12 @@ export default function Home() {
       
       <TechnicalEdgeSection />
       
-      <div id="client-wins">
-        <TestimonialsSection />
-      </div>
-      
       <div id="faq">
         <FaqSection />
       </div>
       
       <BookingSection />
-
+      
       <FinalCtaSection />
       
       <Footer />

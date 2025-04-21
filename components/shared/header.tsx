@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, X } from 'lucide-react';
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
+import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
@@ -52,8 +52,9 @@ export function Header() {
       )}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link href="/" className="text-2xl font-bold">
-          MidoriLabs<span className="text-midori-300">.</span>
+        <Link href="/" className="text-2xl font-bold group">
+          MidoriLabs
+          <span className="text-verdant-green transition-transform duration-200 inline-block group-hover:scale-150">.</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -71,7 +72,11 @@ export function Header() {
             asChild
             variant="default"
             size="sm"
-            className="bg-midori-300 text-midori-950 hover:bg-midori-300/90"
+            className={cn(
+              "bg-[#FFD700] text-charcoal-black",
+              "hover:bg-[#FFD700]/90 hover:shadow-[0_0_15px_theme(colors.gold)]",
+              "transition-all duration-300"
+            )}
           >
             <Link href="#booking">
               Book a call
@@ -88,18 +93,15 @@ export function Header() {
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-full max-w-xs bg-background/95 backdrop-blur-lg border-l border-border text-foreground p-6 flex flex-col">
-              <div className="flex justify-between items-center mb-8 border-b border-border pb-4">
-                <Link href="/" className="text-xl font-bold" onClick={closeMobileMenu}>
-                   MidoriLabs<span className="text-midori-300">.</span>
+            <SheetContent side="right" className="w-full max-w-xs bg-charcoal-black/95 backdrop-blur-lg border-l border-code-black-700 text-off-white p-6 flex flex-col">
+              <SheetHeader className="mb-8 border-b border-code-black-700 pb-4 flex flex-row justify-between items-center">
+                <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
+                <SheetDescription className="sr-only">Links to website sections and booking page.</SheetDescription>
+                <Link href="/" className="text-xl font-bold group" onClick={closeMobileMenu}>
+                   MidoriLabs
+                   <span className="text-verdant-green transition-transform duration-200 inline-block group-hover:scale-150">.</span>
                 </Link>
-                <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground">
-                     <X className="h-6 w-6" />
-                     <span className="sr-only">Close menu</span>
-                  </Button>
-                </SheetTrigger>
-              </div>
+              </SheetHeader>
               <nav className="flex flex-col space-y-4 flex-grow">
                 {navItems.map((item) => (
                   <Link
@@ -114,7 +116,12 @@ export function Header() {
                 <Button
                   asChild
                   variant="default"
-                  className="mt-4 w-full py-3 text-base bg-midori-300 text-midori-950 hover:bg-midori-300/90"
+                  className={cn(
+                    "mt-4 w-full py-3 text-base",
+                    "bg-[#FFD700] text-charcoal-black",
+                    "hover:bg-[#FFD700]/90 hover:shadow-[0_0_15px_theme(colors.gold)]",
+                    "transition-all duration-300"
+                  )}
                   onClick={closeMobileMenu}
                 >
                   <Link href="#booking">

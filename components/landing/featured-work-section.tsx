@@ -24,7 +24,7 @@ function WorkCard({ title, type, imageUrl }: WorkItem) {
       className={cn(
         "relative flex h-[400px] flex-col overflow-hidden rounded-2xl",
         "border border-code-black-700",
-        "bg-code-black-900",
+        "bg-deep-gray",
         "shadow-lg group"
       )}
     >
@@ -37,10 +37,10 @@ function WorkCard({ title, type, imageUrl }: WorkItem) {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       )}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-        <h3 className="mb-1 text-lg font-semibold text-white">{title}</h3>
-        <p className="text-sm text-code-black-100">{type}</p>
+      <div className="absolute inset-0 bg-gradient-to-t from-charcoal-black/90 via-charcoal-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-charcoal-black/80 to-transparent">
+        <h3 className="mb-1 text-lg font-semibold text-off-white">{title}</h3>
+        <p className="text-sm text-off-white/80">{type}</p>
       </div>
     </div>
   );
@@ -67,11 +67,11 @@ export function FeaturedWorkSection() {
 
   return (
     <BlurFade delay={0.1} inView>
-      <section className="py-24 bg-code-black-950 text-code-black-50" id="work">
+      <section className="py-24 bg-charcoal-black text-off-white" id="work">
         <div className="container px-4 mx-auto">
           <TextAnimate
             as="h2"
-            className="mb-12 text-center text-4xl font-bold md:text-5xl"
+            className="mb-12 text-center text-4xl font-bold md:text-5xl text-off-white"
             animation="blurInUp"
           >
             Featured Work
@@ -93,8 +93,8 @@ export function FeaturedWorkSection() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="left-[-50px] bg-midori-300/80 hover:bg-midori-300 text-midori-950 border-midori-300" />
-            <CarouselNext className="right-[-50px] bg-midori-300/80 hover:bg-midori-300 text-midori-950 border-midori-300" />
+            <CarouselPrevious className="absolute top-1/2 -translate-y-1/2 left-0 md:left-[-50px] bg-verdant-green/80 hover:bg-verdant-green text-charcoal-black border-none h-8 w-8 md:h-10 md:w-10 rounded-full" />
+            <CarouselNext className="absolute top-1/2 -translate-y-1/2 right-0 md:right-[-50px] bg-verdant-green/80 hover:bg-verdant-green text-charcoal-black border-none h-8 w-8 md:h-10 md:w-10 rounded-full" />
           </Carousel>
         </div>
       </section>

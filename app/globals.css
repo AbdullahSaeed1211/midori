@@ -117,6 +117,7 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-body);
+  line-height: 1.7; /* Increase base line height */
 }
 
 /* Remove default browser focus outline when using custom ring */
@@ -227,11 +228,25 @@ html {
   --animation-line-shadow: line-shadow 3s linear infinite;
 }
 
-/* Apply Space Grotesk to headings (example) */
+/* Apply Space Grotesk to headings & Adjust sizes/tracking */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  font-weight: 700; /* Corresponds to the bold weight loaded */
+  font-weight: 700; 
+  letter-spacing: -0.01em; /* Slight tightening */
 }
+
+/* Example: Adjust specific heading sizes */
+h1 {
+  font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem); /* Responsive h1 */
+  letter-spacing: -0.02em;
+}
+h2 {
+  font-size: clamp(2rem, 4vw + 1rem, 3.5rem); /* Responsive h2 */
+}
+h3 {
+ font-size: clamp(1.5rem, 3vw + 1rem, 2.5rem); /* Responsive h3 */
+}
+/* Add styles for h4, h5, h6 if needed */
 
 @theme inline {
   --animate-grid: grid 15s linear infinite;

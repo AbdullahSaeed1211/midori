@@ -17,20 +17,21 @@ function Service({ title, description, className }: ServiceProps) {
       className={cn(
         "group relative flex h-full flex-col justify-between overflow-hidden rounded-xl p-6",
         "border border-code-black-700",
-        "bg-code-black-900",
-        "transition-colors duration-300 hover:border-midori-300/40",
+        "bg-deep-gray",
+        "transition-colors duration-300 hover:border-verdant-green/40",
+        "shadow-lg",
         className
       )}
     >
       <div>
-        <h3 className="mb-3 text-xl font-semibold text-midori-300 md:text-2xl tracking-wide">
+        <h3 className="mb-3 text-xl font-semibold text-verdant-green md:text-2xl tracking-wide">
           {title}
         </h3>
-        <p className="flex-1 text-base text-gray-400/90 font-light leading-relaxed mb-4">
+        <p className="flex-1 text-base text-off-white/80 font-normal leading-relaxed mb-4">
           {description}
         </p>
       </div>
-      <ArrowUpRight className="absolute top-4 right-4 h-5 w-5 text-gray-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-hover:text-midori-300" />
+      <ArrowUpRight className="absolute top-4 right-4 h-5 w-5 text-off-white/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-hover:text-verdant-green" />
     </div>
   );
 }
@@ -38,18 +39,18 @@ function Service({ title, description, className }: ServiceProps) {
 export function ServicesSection() {
   return (
     <BlurFade delay={0.1} inView>
-      <section className="py-24 bg-code-black-950 text-white" id="services">
+      <section className="py-24 bg-charcoal-black text-off-white" id="services">
         <div className="container px-4 mx-auto">
           <div className="flex flex-col items-center mb-16 max-w-3xl mx-auto text-center">
-            <p className="mb-3 text-xs uppercase tracking-[0.25em] text-midori font-semibold">Our Approach</p>
-            <h2 className="text-4xl font-bold md:text-5xl [text-shadow:_0_1px_2px_rgba(0,0,0,0.2)] mb-4">
+            <p className="mb-3 text-xs uppercase tracking-[0.25em] text-verdant-green font-semibold">Our Approach</p>
+            <h2 className="text-4xl font-bold md:text-5xl [text-shadow:_0_1px_2px_rgba(0,0,0,0.2)] mb-4 text-off-white">
               <TextAnimate
                 animation="blurInUp"
               >
                 How We Drive 
               </TextAnimate>
               {" "}
-              <span className="text-white">Results</span>
+              <span className="text-off-white">Results</span>
             </h2>
           </div>
 

@@ -62,22 +62,22 @@ function TestimonialCard({ testimonial }: TestimonialCardProps) {
   return (
     <div
       className={cn(
-        "relative z-20 flex h-full w-[350px] flex-col justify-between overflow-hidden rounded-lg border p-6 shadow-lg",
-        "bg-code-black-950 text-code-black-50 border-code-black-700"
+        "relative z-20 flex h-full w-[350px] flex-col justify-between overflow-hidden rounded-lg border p-6",
+        "bg-deep-gray text-off-white border-code-black-700"
       )}
     >
       <div>
         <div className="mb-4 flex w-full items-center justify-between">
           <div className="flex items-center space-x-4">
             <Image
-              className="size-10 rounded-full border object-cover"
+              className="size-10 rounded-full border border-code-black-700 object-cover"
               width={40}
               height={40}
               alt={testimonial.name}
               src={testimonial.image}
             />
             <div className="flex flex-col">
-              <figcaption className="text-sm font-semibold text-code-black-50">
+              <figcaption className="text-sm font-semibold text-off-white">
                 {testimonial.name}
               </figcaption>
               <p className="text-xs font-medium text-code-black-400">{testimonial.title}</p>
@@ -85,7 +85,7 @@ function TestimonialCard({ testimonial }: TestimonialCardProps) {
           </div>
           <div className="flex items-center">
             {[...Array(testimonial.rating)].map((_, i) => (
-              <Star key={i} className="mr-0.5 h-4 w-4 fill-midori-300 text-midori-300" />
+              <Star key={i} className="mr-0.5 h-4 w-4 fill-[#FFD700] text-[#FFD700]" />
             ))}
             {[...Array(5 - testimonial.rating)].map((_, i) => (
               <Star key={i + testimonial.rating} className="mr-0.5 h-4 w-4 fill-code-black-800 text-code-black-400" />
@@ -103,11 +103,11 @@ function TestimonialCard({ testimonial }: TestimonialCardProps) {
 export function TestimonialsSection() {
   return (
      <BlurFade delay={0.1} inView>
-      <section className="py-24 bg-code-black-950 text-code-black-50 overflow-hidden" id="client-wins">
+      <section className="py-24 bg-charcoal-black text-off-white overflow-hidden" id="client-wins">
         <div className="container px-4 mx-auto">
           <div className="flex flex-col items-center text-center mb-16 max-w-3xl mx-auto">
-            <p className="mb-3 text-xs uppercase tracking-[0.25em] text-midori-300 font-semibold">Client Wins</p>
-            <h2 className="text-4xl font-bold md:text-5xl [text-shadow:_0_1px_2px_rgba(0,0,0,0.2)] mb-4">
+            <p className="mb-3 text-xs uppercase tracking-[0.25em] text-verdant-green font-semibold">Client Wins</p>
+            <h2 className="text-4xl font-bold md:text-5xl [text-shadow:_0_1px_2px_rgba(0,0,0,0.2)] mb-4 text-off-white">
               <TextAnimate animation="blurInUp">
                 Trusted by Innovators
               </TextAnimate>
@@ -115,14 +115,14 @@ export function TestimonialsSection() {
           </div>
           
           <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg">
-            <Marquee pauseOnHover className="[--duration:60s] [--gap:1rem]">
+            <Marquee pauseOnHover className="[--duration:60s] [--gap:1rem] shadow-xl">
               {testimonials.map((testimonial) => (
                 <TestimonialCard key={testimonial.name} testimonial={testimonial} />
               ))}
             </Marquee>
             
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-code-black-950"></div>
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-code-black-950"></div>
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-charcoal-black"></div>
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-charcoal-black"></div>
           </div>
         </div>
       </section>

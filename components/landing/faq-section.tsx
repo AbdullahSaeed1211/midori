@@ -46,15 +46,15 @@ const faqData = [
 ];
 
 export function FaqSection() {
-  const [openItem, setOpenItem] = useState<string | null>(faqData[0].id); // Default open first item
+  const [openItem, setOpenItem] = useState<string | null>(faqData[0].id);
 
   return (
     <BlurFade delay={0.1} inView>
-      <section className="py-24 bg-code-black-950 text-code-black-50" id="faq">
+      <section className="py-24 bg-charcoal-black text-off-white" id="faq">
         <div className="container px-4 mx-auto">
           <div className="flex flex-col items-center text-center mb-16 max-w-3xl mx-auto">
-            <p className="mb-3 text-xs uppercase tracking-[0.25em] text-midori-300 font-semibold">FAQ</p>
-            <h2 className="text-4xl font-bold md:text-5xl [text-shadow:_0_1px_2px_rgba(0,0,0,0.2)] mb-4">
+            <p className="mb-3 text-xs uppercase tracking-[0.25em] text-verdant-green font-semibold">FAQ</p>
+            <h2 className="text-4xl font-bold md:text-5xl [text-shadow:_0_1px_2px_rgba(0,0,0,0.2)] mb-4 text-off-white">
               <TextAnimate animation="blurInUp">
                 Questions? Answers.
               </TextAnimate>
@@ -67,30 +67,30 @@ export function FaqSection() {
               collapsible 
               value={openItem || ""} 
               onValueChange={setOpenItem}
-              className="w-full space-y-3"
+              className="w-full space-y-4"
             >
               {faqData.map((item, index) => (
                 <AccordionItem 
                   key={item.id} 
                   value={item.id} 
-                  className="border border-code-black-700 bg-code-black-950 rounded-xl overflow-hidden transition-all hover:border-code-black-700/60 data-[state=open]:border-midori-300/30"
+                  className="group border border-code-black-700 bg-deep-gray rounded-xl overflow-hidden transition-all hover:border-code-black-700/60 data-[state=open]:border-verdant-green/40"
                 >
-                  <AccordionTrigger className="flex w-full items-center justify-between px-4 sm:px-6 py-4 text-left text-base sm:text-lg font-medium text-code-black-50 hover:no-underline group">
+                  <AccordionTrigger className="flex w-full items-center justify-between px-4 sm:px-6 py-5 text-left text-base sm:text-lg font-medium text-off-white hover:no-underline">
                     <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
                       <span className={cn(
-                        "flex-shrink-0 flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full text-xs sm:text-sm font-semibold transition-colors",
-                        openItem === item.id ? "bg-midori-300 text-midori-950" : "bg-code-black-800 text-code-black-400 group-hover:bg-gold-400/10"
+                        "flex-shrink-0 flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full text-xs sm:text-sm font-semibold transition-colors",
+                        openItem === item.id ? "bg-verdant-green text-charcoal-black" : "bg-code-black-700 text-off-white/70 group-hover:bg-gold group-hover:text-charcoal-black"
                       )}>
                         {index + 1}
                       </span>
-                      <span className="flex-1 truncate">{item.question}</span>
+                      <span className="flex-1 truncate group-hover:text-off-white/90 transition-colors">{item.question}</span>
                     </div>
                     <div className="ml-3 sm:ml-4 flex-shrink-0">
-                      {openItem === item.id ? <Minus className="h-5 w-5 text-midori-300" /> : <Plus className="h-5 w-5 text-code-black-400 group-hover:text-code-black-50" />}
+                      {openItem === item.id ? <Minus className="h-5 w-5 text-verdant-green" /> : <Plus className="h-5 w-5 text-off-white/70 group-hover:text-off-white" />}
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="px-4 sm:px-6 pb-4 pt-0 text-base text-code-black-400 font-light leading-relaxed data-[state=open]:animate-accordion-down">
-                    <div className="pl-10 sm:pl-12">
+                  <AccordionContent className="px-4 sm:px-6 pb-5 pt-0 text-base text-off-white/80 font-normal leading-relaxed data-[state=open]:animate-accordion-down">
+                    <div className="pl-12 sm:pl-[44px]">
                       {item.answer}
                     </div>
                   </AccordionContent>

@@ -10,7 +10,7 @@ const spaceGrotesk = Space_Grotesk({
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
-  weight: ["300"], // Light
+  weight: ["300", "400"], // Load Light (300) and Regular (400)
   variable: "--font-noto-sans-jp",
 });
 
@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${spaceGrotesk.variable} ${notoSansJP.variable} font-body antialiased`}
+        className={`${spaceGrotesk.variable} ${notoSansJP.variable} font-body font-normal text-base antialiased`}
       >
         {children}
       </body>
