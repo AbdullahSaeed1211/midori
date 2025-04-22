@@ -48,8 +48,9 @@ export function HeroSection() {
               asChild 
               className={cn(
                 "mx-4 sm:mx-0",
-                "bg-gold-default text-charcoal-black",
-                "hover:bg-gold/90 hover:shadow-[0_0_15px_theme(colors.gold)]",
+                "bg-[#FFD700] text-charcoal-black",
+                "hover:bg-[#FFD700]/90 hover:shadow-[0_0_15px_theme(colors.gold)]",
+                "hover:bg-[#FFD700]/90 hover:shadow-[0_0_15px_theme(colors.gold)]",
                 "transition-all duration-300"
               )}
             >
