@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { useEffect, useState, useRef } from "react";
+import React from "react";
 
 // Component that only renders on the client to avoid hydration mismatches
 function BackgroundParticles() {
@@ -164,34 +165,37 @@ export function HeroSection() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.1, duration: 0.6 }}
         >
-          <p className="mb-6 text-xs uppercase tracking-[0.3em] text-verdant-green/80 font-semibold">
+          <p className="mb-6 text-xs uppercase tracking-[0.3em] text-verdant-green/80 font-semibold text-center">
             Trusted By
           </p>
-          <div className="flex flex-wrap justify-center gap-x-12 gap-y-4">
-            <motion.span 
-              className="text-xl sm:text-2xl md:text-3xl font-medium text-off-white/90"
-              whileHover={{ scale: 1.05, color: "#fff" }}
+          <div className="relative w-full max-w-5xl mx-auto overflow-hidden py-4">
+            <motion.div 
+              className="flex gap-x-12 items-center whitespace-nowrap"
+              animate={{ x: [0, -1000] }}
+              transition={{ 
+                repeat: Infinity, 
+                repeatType: "loop", 
+                duration: 20,
+                ease: "linear"
+              }}
             >
-              Dubbby
-            </motion.span>
-            <motion.span 
-              className="text-xl sm:text-2xl md:text-3xl font-medium text-off-white/90"
-              whileHover={{ scale: 1.05, color: "#fff" }}
-            >
-              BrainWise
-            </motion.span>
-            <motion.span 
-              className="text-xl sm:text-2xl md:text-3xl font-medium text-off-white/90"
-              whileHover={{ scale: 1.05, color: "#fff" }}
-            >
-              BlogSquirrel
-            </motion.span>
-            <motion.span 
-              className="text-xl sm:text-2xl md:text-3xl font-medium text-off-white/90"
-              whileHover={{ scale: 1.05, color: "#fff" }}
-            >
-              Simply Mortgage
-            </motion.span>
+              {Array(6).fill(0).map((_, i) => (
+                <React.Fragment key={i}>
+                  <span className="text-xl sm:text-2xl md:text-3xl font-medium text-off-white/90 inline-block">
+                    Dubbby
+                  </span>
+                  <span className="text-xl sm:text-2xl md:text-3xl font-medium text-off-white/90 inline-block">
+                    BrainWise
+                  </span>
+                  <span className="text-xl sm:text-2xl md:text-3xl font-medium text-off-white/90 inline-block">
+                    BlogSquirrel
+                  </span>
+                  <span className="text-xl sm:text-2xl md:text-3xl font-medium text-off-white/90 inline-block">
+                    Simply Mortgage
+                  </span>
+                </React.Fragment>
+              ))}
+            </motion.div>
           </div>
         </motion.div>
         

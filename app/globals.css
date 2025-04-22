@@ -43,8 +43,8 @@
   --color-code-black-950: #0A0A0A;
 
   /* New Palette Definitions */
-  --color-charcoal-black: #181A1B; /* Main BG */
-  --color-deep-gray: #23272A;    /* Card BG */
+  --color-charcoal-black: #000000; /* Main BG - Changed to pure black */
+  --color-deep-gray: #121212;    /* Card BG - Made darker */
   --color-off-white: #F5F6FA;    /* Text */
   --color-verdant-green: #4CAF50; /* Primary Accent */
   --color-secondary-green: #3A5F40;/* Secondary Accent (same as midori-DEFAULT) */

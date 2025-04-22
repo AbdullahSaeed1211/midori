@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetHeader } from '@/components/ui/sheet';
 import { Menu, ArrowRight, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteSearch } from '@/components/ui/site-search';
@@ -158,12 +158,12 @@ export function Header() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 className="flex items-center justify-center rounded-full w-10 h-10 bg-verdant-green/10 text-off-white hover:bg-verdant-green/20 transition-colors"
+                aria-label="Open navigation menu"
               >
                 <Menu className="h-5 w-5" />
-                <span className="sr-only">Open menu</span>
               </motion.button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-full max-w-xs bg-deep-gray/95 backdrop-blur-lg border-l border-verdant-green/10 text-off-white p-6 flex flex-col">
+            <SheetContent side="right" className="w-full max-w-xs bg-deep-gray border-l border-verdant-green/10 text-off-white p-6 flex flex-col">
               <SheetHeader className="mb-8 border-b border-verdant-green/10 pb-4 flex flex-row justify-between items-center">
                 <Link href="/" className="text-xl font-bold group flex items-center" onClick={closeMobileMenu}>
                   <span>Midori<span className="text-verdant-green">Labs</span></span>
@@ -174,10 +174,10 @@ export function Header() {
                   whileTap={{ scale: 0.9 }}
                   onClick={closeMobileMenu}
                   className="rounded-full p-2 hover:bg-verdant-green/10"
+                  aria-label="Close navigation menu"
                 >
-                  <X className="h-5 w-5 text-off-white/70" />
+                  <X className="h-5 w-5 text-off-white" />
                 </motion.button>
-                <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col space-y-1 flex-grow">
                 <AnimatePresence>

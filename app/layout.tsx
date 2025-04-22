@@ -20,8 +20,24 @@ export const metadata: Metadata = {
     template: "%s | MidoriLabs.studio",
     default: "MidoriLabs.studio | Strategic Web Engineering for Business Growth",
   },
-  description: "High-performance websites and web applications engineered for conversion, engagement, and measurable business results.",
-  keywords: ["web development", "conversion optimization", "landing pages", "SaaS development", "web design", "NextJS", "React"],
+  description: "High-performance websites and web applications engineered for conversion, engagement, and measurable business results. We build custom digital solutions that drive growth.",
+  keywords: [
+    "web development", 
+    "conversion optimization", 
+    "landing pages", 
+    "SaaS development", 
+    "web design", 
+    "NextJS", 
+    "React", 
+    "business growth",
+    "digital strategy",
+    "mobile-first websites",
+    "performance optimization",
+    "SEO-friendly websites",
+    "user experience design",
+    "web engineering",
+    "responsive websites"
+  ],
   authors: [{ name: "MidoriLabs.studio" }],
   metadataBase: new URL('https://midorilabs.studio'),
   openGraph: {
@@ -36,7 +52,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "MidoriLabs.studio"
+        alt: "MidoriLabs.studio - Web Engineering for Growth"
       }
     ]
   },
@@ -44,11 +60,20 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MidoriLabs.studio | Strategic Web Engineering",
     description: "High-performance websites & web solutions designed for conversion and business growth",
-    images: ["/og-image.jpg"]
+    images: ["/og-image.jpg"],
+    site: "@midorilabs",
+    creator: "@midorilabs"
   },
   robots: {
     index: true,
-    follow: true
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
+    }
   },
   alternates: {
     canonical: 'https://midorilabs.studio'
@@ -58,8 +83,11 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#4CAF50',
-  colorScheme: 'dark'
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: '#000000',
+  colorScheme: 'dark',
+  viewportFit: 'cover'
 };
 
 export default function RootLayout({
@@ -75,7 +103,7 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body
-        className={`${spaceGrotesk.variable} ${notoSansJP.variable} font-body font-normal text-base antialiased`}
+        className={`${spaceGrotesk.variable} ${notoSansJP.variable} font-body font-normal text-base antialiased bg-charcoal-black`}
       >
         {children}
         <StickyContactButton />
