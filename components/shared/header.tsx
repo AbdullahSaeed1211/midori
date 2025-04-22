@@ -57,7 +57,7 @@ export function Header() {
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="text-2xl font-bold group flex items-center">
-          <span className="bg-verdant-green text-off-white px-1.5 py-0.5 rounded mr-1.5">M</span>
+         
           <span>MidoriLabs</span>
           <span className="text-verdant-green transition-transform duration-200 inline-block group-hover:scale-150">.</span>
         </Link>
@@ -102,7 +102,7 @@ export function Header() {
             <SheetContent side="right" className="w-full max-w-xs bg-deep-gray/95 backdrop-blur-lg border-l border-verdant-green/10 text-off-white p-6 flex flex-col">
               <SheetHeader className="mb-8 border-b border-verdant-green/10 pb-4 flex flex-row justify-between items-center">
                 <Link href="/" className="text-xl font-bold group flex items-center" onClick={closeMobileMenu}>
-                  <span className="bg-verdant-green text-off-white px-1.5 py-0.5 rounded mr-1.5">M</span>
+                 
                   <span>MidoriLabs</span>
                   <span className="text-verdant-green transition-transform duration-200 inline-block group-hover:scale-150">.</span>
                 </Link>
