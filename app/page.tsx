@@ -5,6 +5,7 @@ import { OfferingsSection } from "@/components/landing/offerings-section";
 import { BenefitsSection } from "@/components/landing/benefits-section";
 import { FeaturedWorkSection } from "@/components/landing/featured-work-section";
 import { WhyMidoriLabsSection } from "@/components/landing/why-midorilabs-section";
+import { PricingOptionsSection } from "@/components/landing/pricing-options-section";
 import { PricingSection } from "@/components/landing/pricing-section";
 import { TestimonialsSection } from "@/components/landing/testimonials-section";
 import { TechnicalEdgeSection } from "@/components/landing/technical-edge-section";
@@ -54,6 +55,15 @@ export default function Home() {
       <FeaturedWorkSection />
       
       <div id="pricing">
+        <PricingOptionsSection />
+        <div className="py-12 bg-charcoal-black">
+          <div className="container mx-auto px-4 text-center">
+            <h3 className="text-2xl md:text-3xl font-bold text-off-white mb-4">Looking for detailed service breakdowns?</h3>
+            <p className="text-lg text-off-white/80 mb-8 max-w-2xl mx-auto">
+              Explore our pricing options below with comprehensive feature lists.
+            </p>
+          </div>
+        </div>
         <PricingSection />
       </div>
       

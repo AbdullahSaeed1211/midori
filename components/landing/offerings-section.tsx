@@ -43,7 +43,7 @@ export function OfferingsSection() {
 
             {/* Right Column: Single Vertical Marquee Offerings List */}
             <div className="relative h-[300px] md:h-[400px] overflow-hidden">
-              <Marquee vertical pauseOnHover className="[--duration:40s] [--gap:0.5rem]">
+              <Marquee vertical pauseOnHover className="[--duration:20s] [--gap:0.5rem]">
                 {offerings.map((item, index) => {
                   const isHighlighted = item === "AI Integration";
                   return (

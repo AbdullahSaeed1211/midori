@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
+import { StickyContactButton } from "@/components/ui/sticky-contact-button";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -77,6 +78,7 @@ export default function RootLayout({
         className={`${spaceGrotesk.variable} ${notoSansJP.variable} font-body font-normal text-base antialiased`}
       >
         {children}
+        <StickyContactButton />
       </body>
     </html>
   );

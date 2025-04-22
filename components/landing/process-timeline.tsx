@@ -3,6 +3,7 @@
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { CheckCircle, Users, Lightbulb, Code, BarChart, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 interface ProcessStepProps {
   number: number;
@@ -15,46 +16,74 @@ interface ProcessStepProps {
 
 function ProcessStep({ number, title, description, icon, isLast, index }: ProcessStepProps) {
   return (
-    <BlurFade delay={0.1 * (index + 1)} inView>
-      <div className="relative pb-12 ml-6 md:ml-0">
-        {/* Timeline line */}
-        {!isLast && (
-          <div className="absolute left-6 top-10 bottom-0 w-px md:left-1/2 md:-ml-px overflow-hidden">
-            <div className="h-full w-full bg-gradient-to-b from-verdant-green/50 to-verdant-green/10 animate-line-draw"></div>
-          </div>
-        )}
+    <motion.div 
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, delay: 0.1 * index }}
+      viewport={{ once: true, margin: "-100px" }}
+      className="relative pb-12 ml-6 md:ml-0"
+    >
+      {/* Timeline line */}
+      {!isLast && (
+        <div className="absolute left-6 top-10 bottom-0 w-px md:left-1/2 md:-ml-px overflow-hidden">
+          <motion.div 
+            className="h-full w-full bg-gradient-to-b from-verdant-green/50 to-verdant-green/10"
+            initial={{ scaleY: 0, originY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            transition={{ duration: 0.7, delay: 0.2 * (index + 1) }}
+            viewport={{ once: true, margin: "-100px" }}
+          ></motion.div>
+        </div>
+      )}
 
-        <div className={cn(
-          "relative flex flex-col md:flex-row md:items-center",
-          number % 2 === 0 ? "md:flex-row-reverse text-left" : "text-left md:text-right"
-        )}>
-          {/* Number and icon */}
-          <div 
-            className="absolute left-0 flex items-center justify-center w-12 h-12 rounded-full 
-                       bg-verdant-green/10 text-verdant-green z-10 border border-verdant-green/20 
-                       md:left-1/2 md:-ml-6 transition-all duration-300 
-                       hover:scale-110 hover:bg-verdant-green/20 hover:border-verdant-green/40
-                       animate-fade-in-up"
-            style={{ animationDelay: `${index * 150}ms` }}
-          >
-            {icon}
-          </div>
+      <div className={cn(
+        "relative flex flex-col md:flex-row md:items-center",
+        number % 2 === 0 ? "md:flex-row-reverse text-left" : "text-left md:text-right"
+      )}>
+        {/* Number and icon */}
+        <motion.div 
+          className="absolute left-0 flex items-center justify-center w-12 h-12 rounded-full 
+                     bg-verdant-green/10 text-verdant-green z-10 border border-verdant-green/20 
+                     md:left-1/2 md:-ml-6 transition-all duration-300 
+                     hover:scale-110 hover:bg-verdant-green/20 hover:border-verdant-green/40"
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+          transition={{ 
+            type: "spring", 
+            stiffness: 300, 
+            damping: 20, 
+            delay: 0.2 * index
+          }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          {icon}
+        </motion.div>
 
-          {/* Content */}
-          <div className={cn(
+        {/* Content */}
+        <motion.div 
+          className={cn(
             "group relative ml-20 p-6 rounded-xl border border-verdant-green/10 bg-deep-gray transition-all duration-300 hover:border-verdant-green/30 hover:shadow-lg md:w-[45%] cursor-default", 
             number % 2 === 0 ? "md:mr-20 md:ml-0" : "md:ml-20"
-          )}>
-            <div className="absolute inset-0 bg-verdant-green/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div className="relative z-10">
-              <span className="inline-block px-2 py-1 mb-2 text-xs font-semibold rounded-full bg-verdant-green/10 text-verdant-green group-hover:bg-verdant-green/20 transition-colors duration-300">Step {number}</span>
-              <h3 className="mb-2 text-xl font-bold text-off-white group-hover:text-verdant-green transition-colors duration-300">{title}</h3>
-              <p className="text-off-white/80">{description}</p>
-            </div>
+          )}
+          initial={{ opacity: 0, x: number % 2 === 0 ? 50 : -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ 
+            type: "spring", 
+            stiffness: 100, 
+            damping: 20, 
+            delay: 0.3 * index 
+          }}
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <div className="absolute inset-0 bg-verdant-green/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="relative z-10">
+            <span className="inline-block px-2 py-1 mb-2 text-xs font-semibold rounded-full bg-verdant-green/10 text-verdant-green group-hover:bg-verdant-green/20 transition-colors duration-300">Step {number}</span>
+            <h3 className="mb-2 text-xl font-bold text-off-white group-hover:text-verdant-green transition-colors duration-300">{title}</h3>
+            <p className="text-off-white/80">{description}</p>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </BlurFade>
+    </motion.div>
   );
 }
 
@@ -98,13 +127,15 @@ export function ProcessTimeline() {
       <div className="container px-4 mx-auto relative">
         <BlurFade inView>
           <div className="text-center mb-16">
-            <div className="px-4 py-1.5 rounded-full bg-verdant-green/10 text-verdant-green text-sm font-medium inline-block mb-6 border border-verdant-green/20">
-              Our Process
+            <div className="inline-flex flex-col items-center">
+              <div className="px-4 py-1.5 rounded-full bg-verdant-green/10 text-verdant-green text-sm font-medium mb-6 border border-verdant-green/20">
+                Our Process
+              </div>
+              <h2 className="text-4xl font-bold md:text-5xl mb-6 text-off-white relative inline-block">
+                How We Bring Your Vision to Life
+                <span className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-verdant-green/30 via-verdant-green to-verdant-green/30 rounded-full"></span>
+              </h2>
             </div>
-            <h2 className="text-4xl font-bold md:text-5xl mb-6 text-off-white relative inline-block">
-              How We Bring Your Vision to Life
-              <span className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-verdant-green/30 via-verdant-green to-verdant-green/30 rounded-full"></span>
-            </h2>
             <p className="text-xl text-off-white/80 max-w-3xl mx-auto mt-6">
               A systematic approach that delivers predictable results and a seamless experience from concept to completion.
             </p>

@@ -35,12 +35,12 @@ export function WhyMidoriLabsSection() {
         <div className="flex flex-col items-center text-center mb-20">
           <div className="px-4 py-1.5 rounded-full bg-verdant-green/10 text-verdant-green text-sm font-medium mb-6 border border-verdant-green/20">Why Choose Us</div>
           
-          <BlurFade inView>
+        <BlurFade inView>
             <h2 className="mb-6 text-center text-4xl font-bold md:text-6xl text-off-white">
               <span className="text-verdant-green">Tangible Results</span>, Not Empty Promises
             </h2>
-          </BlurFade>
-          
+        </BlurFade>
+
           <p className="text-xl text-off-white/80 max-w-3xl mx-auto">
             We&apos;ve helped startups and established businesses 2-5x their conversion rates through strategic design and development.
           </p>
