@@ -62,7 +62,7 @@ function ProcessStep({ number, title, description, icon, isLast, index }: Proces
         {/* Content */}
         <motion.div 
           className={cn(
-            "group relative ml-20 p-6 rounded-xl border border-verdant-green/10 bg-deep-gray transition-all duration-300 hover:border-verdant-green/30 hover:shadow-lg md:w-[45%] cursor-default", 
+            "group relative ml-20 p-6 sm:p-8 rounded-xl border border-verdant-green/10 bg-[#131313] transition-all duration-300 hover:border-verdant-green/30 hover:shadow-lg md:w-[45%] cursor-default", 
             number % 2 === 0 ? "md:mr-20 md:ml-0" : "md:ml-20"
           )}
           initial={{ opacity: 0, x: number % 2 === 0 ? 50 : -50 }}
@@ -77,9 +77,9 @@ function ProcessStep({ number, title, description, icon, isLast, index }: Proces
         >
           <div className="absolute inset-0 bg-verdant-green/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <div className="relative z-10">
-            <span className="inline-block px-2 py-1 mb-2 text-xs font-semibold rounded-full bg-verdant-green/10 text-verdant-green group-hover:bg-verdant-green/20 transition-colors duration-300">Step {number}</span>
-            <h3 className="mb-2 text-xl font-bold text-off-white group-hover:text-verdant-green transition-colors duration-300">{title}</h3>
-            <p className="text-off-white/80">{description}</p>
+            <span className="inline-block px-3 py-1.5 mb-3 text-xs font-semibold rounded-full bg-verdant-green/10 text-verdant-green group-hover:bg-verdant-green/20 transition-colors duration-300">Step {number}</span>
+            <h3 className="mb-3 text-2xl font-bold text-off-white group-hover:text-verdant-green transition-colors duration-300">{title}</h3>
+            <p className="text-off-white/80 text-base">{description}</p>
           </div>
         </motion.div>
       </div>

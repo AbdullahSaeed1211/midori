@@ -110,10 +110,10 @@ export function HeroSection() {
       
       <BlurFade className="container mx-auto px-4 text-center z-10">
         <div>
-          <h1 className="max-w-5xl mx-auto text-4xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl leading-tight text-off-white">
-            Websites That Actually{" "}
+          <h1 className="max-w-6xl mx-auto text-4xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl leading-none text-off-white">
+            <span className="block">We Build High-Converting</span>
             <span className="relative inline-block">
-              <span className="text-verdant-green">Drive Growth</span>
+              <span className="text-verdant-green">Websites & Digital Experiences</span>
               <motion.span 
                 className="absolute bottom-[-4px] left-0 h-1 w-full bg-gradient-to-r from-verdant-green to-gold rounded-full"
                 initial={{ width: 0, opacity: 0 }}
@@ -123,8 +123,8 @@ export function HeroSection() {
             </span>
           </h1>
           
-          <div className="mx-auto mt-8 max-w-xl text-lg sm:text-xl md:text-2xl text-off-white/90 font-light tracking-wide">
-            Not just a website. A strategic digital asset engineered for measurable business results.
+          <div className="mx-auto mt-8 max-w-2xl text-xl sm:text-2xl md:text-3xl text-off-white/90 font-light tracking-wide">
+            Turning visitors into customers with strategic design, compelling copy, and flawless development. We create digital experiences that drive real business results and deliver measurable ROI.
           </div>
         </div>
         
