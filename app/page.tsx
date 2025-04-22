@@ -13,10 +13,19 @@ import { Footer } from "@/components/shared/footer";
 import { Header } from "@/components/shared/header";
 import { FinalCtaSection } from "@/components/landing/final-cta-section";
 import { BookingSection } from "@/components/landing/booking-section";
+import { ProcessTimeline } from "@/components/landing/process-timeline";
 
 export const metadata: Metadata = {
   title: "MidoriLabs.studio | AI-Powered Web Engineering",
   description: "AI-enhanced landing pages, SaaS platforms, and brand identities engineered for measurable growth",
+  keywords: "web design, web development, conversion optimization, landing pages, SaaS development, digital branding",
+  authors: [{ name: "MidoriLabs" }],
+  openGraph: {
+    type: "website",
+    title: "MidoriLabs.studio | Web Engineering for Growth",
+    description: "High-performance websites & web solutions designed for conversion and built for scale.",
+    siteName: "MidoriLabs.studio",
+  }
 };
 
 export default function Home() {
@@ -35,6 +44,8 @@ export default function Home() {
       </div>
       
       <OfferingsSection />
+      
+      <ProcessTimeline />
       
       <BenefitsSection />
       

@@ -8,9 +8,8 @@ import {
 } from "@/components/ui/accordion";
 import { TextAnimate } from "@/components/magicui/text-animate";
 import { BlurFade } from "@/components/magicui/blur-fade";
-import { Plus, Minus } from 'lucide-react';
-import { useState } from 'react';
 import { cn } from "@/lib/utils";
+import { useState } from 'react';
 
 const faqData = [
   {
@@ -84,9 +83,6 @@ export function FaqSection() {
                         {index + 1}
                       </span>
                       <span className="flex-1 truncate group-hover:text-off-white/90 transition-colors">{item.question}</span>
-                    </div>
-                    <div className="ml-3 sm:ml-4 flex-shrink-0">
-                      {openItem === item.id ? <Minus className="h-5 w-5 text-verdant-green" /> : <Plus className="h-5 w-5 text-off-white/70 group-hover:text-off-white" />}
                     </div>
                   </AccordionTrigger>
                   <AccordionContent className="px-4 sm:px-6 pb-5 pt-0 text-base text-off-white/80 font-normal leading-relaxed data-[state=open]:animate-accordion-down">

@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetHeader } from '@/components/ui/sheet';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { Menu, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
@@ -106,10 +106,7 @@ export function Header() {
                   <span>MidoriLabs</span>
                   <span className="text-verdant-green transition-transform duration-200 inline-block group-hover:scale-150">.</span>
                 </Link>
-                <Button variant="ghost" size="icon" className="text-off-white hover:bg-verdant-green/10" onClick={closeMobileMenu}>
-                  <X className="h-5 w-5" />
-                  <span className="sr-only">Close menu</span>
-                </Button>
+                <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col space-y-1 flex-grow">
                 {navItems.map((item) => (

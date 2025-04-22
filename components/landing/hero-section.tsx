@@ -16,6 +16,7 @@ export function HeroSection() {
         id="hero"
       >
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-verdant-green/10 via-transparent to-transparent opacity-40"></div>
+        <div className="absolute inset-0 opacity-[0.03] [background-image:radial-gradient(circle_at_center,_theme(colors.verdant-green)_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]"></div>
         
         <div className="container mx-auto px-0 sm:px-4 text-center z-10">
           <h1 className="max-w-5xl mx-auto text-4xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl leading-tight text-off-white [text-shadow:_0_2px_4px_rgba(0,0,0,0.4)] px-4 sm:px-0">
@@ -23,11 +24,11 @@ export function HeroSection() {
               animation="blurInUp"
               by="word"
             >
-              We Build Websites That 
+              Websites That Actually 
             </TextAnimate>
             {" "}
             <span className="relative inline-block">
-              <span className="text-verdant-green">10x Your Revenue</span>
+              <span className="text-verdant-green">Drive Growth</span>
               <span className="absolute bottom-[-4px] left-0 h-1 w-full bg-gradient-to-r from-verdant-green to-gold rounded-full"></span>
             </span>
           </h1>
@@ -38,7 +39,7 @@ export function HeroSection() {
               by="word"
               delay={0.5}
             >
-              {"Not just a website. A high-converting digital asset engineered for measurable growth and ROI."}
+              {"Not just a website. A strategic digital asset engineered for measurable business results."}
             </TextAnimate>
           </div>
           
@@ -76,7 +77,7 @@ export function HeroSection() {
           
           <div className="mt-28 w-full overflow-hidden">
             <p className="mb-6 text-xs uppercase tracking-[0.3em] text-verdant-green/80 font-semibold px-4 sm:px-0">
-              Driving Results For
+              Trusted By
             </p>
             <Marquee pauseOnHover className="[--duration:60s] opacity-80">
               <span className="mx-6 text-xl sm:mx-10 sm:text-2xl md:text-3xl font-medium text-off-white/90">Dubbby</span>
@@ -89,7 +90,7 @@ export function HeroSection() {
           <div className="mt-8 flex justify-center">
             <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-verdant-green/10 text-verdant-green border border-verdant-green/20">
               <span className="inline-block h-2 w-2 rounded-full bg-verdant-green animate-pulse"></span>
-              <span className="text-sm font-medium">Currently accepting new clients for Q4 2023</span>
+              <span className="text-sm font-medium">Currently accepting new clients for Q3 2025</span>
             </div>
           </div>
         </div>

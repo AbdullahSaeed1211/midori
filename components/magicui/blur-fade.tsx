@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
+import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 interface BlurFadeProps {
@@ -26,67 +27,54 @@ export function BlurFade({
   ...props
 }: BlurFadeProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [isInView, setIsInView] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
 
-  useEffect(() => {
-    if (!ref.current || !window.IntersectionObserver) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        if (entry.isIntersecting) {
-          setIsInView(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!inView || isInView) {
-      const timer = setTimeout(() => {
-        setIsAnimating(true);
-      }, delay * 1000);
-      return () => clearTimeout(timer);
+  const getTransformValue = () => {
+    switch (direction) {
+      case "up":
+        return { y: offset };
+      case "down":
+        return { y: -offset };
+      case "left":
+        return { x: offset };
+      case "right":
+        return { x: -offset };
+      default:
+        return { y: -offset };
     }
-  }, [delay, inView, isInView]);
-
-  const getTransformProperty = () => {
-    if (direction === "left" || direction === "right") {
-      return {
-        x: direction === "right" ? -offset : offset,
-      };
-    }
-    return {
-      y: direction === "down" ? -offset : offset,
-    };
   };
 
-  const transformProp = getTransformProperty();
-  const transformKey = Object.keys(transformProp)[0] as "x" | "y";
-  const transformValue = transformProp[transformKey];
+  // Variants for animation states
+  const variants = {
+    hidden: {
+      opacity: 0,
+      filter: `blur(${blur})`,
+      ...getTransformValue(),
+    },
+    visible: {
+      opacity: 1,
+      filter: "blur(0px)",
+      x: 0,
+      y: 0,
+      transition: {
+        duration,
+        delay,
+        ease: "easeOut",
+      },
+    },
+  };
 
   return (
-    <div
+    <motion.div
       ref={ref}
       className={cn(className)}
-      style={{
-        opacity: isAnimating ? 1 : 0,
-        filter: `blur(${isAnimating ? 0 : blur})`,
-        transform: `translate${transformKey.toUpperCase()}(${
-          isAnimating ? 0 : transformValue
-        }px)`,
-        transition: `opacity ${duration}s ease-out, filter ${duration}s ease-out, transform ${duration}s ease-out`,
-        transitionDelay: `${delay}s`,
-      }}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+      whileInView={!inView ? "visible" : undefined}
+      viewport={{ once: true, amount: 0.1 }}
+      variants={variants}
       {...props}
     >
       {children}
-    </div>
+    </motion.div>
   );
 } 
