@@ -3,14 +3,16 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
-import { Menu } from 'lucide-react';
+import { Sheet, SheetContent, SheetTrigger, SheetHeader } from '@/components/ui/sheet';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { label: 'How it works', href: '#services' },
+  { label: 'Services', href: '#services' },
+  { label: 'Why Us', href: '#why-us' },
+  { label: 'Work', href: '#featured-work' },
   { label: 'Pricing', href: '#pricing' },
-  { label: 'FAQs', href: '#faq' },
+  { label: 'FAQ', href: '#faq' },
 ];
 
 export function Header() {
@@ -48,12 +50,15 @@ export function Header() {
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out',
-        isScrolled ? 'bg-background/80 backdrop-blur-lg shadow-md' : 'bg-transparent pt-4',
+        isScrolled 
+          ? 'bg-deep-gray/95 backdrop-blur-lg shadow-lg border-b border-verdant-green/10' 
+          : 'bg-transparent pt-4',
       )}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link href="/" className="text-2xl font-bold group">
-          MidoriLabs
+        <Link href="/" className="text-2xl font-bold group flex items-center">
+          <span className="bg-verdant-green text-off-white px-1.5 py-0.5 rounded mr-1.5">M</span>
+          <span>MidoriLabs</span>
           <span className="text-verdant-green transition-transform duration-200 inline-block group-hover:scale-150">.</span>
         </Link>
 
@@ -63,7 +68,7 @@ export function Header() {
             <Link
               key={item.label}
               href={item.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="text-sm font-medium text-off-white/70 transition-colors hover:text-verdant-green"
             >
               {item.label}
             </Link>
@@ -73,13 +78,14 @@ export function Header() {
             variant="default"
             size="sm"
             className={cn(
-              "bg-[#FFD700] text-charcoal-black",
-              "hover:bg-[#FFD700]/90 hover:shadow-[0_0_15px_theme(colors.gold)]",
+              "bg-verdant-green text-off-white",
+              "hover:bg-verdant-green/90 hover:shadow-[0_0_15px_theme(colors.verdant-green/30)]",
               "transition-all duration-300"
             )}
           >
-            <Link href="#booking">
-              Book a call
+            <Link href="#booking" className="flex items-center gap-1.5">
+              Get Started
+              <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </Button>
         </nav>
@@ -88,46 +94,52 @@ export function Header() {
         <div className="md:hidden">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-foreground hover:bg-secondary/50">
+              <Button variant="ghost" size="icon" className="text-off-white hover:bg-verdant-green/10">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-full max-w-xs bg-charcoal-black/95 backdrop-blur-lg border-l border-code-black-700 text-off-white p-6 flex flex-col">
-              <SheetHeader className="mb-8 border-b border-code-black-700 pb-4 flex flex-row justify-between items-center">
-                <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
-                <SheetDescription className="sr-only">Links to website sections and booking page.</SheetDescription>
-                <Link href="/" className="text-xl font-bold group" onClick={closeMobileMenu}>
-                   MidoriLabs
-                   <span className="text-verdant-green transition-transform duration-200 inline-block group-hover:scale-150">.</span>
+            <SheetContent side="right" className="w-full max-w-xs bg-deep-gray/95 backdrop-blur-lg border-l border-verdant-green/10 text-off-white p-6 flex flex-col">
+              <SheetHeader className="mb-8 border-b border-verdant-green/10 pb-4 flex flex-row justify-between items-center">
+                <Link href="/" className="text-xl font-bold group flex items-center" onClick={closeMobileMenu}>
+                  <span className="bg-verdant-green text-off-white px-1.5 py-0.5 rounded mr-1.5">M</span>
+                  <span>MidoriLabs</span>
+                  <span className="text-verdant-green transition-transform duration-200 inline-block group-hover:scale-150">.</span>
                 </Link>
+                <Button variant="ghost" size="icon" className="text-off-white hover:bg-verdant-green/10" onClick={closeMobileMenu}>
+                  <X className="h-5 w-5" />
+                  <span className="sr-only">Close menu</span>
+                </Button>
               </SheetHeader>
-              <nav className="flex flex-col space-y-4 flex-grow">
+              <nav className="flex flex-col space-y-1 flex-grow">
                 {navItems.map((item) => (
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="block rounded-md px-3 py-2 text-base font-medium text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
+                    className="block rounded-md px-3 py-2.5 text-base font-medium text-off-white/80 hover:bg-verdant-green/10 hover:text-verdant-green"
                     onClick={closeMobileMenu}
                   >
                     {item.label}
                   </Link>
                 ))}
-                <Button
-                  asChild
-                  variant="default"
-                  className={cn(
-                    "mt-4 w-full py-3 text-base",
-                    "bg-[#FFD700] text-charcoal-black",
-                    "hover:bg-[#FFD700]/90 hover:shadow-[0_0_15px_theme(colors.gold)]",
-                    "transition-all duration-300"
-                  )}
-                  onClick={closeMobileMenu}
-                >
-                  <Link href="#booking">
-                     Book a call
-                  </Link>
-                </Button>
+                <div className="pt-6 mt-6 border-t border-verdant-green/10">
+                  <Button
+                    asChild
+                    variant="default"
+                    className={cn(
+                      "mt-4 w-full py-6 h-auto text-base font-medium",
+                      "bg-verdant-green text-off-white",
+                      "hover:bg-verdant-green/90 hover:shadow-[0_0_15px_theme(colors.verdant-green/30)]",
+                      "transition-all duration-300 rounded-xl"
+                    )}
+                    onClick={closeMobileMenu}
+                  >
+                    <Link href="#booking" className="flex items-center justify-center gap-2">
+                      Get Started
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
               </nav>
             </SheetContent>
           </Sheet>
