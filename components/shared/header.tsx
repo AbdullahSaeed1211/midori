@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetHeader } from '@/components/ui/sheet';
-import { Menu, ArrowRight, X } from 'lucide-react';
+import { Menu, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SiteSearch } from '@/components/ui/site-search';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -164,20 +164,11 @@ export function Header() {
               </motion.button>
             </SheetTrigger>
             <SheetContent side="right" className="w-full max-w-xs bg-deep-gray border-l border-verdant-green/10 text-off-white p-6 flex flex-col">
-              <SheetHeader className="mb-8 border-b border-verdant-green/10 pb-4 flex flex-row justify-between items-center">
+              <SheetHeader className="mb-8 border-b border-verdant-green/10 pb-4">
                 <Link href="/" className="text-xl font-bold group flex items-center" onClick={closeMobileMenu}>
                   <span>Midori<span className="text-verdant-green">Labs</span></span>
                   <span className="text-verdant-green transition-transform duration-200 inline-block group-hover:scale-150">.</span>
                 </Link>
-                <motion.button
-                  whileHover={{ scale: 1.1, rotate: 90 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={closeMobileMenu}
-                  className="rounded-full p-2 hover:bg-verdant-green/10"
-                  aria-label="Close navigation menu"
-                >
-                  <X className="h-5 w-5 text-off-white" />
-                </motion.button>
               </SheetHeader>
               <nav className="flex flex-col space-y-1 flex-grow">
                 <AnimatePresence>
