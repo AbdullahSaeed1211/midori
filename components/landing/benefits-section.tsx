@@ -95,7 +95,7 @@ export function BenefitsSection() {
             <ScrollIndicator 
               text="View Case Studies" 
               onClick={() => {
-                const nextSection = document.getElementById('case-studies');
+                const nextSection = document.getElementById('featured-work');
                 if (nextSection) {
                   nextSection.scrollIntoView({ behavior: 'smooth' });
                 }

@@ -1,11 +1,10 @@
 "use client";
 
-import { Check, Code, Palette, MessageSquare, BarChart } from "lucide-react";
+import { Check, Code, Palette, MessageSquare, BarChart, Zap } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { ScrollIndicator } from "@/components/ui/scroll-indicator";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import { motion } from "framer-motion";
-import { TextAnimate } from "@/components/magicui/text-animate";
 
 interface ServiceCardProps {
   icon: React.ReactNode;
@@ -142,7 +141,7 @@ export function ServicesSection() {
   ];
 
   return (
-    <section className="py-28 bg-charcoal-black text-off-white relative overflow-hidden" id="services">
+    <section className="py-20 md:py-28 bg-charcoal-black text-off-white relative overflow-hidden" id="services">
       {/* Dynamic background effect */}
       <BackgroundBeams className="z-0 opacity-40" />
       
@@ -152,7 +151,7 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="max-w-3xl mx-auto text-center mb-20"
+          className="max-w-3xl mx-auto text-center mb-16 md:mb-20"
         >
           <div className="inline-flex flex-col items-center">
             <motion.div 
@@ -160,7 +159,7 @@ export function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="px-4 py-1.5 rounded-full bg-kiiro-yellow/10 text-kiiro-yellow text-sm font-medium mb-6 border border-kiiro-yellow/20"
+              className="px-4 py-1.5 rounded-full bg-kiiro-yellow/10 text-kiiro-yellow text-sm font-medium mb-4 md:mb-6 border border-kiiro-yellow/20"
             >
               Our Services
             </motion.div>
@@ -169,11 +168,10 @@ export function ServicesSection() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-4xl font-bold md:text-5xl mb-6 text-off-white relative inline-block"
+              className="text-3xl sm:text-4xl font-bold md:text-5xl mb-4 md:mb-6 text-off-white relative inline-block px-4"
             >
-              <TextAnimate animation="blurInUp">
-                Expert Solutions for Digital Growth
-              </TextAnimate>
+              <span className="block">Strategic Digital Solutions</span>
+              <span className="block mt-1 sm:mt-2 text-kiiro-yellow">That Drive Real Growth</span>
               <motion.span 
                 initial={{ width: 0 }}
                 whileInView={{ width: "100%" }}
@@ -188,14 +186,27 @@ export function ServicesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl text-off-white/80 mt-6"
+            className="text-lg sm:text-xl text-off-white/80 mt-4 md:mt-6 max-w-2xl mx-auto"
           >
-            We combine strategic thinking, stunning design, and technical expertise to create websites that not only look great but drive measurable business results.
+            We don&apos;t just build websites—we create digital experiences that convert visitors into customers. Our data-driven approach combines stunning design with technical excellence to deliver measurable business results.
           </motion.p>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mt-6 md:mt-8"
+          >
+            <div className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-verdant-green/10 text-verdant-green border border-verdant-green/20">
+              <Zap className="h-4 w-4" />
+              <span className="text-sm font-medium">Measurable ROI in 30-60 days</span>
+            </div>
+          </motion.div>
         </motion.div>
 
         <ScrollReveal effect="staggered" direction="up" staggerChildren={0.15} duration={0.5}>
-          <div className="grid gap-8 md:grid-cols-2 lg:gap-12">
+          <div className="grid gap-6 md:gap-8 md:grid-cols-2 lg:gap-10">
             {services.map((service, index) => (
               <ServiceCard
                 key={index}
@@ -210,7 +221,7 @@ export function ServicesSection() {
         </ScrollReveal>
         
         {/* Scroll Indicator */}
-        <div className="flex justify-center mt-20">
+        <div className="flex justify-center mt-16 md:mt-20">
           <ScrollIndicator 
             text="See Our Offerings" 
             onClick={() => {

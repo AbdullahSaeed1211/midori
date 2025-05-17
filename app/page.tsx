@@ -15,7 +15,6 @@ import { Header } from "@/components/shared/header";
 import { FinalCtaSection } from "@/components/landing/final-cta-section";
 import { BookingSection } from "@/components/landing/booking-section";
 import { ProcessTimeline } from "@/components/landing/process-timeline";
-import { CaseStudiesSection } from "@/components/landing/case-studies-section";
 import { StatsGrid } from "@/components/landing/stats-grid";
 
 export const metadata: Metadata = {
@@ -53,8 +52,6 @@ export default function Home() {
       <BenefitsSection />
       
       <StatsGrid />
-      
-      <CaseStudiesSection />
       
       <WhyKiiroSection />
       

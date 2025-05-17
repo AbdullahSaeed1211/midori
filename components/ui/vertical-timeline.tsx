@@ -27,12 +27,12 @@ export const VerticalTimeline = ({
 
   return (
     <div ref={containerRef} className={cn("relative", className)}>
-      {/* Timeline Track */}
-      <div className="absolute left-1/2 top-0 bottom-0 -ml-[1px] w-[2px] bg-kiiro-yellow/20" />
+      {/* Timeline Track - Centered on desktop, left-aligned on mobile */}
+      <div className="absolute left-6 md:left-1/2 top-0 bottom-0 md:-ml-[1px] w-[2px] bg-kiiro-yellow/20" />
       
       {/* Timeline Progress Indicator */}
       <motion.div 
-        className="absolute left-1/2 top-0 -ml-[1px] w-[2px] bg-kiiro-yellow"
+        className="absolute left-6 md:left-1/2 top-0 md:-ml-[1px] w-[2px] bg-kiiro-yellow"
         style={{
           scaleY: scrollYProgress,
           transformOrigin: "top",
@@ -87,9 +87,9 @@ const TimelineElement = ({ item, index, isLast, position }: TimelineElementProps
         isLast ? "mb-0" : "mb-8"
       )}
     >
-      {/* Timeline Node */}
+      {/* Timeline Node - Left aligned on mobile, centered on desktop */}
       <motion.div
-        className="absolute left-1/2 top-1/2 -mt-3 -ml-3 h-6 w-6 rounded-full bg-kiiro-yellow z-10 flex items-center justify-center"
+        className="absolute left-6 md:left-1/2 top-1/2 -mt-3 md:-ml-3 h-6 w-6 rounded-full bg-kiiro-yellow z-10 flex items-center justify-center"
         style={{
           scale: iconScale,
           rotate: iconRotate,
@@ -99,12 +99,13 @@ const TimelineElement = ({ item, index, isLast, position }: TimelineElementProps
         <div className="text-charcoal-black">{item.icon}</div>
       </motion.div>
       
-      {/* Content */}
+      {/* Content - Full width with left padding on mobile */}
       <motion.div
         className={cn(
           "bg-charcoal-black rounded-lg p-6 border border-kiiro-yellow/20 relative",
           "transition-all duration-300 hover:border-kiiro-yellow/60 hover:shadow-[0_0_30px_rgba(255,209,0,0.1)]",
           "group cursor-default",
+          "ml-12 md:ml-0", // Left margin on mobile only
           position === "left" ? "md:text-right md:ml-auto" : "md:mr-auto md:col-start-2"
         )}
         style={{ 
@@ -125,7 +126,7 @@ const TimelineElement = ({ item, index, isLast, position }: TimelineElementProps
           </p>
         </div>
         
-        {/* Connector Line */}
+        {/* Connector Line - Only on desktop */}
         <div 
           className={cn(
             "absolute top-1/2 -mt-0.5 h-[2px] bg-kiiro-yellow/30 w-10 hidden md:block",

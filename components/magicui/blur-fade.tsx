@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef } from "react";
-import { motion } from "motion/react";
+import { useRef, useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface BlurFadeProps {
@@ -27,6 +27,11 @@ export function BlurFade({
   ...props
 }: BlurFadeProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const getTransformValue = () => {
     switch (direction) {
@@ -62,6 +67,11 @@ export function BlurFade({
       },
     },
   };
+
+  if (!isMounted) {
+    // Return a placeholder with the same dimensions during SSR
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <motion.div

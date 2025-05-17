@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, MotionProps } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -21,6 +21,8 @@ interface ScrollRevealProps {
   // Omit specific props that might cause conflicts
   style?: React.CSSProperties;
   id?: string;
+  // New props for additional control
+  forceInView?: boolean; // Force the element to be "in view" for immediate animation
 }
 
 export function ScrollReveal({
@@ -36,14 +38,20 @@ export function ScrollReveal({
   distance = 50,
   style,
   id,
+  forceInView = false,
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const [isMounted, setIsMounted] = useState(false);
   
   // Use useScroll hook to keep the ref connected to scroll observer
   useScroll({
     target: ref,
     offset: [`start ${1 - threshold}`, `end ${threshold}`],
   });
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   
   // Different animation variants based on direction
   const getInitialPosition = () => {
@@ -78,7 +86,8 @@ export function ScrollReveal({
           },
         },
         initial: "hidden",
-        whileInView: "visible",
+        animate: forceInView ? "visible" : undefined,
+        whileInView: !forceInView ? "visible" : undefined,
         viewport: { once, margin: `-${Math.round(threshold * 100)}% 0px` },
       };
     }
@@ -89,7 +98,8 @@ export function ScrollReveal({
     
     return {
       initial: { ...initialProps, ...initialScale, ...initialPosition },
-      whileInView: { opacity: 1, scale: 1, y: 0, x: 0 },
+      animate: forceInView ? { opacity: 1, scale: 1, y: 0, x: 0 } : undefined,
+      whileInView: !forceInView ? { opacity: 1, scale: 1, y: 0, x: 0 } : undefined,
       viewport: { once, margin: `-${Math.round(threshold * 100)}% 0px` },
       transition: baseTransition,
     };
@@ -106,6 +116,20 @@ export function ScrollReveal({
       {children}
     </motion.div>
   );
+
+  // During SSR, return a placeholder div to avoid hydration issues
+  if (!isMounted) {
+    return (
+      <div
+        ref={ref}
+        className={cn(className)}
+        style={style}
+        id={id}
+      >
+        {children}
+      </div>
+    );
+  }
   
   return (
     <motion.div

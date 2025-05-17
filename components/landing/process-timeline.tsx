@@ -35,7 +35,7 @@ export function ProcessTimeline() {
   ];
 
   return (
-    <section className="py-28 bg-charcoal-black text-off-white relative" id="process">
+    <section className="py-16 sm:py-20 md:py-28 bg-charcoal-black text-off-white relative" id="process">
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute left-1/4 top-1/3 w-64 h-64 rounded-full bg-kiiro-yellow/5 blur-[80px] animate-pulse"></div>
@@ -44,36 +44,36 @@ export function ProcessTimeline() {
       
       <div className="container px-4 mx-auto relative">
         <BlurFade inView>
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <div className="inline-flex flex-col items-center">
-              <div className="px-4 py-1.5 rounded-full bg-kiiro-yellow/10 text-kiiro-yellow text-sm font-medium mb-6 border border-kiiro-yellow/20">
+              <div className="px-4 py-1.5 rounded-full bg-kiiro-yellow/10 text-kiiro-yellow text-sm font-medium mb-4 md:mb-6 border border-kiiro-yellow/20">
                 Our Process
               </div>
-              <h2 className="text-4xl font-bold md:text-5xl mb-6 text-off-white relative inline-block">
+              <h2 className="text-3xl sm:text-4xl font-bold md:text-5xl mb-4 md:mb-6 text-off-white relative inline-block px-4">
                 How We Bring Your Vision to Life
                 <span className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-kiiro-yellow/30 via-kiiro-yellow to-kiiro-yellow/30 rounded-full"></span>
               </h2>
             </div>
-            <p className="text-xl text-off-white/80 max-w-3xl mx-auto mt-6">
+            <p className="text-lg sm:text-xl text-off-white/80 max-w-3xl mx-auto mt-4 md:mt-6">
               A systematic approach that delivers predictable results and a seamless experience from concept to completion.
             </p>
           </div>
         </BlurFade>
 
-        <div className="mt-20 relative">
+        <div className="mt-12 md:mt-20 relative">
           <VerticalTimeline items={steps} />
           
           <BlurFade inView delay={0.6}>
-            <div className="mt-16 text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kiiro-yellow/10 text-kiiro-yellow border border-kiiro-yellow/20 hover:bg-kiiro-yellow/20 hover:border-kiiro-yellow/30 transition-all duration-300 cursor-default animate-pulse">
+            <div className="mt-12 md:mt-16 text-center">
+              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-kiiro-yellow/10 text-kiiro-yellow border border-kiiro-yellow/20 hover:bg-kiiro-yellow/20 hover:border-kiiro-yellow/30 transition-all duration-300 cursor-default animate-pulse">
                 <Zap className="h-4 w-4 text-kiiro-yellow" />
-                <span className="text-sm font-medium">Average project completion: 2-3 weeks</span>
+                <span className="text-xs sm:text-sm font-medium">Average project completion: 2-3 weeks</span>
               </div>
             </div>
           </BlurFade>
           
           {/* Scroll Indicator */}
-          <div className="flex justify-center mt-16">
+          <div className="flex justify-center mt-12 md:mt-16">
             <ScrollIndicator 
               text="See the Benefits" 
               onClick={() => {
