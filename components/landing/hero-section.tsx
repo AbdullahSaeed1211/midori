@@ -83,7 +83,7 @@ export function HeroSection() {
           duration={0.8}
         >
           <div ref={titleRef} className="my-4 sm:my-6 md:my-8">
-            <h1 className="max-w-6xl mx-auto text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight leading-none">
+            <h1 className="max-w-6xl mx-auto text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight leading-tight">
               <motion.span 
                 className="block text-off-white"
                 initial={{ opacity: 0, y: 20 }}
@@ -103,7 +103,7 @@ export function HeroSection() {
             </h1>
             
             <motion.div 
-              className="mx-auto mt-4 sm:mt-6 md:mt-8 max-w-3xl text-lg sm:text-xl md:text-2xl lg:text-3xl text-off-white/90 font-light tracking-wide"
+              className="mx-auto mt-4 sm:mt-6 md:mt-8 max-w-3xl text-base sm:text-lg md:text-xl lg:text-2xl text-off-white/90 font-light tracking-wide"
               initial={{ opacity: 0, y: 20 }}
               animate={isMounted ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -121,8 +121,8 @@ export function HeroSection() {
             <Link 
               href="#booking" 
               className={cn(
-                "flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-lg w-full sm:w-auto",
-                "bg-kiiro-yellow text-charcoal-black font-medium text-base sm:text-lg",
+                "flex items-center justify-center gap-2 px-5 sm:px-6 md:px-8 py-3 sm:py-4 rounded-lg w-full sm:w-auto",
+                "bg-kiiro-yellow text-charcoal-black font-medium text-sm sm:text-base md:text-lg",
                 "transition-all duration-300 hover:scale-105",
                 "hover:shadow-[0_0_25px_rgba(255,236,0,0.4)]"
               )}
@@ -133,8 +133,8 @@ export function HeroSection() {
             <Link 
               href="#services"
               className={cn(
-                "flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-lg w-full sm:w-auto",
-                "bg-transparent text-off-white font-medium text-base sm:text-lg",
+                "flex items-center justify-center gap-2 px-5 sm:px-6 md:px-8 py-3 sm:py-4 rounded-lg w-full sm:w-auto",
+                "bg-transparent text-off-white font-medium text-sm sm:text-base md:text-lg",
                 "border border-off-white/20 transition-all duration-300",
                 "hover:bg-off-white/5 hover:border-off-white/40"
               )}
@@ -159,8 +159,8 @@ export function HeroSection() {
                 reverse={false}
               >
                 {companyLogos.map((logo, index) => (
-                  <div key={index} className="mx-6 sm:mx-10 px-4 sm:px-6">
-                    <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-off-white/90">
+                  <div key={index} className="mx-4 sm:mx-6 lg:mx-10 px-3 sm:px-4 lg:px-6">
+                    <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-off-white/90">
                       {logo.name}
                     </span>
                   </div>
@@ -175,8 +175,8 @@ export function HeroSection() {
             animate={isMounted ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 1.4, duration: 0.5 }}
           >
-            <div className="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-teal-accent/10 text-teal-accent border border-teal-accent/20">
-              <span className="inline-block h-2 w-2 rounded-full bg-teal-accent animate-pulse"></span>
+            <div className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-full bg-teal-accent/10 text-teal-accent border border-teal-accent/20">
+              <span className="inline-block h-1.5 sm:h-2 w-1.5 sm:w-2 rounded-full bg-teal-accent animate-pulse"></span>
               <span className="text-xs sm:text-sm font-medium">Currently accepting new clients for Q3 2025</span>
             </div>
           </motion.div>

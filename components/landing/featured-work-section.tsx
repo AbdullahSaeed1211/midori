@@ -12,51 +12,36 @@ import { ScrollIndicator } from "@/components/ui/scroll-indicator";
 
 const projects: ProjectProps[] = [
     {
-      title: "BlogSquirrel",
-    description: "A complete redesign of this blogging platform's marketing site led to a 137% increase in sign-ups and dramatically improved user engagement metrics.",
-    results: [
-      "137% increase in sign-up conversion rate",
-      "42% decrease in bounce rate",
-      "3.2x improvement in average session duration",
-      "Seamless mobile experience with sub-1s load times"
-    ],
-    image: "/projects/blogport.webp",
-    liveSiteUrl: "#",
-    industry: "saas"
+      title: "Simply Mortgage",
+      description: "UAE's premier mortgage consultancy offering personalized solutions. We revolutionized their digital presence with a high-converting website featuring interactive tools and seamless appointment scheduling.",
+      results: [
+        "150% increase in qualified leads",
+        "35% improvement in conversion rates",
+        "27% reduction in page load time",
+        "42% increase in mobile engagement"
+      ],
+      image: "/projects/simply.webp",
+      liveSiteUrl: "#",
+      industry: "saas"
     },
     {
-      title: "BrainWise",
-    description: "Transformed an early-stage AI learning platform into a premium educational experience with intuitive UX and strategic information architecture.",
-    results: [
-      "89% increase in trial-to-paid conversions",
-      "Customer acquisition cost reduced by 37%",
-      "Improved user retention by 28%",
-      "Enhanced visual identity and brand perception"
-    ],
-    image: "/projects/brainwise.webp",
-    liveSiteUrl: "#",
-    industry: "education"
-    },
-    {
-      title: "Dubbby",
-    description: "Crafted a high-conversion landing page for this AI dubbing service that effectively communicates complex technology in an accessible way.",
-    results: [
-      "215% increase in demo requests",
-      "52% improvement in qualified lead generation",
-      "Reduced explained needed in sales calls by 35%",
-      "Established market-leading brand perception"
-    ],
-    image: "/projects/dubbby.webp",
-    liveSiteUrl: "#",
-    industry: "technology"
-  }
+      title: "Lotus Pro Services",
+      description: "Document clearing and business services specialist in Dubai. We created a premium web presence with sophisticated branding, clear service categorization, and direct contact options.",
+      results: [
+        "128% increase in service inquiries",
+        "40% improvement in lead quality",
+        "Established premium market positioning",
+        "Enhanced digital brand perception"
+      ],
+      image: "/projects/lotus.webp",
+      liveSiteUrl: "#",
+      industry: "technology"
+    }
 ];
 
 const industryTypes = [
   { label: "All", value: "all" },
-  { label: "E-commerce", value: "ecommerce" },
   { label: "SaaS", value: "saas" },
-  { label: "Education", value: "education" },
   { label: "Technology", value: "technology" }
 ];
 
