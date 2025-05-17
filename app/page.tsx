@@ -3,7 +3,6 @@ import { HeroSection } from "@/components/landing/hero-section";
 import { ServicesSection } from "@/components/landing/services-section";
 import { OfferingsSection } from "@/components/landing/offerings-section";
 import { BenefitsSection } from "@/components/landing/benefits-section";
-import { FeaturedWorkSection } from "@/components/landing/featured-work-section";
 import { WhyKiiroSection } from "@/components/landing/why-midorilabs-section";
 import { PricingOptionsSection } from "@/components/landing/pricing-options-section";
 import { PricingSection } from "@/components/landing/pricing-section";
@@ -57,8 +56,6 @@ export default function Home() {
       <CaseStudiesSection />
       
       <WhyKiiroSection />
-      
-      <FeaturedWorkSection />
       
       <div id="pricing">
         <PricingOptionsSection />
