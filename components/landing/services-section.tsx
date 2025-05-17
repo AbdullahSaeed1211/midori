@@ -230,9 +230,9 @@ export function ServicesSection() {
                 nextSection.scrollIntoView({ behavior: 'smooth' });
               }
             }}
-          />
+            />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
   );
 } 
