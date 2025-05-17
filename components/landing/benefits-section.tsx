@@ -11,6 +11,7 @@ import {
   type LucideIcon, 
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ScrollIndicator } from "@/components/ui/scroll-indicator";
 
 interface Benefit {
   Icon: LucideIcon;
@@ -58,7 +59,7 @@ export function BenefitsSection() {
         <div className="container px-4 mx-auto">
           {/* Section Header */}
           <div className="mb-12 text-left">
-            <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-verdant-green">
+            <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-kiiro-yellow">
               Benefits
             </p>
             <h2 className="text-4xl font-bold md:text-5xl text-off-white">
@@ -74,11 +75,11 @@ export function BenefitsSection() {
                 className={cn(
                   "text-left p-6 rounded-xl border",
                   "bg-deep-gray border-code-black-700",
-                  "hover:border-verdant-green/40 transition-all duration-300",
+                  "hover:border-kiiro-yellow/40 transition-all duration-300",
                   "shadow-lg"
                 )}
               >
-                <benefit.Icon className="mb-4 h-8 w-8 text-verdant-green" />
+                <benefit.Icon className="mb-4 h-8 w-8 text-kiiro-yellow" />
                 <h3 className="mb-2 text-xl font-semibold text-off-white">
                   {benefit.title}
                 </h3>
@@ -87,6 +88,19 @@ export function BenefitsSection() {
                 </p>
               </div>
             ))}
+          </div>
+          
+          {/* Scroll Indicator */}
+          <div className="flex justify-center mt-16">
+            <ScrollIndicator 
+              text="View Case Studies" 
+              onClick={() => {
+                const nextSection = document.getElementById('case-studies');
+                if (nextSection) {
+                  nextSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            />
           </div>
         </div>
       </section>

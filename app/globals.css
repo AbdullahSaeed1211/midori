@@ -43,9 +43,10 @@
   --color-code-black-950: #0A0A0A;
 
   /* New Palette Definitions */
-  --color-charcoal-black: #000000; /* Main BG - Changed to pure black */
+  --color-charcoal-black: #000000; /* Main BG - Pure black */
   --color-deep-gray: #121212;    /* Card BG - Made darker */
   --color-off-white: #F5F6FA;    /* Text */
+  --color-kiiro-yellow: #FFEC00; /* Brighter yellow for better contrast */
   --color-verdant-green: #4CAF50; /* Primary Accent */
   --color-secondary-green: #3A5F40;/* Secondary Accent (same as midori-DEFAULT) */
 
@@ -113,11 +114,40 @@
 */
 
 /* Base body styles */
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-body);
   line-height: 1.7; /* Increase base line height */
+}
+
+/* Custom Scrollbar Styling */
+/* For Chrome, Safari, Edge */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(18, 18, 18, 0.7);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 236, 0, 0.4);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 236, 0, 0.6);
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 236, 0, 0.4) rgba(18, 18, 18, 0.7);
 }
 
 /* Remove default browser focus outline when using custom ring */

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Marquee } from "@/components/magicui/marquee";
 import { useState, useEffect } from "react";
+import { ScrollIndicator } from "@/components/ui/scroll-indicator";
 
 // Simple Badge component
 function Badge({ 
@@ -100,9 +101,9 @@ const testimonials: Testimonial[] = [
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <div className="flex flex-col space-y-4 rounded-xl bg-charcoal-black/70 p-6 shadow-lg border border-verdant-green/10">
+    <div className="flex flex-col space-y-4 rounded-xl bg-charcoal-black/70 p-6 shadow-lg border border-kiiro-yellow/10">
       <div className="flex items-center space-x-3">
-        <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-verdant-green/10 border border-verdant-green/20">
+        <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-kiiro-yellow/10 border border-kiiro-yellow/20">
           <img 
             src={testimonial.image} 
             alt={testimonial.name}
@@ -133,7 +134,7 @@ export function TestimonialsSection() {
   return (
     <section className="py-16 md:py-24 bg-charcoal-black text-off-white relative overflow-hidden" id="client-wins">
       <motion.div 
-        className="absolute right-0 top-0 w-1/3 h-1/2 bg-verdant-green/5 rounded-bl-full blur-3xl -z-10"
+        className="absolute right-0 top-0 w-1/3 h-1/2 bg-kiiro-yellow/5 rounded-bl-full blur-3xl -z-10"
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 1 }}
@@ -146,7 +147,7 @@ export function TestimonialsSection() {
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
           transition={{ duration: 0.6 }}
         >
-          <Badge className="px-4 py-1 text-xs border-verdant-green/20 bg-verdant-green/5 mb-4 inline-flex items-center text-verdant-green">
+          <Badge className="px-4 py-1 text-xs border-kiiro-yellow/20 bg-kiiro-yellow/5 mb-4 inline-flex items-center text-kiiro-yellow">
             Client Wins
           </Badge>
           <h2 className="text-4xl font-bold tracking-tight mb-4 text-off-white">
@@ -228,6 +229,19 @@ export function TestimonialsSection() {
               )}
             </div>
           </div>
+        </div>
+        
+        {/* Scroll Indicator */}
+        <div className="flex justify-center mt-12">
+          <ScrollIndicator 
+            text="See Our Services" 
+            onClick={() => {
+              const nextSection = document.getElementById('services');
+              if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          />
         </div>
       </div>
     </section>

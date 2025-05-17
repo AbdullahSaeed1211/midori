@@ -22,11 +22,11 @@ export function Footer() {
           {/* Column 1: Logo & Copyright (Takes available space, pushes others right) */}
           <div className="flex flex-col items-center md:items-start md:flex-grow">
             <Link href="/" className="text-2xl font-bold text-off-white mb-4 group">
-              MidoriLabs
-              <span className="text-verdant-green transition-transform duration-200 inline-block group-hover:scale-150">.</span>
+              Kiiro
+              <span className="text-kiiro-yellow transition-transform duration-200 inline-block group-hover:scale-150">.</span>
             </Link>
             <p className="text-sm text-off-white/60">
-              © {year} MidoriLabs.studio
+              © {year} Kiiro.cx
             </p>
             <p className="text-sm text-off-white/60 mt-1">
               Results-Driven Web Development
@@ -43,7 +43,7 @@ export function Footer() {
                   <Link 
                     key={link.label}
                     href={link.href} 
-                    className="text-sm text-off-white/80 hover:text-[#FFD700] transition-colors"
+                    className="text-sm text-off-white/80 hover:text-kiiro-yellow transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -60,7 +60,7 @@ export function Footer() {
                   target="_blank" 
                   rel="noopener noreferrer" 
                   aria-label="LinkedIn"
-                  className="text-off-white/80 hover:text-[#FFD700] transition-colors"
+                  className="text-off-white/80 hover:text-kiiro-yellow transition-colors"
                 >
                   <Linkedin size={20} />
                 </a>
@@ -69,14 +69,14 @@ export function Footer() {
                   target="_blank" 
                   rel="noopener noreferrer" 
                   aria-label="Twitter"
-                  className="text-off-white/80 hover:text-[#FFD700] transition-colors"
+                  className="text-off-white/80 hover:text-kiiro-yellow transition-colors"
                 >
                   <Twitter size={20} />
                 </a>
                 <a 
-                  href="mailto:#" // Replace with your email address
+                  href="mailto:hello@kiiro.cx" // Replace with your email address
                   aria-label="Email"
-                  className="text-off-white/80 hover:text-[#FFD700] transition-colors"
+                  className="text-off-white/80 hover:text-kiiro-yellow transition-colors"
                 >
                   <Mail size={20} />
                 </a>

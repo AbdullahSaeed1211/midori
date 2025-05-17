@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { StickyContactButton } from "@/components/ui/sticky-contact-button";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { CustomCursor } from "@/components/ui/custom-cursor";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -17,8 +19,8 @@ const notoSansJP = Noto_Sans_JP({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | MidoriLabs.studio",
-    default: "MidoriLabs.studio | Strategic Web Engineering for Business Growth",
+    template: "%s | Kiiro.cx",
+    default: "Kiiro.cx | Strategic Web Engineering for Business Growth",
   },
   description: "High-performance websites and web applications engineered for conversion, engagement, and measurable business results. We build custom digital solutions that drive growth.",
   keywords: [
@@ -38,31 +40,31 @@ export const metadata: Metadata = {
     "web engineering",
     "responsive websites"
   ],
-  authors: [{ name: "MidoriLabs.studio" }],
-  metadataBase: new URL('https://midorilabs.studio'),
+  authors: [{ name: "Kiiro.cx" }],
+  metadataBase: new URL('https://kiiro.cx'),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://midorilabs.studio",
-    siteName: "MidoriLabs.studio",
-    title: "MidoriLabs.studio | Strategic Web Engineering",
+    url: "https://kiiro.cx",
+    siteName: "Kiiro.cx",
+    title: "Kiiro.cx | Strategic Web Engineering",
     description: "High-performance websites & web solutions designed for conversion and business growth",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "MidoriLabs.studio - Web Engineering for Growth"
+        alt: "Kiiro.cx - Web Engineering for Growth"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "MidoriLabs.studio | Strategic Web Engineering",
+    title: "Kiiro.cx | Strategic Web Engineering",
     description: "High-performance websites & web solutions designed for conversion and business growth",
     images: ["/og-image.jpg"],
-    site: "@midorilabs",
-    creator: "@midorilabs"
+    site: "@kiirocx",
+    creator: "@kiirocx"
   },
   robots: {
     index: true,
@@ -76,7 +78,7 @@ export const metadata: Metadata = {
     }
   },
   alternates: {
-    canonical: 'https://midorilabs.studio'
+    canonical: 'https://kiiro.cx'
   }
 };
 
@@ -105,6 +107,8 @@ export default function RootLayout({
       <body
         className={`${spaceGrotesk.variable} ${notoSansJP.variable} font-body font-normal text-base antialiased bg-charcoal-black`}
       >
+        <CustomCursor />
+        <ScrollProgress color="#FFEC00" height={3} />
         {children}
         <StickyContactButton />
       </body>

@@ -80,7 +80,7 @@ export function ProjectDetailsModal({ project, isOpen, onClose }: ProjectDetails
             
             <div className="p-6 md:p-8">
               <div className="flex items-center gap-3 mb-4">
-                <div className="px-3 py-1 text-xs font-medium text-verdant-green bg-verdant-green/10 rounded-full border border-verdant-green/20">
+                <div className="px-3 py-1 text-xs font-medium text-kiiro-yellow bg-kiiro-yellow/10 rounded-full border border-kiiro-yellow/20">
                   {project.industry}
                 </div>
                 {project.liveSiteUrl && (
@@ -101,11 +101,11 @@ export function ProjectDetailsModal({ project, isOpen, onClose }: ProjectDetails
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div>
-                  <h3 className="text-xl font-semibold mb-4 text-verdant-green">Key Results</h3>
+                  <h3 className="text-xl font-semibold mb-4 text-kiiro-yellow">Key Results</h3>
                   <ul className="space-y-3">
                     {project.results.map((result, i) => (
                       <li key={i} className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-verdant-green shrink-0 mt-1" />
+                        <Check className="w-5 h-5 text-kiiro-yellow shrink-0 mt-1" />
                         <span className="text-base text-off-white/90">{result}</span>
                       </li>
                     ))}
@@ -113,7 +113,7 @@ export function ProjectDetailsModal({ project, isOpen, onClose }: ProjectDetails
                 </div>
                 
                 <div>
-                  <h3 className="text-xl font-semibold mb-4 text-verdant-green">Project Scope</h3>
+                  <h3 className="text-xl font-semibold mb-4 text-kiiro-yellow">Project Scope</h3>
                   <p className="text-base text-off-white/80 mb-4">
                     We delivered a comprehensive solution including strategy, design, development, and optimization to achieve the client&apos;s business objectives.
                   </p>
@@ -131,7 +131,7 @@ export function ProjectDetailsModal({ project, isOpen, onClose }: ProjectDetails
               <div className="border-t border-off-white/10 pt-6">
                 <Link 
                   href="#booking" 
-                  className="inline-flex items-center justify-center px-6 py-3 bg-verdant-green text-off-white rounded-lg font-medium transition-all duration-300 hover:bg-verdant-green/90 hover:shadow-[0_0_15px_rgba(76,175,80,0.3)]"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-kiiro-yellow text-off-white rounded-lg font-medium transition-all duration-300 hover:bg-kiiro-yellow/90 hover:shadow-[0_0_15px_rgba(76,175,80,0.3)]"
                   onClick={(e) => {
                     e.preventDefault();
                     onClose();

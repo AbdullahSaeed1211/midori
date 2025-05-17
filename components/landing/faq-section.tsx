@@ -52,7 +52,7 @@ export function FaqSection() {
       <section className="py-24 bg-charcoal-black text-off-white" id="faq">
         <div className="container px-4 mx-auto">
           <div className="flex flex-col items-center text-center mb-16 max-w-3xl mx-auto">
-            <p className="mb-3 text-xs uppercase tracking-[0.25em] text-verdant-green font-semibold">FAQ</p>
+            <p className="mb-3 text-xs uppercase tracking-[0.25em] text-kiiro-yellow font-semibold">FAQ</p>
             <h2 className="text-4xl font-bold md:text-5xl [text-shadow:_0_1px_2px_rgba(0,0,0,0.2)] mb-4 text-off-white">
               <TextAnimate animation="blurInUp">
                 Questions? Answers.
@@ -72,13 +72,13 @@ export function FaqSection() {
                 <AccordionItem 
                   key={item.id} 
                   value={item.id} 
-                  className="group border border-code-black-700 bg-deep-gray rounded-xl overflow-hidden transition-all hover:border-code-black-700/60 data-[state=open]:border-verdant-green/40"
+                  className="group border border-code-black-700 bg-deep-gray rounded-xl overflow-hidden transition-all hover:border-code-black-700/60 data-[state=open]:border-kiiro-yellow/40"
                 >
                   <AccordionTrigger className="flex w-full items-center justify-between px-4 sm:px-6 py-5 text-left text-base sm:text-lg font-medium text-off-white hover:no-underline">
                     <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
                       <span className={cn(
                         "flex-shrink-0 flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full text-xs sm:text-sm font-semibold transition-colors",
-                        openItem === item.id ? "bg-verdant-green text-charcoal-black" : "bg-code-black-700 text-off-white/70 group-hover:bg-gold group-hover:text-charcoal-black"
+                        openItem === item.id ? "bg-kiiro-yellow text-charcoal-black" : "bg-code-black-700 text-off-white/70 group-hover:bg-gold group-hover:text-charcoal-black"
                       )}>
                         {index + 1}
                       </span>

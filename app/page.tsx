@@ -4,7 +4,7 @@ import { ServicesSection } from "@/components/landing/services-section";
 import { OfferingsSection } from "@/components/landing/offerings-section";
 import { BenefitsSection } from "@/components/landing/benefits-section";
 import { FeaturedWorkSection } from "@/components/landing/featured-work-section";
-import { WhyMidoriLabsSection } from "@/components/landing/why-midorilabs-section";
+import { WhyKiiroSection } from "@/components/landing/why-midorilabs-section";
 import { PricingOptionsSection } from "@/components/landing/pricing-options-section";
 import { PricingSection } from "@/components/landing/pricing-section";
 import { TestimonialsSection } from "@/components/landing/testimonials-section";
@@ -15,17 +15,19 @@ import { Header } from "@/components/shared/header";
 import { FinalCtaSection } from "@/components/landing/final-cta-section";
 import { BookingSection } from "@/components/landing/booking-section";
 import { ProcessTimeline } from "@/components/landing/process-timeline";
+import { CaseStudiesSection } from "@/components/landing/case-studies-section";
+import { StatsGrid } from "@/components/landing/stats-grid";
 
 export const metadata: Metadata = {
-  title: "MidoriLabs.studio | AI-Powered Web Engineering",
+  title: "kiiro.cx | High-Converting Web Design & Development",
   description: "AI-enhanced landing pages, SaaS platforms, and brand identities engineered for measurable growth",
   keywords: "web design, web development, conversion optimization, landing pages, SaaS development, digital branding",
-  authors: [{ name: "MidoriLabs" }],
+  authors: [{ name: "kiiro.cx" }],
   openGraph: {
     type: "website",
-    title: "MidoriLabs.studio | Web Engineering for Growth",
+    title: "kiiro.cx | Web Engineering for Growth",
     description: "High-performance websites & web solutions designed for conversion and built for scale.",
-    siteName: "MidoriLabs.studio",
+    siteName: "kiiro.cx",
   }
 };
 
@@ -50,7 +52,11 @@ export default function Home() {
       
       <BenefitsSection />
       
-      <WhyMidoriLabsSection />
+      <StatsGrid />
+      
+      <CaseStudiesSection />
+      
+      <WhyKiiroSection />
       
       <FeaturedWorkSection />
       

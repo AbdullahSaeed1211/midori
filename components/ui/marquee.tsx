@@ -23,19 +23,32 @@ export function Marquee({
 }: MarqueeProps & React.HTMLAttributes<HTMLDivElement>) {
   const [contentWidth, setContentWidth] = useState(0);
   const [contentHeight, setContentHeight] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (contentRef.current) {
-      setContentWidth(contentRef.current.offsetWidth);
-      setContentHeight(contentRef.current.offsetHeight);
-    }
+    setIsMounted(true);
+    
+    const updateDimensions = () => {
+      if (contentRef.current) {
+        setContentWidth(contentRef.current.offsetWidth);
+        setContentHeight(contentRef.current.offsetHeight);
+      }
+    };
+
+    updateDimensions();
+    
+    // Also update on resize
+    window.addEventListener('resize', updateDimensions);
+    return () => window.removeEventListener('resize', updateDimensions);
   }, [children]);
 
   const isHorizontal = direction === "horizontal";
-  const animationDuration = isHorizontal
+  const animationDuration = isHorizontal && contentWidth > 0
     ? contentWidth / speed
-    : contentHeight / speed;
+    : !isHorizontal && contentHeight > 0
+    ? contentHeight / speed
+    : 10; // Default fallback
 
   return (
     <div
@@ -54,11 +67,11 @@ export function Marquee({
             "group-hover:[animation-play-state:paused] hover:[animation-play-state:paused]"
         )}
         style={{
-          animation: `${
+          animation: isMounted ? `${
             isHorizontal
               ? `scroll-x-${reverse ? "reverse" : "normal"}`
               : `scroll-y-${reverse ? "reverse" : "normal"}`
-          } ${animationDuration}s linear infinite`,
+          } ${animationDuration}s linear infinite` : 'none',
         }}
       >
         <div

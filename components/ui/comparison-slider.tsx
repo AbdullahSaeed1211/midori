@@ -57,7 +57,7 @@ export function ComparisonSlider({
     <div
       ref={sliderRef}
       className={cn(
-        "relative w-full overflow-hidden rounded-xl border border-verdant-green/10 bg-deep-gray/30 aspect-video",
+        "relative w-full overflow-hidden rounded-xl border border-kiiro-yellow/10 bg-deep-gray/30 aspect-video",
         className
       )}
       onMouseMove={handleMove}
@@ -93,7 +93,7 @@ export function ComparisonSlider({
             }}
             priority
           />
-          <div className="absolute bottom-4 left-4 px-3 py-1.5 bg-verdant-green/70 text-off-white rounded-md text-sm font-medium">
+          <div className="absolute bottom-4 left-4 px-3 py-1.5 bg-kiiro-yellow/70 text-off-white rounded-md text-sm font-medium">
             {afterLabel}
           </div>
         </div>
@@ -101,12 +101,12 @@ export function ComparisonSlider({
       
       {/* Slider handle */}
       <div 
-        className="absolute top-0 bottom-0 w-1 bg-verdant-green cursor-ew-resize"
+        className="absolute top-0 bottom-0 w-1 bg-kiiro-yellow cursor-ew-resize"
         style={{ left: `${position}%` }}
         onMouseDown={handleMouseDown}
         onTouchStart={handleMouseDown}
       >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-verdant-green flex items-center justify-center shadow-lg border-2 border-off-white">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-kiiro-yellow flex items-center justify-center shadow-lg border-2 border-off-white">
           <svg 
             width="16" 
             height="16" 

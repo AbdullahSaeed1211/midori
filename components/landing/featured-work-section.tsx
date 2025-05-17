@@ -8,6 +8,7 @@ import { useInView } from "react-intersection-observer";
 import { useState } from "react";
 import { ProjectProps } from "@/types/project";
 import { ProjectDetailsModal } from "./project-details-modal";
+import { ScrollIndicator } from "@/components/ui/scroll-indicator";
 
 const projects: ProjectProps[] = [
     {
@@ -90,7 +91,7 @@ export function FeaturedWorkSection() {
         <div className="container px-4 mx-auto">
         <div className="flex flex-col items-center mb-16 max-w-3xl mx-auto text-center">
           <motion.div 
-            className="px-4 py-1.5 rounded-full bg-verdant-green/10 text-verdant-green text-sm font-medium mb-6 border border-verdant-green/20"
+            className="px-4 py-1.5 rounded-full bg-kiiro-yellow/10 text-kiiro-yellow text-sm font-medium mb-6 border border-kiiro-yellow/20"
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -122,14 +123,14 @@ export function FeaturedWorkSection() {
           className="flex justify-center mb-8"
         >
           <div className="inline-flex items-center p-1 bg-deep-gray/50 rounded-lg">
-            <Filter className="h-4 w-4 text-verdant-green mx-2" />
+            <Filter className="h-4 w-4 text-kiiro-yellow mx-2" />
             {industryTypes.map((type) => (
               <button
                 key={type.value}
                 onClick={() => setSelectedIndustry(type.value)}
                 className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${
                   selectedIndustry === type.value
-                    ? "bg-verdant-green text-off-white"
+                    ? "bg-kiiro-yellow text-off-white"
                     : "text-off-white/70 hover:text-off-white hover:bg-deep-gray/70"
                 }`}
               >
@@ -149,7 +150,7 @@ export function FeaturedWorkSection() {
                 transition={{ duration: 0.6, delay: 0.2 + index * 0.15 }}
                 className="group"
               >
-                <div className="h-full bg-deep-gray/30 rounded-xl border border-verdant-green/10 overflow-hidden transition-all duration-300 hover:shadow-[0_10px_40px_-15px_rgba(76,175,80,0.2)] hover:border-verdant-green/30">
+                <div className="h-full bg-deep-gray/30 rounded-xl border border-kiiro-yellow/10 overflow-hidden transition-all duration-300 hover:shadow-[0_10px_40px_-15px_rgba(76,175,80,0.2)] hover:border-kiiro-yellow/30">
                   <div className="relative aspect-video overflow-hidden">
                     <Image 
                       src={project.image} 
@@ -171,7 +172,7 @@ export function FeaturedWorkSection() {
                       <ul className="space-y-1">
                         {project.results.slice(0, 2).map((result, i) => (
                           <li key={i} className="flex items-start gap-2 text-sm">
-                            <Check className="h-4 w-4 text-verdant-green shrink-0 mt-0.5" />
+                            <Check className="h-4 w-4 text-kiiro-yellow shrink-0 mt-0.5" />
                             <span className="text-off-white/90">{result}</span>
                           </li>
                         ))}
@@ -179,7 +180,7 @@ export function FeaturedWorkSection() {
                     </div>
                     
                     <button 
-                      className="w-full py-2 px-4 bg-verdant-green/10 rounded-md text-verdant-green text-sm font-medium transition-colors hover:bg-verdant-green/20 mt-2"
+                      className="w-full py-2 px-4 bg-kiiro-yellow/10 rounded-md text-kiiro-yellow text-sm font-medium transition-colors hover:bg-kiiro-yellow/20 mt-2"
                       onClick={() => openProjectModal(project)}
                     >
                       View Full Case Study
@@ -199,10 +200,28 @@ export function FeaturedWorkSection() {
         >
           <Link
             href="/portfolio"
-            className="px-6 py-3 bg-verdant-green/10 text-verdant-green border border-verdant-green/20 rounded-lg hover:bg-verdant-green/20 transition-colors duration-300"
+            className="px-6 py-3 bg-kiiro-yellow/10 text-kiiro-yellow border border-kiiro-yellow/20 rounded-lg hover:bg-kiiro-yellow/20 transition-colors duration-300"
           >
             View All Projects
           </Link>
+        </motion.div>
+        
+        {/* Scroll Indicator */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+          className="flex justify-center mt-20"
+        >
+          <ScrollIndicator 
+            text="See Our Pricing" 
+            onClick={() => {
+              const nextSection = document.getElementById('pricing');
+              if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          />
         </motion.div>
       </div>
 

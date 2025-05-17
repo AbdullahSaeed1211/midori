@@ -51,7 +51,7 @@ export function StickyContactButton() {
                   Book a Call
                 </Link>
                 <Link
-                  href="mailto:hello@midorilabs.dev"
+                  href="mailto:hello@kiiro.cx"
                   className="flex items-center gap-2 px-4 py-3 bg-off-white text-charcoal-black rounded-lg shadow-lg hover:bg-off-white/90 transition-colors duration-300"
                 >
                   Email Us
@@ -62,7 +62,7 @@ export function StickyContactButton() {
           
           <motion.button
             className={`flex items-center justify-center w-14 h-14 rounded-full shadow-lg transition-colors duration-300 ${
-              isOpen ? "bg-charcoal-black text-off-white" : "bg-verdant-green text-off-white"
+              isOpen ? "bg-charcoal-black text-off-white" : "bg-kiiro-yellow text-charcoal-black"
             }`}
             onClick={() => setIsOpen(!isOpen)}
             whileHover={{ scale: 1.05 }}

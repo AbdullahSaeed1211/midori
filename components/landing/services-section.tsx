@@ -1,108 +1,227 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import { BlurFade } from "@/components/magicui/blur-fade";
+import { Check, Code, Palette, MessageSquare, BarChart } from "lucide-react";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { ScrollIndicator } from "@/components/ui/scroll-indicator";
+import { BackgroundBeams } from "@/components/ui/background-beams";
+import { motion } from "framer-motion";
 import { TextAnimate } from "@/components/magicui/text-animate";
-import { Check, ArrowUpRight } from 'lucide-react';
 
-interface ServiceProps {
+interface ServiceCardProps {
+  icon: React.ReactNode;
   title: string;
   description: string;
-  benefits: string[];
+  features: string[];
   className?: string;
+  accentColor?: "yellow" | "teal" | "purple" | "magenta";
 }
 
-function Service({ title, description, benefits, className }: ServiceProps) {
+function ServiceCard({ 
+  icon, 
+  title, 
+  description, 
+  features, 
+  className,
+  accentColor = "yellow" 
+}: ServiceCardProps) {
+  const accentColors = {
+    yellow: {
+      bg: "bg-kiiro-yellow/5",
+      text: "text-kiiro-yellow",
+      border: "border-kiiro-yellow/10",
+      hoverBorder: "hover:border-kiiro-yellow/30",
+      hoverShadow: "hover:shadow-[0_0_30px_rgba(255,236,0,0.1)]",
+      hoverText: "group-hover:text-kiiro-yellow"
+    },
+    teal: {
+      bg: "bg-teal-accent/5",
+      text: "text-teal-accent",
+      border: "border-teal-accent/10",
+      hoverBorder: "hover:border-teal-accent/30",
+      hoverShadow: "hover:shadow-[0_0_30px_rgba(0,206,209,0.1)]",
+      hoverText: "group-hover:text-teal-accent"
+    },
+    purple: {
+      bg: "bg-purple-accent/5",
+      text: "text-purple-accent",
+      border: "border-purple-accent/10",
+      hoverBorder: "hover:border-purple-accent/30",
+      hoverShadow: "hover:shadow-[0_0_30px_rgba(138,43,226,0.1)]",
+      hoverText: "group-hover:text-purple-accent"
+    },
+    magenta: {
+      bg: "bg-magenta-accent/5",
+      text: "text-magenta-accent",
+      border: "border-magenta-accent/10",
+      hoverBorder: "hover:border-magenta-accent/30",
+      hoverShadow: "hover:shadow-[0_0_30px_rgba(255,0,255,0.1)]",
+      hoverText: "group-hover:text-magenta-accent"
+    }
+  };
+
+  const accent = accentColors[accentColor];
+
   return (
-    <div
-      className={cn(
-        "group relative flex h-full flex-col justify-between overflow-hidden rounded-xl p-8",
-        "border border-verdant-green/10",
-        "bg-gradient-to-b from-deep-gray to-deep-gray/80",
-        "transition-all duration-300 hover:border-verdant-green/40 hover:shadow-[0_10px_40px_-15px_rgba(76,175,80,0.1)]",
-        className
-      )}
-    >
-      <div className="mb-4">
-        <h3 className="mb-4 text-2xl font-bold text-off-white tracking-tight md:text-2xl">
-          {title}
-        </h3>
-        <p className="text-base text-off-white/80 font-normal leading-relaxed mb-6">
-          {description}
-        </p>
+    <div className={`group relative rounded-xl border ${accent.border} bg-charcoal-black p-6 transition-all 
+                    duration-300 ${accent.hoverShadow} ${accent.hoverBorder} ${className}`}>
+      <div className={`absolute inset-0 ${accent.bg} rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+      
+      <div className="relative z-10">
+        <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-full ${accent.bg} ${accent.text}`}>
+          {icon}
+        </div>
+        
+        <h3 className={`mb-2 text-xl font-bold text-off-white ${accent.hoverText} transition-colors duration-300`}>{title}</h3>
+        <p className="mb-8 text-off-white/80">{description}</p>
+        
         <ul className="space-y-2">
-          {benefits.map((benefit, index) => (
-            <li key={index} className="flex items-start gap-3">
-              <Check className="h-5 w-5 text-verdant-green shrink-0 mt-0.5" />
-              <span className="text-sm text-off-white/80">{benefit}</span>
+          {features.map((feature, idx) => (
+            <li key={idx} className="flex items-start">
+              <Check className={`mr-2 h-5 w-5 mt-0.5 ${accent.text} flex-shrink-0`} />
+              <span className="text-off-white/90">{feature}</span>
             </li>
           ))}
         </ul>
-      </div>
-      <div className="flex justify-end">
-        <div className="h-10 w-10 rounded-full flex items-center justify-center bg-verdant-green/10 text-verdant-green border border-verdant-green/20 transition-all duration-300 group-hover:bg-verdant-green group-hover:text-off-white">
-          <ArrowUpRight className="h-5 w-5" />
-        </div>
       </div>
     </div>
   );
 }
 
 export function ServicesSection() {
+  type AccentColor = "yellow" | "teal" | "purple" | "magenta";
+  
+  const services = [
+    {
+      icon: <Palette className="h-6 w-6" />,
+      title: "Website Design",
+      description: "Stunning, on-brand designs optimized for conversion and engagement.",
+      features: [
+        "Responsive design for all devices",
+        "UX-focused layouts that convert visitors",
+        "Cohesive branding & visual identity",
+        "Interactive prototypes & mockups"
+      ],
+      accentColor: "teal" as AccentColor
+    },
+    {
+      icon: <Code className="h-6 w-6" />,
+      title: "Web Development",
+      description: "High-performance, accessible code built with modern technologies.",
+      features: [
+        "Fast-loading, optimized websites",
+        "Clean, maintainable code structure",
+        "SEO-friendly implementation",
+        "Integration with CMS & third-party tools"
+      ],
+      accentColor: "yellow" as AccentColor
+    },
+    {
+      icon: <MessageSquare className="h-6 w-6" />,
+      title: "Content Strategy",
+      description: "Compelling copy and messaging that drives action and builds trust.",
+      features: [
+        "Conversion-focused copywriting",
+        "SEO content optimization",
+        "User journey mapping",
+        "Value proposition development"
+      ],
+      accentColor: "purple" as AccentColor
+    },
+    {
+      icon: <BarChart className="h-6 w-6" />,
+      title: "Growth Optimization",
+      description: "Data-driven improvements to increase conversions and ROI.",
+      features: [
+        "A/B testing & performance analysis",
+        "Conversion rate optimization",
+        "User behavior tracking",
+        "Continuous iteration & improvement"
+      ],
+      accentColor: "magenta" as AccentColor
+    }
+  ];
+
   return (
-    <BlurFade delay={0.1} inView>
-      <section className="py-28 bg-charcoal-black text-off-white" id="services">
-        <div className="container px-4 mx-auto">
-          <div className="flex flex-col items-center mb-16 max-w-4xl mx-auto text-center">
-            <div className="px-4 py-1.5 rounded-full bg-verdant-green/10 text-verdant-green text-sm font-medium mb-6 border border-verdant-green/20">Our Core Services</div>
-            <h2 className="text-4xl font-bold md:text-6xl mb-6 text-off-white">
-              <TextAnimate
-                animation="blurInUp"
-              >
-                {"We Don't Just Build Websites."}
+    <section className="py-28 bg-charcoal-black text-off-white relative overflow-hidden" id="services">
+      {/* Dynamic background effect */}
+      <BackgroundBeams className="z-0 opacity-40" />
+      
+      <div className="container px-4 mx-auto relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-3xl mx-auto text-center mb-20"
+        >
+          <div className="inline-flex flex-col items-center">
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="px-4 py-1.5 rounded-full bg-kiiro-yellow/10 text-kiiro-yellow text-sm font-medium mb-6 border border-kiiro-yellow/20"
+            >
+              Our Services
+            </motion.div>
+            <motion.h2 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="text-4xl font-bold md:text-5xl mb-6 text-off-white relative inline-block"
+            >
+              <TextAnimate animation="blurInUp">
+                Expert Solutions for Digital Growth
               </TextAnimate>
-              {" "}
-              <span className="text-verdant-green">We Build Revenue Machines.</span>
-            </h2>
-            <p className="text-xl text-off-white/80 max-w-3xl">Every pixel strategically placed. Every line of code optimized. All focused on one thing: generating measurable returns on your investment.</p>
+              <motion.span 
+                initial={{ width: 0 }}
+                whileInView={{ width: "100%" }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, delay: 0.6 }}
+                className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-kiiro-yellow/30 via-kiiro-yellow to-kiiro-yellow/30 rounded-full"
+              />
+            </motion.h2>
           </div>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl text-off-white/80 mt-6"
+          >
+            We combine strategic thinking, stunning design, and technical expertise to create websites that not only look great but drive measurable business results.
+          </motion.p>
+        </motion.div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            <Service
-              title="Conversion-Obsessed Landing Pages"
-              description="Pages engineered to transform visitors into customers with scientific precision."
-              benefits={[
-                "Outperforms industry conversion rates by 2-3x",
-                "Fully responsive with sub-1s load times",
-                "Built-in analytics and heatmapping",
-                "Optimized for both paid and organic traffic"
-              ]}
-            />
-
-            <Service
-              title="Revenue-Generating SaaS Products"
-              description="Web applications that deliver exceptional user experiences while driving business growth."
-              benefits={[
-                "Intuitive UX that reduces customer support costs",
-                "Scalable architecture that grows with your business",
-                "Built-in payment and subscription management",
-                "Continuous optimization based on user data"
-              ]}
-            />
-
-            <Service
-              title="Brand-Elevating Web Identity"
-              description="Digital presence that positions you as the premium choice in your market."
-              benefits={[
-                "Cohesive visual language that builds immediate trust",
-                "Messaging strategy that speaks directly to ideal customers",
-                "Complete digital branding package with logo and assets",
-                "SEO-optimized content strategy for organic growth"
-              ]}
-            />
+        <ScrollReveal effect="staggered" direction="up" staggerChildren={0.15} duration={0.5}>
+          <div className="grid gap-8 md:grid-cols-2 lg:gap-12">
+            {services.map((service, index) => (
+              <ServiceCard
+                key={index}
+                icon={service.icon}
+                title={service.title}
+                description={service.description}
+                features={service.features}
+                accentColor={service.accentColor}
+              />
+            ))}
           </div>
+        </ScrollReveal>
+        
+        {/* Scroll Indicator */}
+        <div className="flex justify-center mt-20">
+          <ScrollIndicator 
+            text="See Our Offerings" 
+            onClick={() => {
+              const nextSection = document.getElementById('offerings');
+              if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          />
         </div>
-      </section>
-    </BlurFade>
+      </div>
+    </section>
   );
 } 

@@ -4,6 +4,7 @@ import { BlurFade } from "@/components/magicui/blur-fade";
 import { Zap, Target, Filter, BarChart } from "lucide-react"; 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { ScrollIndicator } from "@/components/ui/scroll-indicator";
 
 interface ReasonProps {
   icon: React.ElementType;
@@ -15,29 +16,29 @@ interface ReasonProps {
 
 function Reason({ icon: Icon, title, description, highlight, delay }: ReasonProps) {
   return (
-    <BlurFade delay={delay} className="flex flex-col p-6 border border-verdant-green/10 rounded-xl bg-deep-gray/50 hover:bg-deep-gray transition-all duration-300">
-      <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-verdant-green/15 text-verdant-green">
+    <BlurFade delay={delay} className="flex flex-col p-6 border border-kiiro-yellow/10 rounded-xl bg-deep-gray/50 hover:bg-deep-gray transition-all duration-300">
+      <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-kiiro-yellow/15 text-kiiro-yellow">
         <Icon className="h-7 w-7" />
       </div>
       <h3 className="mb-3 text-2xl font-bold text-off-white">{title}</h3>
       <p className="text-base text-off-white/80 font-normal">{description}</p>
       {highlight && (
-        <p className="mt-4 text-lg font-medium text-verdant-green">{highlight}</p>
+        <p className="mt-4 text-lg font-medium text-kiiro-yellow">{highlight}</p>
       )}
     </BlurFade>
   );
 }
 
-export function WhyMidoriLabsSection() {
+export function WhyKiiroSection() {
   return (
     <section className="py-28 bg-charcoal-black text-off-white" id="why-us">
       <div className="container px-4 mx-auto">
         <div className="flex flex-col items-center text-center mb-20">
-          <div className="px-4 py-1.5 rounded-full bg-verdant-green/10 text-verdant-green text-sm font-medium mb-6 border border-verdant-green/20">Why Choose Us</div>
+          <div className="px-4 py-1.5 rounded-full bg-kiiro-yellow/10 text-kiiro-yellow text-sm font-medium mb-6 border border-kiiro-yellow/20">Why Choose Us</div>
           
         <BlurFade inView>
             <h2 className="mb-6 text-center text-4xl font-bold md:text-6xl text-off-white">
-              <span className="text-verdant-green">Tangible Results</span>, Not Empty Promises
+              <span className="text-kiiro-yellow">Tangible Results</span>, Not Empty Promises
             </h2>
         </BlurFade>
 
@@ -82,12 +83,25 @@ export function WhyMidoriLabsSection() {
             variant="default" 
             size="lg" 
             asChild 
-            className="bg-verdant-green text-off-white hover:bg-verdant-green/90 hover:shadow-[0_0_20px_theme(colors.verdant-green/40)] transition-all duration-300 px-10 py-6 h-auto text-lg font-medium"
+            className="bg-kiiro-yellow text-charcoal-black hover:bg-kiiro-yellow/90 hover:shadow-[0_0_20px_theme(colors.kiiro-yellow/40)] transition-all duration-300 px-10 py-6 h-auto text-lg font-medium"
           >
             <Link href="#booking">
               Schedule a Strategy Call
             </Link>
           </Button>
+        </div>
+        
+        {/* Scroll Indicator */}
+        <div className="flex justify-center mt-20">
+          <ScrollIndicator 
+            text="See Our Work" 
+            onClick={() => {
+              const nextSection = document.getElementById('featured-work');
+              if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          />
         </div>
       </div>
     </section>

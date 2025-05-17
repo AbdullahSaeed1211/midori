@@ -14,7 +14,7 @@ interface FeatureProps {
 function Feature({ icon: Icon, title, description, delay }: FeatureProps) {
   return (
     <BlurFade delay={delay} className="flex flex-col items-center text-center h-full">
-      <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-verdant-green/15 text-verdant-green">
+      <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-kiiro-yellow/15 text-kiiro-yellow">
         <Icon className="h-8 w-8" />
       </div>
       <h3 className="mb-2 text-2xl font-bold text-off-white">{title}</h3>

@@ -10,7 +10,7 @@ export function BookingSection() {
       <section className="py-24 bg-charcoal-black text-off-white" id="booking">
         <div className="container mx-auto px-4 text-center">
           {/* Updated subtitle style for consistency */}
-          <p className="mb-3 text-xs uppercase tracking-[0.25em] text-verdant-green font-semibold">
+          <p className="mb-3 text-xs uppercase tracking-[0.25em] text-kiiro-yellow font-semibold">
             Booking
           </p>
           {/* Main title */}
