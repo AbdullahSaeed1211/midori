@@ -53,21 +53,41 @@ export function GradientButton({
     className
   );
 
-  const Comp = href ? motion.a : motion.button;
-  const extraProps = href 
-    ? { href } 
-    : { type: "button" };
+  // Common props for both button and anchor
+  const commonProps = {
+    className: classes,
+    onClick,
+    onHoverStart: () => setIsHovered(true),
+    onHoverEnd: () => setIsHovered(false),
+    whileHover: shine ? { scale: 1.02 } : {},
+    whileTap: { scale: 0.98 },
+  };
+
+  // Render appropriate component based on href
+  if (href) {
+    return (
+      <motion.a href={href} {...commonProps}>
+        {children}
+        
+        {/* Shine effect overlay */}
+        {shine && isHovered && (
+          <span className="absolute inset-0 w-full h-full overflow-hidden rounded-lg pointer-events-none">
+            <motion.span
+              className="absolute top-0 -left-full w-1/3 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"
+              animate={{ x: ["-100%", "200%"] }}
+              transition={{
+                duration: 0.8,
+                ease: "easeInOut",
+              }}
+            />
+          </span>
+        )}
+      </motion.a>
+    );
+  }
 
   return (
-    <Comp
-      {...extraProps}
-      className={classes}
-      onClick={onClick}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      whileHover={shine ? { scale: 1.02 } : {}}
-      whileTap={{ scale: 0.98 }}
-    >
+    <motion.button type="button" {...commonProps}>
       {children}
       
       {/* Shine effect overlay */}
@@ -83,6 +103,6 @@ export function GradientButton({
           />
         </span>
       )}
-    </Comp>
+    </motion.button>
   );
 } 

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
 
 interface Particle {
@@ -15,6 +15,16 @@ interface Particle {
   };
 }
 
+interface SparklesCoreProps extends React.CanvasHTMLAttributes<HTMLCanvasElement> {
+  id: string;
+  background?: string;
+  particleColor?: string;
+  particleDensity?: number;
+  particleSize?: number;
+  speed?: number;
+  className?: string;
+}
+
 export const SparklesCore = ({
   id,
   background,
@@ -24,22 +34,13 @@ export const SparklesCore = ({
   speed = 1,
   className,
   ...props
-}: {
-  id: string;
-  background?: string;
-  particleColor?: string;
-  particleDensity?: number;
-  particleSize?: number;
-  speed?: number;
-  className?: string;
-  [key: string]: any;
-}) => {
+}: SparklesCoreProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particles = useRef<Particle[]>([]);
   const animationRef = useRef<number | null>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
-  const initCanvas = () => {
+  const initCanvas = useCallback(() => {
     if (canvasRef.current) {
       const canvas = canvasRef.current;
       const ctx = canvas.getContext("2d");
@@ -62,9 +63,27 @@ export const SparklesCore = ({
         window.removeEventListener("resize", handleResize);
       };
     }
-  };
+  }, []);
 
-  const createParticles = () => {
+  // Helper function to convert hex color to rgb
+  const hexToRgb = useCallback((hex: string): string => {
+    // Remove the # if it exists
+    hex = hex.replace("#", "");
+    
+    // Convert 3-digit hex to 6-digit
+    if (hex.length === 3) {
+      hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+    }
+    
+    // Parse the hex values
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+    
+    return `${r}, ${g}, ${b}`;
+  }, []);
+
+  const createParticles = useCallback(() => {
     // Only create particles if canvas is initialized
     if (!dimensions.width || !dimensions.height) return;
 
@@ -87,9 +106,9 @@ export const SparklesCore = ({
     }
     
     particles.current = newParticles;
-  };
+  }, [dimensions, particleDensity, particleSize, speed]);
 
-  const renderCanvas = () => {
+  const renderCanvas = useCallback(() => {
     if (!canvasRef.current) return;
     
     const ctx = canvasRef.current.getContext("2d");
@@ -145,25 +164,7 @@ export const SparklesCore = ({
     });
     
     animationRef.current = requestAnimationFrame(renderCanvas);
-  };
-
-  // Helper function to convert hex color to rgb
-  const hexToRgb = (hex: string): string => {
-    // Remove the # if it exists
-    hex = hex.replace("#", "");
-    
-    // Convert 3-digit hex to 6-digit
-    if (hex.length === 3) {
-      hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
-    }
-    
-    // Parse the hex values
-    const r = parseInt(hex.substring(0, 2), 16);
-    const g = parseInt(hex.substring(2, 4), 16);
-    const b = parseInt(hex.substring(4, 6), 16);
-    
-    return `${r}, ${g}, ${b}`;
-  };
+  }, [dimensions, particleColor, particleSize, speed, hexToRgb]);
 
   useEffect(() => {
     const cleanup = initCanvas();
@@ -172,11 +173,11 @@ export const SparklesCore = ({
       if (cleanup) cleanup();
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
-  }, []);
+  }, [initCanvas]);
 
   useEffect(() => {
     createParticles();
-  }, [dimensions, particleDensity, particleSize, speed]);
+  }, [createParticles]);
 
   useEffect(() => {
     if (dimensions.width && dimensions.height) {
@@ -186,7 +187,7 @@ export const SparklesCore = ({
     return () => {
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
-  }, [dimensions, particles.current, particleColor]);
+  }, [renderCanvas]);
 
   return (
     <canvas

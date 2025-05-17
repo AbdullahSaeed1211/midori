@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 type AnimationDirection = "up" | "down" | "left" | "right";
 type AnimationEffect = "fade" | "slide" | "scale" | "staggered";
 
-interface ScrollRevealProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ScrollRevealProps {
   children: React.ReactNode;
   direction?: AnimationDirection;
   effect?: AnimationEffect;
@@ -18,6 +18,9 @@ interface ScrollRevealProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   once?: boolean;
   distance?: number;
+  // Omit specific props that might cause conflicts
+  style?: React.CSSProperties;
+  id?: string;
 }
 
 export function ScrollReveal({
@@ -31,7 +34,8 @@ export function ScrollReveal({
   className,
   once = true,
   distance = 50,
-  ...props
+  style,
+  id,
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   
@@ -107,8 +111,9 @@ export function ScrollReveal({
     <motion.div
       ref={ref}
       className={cn(className)}
+      style={style}
+      id={id}
       {...getAnimationProps()}
-      {...props}
     >
       {effect === "staggered"
         ? React.Children.map(children, (child) => (
