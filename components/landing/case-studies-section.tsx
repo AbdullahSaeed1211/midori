@@ -12,7 +12,7 @@ const CASE_STUDIES: CaseStudyProps[] = [
     title: "Simply Mortgage",
     description: "UAE's premier mortgage consultancy offering personalized solutions. We revolutionized their digital presence with a high-converting website featuring interactive tools, seamless appointment scheduling, and clear service showcasing. The result: 150% increase in qualified leads and 35% improvement in conversion rates.",
     image: "/projects/simply.webp",
-    link: "#",
+    link: "/case-studies/simply-mortgage",
     tags: ["Web Design", "UX/UI", "Next.js", "SEO Optimization"],
     accentColor: "yellow"
   },
@@ -20,7 +20,7 @@ const CASE_STUDIES: CaseStudyProps[] = [
     title: "Lotus Pro Services",
     description: "Document clearing and business services specialist in Dubai. We created a premium web presence with sophisticated branding, clear service categorization, and direct contact options. The site established them as a premium provider in UAE's competitive document services market, with a professional identity that reflects their expertise.",
     image: "/projects/lotus.webp",
-    link: "#",
+    link: "/case-studies/lotus-pro-services",
     tags: ["Branding", "Web Development", "UI/UX", "React"],
     accentColor: "teal"
   },
@@ -28,7 +28,7 @@ const CASE_STUDIES: CaseStudyProps[] = [
     title: "BrainWise",
     description: "AI-driven learning platform for busy professionals seeking targeted skills. Our redesign streamlined the user journey, implemented personalized learning paths, and optimized for mobile. The results were dramatic: 89% increase in course completion rates and 47% growth in subscription renewals.",
     image: "/projects/brainwise.webp",
-    link: "#",
+    link: "/case-studies/brain-wise",
     tags: ["EdTech", "UX Design", "Mobile Optimization", "React"],
     accentColor: "purple"
   },
@@ -36,7 +36,7 @@ const CASE_STUDIES: CaseStudyProps[] = [
     title: "Dubbby",
     description: "AI-driven content creation platform helping creators scale their production. Our sleek, user-focused website highlighted their innovative technology and showcased practical use cases. The optimized user journey resulted in a 40% increase in trial signups and significantly improved engagement metrics.",
     image: "/projects/dubbby.webp",
-    link: "#",
+    link: "/case-studies/dubbby",
     tags: ["SaaS", "Web Application", "UI Design", "User Experience"],
     accentColor: "magenta"
   },
@@ -44,9 +44,17 @@ const CASE_STUDIES: CaseStudyProps[] = [
     title: "BlogSquirrel",
     description: "A content management platform for efficient blog production. We revamped the entire user experience with an intuitive dashboard, streamlined content creation tools, and enhanced analytics. The redesign helped increase user retention by 53% and drove a 78% boost in daily active users.",
     image: "/projects/blogport.webp",
-    link: "#",
+    link: "/case-studies/blog-squirrel",
     tags: ["CMS", "Dashboard Design", "Analytics", "Next.js"],
     accentColor: "teal"
+  },
+  {
+    title: "Midori Agency",
+    description: "Our own website showcasing our design and development expertise. Built with Next.js, TypeScript, and Tailwind CSS, featuring interactive elements and optimized performance. A demonstration of our approach to creating engaging, high-performance web experiences.",
+    image: "/projects/midori.webp",
+    link: "/",
+    tags: ["Agency Website", "Portfolio", "UI/UX", "Next.js"],
+    accentColor: "yellow"
   }
 ];
 

@@ -3,7 +3,6 @@ import { Space_Grotesk, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { StickyContactButton } from "@/components/ui/sticky-contact-button";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
-import { CustomCursor } from "@/components/ui/custom-cursor";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -107,7 +106,6 @@ export default function RootLayout({
       <body
         className={`${spaceGrotesk.variable} ${notoSansJP.variable} font-body font-normal text-base antialiased bg-charcoal-black`}
       >
-        <CustomCursor />
         <ScrollProgress color="#FFEC00" height={3} />
         {children}
         <StickyContactButton />
