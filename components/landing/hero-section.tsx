@@ -167,9 +167,9 @@ export function HeroSection() {
           </div>
         </motion.div>
         
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator - Moved up in the layout to avoid collision with the status badge */}
         <motion.div 
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+          className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20"
           initial={{ opacity: 0 }}
           animate={isMounted ? { opacity: 1 } : {}}
           transition={{ duration: 0.5, delay: 1.6 }}

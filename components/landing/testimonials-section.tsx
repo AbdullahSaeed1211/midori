@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 import { Marquee } from "@/components/magicui/marquee";
 import { useState, useEffect } from "react";
 import { ScrollIndicator } from "@/components/ui/scroll-indicator";
+import React from "react";
 
 // Simple Badge component
 function Badge({ 
@@ -37,7 +38,7 @@ const testimonials: Testimonial[] = [
     id: 1,
     name: 'Sarah Johnson',
     location: 'CEO, TechVenture',
-    quote: 'Working with Midori Digital has completely transformed our online presence. Our conversion rates have increased by 60% since the redesign!',
+    quote: 'Working with this team has completely transformed our online presence. Our conversion rates have increased by 60% since the redesign!',
     initials: 'SJ',
     image: '/avatars/user1.png'
   },
@@ -45,7 +46,7 @@ const testimonials: Testimonial[] = [
     id: 2,
     name: 'Michael Chen',
     location: 'Founder, GrowthLabs',
-    quote: 'The team at Midori Digital delivered our project on time and on budget. Their strategic approach to design and development was impressive.',
+    quote: 'The team delivered our project on time and on budget. Their strategic approach to design and development was impressive.',
     initials: 'MC',
     image: '/avatars/user2.png'
   },
@@ -61,7 +62,7 @@ const testimonials: Testimonial[] = [
     id: 4,
     name: 'David Park',
     location: 'COO, NextLevel Solutions',
-    quote: 'Midori Digital helped us clarify our message and create a website that truly represents our brand values. A pleasure to work with.',
+    quote: 'They helped us clarify our message and create a website that truly represents our brand values. A pleasure to work with.',
     initials: 'DP',
     image: '/avatars/user4.png'
   },
@@ -77,7 +78,7 @@ const testimonials: Testimonial[] = [
     id: 6,
     name: 'Robert Gonzalez',
     location: 'CTO, DataFlow',
-    quote: 'Midori\'s team provided technical solutions that were both elegant and scalable. They truly understand the balance of design and function.',
+    quote: 'The team provided technical solutions that were both elegant and scalable. They truly understand the balance of design and function.',
     initials: 'RG',
     image: '/avatars/user6.png'
   },
@@ -85,7 +86,7 @@ const testimonials: Testimonial[] = [
     id: 7,
     name: 'Jennifer Tran',
     location: 'Brand Director, Lumina',
-    quote: 'From strategy to execution, Midori Digital delivered exceptional quality at every stage. Our new site has received incredible feedback.',
+    quote: 'From strategy to execution, the team delivered exceptional quality at every stage. Our new site has received incredible feedback.',
     initials: 'JT',
     image: '/avatars/user7.png'
   },
@@ -93,7 +94,7 @@ const testimonials: Testimonial[] = [
     id: 8,
     name: 'Thomas Schmidt',
     location: 'CEO, Apex Ventures',
-    quote: 'We\'ve seen a 75% increase in qualified leads since launching our new website. Midori Digital\'s strategic approach has paid off tremendously.',
+    quote: 'We\'ve seen a 75% increase in qualified leads since launching our new website. Their strategic approach has paid off tremendously.',
     initials: 'TS',
     image: '/avatars/user8.png'
   },
