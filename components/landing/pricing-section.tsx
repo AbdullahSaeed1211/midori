@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, X } from "lucide-react";
+import { Check, X, AlertCircle } from "lucide-react";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
@@ -15,6 +15,7 @@ interface PricingOptionCardProps {
   cta: string;
   ctaLink: string;
   highlighted?: boolean;
+  limitedSpots?: number;
 }
 
 function PricingOptionCard({
@@ -26,16 +27,27 @@ function PricingOptionCard({
   cta,
   ctaLink,
   highlighted = false,
+  limitedSpots,
 }: PricingOptionCardProps) {
   return (
     <div 
       className={cn(
-        "rounded-xl p-8 h-full flex flex-col border",
+        "rounded-xl p-8 h-full flex flex-col border relative",
         highlighted 
           ? "border-kiiro-yellow/30 bg-kiiro-yellow/5 shadow-lg shadow-kiiro-yellow/10" 
           : "border-slate-200/10 bg-deep-gray/50"
       )}
     >
+      {/* Limited-time offer badge */}
+      {limitedSpots && (
+        <div className="absolute -top-3 -right-3 z-10">
+          <div className="bg-kiiro-yellow text-charcoal-black text-xs font-bold px-3 py-1.5 rounded-md shadow-lg flex items-center gap-1.5">
+            <AlertCircle className="h-3.5 w-3.5" /> 
+            Founding Client Pricing
+          </div>
+        </div>
+      )}
+      
       <div className="mb-6">
         <h3 className="text-2xl font-bold mb-2 text-off-white">{title}</h3>
         <p className="text-off-white/70">{description}</p>
@@ -43,6 +55,13 @@ function PricingOptionCard({
       
       <div className="mb-6">
         <div className="text-3xl font-bold text-off-white">{price}</div>
+        
+        {/* Limited spots counter */}
+        {limitedSpots && (
+          <div className="mt-2 text-sm text-kiiro-yellow">
+            <span className="font-medium">{limitedSpots} spots available</span> at this rate
+          </div>
+        )}
       </div>
       
       <div className="mb-8 flex-grow">
@@ -205,13 +224,14 @@ export function PricingSection() {
                 <PricingOptionCard
                   title="One-off Project"
                   description="Perfect for businesses needing a professional website without ongoing commitments."
-                  price="Custom Quote"
+                  price="$800 - $1,000"
                   features={pricingFeatures
                     .filter(f => f.onetime)
                     .map(f => typeof f.onetime === "string" ? `${f.name} (${f.onetime})` : f.name)}
                   featureLabel="Included in package:"
                   cta="Get Started"
                   ctaLink="#booking"
+                  limitedSpots={5}
                 />
               </motion.div>
               
@@ -224,7 +244,7 @@ export function PricingSection() {
                 <PricingOptionCard
                   title="Monthly Retainer"
                   description="Ideal for businesses requiring ongoing support and continuous improvement."
-                  price="Starting at $1,500/mo"
+                  price="$900 - $1,200/mo"
                   features={pricingFeatures
                     .filter(f => f.retainer)
                     .map(f => typeof f.retainer === "string" ? `${f.name} (${f.retainer})` : f.name)}
@@ -232,12 +252,18 @@ export function PricingSection() {
                   cta="Schedule a Call"
                   ctaLink="#booking"
                   highlighted
+                  limitedSpots={3}
                 />
               </motion.div>
             </div>
           )}
 
           <div className="mt-16 text-center">
+            <div className="bg-kiiro-yellow/10 p-4 rounded-lg border border-kiiro-yellow/20 inline-block mb-8">
+              <p className="text-kiiro-yellow font-medium">
+                Limited-time founding client pricing — secure your spot before rates increase
+              </p>
+            </div>
             <p className="text-off-white/80 max-w-2xl mx-auto mb-4">
               Need a custom solution? We offer tailored packages to meet your specific requirements.
             </p>

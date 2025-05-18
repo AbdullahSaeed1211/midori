@@ -3,7 +3,7 @@ import { HeroSection } from "@/components/landing/hero-section";
 import { ServicesSection } from "@/components/landing/services-section";
 import { OfferingsSection } from "@/components/landing/offerings-section";
 import { BenefitsSection } from "@/components/landing/benefits-section";
-import { WhyKiiroSection } from "@/components/landing/why-midorilabs-section";
+import { WhyKiiroSection } from "@/components/landing/why-kiiro-section";
 import { PricingOptionsSection } from "@/components/landing/pricing-options-section";
 import { PricingSection } from "@/components/landing/pricing-section";
 import { TestimonialsSection } from "@/components/landing/testimonials-section";
@@ -19,13 +19,13 @@ import { StatsGrid } from "@/components/landing/stats-grid";
 
 export const metadata: Metadata = {
   title: "kiiro.cx | High-Converting Web Design & Development",
-  description: "AI-enhanced landing pages, SaaS platforms, and brand identities engineered for measurable growth",
-  keywords: "web design, web development, conversion optimization, landing pages, SaaS development, digital branding",
+  description: "Boutique digital agency specializing in AI-enhanced landing pages, SaaS platforms, and brand identities engineered for measurable growth. Personal attention, rapid delivery.",
+  keywords: "web design, web development, conversion optimization, landing pages, SaaS development, digital branding, boutique agency",
   authors: [{ name: "kiiro.cx" }],
   openGraph: {
     type: "website",
     title: "kiiro.cx | Web Engineering for Growth",
-    description: "High-performance websites & web solutions designed for conversion and built for scale.",
+    description: "Boutique web studio delivering high-performance websites & web solutions designed for conversion and built for scale.",
     siteName: "kiiro.cx",
   }
 };
