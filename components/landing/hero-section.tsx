@@ -142,48 +142,34 @@ export function HeroSection() {
             </div>
           </div>
           
+          {/* Explore More and Scroll To Explore combined */}
           <motion.div
-            className="mt-6 inline-block"
+            className="mt-8 flex flex-col items-center"
             initial={{ opacity: 0 }}
             animate={isMounted ? { opacity: 1 } : {}}
             transition={{ duration: 0.5, delay: 1.2 }}
           >
-            <Link href="#case-studies" className="text-kiiro-yellow/90 hover:text-kiiro-yellow underline text-sm">
+            <Link href="#case-studies" className="text-kiiro-yellow/90 hover:text-kiiro-yellow underline text-sm mb-8">
               Explore More
             </Link>
+            
+            {/* Status Banner - Moved above scroll indicator */}
+            <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-teal-accent/10 text-teal-accent border border-teal-accent/20 mb-8">
+              <span className="inline-block h-2 w-2 rounded-full bg-teal-accent animate-pulse"></span>
+              <span className="text-sm font-medium">Currently accepting new clients for Q3 2025</span>
+            </div>
+            
+            <ScrollIndicator 
+              text="Scroll to explore" 
+              style="line"
+              onClick={() => {
+                const nextSection = document.getElementById('client-wins');
+                if (nextSection) {
+                  nextSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            />
           </motion.div>
-        </motion.div>
-        
-        {/* Status Banner */}
-        <motion.div 
-          className="mt-8 flex justify-center"
-          initial={{ opacity: 0, y: 10 }}
-          animate={isMounted ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 1.4 }}
-        >
-          <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-teal-accent/10 text-teal-accent border border-teal-accent/20">
-            <span className="inline-block h-2 w-2 rounded-full bg-teal-accent animate-pulse"></span>
-            <span className="text-sm font-medium">Currently accepting new clients for Q3 2025</span>
-          </div>
-        </motion.div>
-        
-        {/* Scroll Indicator - Moved up in the layout to avoid collision with the status badge */}
-        <motion.div 
-          className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20"
-          initial={{ opacity: 0 }}
-          animate={isMounted ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 1.6 }}
-        >
-          <ScrollIndicator 
-            text="Scroll to explore" 
-            style="line"
-            onClick={() => {
-              const nextSection = document.getElementById('client-wins');
-              if (nextSection) {
-                nextSection.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
-          />
         </motion.div>
       </div>
     </section>
