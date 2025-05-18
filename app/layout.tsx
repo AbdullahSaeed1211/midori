@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     description: "High-performance websites & web solutions designed for conversion and business growth",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/projects/kiiro.webp",
         width: 1200,
         height: 630,
         alt: "Kiiro.cx - Web Engineering for Growth"
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Kiiro.cx | Strategic Web Engineering",
     description: "High-performance websites & web solutions designed for conversion and business growth",
-    images: ["/og-image.jpg"],
+    images: ["/projects/kiiro.webp"],
     site: "@kiirocx",
     creator: "@kiirocx"
   },
