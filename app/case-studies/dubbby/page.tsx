@@ -73,6 +73,12 @@ export default function DubbbyCaseStudy() {
                     <p className="text-sm text-off-white/60 mb-1">Status</p>
                     <p className="text-lg text-off-white">Waitlist</p>
                   </div>
+                  <div>
+                    <p className="text-sm text-off-white/60 mb-1">Website</p>
+                    <a href="https://dubbby.com" target="_blank" rel="noopener noreferrer" className="text-lg text-kiiro-yellow hover:underline">
+                      dubbby.com
+                    </a>
+                  </div>
                 </div>
               </div>
               

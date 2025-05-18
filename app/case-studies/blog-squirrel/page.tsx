@@ -71,8 +71,8 @@ export default function BlogSquirrelCaseStudy() {
                   </div>
                   <div>
                     <p className="text-sm text-off-white/60 mb-1">Website</p>
-                    <a href="https://blogsquirrel.dev/" target="_blank" rel="noopener noreferrer" className="text-base md:text-lg text-kiiro-yellow hover:underline">
-                      blogsquirrel.dev
+                    <a href="https://blog-squirrel.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-base md:text-lg text-kiiro-yellow hover:underline">
+                      blog-squirrel.vercel.app
                     </a>
                   </div>
                 </div>

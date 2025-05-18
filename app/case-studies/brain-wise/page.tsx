@@ -71,8 +71,8 @@ export default function BrainWiseCaseStudy() {
                   </div>
                   <div>
                     <p className="text-sm text-off-white/60 mb-1">Website</p>
-                    <a href="https://brainwise.ai/" target="_blank" rel="noopener noreferrer" className="text-lg text-kiiro-yellow hover:underline">
-                      brainwise.ai
+                    <a href="https://brainwise.pro" target="_blank" rel="noopener noreferrer" className="text-lg text-kiiro-yellow hover:underline">
+                      brainwise.pro
                     </a>
                   </div>
                 </div>
