@@ -25,12 +25,12 @@ const CASE_STUDIES: CaseStudyProps[] = [
     accentColor: "teal"
   },
   {
-    title: "BrainWise",
-    description: "AI-driven learning platform for busy professionals seeking targeted skills. Our redesign streamlined the user journey, implemented personalized learning paths, and optimized for mobile. The results were dramatic: 89% increase in course completion rates and 47% growth in subscription renewals.",
-    image: "/projects/brainwise.webp",
-    link: "/case-studies/brain-wise",
-    tags: ["EdTech", "UX Design", "Mobile Optimization", "React"],
-    accentColor: "purple"
+    title: "Sproutly",
+    description: "Urban Gardening Education Platform. Sproutly empowers city dwellers to transform their living spaces into thriving gardens. The platform offers expert-led courses, practical resources, and a vibrant community, all tailored to the unique challenges of urban gardening. As lead developer and UI/UX designer, I handled everything from research and design to frontend/backend development and iterative improvement. The result is a friendly, informative, and visually appealing experience for aspiring urban gardeners.",
+    image: "/projects/sproutly.webp",
+    link: "/case-studies/sproutly",
+    tags: ["EdTech", "UI/UX", "Next.js", "React", "Branding"],
+    accentColor: "teal"
   },
   {
     title: "Dubbby",
@@ -41,12 +41,12 @@ const CASE_STUDIES: CaseStudyProps[] = [
     accentColor: "magenta"
   },
   {
-    title: "Sproutly",
-    description: "Urban Gardening Education Platform. Sproutly empowers city dwellers to transform their living spaces into thriving gardens. The platform offers expert-led courses, practical resources, and a vibrant community, all tailored to the unique challenges of urban gardening. As lead developer and UI/UX designer, I handled everything from research and design to frontend/backend development and iterative improvement. The result is a friendly, informative, and visually appealing experience for aspiring urban gardeners.",
-    image: "/projects/sproutly.webp",
-    link: "/case-studies/sproutly",
-    tags: ["EdTech", "UI/UX", "Next.js", "React", "Branding"],
-    accentColor: "teal"
+    title: "BrainWise",
+    description: "AI-driven learning platform for busy professionals seeking targeted skills. Our redesign streamlined the user journey, implemented personalized learning paths, and optimized for mobile. The results were dramatic: 89% increase in course completion rates and 47% growth in subscription renewals.",
+    image: "/projects/brainwise.webp",
+    link: "/case-studies/brain-wise",
+    tags: ["EdTech", "UX Design", "Mobile Optimization", "React"],
+    accentColor: "purple"
   },
   {
     title: "BlogSquirrel",

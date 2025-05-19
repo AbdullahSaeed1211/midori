@@ -26,16 +26,22 @@ export default function CaseStudiesPage() {
       href: "/case-studies/lotus-pro-services",
     },
     {
-      title: "BrainWise",
-      description: "AI-driven learning platform for busy professionals seeking targeted skills.",
-      image: "/projects/brainwise.webp",
-      href: "/case-studies/brain-wise",
+      title: "Sproutly",
+      description: "Urban Gardening Education Platform. Sproutly empowers city dwellers to transform their living spaces into thriving gardens. The platform offers expert-led courses, practical resources, and a vibrant community, all tailored to the unique challenges of urban gardening.",
+      image: "/projects/sproutly.webp",
+      href: "/case-studies/sproutly",
     },
     {
       title: "Dubbby",
       description: "AI-driven content creation platform helping creators scale their production.",
       image: "/projects/dubbby.webp",
       href: "/case-studies/dubbby",
+    },
+    {
+      title: "BrainWise",
+      description: "AI-driven learning platform for busy professionals seeking targeted skills.",
+      image: "/projects/brainwise.webp",
+      href: "/case-studies/brain-wise",
     },
     {
       title: "BlogSquirrel",
