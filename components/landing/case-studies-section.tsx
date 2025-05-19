@@ -44,7 +44,7 @@ const CASE_STUDIES: CaseStudyProps[] = [
     title: "Sproutly",
     description: "Urban Gardening Education Platform. Sproutly empowers city dwellers to transform their living spaces into thriving gardens. The platform offers expert-led courses, practical resources, and a vibrant community, all tailored to the unique challenges of urban gardening. As lead developer and UI/UX designer, I handled everything from research and design to frontend/backend development and iterative improvement. The result is a friendly, informative, and visually appealing experience for aspiring urban gardeners.",
     image: "/projects/sproutly.webp",
-    link: "https://garden-client-wine.vercel.app/",
+    link: "/case-studies/sproutly",
     tags: ["EdTech", "UI/UX", "Next.js", "React", "Branding"],
     accentColor: "teal"
   },
