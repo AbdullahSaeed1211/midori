@@ -41,6 +41,14 @@ const CASE_STUDIES: CaseStudyProps[] = [
     accentColor: "magenta"
   },
   {
+    title: "Sproutly",
+    description: "Urban Gardening Education Platform. Sproutly empowers city dwellers to transform their living spaces into thriving gardens. The platform offers expert-led courses, practical resources, and a vibrant community, all tailored to the unique challenges of urban gardening. As lead developer and UI/UX designer, I handled everything from research and design to frontend/backend development and iterative improvement. The result is a friendly, informative, and visually appealing experience for aspiring urban gardeners.",
+    image: "/projects/sproutly.webp",
+    link: "https://garden-client-wine.vercel.app/",
+    tags: ["EdTech", "UI/UX", "Next.js", "React", "Branding"],
+    accentColor: "teal"
+  },
+  {
     title: "BlogSquirrel",
     description: "A content management platform for efficient blog production. We revamped the entire user experience with an intuitive dashboard, streamlined content creation tools, and enhanced analytics. The redesign helped increase user retention by 53% and drove a 78% boost in daily active users.",
     image: "/projects/blogport.webp",
