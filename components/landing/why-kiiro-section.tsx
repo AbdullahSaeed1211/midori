@@ -94,9 +94,9 @@ export function WhyKiiroSection() {
         {/* Scroll Indicator */}
         <div className="flex justify-center mt-20">
           <ScrollIndicator 
-            text="See Our Work" 
+            text="Common Questions" 
             onClick={() => {
-              const nextSection = document.getElementById('featured-work');
+              const nextSection = document.getElementById('faq');
               if (nextSection) {
                 nextSection.scrollIntoView({ behavior: 'smooth' });
               }

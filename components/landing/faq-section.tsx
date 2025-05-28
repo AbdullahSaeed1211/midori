@@ -14,33 +14,51 @@ import { useState } from 'react';
 const faqData = [
   {
     id: "item-1",
-    question: "Who is this service best for?",
+    question: "What if I don't like the design or it doesn't match my vision?",
     answer:
-      "Our services are ideal for startups, SaaS companies, and established businesses looking to elevate their online presence, improve conversion rates, and build scalable web solutions with a focus on performance and design excellence.",
+      "We start with a detailed discovery call to understand your vision, brand, and goals. During the design phase, we include revisions to ensure alignment with your expectations. Our collaborative approach means we work closely with you throughout the process to deliver something you're genuinely excited about.",
   },
   {
     id: "item-2",
-    question: "What does \'Project Sprint\' vs. \'Growth Retainer\' mean?",
+    question: "How do I know this will actually increase my conversions?",
     answer:
-      "A Project Sprint is best for well-defined, one-off projects with a fixed scope and timeline (e.g., landing page, MVP). A Growth Retainer provides ongoing, flexible capacity for continuous development, optimization, and strategic support.",
+      "We implement proven conversion optimization techniques and user psychology principles that have worked across industries. We set up proper analytics tracking so you can measure the impact. While results vary by business, our focus on conversion-first design typically leads to meaningful improvements in user engagement and lead generation.",
   },
   {
     id: "item-3",
-    question: "How fast will my project or requests be fulfilled?",
+    question: "What if you disappear after taking my payment?",
     answer:
-      "Project Sprints typically run for 2-4 weeks. For retainers, we prioritize rapid iteration, often delivering updates or completing tasks within 2-3 business days, depending on complexity.",
+      "We understand this concern in the web industry. We maintain transparent communication throughout the project with regular updates. Our process includes milestone check-ins, and we provide post-launch support to ensure everything runs smoothly. You'll have direct access to our team throughout the engagement.",
   },
   {
     id: "item-4",
-    question: "Can I pause or cancel my Growth Retainer subscription?",
+    question: "Why should I choose you over a big agency or freelancer?",
     answer:
-      "Yes, our Growth Retainer is designed for flexibility. You can pause or cancel your subscription at any time, ensuring you only pay for the value you receive.",
+      "Big agencies charge $15K+ and take 6 months for what we deliver in 2-4 weeks. Freelancers are cheaper but often disappear or lack the full skill set. We're the sweet spot: agency-quality work with freelancer-level attention and startup speed. Plus, you work directly with the founders, not junior staff.",
   },
-   {
+  {
     id: "item-5",
-    question: "What technologies do you specialize in?",
+    question: "My business is unique/complex - can you handle it?",
     answer:
-      "We specialize in modern web technologies including Next.js, React, TypeScript, Node.js, Tailwind CSS, and various headless CMS and backend solutions, focusing on building high-performance, scalable applications.",
+      "We've worked with everything from mortgage brokers to AI startups to document clearing services. Every business thinks they're unique, but conversion principles are universal. We adapt our proven framework to your specific industry, audience, and goals. If we genuinely can't help, we'll tell you upfront and refer you to someone who can.",
+  },
+  {
+    id: "item-6",
+    question: "What if I need changes after the website is live?",
+    answer:
+      "All projects include 30-60 days of post-launch support for bug fixes and minor adjustments. For ongoing changes, we offer retainer packages starting at $500/month, or you can book individual updates as needed. We also provide training so your team can handle basic content updates independently.",
+  },
+  {
+    id: "item-7",
+    question: "How fast will my project be completed?",
+    answer:
+      "One-off projects: 7-14 days from design approval to launch. Retainer projects: 14-21 days. We work in focused sprints, not dragged-out timelines. You'll see progress daily, not monthly. Rush delivery available for an additional 25% if you need it faster.",
+  },
+  {
+    id: "item-8",
+    question: "Do you provide hosting and ongoing maintenance?",
+    answer:
+      "We can handle hosting setup and recommend the best solutions for your needs, but we don't lock you into our hosting. For maintenance, we offer optional retainer packages or you can handle it yourself. We build sites that are easy to maintain and provide full documentation and training.",
   },
 ];
 

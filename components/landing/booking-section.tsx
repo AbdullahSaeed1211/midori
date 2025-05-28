@@ -11,6 +11,10 @@ import { Calendar, MessageSquare } from "lucide-react";
 export function BookingSection() {
   const [activeTab, setActiveTab] = useState<'call' | 'form'>('call');
 
+  const handleBackToTabs = () => {
+    setActiveTab('call'); // Navigate back to the call tab by default
+  };
+
   return (
     <BlurFade delay={0.1} inView>
       {/* Section needs an ID for navigation */}
@@ -80,7 +84,7 @@ export function BookingSection() {
               </div>
             ) : (
               <div className="bg-charcoal-black/50 border border-off-white/10 rounded-2xl p-4 sm:p-8 md:p-12">
-                <ContactForm />
+                <ContactForm onBack={handleBackToTabs} />
               </div>
             )}
           </motion.div>

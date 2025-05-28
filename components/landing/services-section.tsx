@@ -213,9 +213,9 @@ export function ServicesSection() {
         {/* Scroll Indicator */}
         <div className="flex justify-center mt-20">
           <ScrollIndicator 
-            text="See Our Offerings" 
+            text="See Our Process" 
             onClick={() => {
-              const nextSection = document.getElementById('offerings');
+              const nextSection = document.getElementById('process');
               if (nextSection) {
                 nextSection.scrollIntoView({ behavior: 'smooth' });
               }

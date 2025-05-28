@@ -136,9 +136,9 @@ export function CaseStudiesSection() {
         {/* Scroll Indicator */}
         <div className="flex justify-center mt-20">
           <ScrollIndicator 
-            text="Why Choose Us" 
+            text="Client Testimonials" 
             onClick={() => {
-              const nextSection = document.getElementById('why-us');
+              const nextSection = document.getElementById('client-wins');
               if (nextSection) {
                 nextSection.scrollIntoView({ behavior: 'smooth' });
               }

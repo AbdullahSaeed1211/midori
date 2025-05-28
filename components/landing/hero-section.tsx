@@ -11,6 +11,7 @@ import { Spotlight } from "@/components/ui/spotlight";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { ScrollIndicator } from "@/components/ui/scroll-indicator";
 import { Marquee } from "@/components/magicui/marquee";
+import { DotPattern } from "@/components/magicui/dot-pattern";
 
 export function HeroSection() {
   // State to handle client-side animations
@@ -34,7 +35,19 @@ export function HeroSection() {
       className="relative min-h-screen flex flex-col items-center justify-center bg-charcoal-black text-off-white overflow-hidden"
       id="hero"
     >
-      {/* Background effects */}
+      {/* Background effects - layered */}
+      <DotPattern
+        className={cn(
+          "opacity-30 text-kiiro-yellow/20",
+          "[mask-image:radial-gradient(800px_circle_at_center,white,transparent)]"
+        )}
+        width={20}
+        height={20}
+        cx={1}
+        cy={1}
+        cr={1}
+      />
+      
       <BackgroundBeams className="z-0" />
       
       <div className="absolute inset-0 z-10">
@@ -183,7 +196,7 @@ export function HeroSection() {
               text="Scroll to explore" 
               style="line"
               onClick={() => {
-                const nextSection = document.getElementById('client-wins');
+                const nextSection = document.querySelector('#services');
                 if (nextSection) {
                   nextSection.scrollIntoView({ behavior: 'smooth' });
                 }

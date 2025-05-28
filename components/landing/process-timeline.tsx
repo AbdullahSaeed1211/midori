@@ -75,9 +75,9 @@ export function ProcessTimeline() {
           {/* Scroll Indicator */}
           <div className="flex justify-center mt-12 md:mt-16">
             <ScrollIndicator 
-              text="See the Benefits" 
+              text="See Our Work" 
               onClick={() => {
-                const nextSection = document.getElementById('benefits');
+                const nextSection = document.querySelector('[id*="case-studies"]');
                 if (nextSection) {
                   nextSection.scrollIntoView({ behavior: 'smooth' });
                 }

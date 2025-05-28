@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import { Send, CheckCircle, AlertCircle, ArrowLeft, RotateCcw } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -21,7 +21,11 @@ interface FormStatus {
   message: string;
 }
 
-export function ContactForm() {
+interface ContactFormProps {
+  onBack?: () => void;
+}
+
+export function ContactForm({ onBack }: ContactFormProps) {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -34,6 +38,8 @@ export function ContactForm() {
     type: 'idle',
     message: ''
   });
+
+  const [showForm, setShowForm] = useState(true);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -65,14 +71,9 @@ export function ContactForm() {
         message: 'Thanks! We&apos;ll get back to you within 24 hours.' 
       });
       
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        projectType: '',
-        message: ''
-      });
+      // Hide form and show success section
+      setShowForm(false);
+      
     } catch {
       setStatus({ 
         type: 'error', 
@@ -81,12 +82,101 @@ export function ContactForm() {
     }
   };
 
+  const handleSendAnother = () => {
+    // Reset form data
+    setFormData({
+      name: '',
+      email: '',
+      company: '',
+      projectType: '',
+      message: ''
+    });
+    
+    // Reset status
+    setStatus({
+      type: 'idle',
+      message: ''
+    });
+    
+    // Show form again
+    setShowForm(true);
+  };
+
   const projectTypes = [
     'New Website',
     'Website Redesign',
     'Other'
   ];
 
+  // Success/Sent Section
+  if (!showForm && status.type === 'success') {
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        className="text-center py-8 sm:py-12"
+      >
+        {/* Success Icon */}
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+          className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-6 bg-green-500/20 rounded-full flex items-center justify-center border border-green-500/30"
+        >
+          <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 text-green-400" />
+        </motion.div>
+
+        {/* Success Message */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+        >
+          <h3 className="text-2xl sm:text-3xl font-bold text-off-white mb-4">
+            Message Sent Successfully!
+          </h3>
+          <p className="text-lg text-off-white/80 mb-8 max-w-md mx-auto">
+            Thanks! We&apos;ll get back to you within 24 hours.
+          </p>
+        </motion.div>
+
+        {/* Action Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+        >
+          {/* Send Another Message Button */}
+          <motion.button
+            onClick={handleSendAnother}
+            className="flex items-center gap-2 px-6 py-3 bg-kiiro-yellow text-charcoal-black rounded-lg font-medium hover:bg-kiiro-yellow/90 transition-all duration-300"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <RotateCcw className="w-4 h-4" />
+            Send Another Message
+          </motion.button>
+
+          {/* Back Button (if onBack prop is provided) */}
+          {onBack && (
+            <motion.button
+              onClick={onBack}
+              className="flex items-center gap-2 px-6 py-3 border border-off-white/20 text-off-white rounded-lg font-medium hover:border-kiiro-yellow/40 hover:text-kiiro-yellow transition-all duration-300"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back to Options
+            </motion.button>
+          )}
+        </motion.div>
+      </motion.div>
+    );
+  }
+
+  // Form Section
   return (
     <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
       {/* Name and Email */}
@@ -178,18 +268,16 @@ export function ContactForm() {
       </div>
 
       {/* Status Message */}
-      {status.type !== 'idle' && (
+      {status.type !== 'idle' && status.type !== 'success' && (
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           className={cn(
             "flex items-center gap-2 p-3 sm:p-4 rounded-lg text-sm sm:text-base",
-            status.type === 'success' && "bg-green-500/10 text-green-400 border border-green-500/20",
             status.type === 'error' && "bg-red-500/10 text-red-400 border border-red-500/20",
             status.type === 'loading' && "bg-kiiro-yellow/10 text-kiiro-yellow border border-kiiro-yellow/20"
           )}
         >
-          {status.type === 'success' && <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />}
           {status.type === 'error' && <AlertCircle className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />}
           {status.type === 'loading' && (
             <div className="h-4 w-4 sm:h-5 sm:w-5 border-2 border-kiiro-yellow border-t-transparent rounded-full animate-spin flex-shrink-0" />
