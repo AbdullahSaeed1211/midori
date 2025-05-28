@@ -74,9 +74,9 @@ export function Footer() {
                   <Twitter size={20} />
                 </a>
                 <a 
-                  href="mailto:hello@kiiro.cx" // Replace with your email address
+                  href="mailto:abdullah.saeed1724@gmail.com"
                   aria-label="Email"
-                  className="text-off-white/80 hover:text-kiiro-yellow transition-colors"
+                  className="text-off-white/80 hover:text-kiiro-yellow transition-colors duration-300"
                 >
                   <Mail size={20} />
                 </a>

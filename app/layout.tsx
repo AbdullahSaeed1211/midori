@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | Kiiro.cx",
     default: "Kiiro.cx | Strategic Web Engineering for Business Growth",
   },
-  description: "High-performance websites and web applications engineered for conversion, engagement, and measurable business results. We build custom digital solutions that drive growth.",
+  description: "We help service businesses get more qualified leads in 14 days without expensive ads or long waits. Get a free homepage demo and see how conversion-focused design transforms your business.",
   keywords: [
     "web development", 
     "conversion optimization", 
@@ -37,7 +37,22 @@ export const metadata: Metadata = {
     "SEO-friendly websites",
     "user experience design",
     "web engineering",
-    "responsive websites"
+    "responsive websites",
+    // Local market keywords
+    "web development Lucknow",
+    "website design India", 
+    "UAE web development",
+    "Dubai web design",
+    "SMB website design",
+    "small business web development",
+    "boutique web agency",
+    "fast website delivery",
+    "7 day website",
+    "interior designer website",
+    "service business website",
+    "local business web design",
+    "Indian web developer",
+    "affordable web design India"
   ],
   authors: [{ name: "Kiiro.cx" }],
   metadataBase: new URL('https://kiiro.cx'),

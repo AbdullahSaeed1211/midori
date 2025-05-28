@@ -54,7 +54,15 @@ function PricingOptionCard({
       </div>
       
       <div className="mb-6">
-        <div className="text-3xl font-bold text-off-white">{price}</div>
+        <div className="flex flex-col gap-1">
+          {/* Show "was" price with strikethrough for founding client pricing */}
+          {limitedSpots && (
+            <div className="text-lg text-kiiro-yellow/70 line-through">
+              {title === "One-off Project" ? "Was $800+" : "Was $1000+/mo"}
+            </div>
+          )}
+          <div className="text-3xl font-bold text-off-white">{price}</div>
+        </div>
         
         {/* Limited spots counter */}
         {limitedSpots && (
@@ -202,8 +210,20 @@ export function PricingSection() {
                 <thead>
                   <tr className="bg-kiiro-yellow/10 border-b border-kiiro-yellow/20">
                     <th className="py-5 px-6 text-left font-medium text-off-white">Features</th>
-                    <th className="py-5 px-6 text-center font-medium text-off-white">One-off</th>
-                    <th className="py-5 px-6 text-center font-medium text-off-white">Retainer</th>
+                    <th className="py-5 px-6 text-center font-medium text-off-white">
+                      <div className="flex flex-col items-center gap-1">
+                        <div className="text-sm text-kiiro-yellow/70 line-through">Was $800+</div>
+                        <div>One-off (Starting from $400)</div>
+                        <div className="text-xs text-kiiro-yellow font-normal">8 spots left</div>
+                      </div>
+                    </th>
+                    <th className="py-5 px-6 text-center font-medium text-off-white">
+                      <div className="flex flex-col items-center gap-1">
+                        <div className="text-sm text-kiiro-yellow/70 line-through">Was $1000+/mo</div>
+                        <div>Retainer (Starting from $500/mo)</div>
+                        <div className="text-xs text-kiiro-yellow font-normal">5 spots left</div>
+                      </div>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -224,14 +244,14 @@ export function PricingSection() {
                 <PricingOptionCard
                   title="One-off Project"
                   description="Perfect for businesses needing a professional website without ongoing commitments."
-                  price="$800 - $1,000"
+                  price="Starting from $400"
                   features={pricingFeatures
                     .filter(f => f.onetime)
                     .map(f => typeof f.onetime === "string" ? `${f.name} (${f.onetime})` : f.name)}
                   featureLabel="Included in package:"
-                  cta="Get Started"
+                  cta="Get Custom Quote"
                   ctaLink="#booking"
-                  limitedSpots={5}
+                  limitedSpots={8}
                 />
               </motion.div>
               
@@ -244,7 +264,7 @@ export function PricingSection() {
                 <PricingOptionCard
                   title="Monthly Retainer"
                   description="Ideal for businesses requiring ongoing support and continuous improvement."
-                  price="$900 - $1,200/mo"
+                  price="Starting from $500/mo"
                   features={pricingFeatures
                     .filter(f => f.retainer)
                     .map(f => typeof f.retainer === "string" ? `${f.name} (${f.retainer})` : f.name)}
@@ -252,7 +272,7 @@ export function PricingSection() {
                   cta="Schedule a Call"
                   ctaLink="#booking"
                   highlighted
-                  limitedSpots={3}
+                  limitedSpots={5}
                 />
               </motion.div>
             </div>

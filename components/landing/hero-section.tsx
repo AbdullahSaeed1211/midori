@@ -74,7 +74,7 @@ export function HeroSection() {
             animate={isMounted ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            Turning <span className="text-kiiro-yellow">visitors into customers</span> with strategic design, compelling copy, and flawless development. We create digital experiences that drive real business results.
+            Without delays, fluff, or overpriced retainers. We build <span className="text-kiiro-yellow">conversion-focused websites</span> that turn your visitors into <span className="text-kiiro-yellow">paying customers</span>—fast.
           </motion.p>
         </div>
         
@@ -85,28 +85,45 @@ export function HeroSection() {
           animate={isMounted ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <Link 
-            href="#booking" 
-            className={cn(
-              "flex items-center justify-center gap-2 px-6 md:px-8 py-3 md:py-4 rounded-lg",
-              "bg-kiiro-yellow text-charcoal-black font-medium text-base md:text-lg",
-              "transition-all duration-300 hover:scale-105",
-              "hover:shadow-[0_0_25px_rgba(255,236,0,0.4)]"
-            )}
-          >
-            Get Started <ArrowRight className="h-4 w-4 ml-1" />
-          </Link>
+          <div className="relative flex justify-center sm:justify-start">
+            {/* Limited Offer Badge */}
+            <motion.div 
+              className="absolute -top-2 -left-2 sm:-left-2 z-10"
+              initial={{ opacity: 0, scale: 0.8, rotate: -12 }}
+              animate={isMounted ? { opacity: 1, scale: 1, rotate: -12 } : {}}
+              transition={{ duration: 0.6, delay: 0.8, type: "spring", stiffness: 200 }}
+            >
+              <div className="bg-off-white text-charcoal-black text-xs font-bold px-2 sm:px-3 py-1 rounded-full shadow-lg transform -rotate-12">
+                <span className="hidden sm:inline">LIMITED OFFER</span>
+                <span className="sm:hidden">LIMITED</span>
+              </div>
+            </motion.div>
+            
+            <Link 
+              href="#booking" 
+              className={cn(
+                "flex items-center justify-center gap-2 px-4 sm:px-6 md:px-8 py-3 md:py-4 rounded-lg w-full sm:w-auto",
+                "bg-kiiro-yellow text-charcoal-black font-medium text-sm sm:text-base md:text-lg",
+                "transition-all duration-300 hover:scale-105",
+                "hover:shadow-[0_0_25px_rgba(255,236,0,0.4)]"
+              )}
+            >
+              <span className="hidden sm:inline">Get Free Homepage Demo</span>
+              <span className="sm:hidden">Get Free Demo</span>
+              <ArrowRight className="h-4 w-4 ml-1" />
+            </Link>
+          </div>
           
           <Link 
-            href="#services"
+            href="#case-studies"
             className={cn(
-              "flex items-center justify-center gap-2 px-6 md:px-8 py-3 md:py-4 rounded-lg",
-              "bg-transparent text-off-white font-medium text-base md:text-lg",
+              "flex items-center justify-center gap-2 px-4 sm:px-6 md:px-8 py-3 md:py-4 rounded-lg w-full sm:w-auto",
+              "bg-transparent text-off-white font-medium text-sm sm:text-base md:text-lg",
               "border border-off-white/20 transition-all duration-300",
               "hover:bg-off-white/5 hover:border-off-white/40"
             )}
           >
-            See Our Services
+            View Case Studies
           </Link>
         </motion.div>
         
@@ -154,9 +171,12 @@ export function HeroSection() {
             </Link>
             
             {/* Status Banner - Moved above scroll indicator */}
-            <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-teal-accent/10 text-teal-accent border border-teal-accent/20 mb-8">
+            <div className="flex items-center gap-2 px-3 sm:px-5 py-2.5 rounded-full bg-teal-accent/10 text-teal-accent border border-teal-accent/20 mb-8 mx-4 sm:mx-0">
               <span className="inline-block h-2 w-2 rounded-full bg-teal-accent animate-pulse"></span>
-              <span className="text-sm font-medium">Currently accepting new clients for Q3 2025</span>
+              <span className="text-xs sm:text-sm font-medium text-center">
+                <span className="hidden sm:inline">Currently accepting new clients for Q3 2025</span>
+                <span className="sm:hidden">Accepting new clients Q3 2025</span>
+              </span>
             </div>
             
             <ScrollIndicator 

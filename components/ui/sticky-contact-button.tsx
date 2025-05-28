@@ -51,7 +51,15 @@ export function StickyContactButton() {
                   Book a Call
                 </Link>
                 <Link
-                  href="mailto:hello@kiiro.cx"
+                  href="https://wa.me/+917398826339?text=Hi! I'm interested in discussing a website project with Kiiro."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-3 bg-green-600 text-white rounded-lg shadow-lg hover:bg-green-700 transition-colors duration-300"
+                >
+                  WhatsApp
+                </Link>
+                <Link
+                  href="mailto:abdullah.saeed1724@gmail.com"
                   className="flex items-center gap-2 px-4 py-3 bg-off-white text-charcoal-black rounded-lg shadow-lg hover:bg-off-white/90 transition-colors duration-300"
                 >
                   Email Us
