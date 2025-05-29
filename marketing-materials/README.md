@@ -4,6 +4,10 @@ This folder contains all marketing and business development materials for Kiiro.
 
 ## 📁 Contents
 
+### **Pain Point Agitation**
+- `pain-point-agitation.md` - Comprehensive pain point content following Alex Hormozi's approach
+- Includes industry-specific pain points, emotional triggers, and implementation strategies
+
 ### **LinkedIn Content**
 - `linkedin-posts.md` - 7 ready-to-post LinkedIn content pieces for the first week
 
@@ -23,6 +27,17 @@ This folder contains all marketing and business development materials for Kiiro.
 - Includes pricing strategies, positioning, and operational adjustments
 
 ## 🎯 Usage Instructions
+
+### **Pain Point Agitation**
+- Use content from `pain-point-agitation.md` for website copy, sales calls, and content marketing
+- Implemented on website as dedicated pain point section after testimonials
+- Enhanced FAQ section with objection handling based on common concerns
+
+### **Website Conversion Optimization**
+- Added pain point agitation section highlighting $50K+ annual losses from poor websites
+- Implemented value stack section showing $8,750 total value vs $400 founding client price
+- Enhanced FAQ with 8 objection-handling questions addressing trust, quality, and process concerns
+- All sections follow Alex Hormozi's conversion principles: agitate → value stack → objection handling
 
 ### **LinkedIn Posts**
 - Post one per day for maximum engagement
