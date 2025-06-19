@@ -67,7 +67,7 @@ export default function SimplyMortgageCaseStudy() {
                   </div>
                   <div>
                     <p className="text-sm text-off-white/60 mb-1">Timeline</p>
-                    <p className="text-lg text-off-white">8 Weeks</p>
+                    <p className="text-lg text-off-white">12-14 Days</p>
                   </div>
                   <div>
                     <p className="text-sm text-off-white/60 mb-1">Website</p>

@@ -67,7 +67,7 @@ export default function DubbbyCaseStudy() {
                   </div>
                   <div>
                     <p className="text-sm text-off-white/60 mb-1">Timeline</p>
-                    <p className="text-lg text-off-white">2 Months</p>
+                    <p className="text-lg text-off-white">1 Week</p>
                   </div>
                   <div>
                     <p className="text-sm text-off-white/60 mb-1">Status</p>

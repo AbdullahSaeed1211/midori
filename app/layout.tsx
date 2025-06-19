@@ -3,6 +3,7 @@ import { Space_Grotesk, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { StickyContactButton } from "@/components/ui/sticky-contact-button";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { DemoNotification } from "@/components/ui/demo-notification";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -124,6 +125,7 @@ export default function RootLayout({
         <ScrollProgress color="#FFEC00" height={3} />
         {children}
         <StickyContactButton />
+        <DemoNotification />
       </body>
     </html>
   );

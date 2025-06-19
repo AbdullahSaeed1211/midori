@@ -65,17 +65,17 @@ export default function SproutlyCaseStudy() {
                   </div>
                   <div>
                     <p className="text-sm text-off-white/60 mb-1">Timeline</p>
-                    <p className="text-lg text-off-white">10 Weeks</p>
+                    <p className="text-lg text-off-white">5 Days</p>
                   </div>
                   <div>
                     <p className="text-sm text-off-white/60 mb-1">Website</p>
-                    <a href="https://garden-client-wine.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-lg text-kiiro-yellow hover:underline">
-                      garden-client-wine.vercel.app
+                    <a href="https://sproutly.site/" target="_blank" rel="noopener noreferrer" className="text-lg text-kiiro-yellow hover:underline">
+                      sproutly.site
                     </a>
                   </div>
                 </div>
                 <div className="mt-8">
-                  <a href="https://garden-client-wine.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-block px-8 py-3 rounded-lg bg-kiiro-yellow text-charcoal-black font-bold text-lg shadow-lg hover:bg-kiiro-yellow/90 transition-colors duration-300">
+                  <a href="https://sproutly.site/" target="_blank" rel="noopener noreferrer" className="inline-block px-8 py-3 rounded-lg bg-kiiro-yellow text-charcoal-black font-bold text-lg shadow-lg hover:bg-kiiro-yellow/90 transition-colors duration-300">
                     Visit Live Site
                   </a>
                 </div>
