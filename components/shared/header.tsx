@@ -134,8 +134,8 @@ export function Header() {
                   <Menu className="h-5 w-5" />
                 </button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full max-w-xs bg-deep-gray border-l border-kiiro-yellow/10 text-off-white p-6 flex flex-col">
-                <SheetHeader className="mb-8 border-b border-kiiro-yellow/10 pb-4">
+              <SheetContent side="right" className="w-full max-w-xs bg-charcoal-gray/95 backdrop-blur-sm border-l border-white/10 text-off-white p-6 flex flex-col shadow-2xl">
+                <SheetHeader className="mb-8 border-b border-white/10 pb-4">
                   <SheetTitle className="text-2xl font-bold text-off-white">
                     kiiro<span className="text-kiiro-yellow">.cx</span>
                   </SheetTitle>
@@ -163,7 +163,7 @@ export function Header() {
                     })}
                   </ul>
                 </nav>
-                <div className="pt-6 mt-6 border-t border-kiiro-yellow/10">
+                <div className="pt-6 mt-6 border-t border-white/10">
                   <Button
                     asChild
                     variant="default"
