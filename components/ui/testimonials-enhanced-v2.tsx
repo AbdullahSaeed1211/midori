@@ -95,7 +95,7 @@ export function TestimonialsEnhancedV2() {
               Real Results from Real Clients
             </h2>
             <p className="text-lg text-off-white/80 max-w-2xl mx-auto">
-              See how we've helped businesses transform their online presence and achieve measurable growth
+              See how we&apos;ve helped businesses transform their online presence and achieve measurable growth
             </p>
           </div>
 
@@ -126,7 +126,7 @@ export function TestimonialsEnhancedV2() {
 
                     {/* Content */}
                     <blockquote className="text-lg md:text-xl text-off-white leading-relaxed mb-6">
-                      "{testimonials[currentIndex].content}"
+                      &quot;{testimonials[currentIndex].content}&quot;
                     </blockquote>
 
                     {/* Metric Badge */}

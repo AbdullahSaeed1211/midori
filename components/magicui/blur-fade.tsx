@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface BlurFadeProps {
@@ -49,7 +49,7 @@ export function BlurFade({
   };
 
   // Variants for animation states
-  const variants = {
+  const variants: Variants = {
     hidden: {
       opacity: 0,
       filter: `blur(${blur})`,
