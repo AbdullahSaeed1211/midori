@@ -12,6 +12,7 @@ import { SparklesCore } from "@/components/ui/sparkles";
 import { ScrollIndicator } from "@/components/ui/scroll-indicator";
 import { Marquee } from "@/components/magicui/marquee";
 import { DotPattern } from "@/components/magicui/dot-pattern";
+import { CountdownTimer } from "@/components/ui/countdown-timer";
 
 export function HeroSection() {
   // State to handle client-side animations
@@ -68,7 +69,7 @@ export function HeroSection() {
       />
       
       {/* Content */}
-      <div className="container relative z-20 mx-auto px-4 text-center py-12 flex flex-col justify-center min-h-screen">
+      <div className="container relative z-20 mx-auto px-4 text-center py-12 flex flex-col justify-center min-h-screen max-w-7xl">
         {/* Heading */}
         <div className="max-w-4xl mx-auto mb-8 sm:mb-12 mt-20">
           <motion.h1 
@@ -77,8 +78,8 @@ export function HeroSection() {
             animate={isMounted ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
           >
-            <span className="block mb-3 text-off-white">We Build High-Converting</span>
-            <span className="block text-kiiro-yellow">Websites & Digital Experiences</span>
+            <span className="block mb-3 text-off-white">Build a Website That</span>
+            <span className="block text-kiiro-yellow">Works Like a Sales Team</span>
           </motion.h1>
           
           <motion.p 
@@ -87,7 +88,7 @@ export function HeroSection() {
             animate={isMounted ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            Without delays, fluff, or overpriced retainers. We build <span className="text-kiiro-yellow">conversion-focused websites</span> that turn your visitors into <span className="text-kiiro-yellow">paying customers</span>—fast.
+            Whether you&apos;re launching your first business, growing a course, or optimizing what you have, we create <span className="text-kiiro-yellow">professional websites</span> that establish credibility and turn visitors into <span className="text-kiiro-yellow">customers</span> - fast delivery, no fluff, no overpriced retainers.
           </motion.p>
         </div>
         
@@ -121,8 +122,8 @@ export function HeroSection() {
                 "hover:shadow-[0_0_25px_rgba(255,236,0,0.4)]"
               )}
             >
-              <span className="hidden sm:inline">Get Free Homepage Demo</span>
-              <span className="sm:hidden">Get Free Demo</span>
+              <span className="hidden sm:inline">Get Free Conversion Audit</span>
+              <span className="sm:hidden">Free Audit</span>
               <ArrowRight className="h-4 w-4 ml-1" />
             </Link>
           </div>
@@ -184,12 +185,20 @@ export function HeroSection() {
             </Link>
             
             {/* Status Banner - Moved above scroll indicator */}
-            <div className="flex items-center gap-2 px-3 sm:px-5 py-2.5 rounded-full bg-teal-accent/10 text-teal-accent border border-teal-accent/20 mb-8 mx-4 sm:mx-0">
+            <div className="flex items-center gap-2 px-3 sm:px-5 py-2.5 rounded-full bg-teal-accent/10 text-teal-accent border border-teal-accent/20 mb-4 mx-4 sm:mx-0">
               <span className="inline-block h-2 w-2 rounded-full bg-teal-accent animate-pulse"></span>
               <span className="text-xs sm:text-sm font-medium text-center">
                 <span className="hidden sm:inline">Currently accepting new clients for Q3 2025</span>
                 <span className="sm:hidden">Accepting new clients Q3 2025</span>
               </span>
+            </div>
+            
+            {/* Countdown Timer */}
+            <div className="mb-8 mx-4 sm:mx-0 max-w-md mx-auto">
+              <CountdownTimer 
+                title="⚡ Limited Time Offer"
+                subtitle="Free conversion audit ends in:"
+              />
             </div>
             
             <ScrollIndicator 

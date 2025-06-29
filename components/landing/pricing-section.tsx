@@ -40,10 +40,25 @@ function PricingOptionCard({
     >
       {/* Limited-time offer badge */}
       {limitedSpots && (
-        <div className="absolute -top-3 -right-3 z-10">
-          <div className="bg-kiiro-yellow text-charcoal-black text-xs font-bold px-3 py-1.5 rounded-md shadow-lg flex items-center gap-1.5">
-            <AlertCircle className="h-3.5 w-3.5" /> 
-            Founding Client Pricing
+        <div className={cn(
+          "absolute z-10",
+          highlighted 
+            ? "-top-3 -left-3" // Position on left when highlighted (to avoid collision with MOST POPULAR)
+            : "-top-3 -right-3" // Position on right when not highlighted
+        )}>
+          <div className="bg-kiiro-yellow text-charcoal-black text-xs font-bold px-2.5 py-1 rounded-md shadow-lg flex items-center gap-1">
+            <AlertCircle className="h-3 w-3" /> 
+            <span className="hidden sm:inline">Founding Client Pricing</span>
+            <span className="sm:hidden">Founding</span>
+          </div>
+        </div>
+      )}
+      
+      {/* Most Popular Badge for highlighted option */}
+      {highlighted && (
+        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
+          <div className="bg-white text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+            ⭐ <span className="hidden sm:inline">MOST POPULAR</span><span className="sm:hidden">TOP</span>
           </div>
         </div>
       )}
@@ -55,12 +70,6 @@ function PricingOptionCard({
       
       <div className="mb-6">
         <div className="flex flex-col gap-1">
-          {/* Show "was" price with strikethrough for founding client pricing */}
-          {limitedSpots && (
-            <div className="text-lg text-kiiro-yellow/70 line-through">
-              {title === "One-off Project" ? "Was $800+" : "Was $1000+/mo"}
-            </div>
-          )}
           <div className="text-3xl font-bold text-off-white">{price}</div>
         </div>
         
@@ -89,12 +98,20 @@ function PricingOptionCard({
         className={cn(
           "inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all duration-300",
           highlighted
-            ? "bg-kiiro-yellow text-off-white hover:bg-kiiro-yellow/90"
+            ? "bg-kiiro-yellow text-charcoal-black hover:bg-kiiro-yellow/90 shadow-lg shadow-kiiro-yellow/25 hover:shadow-kiiro-yellow/40 transform hover:scale-105"
             : "bg-deep-gray hover:bg-deep-gray/80 text-off-white border border-kiiro-yellow/20"
         )}
       >
         {cta}
       </a>
+      
+      {/* Microcopy under CTA */}
+      <p className="text-xs text-off-white/60 text-center mt-3">
+        {highlighted 
+          ? "⚡ Takes 30 seconds. No pressure, just insights." 
+          : "📞 Quick 15-minute call to discuss your needs"
+        }
+      </p>
     </div>
   );
 }
@@ -168,7 +185,7 @@ export function PricingSection() {
   return (
     <BlurFade inView>
       <section className="py-24 bg-charcoal-black text-off-white" id="detailed-pricing">
-        <div className="container px-4 mx-auto">
+        <div className="container px-4 mx-auto max-w-7xl">
           <div className="flex flex-col items-center text-center mb-16 max-w-3xl mx-auto">
             <div className="px-4 py-1.5 rounded-full bg-kiiro-yellow/10 text-kiiro-yellow text-sm font-medium mb-6 border border-kiiro-yellow/20">
               Detailed Pricing Comparison
@@ -179,6 +196,16 @@ export function PricingSection() {
             <p className="text-xl text-off-white/80 max-w-2xl">
               Get a comprehensive view of our offerings to find the perfect fit for your business needs.
             </p>
+            
+            {/* Value Anchoring */}
+            <div className="bg-kiiro-yellow/10 border border-kiiro-yellow/20 rounded-lg p-6 mb-8 max-w-4xl mx-auto">
+              <p className="text-kiiro-yellow font-medium text-lg mb-3">
+                💰 What would a professional website be worth to your business?
+              </p>
+              <p className="text-off-white/90">
+                Stop spending hours on content and cold outreach while your prospects can&apos;t find a credible website that answers their questions and shows why they should choose you. Whether you&apos;re launching your first business or scaling an existing one, a professional website is the foundation that makes all your other marketing efforts actually work.
+              </p>
+            </div>
             
             <div className="mt-8 bg-deep-gray/30 p-1.5 rounded-lg flex overflow-hidden border border-kiiro-yellow/10">
               {["table", "cards"].map((v) => (
@@ -212,14 +239,12 @@ export function PricingSection() {
                     <th className="py-5 px-6 text-left font-medium text-off-white">Features</th>
                     <th className="py-5 px-6 text-center font-medium text-off-white">
                       <div className="flex flex-col items-center gap-1">
-                        <div className="text-sm text-kiiro-yellow/70 line-through">Was $800+</div>
                         <div>One-off (Starting from $400)</div>
                         <div className="text-xs text-kiiro-yellow font-normal">8 spots left</div>
                       </div>
                     </th>
                     <th className="py-5 px-6 text-center font-medium text-off-white">
                       <div className="flex flex-col items-center gap-1">
-                        <div className="text-sm text-kiiro-yellow/70 line-through">Was $1000+/mo</div>
                         <div>Retainer (Starting from $500/mo)</div>
                         <div className="text-xs text-kiiro-yellow font-normal">5 spots left</div>
                       </div>

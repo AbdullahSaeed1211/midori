@@ -1,249 +1,115 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import { Marquee } from "@/components/magicui/marquee";
 import { useState, useEffect } from "react";
-import { ScrollIndicator } from "@/components/ui/scroll-indicator";
-import React from "react";
+import Image from "next/image";
 
-// Simple Badge component
-function Badge({ 
-  children, 
-  className,
-}: { 
-  children: React.ReactNode; 
-  className?: string;
-  variant?: string;
-}) {
-  return (
-    <div className={`inline-flex items-center rounded-full ${className}`}>
-      {children}
-    </div>
-  );
-}
-
-// Define the Testimonial type
-type Testimonial = {
-  id: number;
-  name: string;
-  location: string;
-  quote: string;
-  initials: string;
-  image: string;
-}
-
-const testimonials: Testimonial[] = [
+const testimonials = [
   {
-    id: 1,
-    name: 'Sarah Johnson',
-    location: 'CEO, TechVenture',
-    quote: 'Working with this team has completely transformed our online presence. Our conversion rates have increased by 60% since the redesign!',
-    initials: 'SJ',
-    image: '/avatars/user1.png'
+    name: "Olivia Wilde",
+    title: "Founder, Sproutly",
+    image: "/avatars/user1.png",
+    quote: "Our mobile conversion rate was abysmal. Kiiro delivered a new design in just 5 days that not only looked incredible but boosted our mobile conversions from 8% to a staggering 92%. It&apos;s been a complete game-changer for our business.",
   },
   {
-    id: 2,
-    name: 'Michael Chen',
-    location: 'Founder, GrowthLabs',
-    quote: 'The team delivered our project on time and on budget. Their strategic approach to design and development was impressive.',
-    initials: 'MC',
-    image: '/avatars/user2.png'
+    name: "Kashif Siddiqui",
+    title: "Simply Mortgages",
+    image: "/avatars/user2.png",
+    quote: "We needed to generate more qualified leads. The new landing page Kiiro built for us increased our lead capture by 42% in the first month alone. Their focus on conversion is second to none.",
   },
   {
-    id: 3,
-    name: 'Emily Rodriguez',
-    location: 'Marketing Director, Eleva',
-    quote: 'Their ability to translate our vision into a functional, beautiful website exceeded our expectations. Highly recommended!',
-    initials: 'ER',
-    image: '/avatars/user3.png'
+    name: "BrainWise Team",
+    title: "Ed-Tech Platform",
+    image: "/avatars/user3.png",
+    quote: "Our students were dropping off mid-course. Kiiro's redesigned user flow was so intuitive that we saw a 67% increase in course completions. They truly understand user psychology.",
   },
   {
-    id: 4,
-    name: 'David Park',
-    location: 'COO, NextLevel Solutions',
-    quote: 'They helped us clarify our message and create a website that truly represents our brand values. A pleasure to work with.',
-    initials: 'DP',
-    image: '/avatars/user4.png'
+    name: "Dubbby Team",
+    title: "SaaS Founders",
+    image: "/avatars/user4.png",
+    quote: "As a pre-launch SaaS, validating our idea was crucial. The landing page Kiiro created was so effective that it secured our first 100 paid users before we even wrote a line of production code.",
   },
   {
-    id: 5,
     name: 'Alexandra Kim',
-    location: 'Product Lead, Innovate Inc',
+    title: 'Product Lead, Innovate Inc',
     quote: 'The redesign not only looks amazing but has dramatically improved our user experience metrics. Our bounce rate decreased by 40%!',
-    initials: 'AK',
     image: '/avatars/user5.png'
   },
   {
-    id: 6,
     name: 'Robert Gonzalez',
-    location: 'CTO, DataFlow',
+    title: 'CTO, DataFlow',
     quote: 'The team provided technical solutions that were both elegant and scalable. They truly understand the balance of design and function.',
-    initials: 'RG',
     image: '/avatars/user6.png'
-  },
-  {
-    id: 7,
-    name: 'Jennifer Tran',
-    location: 'Brand Director, Lumina',
-    quote: 'From strategy to execution, the team delivered exceptional quality at every stage. Our new site has received incredible feedback.',
-    initials: 'JT',
-    image: '/avatars/user7.png'
-  },
-  {
-    id: 8,
-    name: 'Thomas Schmidt',
-    location: 'CEO, Apex Ventures',
-    quote: 'We\'ve seen a 75% increase in qualified leads since launching our new website. Their strategic approach has paid off tremendously.',
-    initials: 'TS',
-    image: '/avatars/user8.png'
   },
 ];
 
-function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
+function TestimonialCard({ name, title, image, quote }: { name: string; title: string; image: string; quote: string; }) {
   return (
-    <div className="flex flex-col space-y-4 rounded-xl bg-charcoal-black/70 p-6 shadow-lg border border-kiiro-yellow/10">
-      <div className="flex items-center space-x-3">
-        <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-kiiro-yellow/10 border border-kiiro-yellow/20">
-          <img 
-            src={testimonial.image} 
-            alt={testimonial.name}
-            className="h-full w-full object-cover"
-          />
-        </div>
+    <div className="relative flex h-full w-full flex-col overflow-hidden rounded-xl bg-charcoal-black p-6 md:p-4 border border-white/5 max-h-40">
+      <div className="flex items-center gap-3 mb-4 md:mb-3">
+        <Image 
+          src={image} 
+          alt={name} 
+          width={40} 
+          height={40} 
+          className="rounded-full object-cover"
+        />
         <div>
-          <h4 className="text-lg font-semibold text-off-white">{testimonial.name}</h4>
-          <p className="text-sm text-off-white/70">{testimonial.location}</p>
+          <h4 className="font-semibold text-off-white text-sm">{name}</h4>
+          <p className="text-xs text-off-white/70">{title}</p>
         </div>
       </div>
-      <p className="text-off-white/80">&quot;{testimonial.quote}&quot;</p>
+      <blockquote className="text-off-white/80 text-sm line-clamp-3 overflow-hidden">
+        &ldquo;{quote}&rdquo;
+      </blockquote>
     </div>
   );
 }
 
 export function TestimonialsSection() {
   const [mounted, setMounted] = useState(false);
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1
-  });
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   return (
-    <section className="py-16 md:py-24 bg-charcoal-black text-off-white relative overflow-hidden" id="client-wins">
-      <motion.div 
-        className="absolute right-0 top-0 w-1/3 h-1/2 bg-kiiro-yellow/5 rounded-bl-full blur-3xl -z-10"
-        initial={{ opacity: 0 }}
-        animate={inView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 1 }}
-      />
-      
-      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
-        <motion.div 
-          className="mx-auto max-w-3xl text-center mb-12"
-          initial={{ opacity: 0, y: -20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-          transition={{ duration: 0.6 }}
-        >
-          <Badge className="px-4 py-1 text-xs border-kiiro-yellow/20 bg-kiiro-yellow/5 mb-4 inline-flex items-center text-kiiro-yellow">
-            Client Wins
-          </Badge>
-          <h2 className="text-4xl font-bold tracking-tight mb-4 text-off-white">
-            Trusted by Innovators
-          </h2>
-          <p className="text-off-white/80 text-lg max-w-2xl mx-auto">
-            Read about how our services have helped clients achieve remarkable growth and digital success.
+    <section className="py-16 md:py-20 bg-charcoal-black text-off-white" id="client-wins">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-off-white">Real Results From Real Clients</h2>
+          <p className="text-lg text-off-white/70 mt-2 max-w-2xl mx-auto">
+            See how we&apos;ve helped businesses improve their website conversions.
           </p>
-        </motion.div>
-        
-        {/* Mobile View - Horizontal Marquee */}
+        </div>
+
         {mounted && (
-          <div className="md:hidden">
-            <Marquee className="py-4" pauseOnHover repeat={2}>
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className="px-4 min-w-[300px] max-w-[300px]">
-                  <TestimonialCard testimonial={testimonial} />
-                </div>
-              ))}
-            </Marquee>
+          <div className="relative">
+            <div className="hidden md:block">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-h-80 overflow-hidden">
+                {[...Array(3)].map((_, i) => (
+                  <Marquee key={i} pauseOnHover vertical className="[--duration:60s]" reverse={i % 2 === 1}>
+                    {testimonials.slice(i * 2, (i + 1) * 2).map((testimonial) => (
+                      <div key={testimonial.name} className="py-3">
+                        <TestimonialCard {...testimonial} />
+                      </div>
+                    ))}
+                  </Marquee>
+                ))}
+              </div>
+            </div>
+            
+            <div className="md:hidden">
+              <Marquee pauseOnHover className="[--duration:40s]">
+                {testimonials.map((testimonial) => (
+                  <div key={testimonial.name} className="w-[320px] mx-3">
+                    <TestimonialCard {...testimonial} />
+                  </div>
+                ))}
+              </Marquee>
+            </div>
           </div>
         )}
-        
-        {/* Desktop View - Three Vertical Columns */}
-        <div className="hidden md:block">
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-            {/* First column - vertical marquee */}
-            <div className="h-[550px] lg:h-[600px] overflow-hidden">
-              {mounted && (
-                <Marquee
-                  className="py-4"
-                  pauseOnHover
-                  repeat={2}
-                  vertical
-                >
-                  {testimonials.slice(0, 3).map((testimonial, index) => (
-                    <div key={index} className="py-4 px-2">
-                      <TestimonialCard testimonial={testimonial} />
-                    </div>
-                  ))}
-                </Marquee>
-              )}
-            </div>
-
-            {/* Second column - vertical marquee faster speed */}
-            <div className="h-[550px] lg:h-[600px] overflow-hidden mt-12">
-              {mounted && (
-                <Marquee
-                  className="py-4 [--duration:65s]"
-                  pauseOnHover
-                  repeat={2}
-                  vertical
-                >
-                  {testimonials.slice(2, 5).map((testimonial, index) => (
-                    <div key={index} className="py-4 px-2">
-                      <TestimonialCard testimonial={testimonial} />
-                    </div>
-                  ))}
-                </Marquee>
-              )}
-            </div>
-
-            {/* Third column - vertical marquee in reverse direction */}
-            <div className="h-[550px] lg:h-[600px] overflow-hidden">
-              {mounted && (
-                <Marquee
-                  className="py-4 [--duration:55s]"
-                  pauseOnHover
-                  repeat={2}
-                  vertical
-                  reverse
-                >
-                  {testimonials.slice(3, 6).map((testimonial, index) => (
-                    <div key={index} className="py-4 px-2">
-                      <TestimonialCard testimonial={testimonial} />
-                    </div>
-                  ))}
-                </Marquee>
-              )}
-            </div>
-          </div>
-        </div>
-        
-        {/* Scroll Indicator */}
-        <div className="flex justify-center mt-12">
-          <ScrollIndicator 
-            text="See Pricing" 
-            onClick={() => {
-              const nextSection = document.getElementById('pricing');
-              if (nextSection) {
-                nextSection.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
-          />
-        </div>
       </div>
     </section>
   );

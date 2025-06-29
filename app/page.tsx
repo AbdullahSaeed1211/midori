@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import { HeroSection } from "@/components/landing/hero-section";
 import { PainPointSection } from "@/components/landing/pain-point-section";
-import { ServicesSection } from "@/components/landing/services-section";
-import { WhyKiiroSection } from "@/components/landing/why-kiiro-section";
+import { ServicesSection } from "@/components/landing/services-section-enhanced";
+import { WhyKiiroSectionEnhanced } from "@/components/landing/why-kiiro-section-enhanced";
 import { PricingOptionsSection } from "@/components/landing/pricing-options-section";
 import { PricingSection } from "@/components/landing/pricing-section";
 import { TestimonialsSection } from "@/components/landing/testimonials-section";
@@ -12,16 +12,23 @@ import { Header } from "@/components/shared/header";
 import { BookingSection } from "@/components/landing/booking-section";
 import { ProcessTimeline } from "@/components/landing/process-timeline";
 import { CaseStudiesSection } from "@/components/landing/case-studies-section";
+import { ConversionAuditCTA } from "@/components/landing/conversion-audit-cta";
+import { TrustBadges } from "@/components/ui/trust-badges";
+import { FounderStorySection } from "@/components/landing/founder-story-section";
+import { LeadMagnetSection } from "@/components/ui/lead-magnet-section";
+import { MidFunnelCTA } from "@/components/landing/mid-funnel-cta";
+import { ChatButton } from "@/components/ui/chat-button";
+import { SectionDivider } from "@/components/ui/section-divider";
 
 export const metadata: Metadata = {
-  title: "kiiro.cx | High-Converting Web Design & Development",
-  description: "Boutique digital agency specializing in AI-enhanced landing pages, SaaS platforms, and brand identities engineered for measurable growth. Personal attention, rapid delivery.",
-  keywords: "web design, web development, conversion optimization, landing pages, SaaS development, digital branding, boutique agency",
+  title: "Professional Website Design for Entrepreneurs & Growing Businesses | kiiro.cx",
+  description: "Get a professional website that establishes credibility and converts visitors into customers. Perfect for new entrepreneurs, course creators, and growing businesses. Fast delivery, transparent pricing.",
+  keywords: "professional website design, entrepreneur website, course creator website, small business website, website for new business, conversion optimization, website design for startups, business credibility website",
   authors: [{ name: "kiiro.cx" }],
   openGraph: {
     type: "website",
-    title: "kiiro.cx | Web Engineering for Growth",
-    description: "Boutique web studio delivering high-performance websites & web solutions designed for conversion and built for scale.",
+    title: "Professional Websites for Entrepreneurs & Growing Businesses | kiiro.cx",
+    description: "Build credibility and convert visitors into customers with a professional website. Designed for entrepreneurs, course creators, and growing businesses.",
     siteName: "kiiro.cx",
   }
 };
@@ -33,26 +40,42 @@ export default function Home() {
       
       <HeroSection />
       
+      <SectionDivider variant="subtle" />
+      
       <PainPointSection />
       
       <div id="services">
         <ServicesSection />
       </div>
       
+      <TrustBadges />
+      
+      <MidFunnelCTA />
+      
       <ProcessTimeline />
       
+      <SectionDivider variant="gradient" />
+      
       <CaseStudiesSection />
+      
+      <SectionDivider variant="dotted" />
       
       <div id="client-wins">
         <TestimonialsSection />
       </div>
+      
+      <ConversionAuditCTA />
       
       <div id="pricing">
         <PricingOptionsSection />
         <PricingSection />
       </div>
       
-      <WhyKiiroSection />
+      <WhyKiiroSectionEnhanced />
+      
+      <FounderStorySection />
+      
+      <LeadMagnetSection />
       
       <div id="faq">
         <FaqSection />
@@ -61,6 +84,8 @@ export default function Home() {
       <BookingSection />
       
       <Footer />
+      
+      <ChatButton />
     </main>
   );
 }

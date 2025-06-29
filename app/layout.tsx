@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
-import { StickyContactButton } from "@/components/ui/sticky-contact-button";
-import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { ChatButton } from "@/components/ui/chat-button";
+import { EnhancedScrollProgress } from "@/components/ui/enhanced-scroll-progress";
 import { DemoNotification } from "@/components/ui/demo-notification";
+import { LiveActivityFeed } from "@/components/ui/live-activity-feed";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -20,18 +21,26 @@ const notoSansJP = Noto_Sans_JP({
 export const metadata: Metadata = {
   title: {
     template: "%s | Kiiro.cx",
-    default: "Kiiro.cx | Strategic Web Engineering for Business Growth",
+    default: "Professional Website Design for Entrepreneurs & Growing Businesses | Kiiro.cx",
   },
-  description: "We help service businesses get more qualified leads in 14 days without expensive ads or long waits. Get a free homepage demo and see how conversion-focused design transforms your business.",
+  description: "Professional websites that establish credibility and convert visitors into customers. Perfect for new entrepreneurs, course creators, service providers, and growing businesses. Fast delivery, transparent pricing.",
   keywords: [
-    "web development", 
+    "professional website design", 
+    "entrepreneur website", 
+    "course creator website",
+    "small business website",
+    "new business website",
+    "website for entrepreneurs",
     "conversion optimization", 
     "landing pages", 
-    "SaaS development", 
+    "business credibility website",
+    "startup website design",
+    "service provider website",
+    "online course website",
+    "business growth website",
     "web design", 
     "NextJS", 
     "React", 
-    "business growth",
     "digital strategy",
     "mobile-first websites",
     "performance optimization",
@@ -62,21 +71,21 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://kiiro.cx",
     siteName: "Kiiro.cx",
-    title: "Kiiro.cx | Strategic Web Engineering",
-    description: "High-performance websites & web solutions designed for conversion and business growth",
+    title: "Professional Website Design for Entrepreneurs & Growing Businesses",
+    description: "Professional websites that establish credibility and convert visitors into customers. Perfect for entrepreneurs, course creators, and growing businesses.",
     images: [
       {
         url: "/projects/kiiro.webp",
         width: 1200,
         height: 630,
-        alt: "Kiiro.cx - Web Engineering for Growth"
+        alt: "Kiiro.cx - Professional Website Design for Growing Businesses"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kiiro.cx | Strategic Web Engineering",
-    description: "High-performance websites & web solutions designed for conversion and business growth",
+    title: "Professional Website Design for Entrepreneurs & Growing Businesses | Kiiro.cx",
+    description: "Professional websites that establish credibility and convert visitors into customers. Perfect for entrepreneurs, course creators, and growing businesses.",
     images: ["/projects/kiiro.webp"],
     site: "@kiirocx",
     creator: "@kiirocx"
@@ -118,14 +127,31 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
+        
+        {/* Google Analytics 4 */}
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_MEASUREMENT_ID}`}></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.GA_MEASUREMENT_ID}', {
+                page_title: document.title,
+                page_location: window.location.href,
+              });
+            `,
+          }}
+        />
       </head>
       <body
-        className={`${spaceGrotesk.variable} ${notoSansJP.variable} font-body font-normal text-base antialiased bg-charcoal-black`}
+        className={`${spaceGrotesk.variable} ${notoSansJP.variable} font-body font-normal text-base antialiased bg-charcoal-black dark`}
       >
-        <ScrollProgress color="#FFEC00" height={3} />
         {children}
-        <StickyContactButton />
+        <ChatButton />
         <DemoNotification />
+        <LiveActivityFeed />
+        <EnhancedScrollProgress />
       </body>
     </html>
   );

@@ -1,90 +1,78 @@
 "use client";
 
 import { BlurFade } from "@/components/magicui/blur-fade";
-import { CheckCircle, Users, Lightbulb, Code, BarChart, Zap } from "lucide-react";
-import { VerticalTimeline } from "@/components/ui/vertical-timeline";
-import { ScrollIndicator } from "@/components/ui/scroll-indicator";
+import { CheckCircle, Users, Code, Zap, ArrowRight } from "lucide-react";
 
 export function ProcessTimeline() {
   const steps = [
     {
-      icon: <Users className="h-4 w-4" />,
-      title: "Discovery & Strategy",
-      description: "We start by understanding your business goals, target audience, and competitive landscape to develop a strategic roadmap."
+      icon: <Users className="h-5 w-5" />,
+      title: "Discovery Call",
+      description: "Understand your goals and target audience",
+      duration: "30 mins"
     },
     {
-      icon: <Lightbulb className="h-4 w-4" />,
-      title: "Design & Content",
-      description: "Our team creates compelling visuals and conversion-focused messaging that resonates with your ideal customers."
+      icon: <Code className="h-5 w-5" />,
+      title: "Design & Build",
+      description: "Create conversion-focused website",
+      duration: "1-2 weeks"
     },
     {
-      icon: <Code className="h-4 w-4" />,
-      title: "Development",
-      description: "Transforming designs into high-performance, responsive code with a focus on speed, accessibility, and SEO."
-    },
-    {
-      icon: <CheckCircle className="h-4 w-4" />,
-      title: "Testing & Launch",
-      description: "Rigorous quality assurance across devices and browsers, followed by a smooth deployment process."
-    },
-    {
-      icon: <BarChart className="h-4 w-4" />,
-      title: "Analyze & Optimize",
-      description: "Post-launch monitoring with data-driven improvements to continuously enhance performance and conversions."
+      icon: <CheckCircle className="h-5 w-5" />,
+      title: "Launch & Support",
+      description: "Go live with ongoing support",
+      duration: "Ongoing"
     }
   ];
 
   return (
-    <section className="py-16 sm:py-20 md:py-28 bg-charcoal-black text-off-white relative" id="process">
-      {/* Background elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute left-1/4 top-1/3 w-64 h-64 rounded-full bg-kiiro-yellow/5 blur-[80px] animate-pulse"></div>
-        <div className="absolute right-1/4 bottom-1/3 w-72 h-72 rounded-full bg-kiiro-yellow/5 blur-[100px] animate-pulse" style={{ animationDelay: "1s" }}></div>
-      </div>
-      
-      <div className="container px-4 mx-auto relative">
+    <section className="py-12 bg-charcoal-black text-off-white" id="process">
+      <div className="container px-4 mx-auto max-w-7xl">
         <BlurFade inView>
-          <div className="text-center mb-10 md:mb-16">
-            <div className="inline-flex flex-col items-center">
-              <div className="px-4 py-1.5 rounded-full bg-kiiro-yellow/10 text-kiiro-yellow text-sm font-medium mb-4 md:mb-6 border border-kiiro-yellow/20">
-                Our Process
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold md:text-5xl mb-4 md:mb-6 text-off-white relative inline-block px-4">
-                How We Bring Your Vision to Life
-                <span className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-kiiro-yellow/30 via-kiiro-yellow to-kiiro-yellow/30 rounded-full"></span>
-              </h2>
-            </div>
-            <p className="text-lg sm:text-xl text-off-white/80 max-w-3xl mx-auto mt-4 md:mt-6">
-              A systematic approach that delivers predictable results and a seamless experience from concept to completion.
+          <div className="text-center mb-8">
+            <p className="text-xs uppercase tracking-[0.25em] text-kiiro-yellow font-semibold mb-3">
+              🚀 OUR PROCESS
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-3 text-off-white">
+              Simple. Focused. Effective.
+            </h2>
+            <p className="text-lg text-off-white/80 max-w-2xl mx-auto">
+              A streamlined approach that gets you online fast.
             </p>
           </div>
         </BlurFade>
 
-        <div className="mt-12 md:mt-20 relative">
-          <VerticalTimeline items={steps} />
-          
-          <BlurFade inView delay={0.6}>
-            <div className="mt-12 md:mt-16 text-center">
-              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-kiiro-yellow/10 text-kiiro-yellow border border-kiiro-yellow/20 hover:bg-kiiro-yellow/20 hover:border-kiiro-yellow/30 transition-all duration-300 cursor-default animate-pulse">
-                <Zap className="h-4 w-4 text-kiiro-yellow" />
-                <span className="text-xs sm:text-sm font-medium">Average project completion: 2-3 weeks</span>
+        {/* Horizontal Timeline - Compact */}
+        <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 max-w-4xl mx-auto mb-8">
+          {steps.map((step, index) => (
+            <div key={index} className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
+              {/* Step Card */}
+              <div className="bg-deep-gray/50 border border-off-white/10 rounded-xl p-6 w-full md:w-64 text-center hover:border-kiiro-yellow/20 transition-all duration-300">
+                <div className="w-12 h-12 bg-kiiro-yellow/20 rounded-lg flex items-center justify-center mx-auto mb-3">
+                  {step.icon}
+                </div>
+                <h3 className="font-bold text-off-white mb-2">{step.title}</h3>
+                <p className="text-sm text-off-white/80 mb-2">{step.description}</p>
+                <span className="text-xs text-kiiro-yellow font-medium">{step.duration}</span>
               </div>
+              
+              {/* Arrow (except for last item) */}
+              {index < steps.length - 1 && (
+                <ArrowRight className="h-5 w-5 text-kiiro-yellow/60 hidden md:block flex-shrink-0" />
+              )}
             </div>
-          </BlurFade>
-          
-          {/* Scroll Indicator */}
-          <div className="flex justify-center mt-12 md:mt-16">
-            <ScrollIndicator 
-              text="See Our Work" 
-              onClick={() => {
-                const nextSection = document.querySelector('[id*="case-studies"]');
-                if (nextSection) {
-                  nextSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-            />
-          </div>
+          ))}
         </div>
+
+        {/* Bottom CTA */}
+        <BlurFade inView delay={0.3}>
+          <div className="text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-kiiro-yellow/10 text-kiiro-yellow border border-kiiro-yellow/20">
+              <Zap className="h-4 w-4" />
+              <span className="text-sm font-medium">Typical delivery: 1-2 weeks</span>
+            </div>
+          </div>
+        </BlurFade>
       </div>
     </section>
   );

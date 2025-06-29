@@ -14,7 +14,7 @@ interface PricingOptionProps {
   isPopular?: boolean;
 }
 
-function PricingOption({ title, description, features, isPopular }: PricingOptionProps) {
+function PricingOption({ title, features, isPopular }: PricingOptionProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   
   return (
@@ -36,7 +36,7 @@ function PricingOption({ title, description, features, isPopular }: PricingOptio
     >
       {isPopular && (
         <div className="absolute -top-1 -right-1">
-          <div className="bg-kiiro-yellow text-off-white text-xs font-bold uppercase px-4 py-1.5 flex items-center gap-1.5 rounded-bl-lg shadow-md">
+          <div className="bg-white text-black text-xs font-bold uppercase px-4 py-1.5 flex items-center gap-1.5 rounded-bl-lg shadow-md">
             <Sparkles className="h-3.5 w-3.5" /> Most Popular
           </div>
         </div>
@@ -49,8 +49,8 @@ function PricingOption({ title, description, features, isPopular }: PricingOptio
         <div className="mb-2 text-sm font-medium text-kiiro-yellow uppercase">
           For {title === "One-off" ? "focused growth" : "serious scaling"}
         </div>
-        <h3 className="text-3xl font-bold text-off-white mb-2">{title === "One-off" ? "Results Accelerator" : "Growth Engine"}</h3>
-        <p className="text-lg text-off-white/80 mb-6">{description}</p>
+        <h3 className="text-3xl font-bold text-off-white mb-2">{title === "One-off" ? "Conversion Accelerator" : "Growth Partnership"}</h3>
+        <p className="text-lg text-off-white/80 mb-6">{title === "One-off" ? "Transform your website into a conversion machine" : "Ongoing optimization to maximize your conversions"}</p>
         
         <div className="space-y-4 mb-8">
           {features.map((feature, index) => (
@@ -107,16 +107,16 @@ export function PricingOptionsSection() {
   return (
     <BlurFade inView>
       <section className="py-28 bg-charcoal-black text-off-white" id="pricing">
-        <div className="container px-4 mx-auto">
+        <div className="container px-4 mx-auto max-w-7xl">
           <div className="flex flex-col items-center text-center mb-16 max-w-3xl mx-auto">
             <div className="px-4 py-1.5 rounded-full bg-kiiro-yellow/10 text-kiiro-yellow text-sm font-medium mb-6 border border-kiiro-yellow/20">
               Value-Based Pricing
             </div>
             <h2 className="text-4xl font-bold md:text-5xl mb-6 text-off-white">
-              Invest in Growth, Not Just a Website
+              Choose Your Conversion-Focused Solution
             </h2>
             <p className="text-xl text-off-white/80 max-w-2xl">
-              Our pricing is designed around the value we deliver. Choose the investment level that matches your growth ambitions.
+              Get high-converting websites without the agency overhead. Choose the investment level that matches your growth goals.
             </p>
           </div>
 

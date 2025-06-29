@@ -79,12 +79,12 @@ export default function SimplyMortgageCaseStudy() {
               </div>
               
               <div className="relative aspect-video rounded-lg overflow-hidden border border-white/10">
-                <Image
-                  src="/projects/simply.webp"
-                  alt="Simply Mortgage website showcase"
-                  fill
-                  className="object-cover"
-                />
+                  <Image
+                    src="/projects/simply.webp"
+                    alt="Simply Mortgage website showcase"
+                    fill
+                    className="object-cover"
+                  />  
               </div>
             </div>
           </div>
@@ -195,8 +195,10 @@ export default function SimplyMortgageCaseStudy() {
                 <h3 className="text-lg font-bold text-off-white group-hover:text-kiiro-yellow transition-colors">Lotus Pro Services</h3>
                 <p className="text-sm text-off-white/60">Premium Document Services</p>
               </Link>
+
             </div>
           </div>
+          
         </section>
       </div>
       

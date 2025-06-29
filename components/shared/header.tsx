@@ -20,10 +20,11 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { label: 'Services', href: '/#services' },
-  { label: 'Pricing', href: '/#pricing' },
   { label: 'Case Studies', href: '/case-studies' },
+  { label: 'Audit', href: '/audit' },
+  { label: 'Pricing', href: '/#pricing' },
   { label: 'Process', href: '/#process' },
-  { label: 'FAQ', href: '/#faq' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 export function Header() {
@@ -68,39 +69,35 @@ export function Header() {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out',
           isScrolled
-            ? 'bg-deep-gray/80 backdrop-blur-xl shadow-lg border-b border-kiiro-yellow/10'
+            ? 'bg-charcoal-gray/95 backdrop-blur-sm border-b border-white/10'
             : 'bg-transparent'
         )}
       >
         <div className="container mx-auto px-4">
-          <div className="flex h-20 items-center justify-between">
+          <div className="flex h-16 items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center text-2xl font-bold text-off-white">
+            <Link href="/" className="flex items-center text-xl font-bold text-off-white">
               kiiro<span className="text-kiiro-yellow">.cx</span>
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-1">
+            <nav className="hidden md:flex items-center space-x-2">
               {navItems.map((item) => {
-                const isActive = `#${activeSection}` === item.href;
+                const isActive = activeSection === item.href.replace('/#', '');
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      "relative px-4 py-2 text-sm font-medium transition-colors",
+                      "relative px-3 py-2 text-sm font-medium transition-colors",
                       isActive
                         ? "text-kiiro-yellow"
-                        : "text-off-white/70 hover:text-kiiro-yellow"
+                        : "text-off-white/70 hover:text-off-white"
                     )}
                   >
                     {item.label}
                     {isActive && (
-                      <span className="absolute bottom-0 left-0 h-0.5 bg-kiiro-yellow"
-                        style={{
-                          width: '30%',
-                          left: '35%',
-                        }}
+                      <span className="absolute bottom-1 left-0 right-0 h-[1px] bg-kiiro-yellow"
                       />
                     )}
                   </Link>
@@ -112,47 +109,47 @@ export function Header() {
             <div className="hidden md:block">
               <Button
                 asChild
+                size="sm"
                 className={cn(
                   "bg-kiiro-yellow text-charcoal-black",
-                  "hover:bg-kiiro-yellow/90 hover:shadow-[0_0_15px_theme(colors.kiiro-yellow/30)]",
+                  "hover:bg-kiiro-yellow/90",
                 )}
               >
-                <Link href="#booking">
+                <Link href="/contact">
                   Book a Call
                 </Link>
               </Button>
             </div>
 
             {/* Mobile Menu Trigger */}
-            <Sheet>
+            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild className="md:hidden">
                 <button 
                   aria-label="Toggle Menu"
-                  className="flex items-center justify-center rounded-full w-10 h-10 bg-kiiro-yellow/10 text-off-white hover:bg-kiiro-yellow/20 transition-colors"
-                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="flex items-center justify-center rounded-md w-9 h-9 text-off-white hover:bg-white/10 transition-colors"
                 >
                   <Menu className="h-5 w-5" />
                 </button>
               </SheetTrigger>
               <SheetContent side="right" className="w-full max-w-xs bg-charcoal-gray/95 backdrop-blur-sm border-l border-white/10 text-off-white p-6 flex flex-col shadow-2xl">
-                <SheetHeader className="mb-8 border-b border-white/10 pb-4">
-                  <SheetTitle className="text-2xl font-bold text-off-white">
+                <SheetHeader className="mb-6 border-b border-white/10 pb-4">
+                  <SheetTitle className="text-xl font-bold text-off-white">
                     kiiro<span className="text-kiiro-yellow">.cx</span>
                   </SheetTitle>
                 </SheetHeader>
                 <nav className="flex-grow">
-                  <ul className="space-y-4">
+                  <ul className="space-y-2">
                     {navItems.map((item) => {
-                      const isActive = `#${activeSection}` === item.href;
+                      const isActive = activeSection === item.href.replace('/#', '');
                       return (
                         <li key={item.href}>
                           <Link
                             href={item.href}
                             className={cn(
-                              "flex items-center py-2 px-4 rounded-lg transition-colors",
+                              "flex items-center py-2.5 px-3 rounded-md transition-colors text-base",
                               isActive
                                 ? "text-kiiro-yellow bg-kiiro-yellow/10" 
-                                : "text-off-white/80 hover:bg-kiiro-yellow/10 hover:text-kiiro-yellow"
+                                : "text-off-white/80 hover:bg-white/10 hover:text-off-white"
                             )}
                             onClick={() => setMobileMenuOpen(false)}
                           >
@@ -170,10 +167,10 @@ export function Header() {
                     size="lg"
                     className={cn(
                       "bg-kiiro-yellow text-charcoal-black w-full",
-                      "hover:bg-kiiro-yellow/90 hover:shadow-[0_0_15px_theme(colors.kiiro-yellow/30)]",
+                      "hover:bg-kiiro-yellow/90",
                     )}
                   >
-                    <Link href="#booking">
+                    <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
                       Book a Call
                     </Link>
                   </Button>

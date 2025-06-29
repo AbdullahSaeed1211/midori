@@ -10,50 +10,50 @@ import { BackgroundBeams } from "@/components/ui/background-beams";
 const CASE_STUDIES: CaseStudyProps[] = [
   {
     title: "Simply Mortgage",
-    description: "UAE's premier mortgage consultancy offering personalized solutions. We revolutionized their digital presence with a high-converting website featuring interactive tools, seamless appointment scheduling, and clear service showcasing. The result: 150% increase in qualified leads and 35% improvement in conversion rates.",
+    description: "UAE's premier mortgage consultancy needed a digital transformation. We built a conversion-focused website with interactive calculators and streamlined booking. Results: significant increase in qualified leads and improved conversion rates.",
     image: "/projects/simply.webp",
     link: "/case-studies/simply-mortgage",
-    tags: ["Web Design", "UX/UI", "Next.js", "SEO Optimization"],
+    tags: ["Lead Generation", "Conversion Optimization", "UAE Market"],
     accentColor: "yellow"
   },
   {
     title: "Lotus Pro Services",
-    description: "Document clearing and business services specialist in Dubai. We created a premium web presence with sophisticated branding, clear service categorization, and direct contact options. The site established them as a premium provider in UAE's competitive document services market, with a professional identity that reflects their expertise.",
+    description: "Document services company in Dubai needed premium positioning. We created a sophisticated brand identity and conversion-optimized website. Established them as a premium provider in UAE's competitive market.",
     image: "/projects/lotus.webp",
     link: "/case-studies/lotus-pro-services",
-    tags: ["Branding", "Web Development", "UI/UX", "React"],
+    tags: ["Premium Positioning", "Brand Identity", "Professional Services"],
     accentColor: "teal"
   },
   {
     title: "Sproutly",
-    description: "Urban Gardening Education Platform. Sproutly empowers city dwellers to transform their living spaces into thriving gardens. The platform offers expert-led courses, practical resources, and a vibrant community, all tailored to the unique challenges of urban gardening. As lead developer and UI/UX designer, I handled everything from research and design to frontend/backend development and iterative improvement. The result is a friendly, informative, and visually appealing experience for aspiring urban gardeners.",
+    description: "Urban gardening education platform needed better user engagement. We designed an intuitive learning experience with community features. Improved course completion rates and user retention significantly.",
     image: "/projects/sproutly.webp",
     link: "/case-studies/sproutly",
-    tags: ["EdTech", "UI/UX", "Next.js", "React", "Branding"],
+    tags: ["EdTech Platform", "User Experience", "Community Features"],
     accentColor: "teal"
   },
   {
     title: "Dubbby",
-    description: "AI-driven content creation platform helping creators scale their production. Our sleek, user-focused website highlighted their innovative technology and showcased practical use cases. The optimized user journey resulted in a 40% increase in trial signups and significantly improved engagement metrics.",
+    description: "AI content creation platform needed trial conversions. Our sleek, benefit-focused design showcased the technology's value. Achieved notable increase in trial signups and improved engagement.",
     image: "/projects/dubbby.webp",
     link: "/case-studies/dubbby",
-    tags: ["SaaS", "Web Application", "UI Design", "User Experience"],
+    tags: ["SaaS Platform", "Trial Optimization", "AI Technology"],
     accentColor: "magenta"
   },
   {
     title: "BrainWise",
-    description: "AI-driven learning platform for busy professionals seeking targeted skills. Our redesign streamlined the user journey, implemented personalized learning paths, and optimized for mobile. The results were dramatic: 89% increase in course completion rates and 47% growth in subscription renewals.",
+    description: "Professional learning platform struggled with course completion. We redesigned the user journey with personalized paths and mobile optimization. Improved completion rates and subscription renewals.",
     image: "/projects/brainwise.webp",
     link: "/case-studies/brain-wise",
-    tags: ["EdTech", "UX Design", "Mobile Optimization", "React"],
+    tags: ["Learning Platform", "Mobile Optimization", "User Journey"],
     accentColor: "purple"
   },
   {
     title: "BlogSquirrel",
-    description: "A content management platform for efficient blog production. We revamped the entire user experience with an intuitive dashboard, streamlined content creation tools, and enhanced analytics. The redesign helped increase user retention by 53% and drove a 78% boost in daily active users.",
+    description: "Content management platform needed better user engagement. We created an intuitive dashboard with enhanced analytics and streamlined workflows. Increased user retention and daily activity.",
     image: "/projects/blogport.webp",
     link: "/case-studies/blog-squirrel",
-    tags: ["CMS", "Dashboard Design", "Analytics", "Next.js"],
+    tags: ["Content Management", "Dashboard Design", "Analytics"],
     accentColor: "teal"
   },
   {
@@ -81,7 +81,7 @@ export function CaseStudiesSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.3 }}
           >
-            Featured Work
+            📈 PROVEN RESULTS
           </motion.span>
           
           <motion.h2 
@@ -91,7 +91,7 @@ export function CaseStudiesSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Case Studies
+            Real Projects, Real Results
           </motion.h2>
           
           <motion.p 
@@ -101,8 +101,24 @@ export function CaseStudiesSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Explore how we&apos;ve helped businesses transform their digital presence and achieve measurable results. Each case study highlights our strategic approach and impact.
+            See how we&apos;ve helped businesses like yours achieve measurable growth with strategic design and development.
           </motion.p>
+          
+          {/* Quick Stats */}
+          <div className="flex flex-wrap justify-center gap-6 mt-8">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-kiiro-yellow">Better Results</div>
+              <div className="text-sm text-off-white/70">For Every Client</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-kiiro-yellow">15+</div>
+              <div className="text-sm text-off-white/70">Successful Projects</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-kiiro-yellow">1-2 weeks</div>
+              <div className="text-sm text-off-white/70">Average Delivery</div>
+            </div>
+          </div>
         </div>
         
         <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">

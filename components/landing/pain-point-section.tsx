@@ -16,8 +16,8 @@ interface PainPointProps {
 function PainPointCard({ icon: Icon, title, description, cost, realCost, delay = 0 }: PainPointProps) {
   return (
     <BlurFade delay={delay} inView>
-      <motion.div 
-        className="group p-6 rounded-xl border border-red-500/30 bg-deep-gray/50 hover:border-red-500/50 transition-all duration-300 relative overflow-hidden"
+      <motion.div
+        className="h-full bg-deep-gray/30 border border-red-500/20 rounded-xl p-6 group hover:border-red-400/40 transition-all duration-300 flex flex-col"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -27,14 +27,14 @@ function PainPointCard({ icon: Icon, title, description, cost, realCost, delay =
         {/* Red warning glow */}
         <div className="absolute inset-0 bg-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         
-        <div className="relative flex items-start gap-4">
+        <div className="relative flex items-start gap-4 flex-grow">
           <div className="flex-shrink-0 w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center border border-red-500/30">
             <Icon className="w-6 h-6 text-red-400" />
           </div>
-          <div className="flex-1">
+          <div className="flex-1 flex flex-col h-full">
             <h3 className="text-xl font-bold text-off-white mb-3 group-hover:text-red-100 transition-colors">{title}</h3>
-            <p className="text-off-white/80 mb-4 leading-relaxed">{description}</p>
-            <div className="space-y-2">
+            <p className="text-off-white/80 mb-4 leading-relaxed flex-grow">{description}</p>
+            <div className="space-y-2 mt-auto">
               <div className="text-red-400 font-bold text-lg">{cost}</div>
               <div className="text-red-300/80 text-sm font-medium">{realCost}</div>
             </div>
@@ -54,34 +54,34 @@ export function PainPointSection() {
   const painPoints: PainPointProps[] = [
     {
       icon: TrendingDown,
-      title: "Your Website Bleeds Money Every Day",
-      description: "While you sleep, your website is turning away qualified prospects. Poor conversion rates mean you're working 5x harder to get the same results your competitors get effortlessly.",
-      cost: "Lost Revenue: $2,000-$10,000 monthly",
-      realCost: "That's $24,000-$120,000 per year walking away",
+      title: "Your Business Lacks Professional Credibility",
+      description: "Without a professional website, potential customers question your legitimacy. You lose sales before they even hear your pitch. Course creators and entrepreneurs especially struggle to convert social media followers into paying customers.",
+      cost: "Lost Sales: $2,000-$10,000 monthly",
+      realCost: "Plus the credibility gap that's impossible to measure",
       delay: 0.1
     },
     {
       icon: Clock,
-      title: "6-Month Death March Projects",
-      description: "Traditional agencies milk projects for months while your competitors launch and capture market share. Every day you wait is money left on the table.",
-      cost: "Opportunity Cost: $50,000+ in delays",
-      realCost: "Plus lost first-mover advantage in your market",
+      title: "Hours Wasted on Content With No Conversion",
+      description: "You're creating amazing content, doing cold outreach, and building an audience - but when they visit your social profiles, there's nowhere professional to send them. All that effort with no proper funnel to capture leads.",
+      cost: "Wasted Effort: 20+ hours weekly",
+      realCost: "Content that could be converting isn't",
       delay: 0.2
     },
     {
       icon: DollarSign,
-      title: "Paying Premium for Amateur Results",
-      description: "Big agencies charge enterprise prices for junior work. You're funding their fancy offices and account managers who've never built anything.",
-      cost: "Overpayment: $10,000-$25,000 per project",
-      realCost: "For websites that still don't convert",
+      title: "Prospects Can't Find Answers to Buy From You",
+      description: "Your ideal customers want to know: What exactly do you offer? How much does it cost? Why should they choose you? Without a proper website, they're left guessing - and they choose competitors with clear answers.",
+      cost: "Missed Opportunities: $5,000-$15,000 monthly",
+      realCost: "Qualified prospects who never become customers",
       delay: 0.3
     },
     {
       icon: AlertTriangle,
-      title: "Technical Debt Time Bomb",
-      description: "Cheap solutions create expensive problems. Your website becomes a maintenance nightmare that breaks when you need it most - during high-traffic periods.",
-      cost: "Emergency Fixes: $2,000-$5,000 monthly",
-      realCost: "Plus reputation damage from downtime",
+      title: "Social Media Isn't a Business Foundation",
+      description: "Instagram and TikTok are great for awareness, but terrible for conversion. You need a professional hub where prospects can learn about you, see your credibility, and take action. Social media alone won't build a sustainable business.",
+      cost: "Platform Dependency Risk: Your entire business",
+      realCost: "One algorithm change kills your reach",
       delay: 0.4
     }
   ];
@@ -91,7 +91,7 @@ export function PainPointSection() {
       {/* Subtle red background accent */}
       <div className="absolute top-0 left-0 w-1/3 h-1/2 bg-gradient-to-br from-red-500/3 to-transparent rounded-br-full blur-3xl" />
       
-      <div className="container px-4 mx-auto relative">
+      <div className="container px-4 mx-auto relative max-w-7xl">
         <BlurFade delay={0.1} inView>
           <div className="text-center mb-16 max-w-4xl mx-auto">
             <motion.div 
@@ -122,15 +122,35 @@ export function PainPointSection() {
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.6 }}
             >
-              Every minute your website underperforms, you&apos;re <span className="text-red-400 font-semibold">losing qualified prospects</span> to 
-              competitors who understand conversion psychology. Here&apos;s exactly what it&apos;s costing you:
+              Every minute without a professional website, you&apos;re <span className="text-red-400 font-semibold">losing credibility and customers</span> to 
+              competitors who understand that people buy from businesses they trust. 
             </motion.p>
+            
+            {/* Visual break with icons */}
+            <div className="flex justify-center items-center gap-4 mt-6 mb-8">
+              <div className="flex items-center gap-2 text-red-400">
+                <TrendingDown className="w-5 h-5" />
+                <span className="text-sm font-medium">Lost Credibility</span>
+              </div>
+              <div className="w-2 h-2 bg-red-400 rounded-full"></div>
+              <div className="flex items-center gap-2 text-red-400">
+                <Clock className="w-5 h-5" />
+                <span className="text-sm font-medium">Wasted Effort</span>
+              </div>
+              <div className="w-2 h-2 bg-red-400 rounded-full"></div>
+              <div className="flex items-center gap-2 text-red-400">
+                <DollarSign className="w-5 h-5" />
+                <span className="text-sm font-medium">Missed Sales</span>
+              </div>
+            </div>
           </div>
         </BlurFade>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto mb-16">
           {painPoints.map((painPoint, index) => (
-            <PainPointCard key={index} {...painPoint} />
+            <div key={index} className="h-full">
+              <PainPointCard {...painPoint} />
+            </div>
           ))}
         </div>
 

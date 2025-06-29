@@ -60,6 +60,12 @@ const faqData = [
     answer:
       "We can handle hosting setup and recommend the best solutions for your needs, but we don't lock you into our hosting. For maintenance, we offer optional retainer packages or you can handle it yourself. We build sites that are easy to maintain and provide full documentation and training.",
   },
+  {
+    id: "item-9",
+    question: "I'm just starting my business - do I really need a professional website?",
+    answer:
+      "Absolutely. Your website is often the first impression potential customers have of your business. Without it, you're losing credibility before you even get a chance to sell. Course creators especially need a professional hub to convert social media followers into paying customers. A basic website pays for itself with just 1-2 customers.",
+  },
 ];
 
 export function FaqSection() {

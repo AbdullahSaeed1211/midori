@@ -1,43 +1,41 @@
 "use client";
 
-import { Linkedin, Twitter, Mail } from 'lucide-react';
+import { Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link'; // Need Link for internal navigation
 
 export function Footer() {
   const year = new Date().getFullYear();
   
   const pageLinks = [
-    { label: 'How it works', href: '#services' },
-    { label: 'Pricing', href: '#pricing' },
-    { label: 'FAQs', href: '#faq' },
-    // Add other important page links if needed
+    { label: 'Services', href: '/#services' },
+    { label: 'Case Studies', href: '/case-studies' },
+    { label: 'Pricing', href: '/#pricing' },
+    { label: 'Contact', href: '/contact' },
+  ];
+
+  const legalLinks = [
+    { label: 'Terms of Service', href: '/terms' },
+    { label: 'Privacy Policy', href: '/privacy' },
   ];
 
   return (
-    <footer className="border-t border-code-black-700 bg-charcoal-black py-12 text-off-white/80" id="footer">
+    <footer className="border-t border-white/10 bg-charcoal-black py-12 text-off-white/80">
       <div className="container mx-auto px-4">
-        {/* Add max-w-screen-xl and mx-auto to constrain width on larger screens */}
-        <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row md:justify-between md:items-start gap-10 text-center md:text-left">
-          
-          {/* Column 1: Logo & Copyright (Takes available space, pushes others right) */}
-          <div className="flex flex-col items-center md:items-start md:flex-grow">
-            <Link href="/" className="text-2xl font-bold text-off-white mb-4 group">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Column 1: Logo & Copyright */}
+          <div className="md:col-span-1 text-center md:text-left">
+            <Link href="/" className="text-xl font-bold text-off-white mb-4 group inline-block">
               Kiiro
-              <span className="text-kiiro-yellow transition-transform duration-200 inline-block group-hover:scale-150">.</span>
+              <span className="text-kiiro-yellow transition-transform duration-200 inline-block group-hover:scale-125">.</span>
             </Link>
-            <p className="text-sm text-off-white/60">
-              © {year} Kiiro.cx
-            </p>
-            <p className="text-sm text-off-white/60 mt-1">
-              Results-Driven Web Development
+            <p className="text-xs text-off-white/60">
+              © {year} Kiiro.cx. All rights reserved.
             </p>
           </div>
 
-          {/* Wrapper for Pages & Connect to group them before pushing right */}
-          <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center md:items-start">
-            {/* Column 2: Page Links */}
-            <div className="flex flex-col items-center md:items-start">
-              <h4 className="font-semibold text-off-white mb-3 uppercase tracking-wider text-sm">Pages</h4>
+          {/* Column 2: Pages */}
+          <div className="text-center md:text-left">
+            <h4 className="font-semibold text-off-white mb-3 uppercase tracking-wider text-xs">Menu</h4>
               <nav className="flex flex-col space-y-2">
                 {pageLinks.map((link) => (
                   <Link 
@@ -51,39 +49,44 @@ export function Footer() {
               </nav>
             </div>
 
-            {/* Column 3: Social Links */}
-            <div className="flex flex-col items-center md:items-start">
-              <h4 className="font-semibold text-off-white mb-3 uppercase tracking-wider text-sm">Connect</h4>
-              <div className="flex space-x-4">
+          {/* Column 3: Legal */}
+          <div className="text-center md:text-left">
+            <h4 className="font-semibold text-off-white mb-3 uppercase tracking-wider text-xs">Legal</h4>
+            <nav className="flex flex-col space-y-2">
+              {legalLinks.map((link) => (
+                <Link 
+                  key={link.label}
+                  href={link.href} 
+                  className="text-sm text-off-white/80 hover:text-kiiro-yellow transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          {/* Column 4: Social Links */}
+          <div className="text-center md:text-left">
+            <h4 className="font-semibold text-off-white mb-3 uppercase tracking-wider text-xs">Connect</h4>
+            <div className="flex space-x-4 justify-center md:justify-start">
                 <a 
-                  href="#" // Replace with your LinkedIn URL
+                href="https://www.linkedin.com/in/abdullah-saeed-dev/"
                   target="_blank" 
                   rel="noopener noreferrer" 
                   aria-label="LinkedIn"
                   className="text-off-white/80 hover:text-kiiro-yellow transition-colors"
                 >
-                  <Linkedin size={20} />
+                <Linkedin size={18} />
                 </a>
                 <a 
-                  href="#" // Replace with your Twitter URL
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  aria-label="Twitter"
-                  className="text-off-white/80 hover:text-kiiro-yellow transition-colors"
-                >
-                  <Twitter size={20} />
-                </a>
-                <a 
-                  href="mailto:abdullah.saeed1724@gmail.com"
+                  href="mailto:hello@kiiro.cx"
                   aria-label="Email"
                   className="text-off-white/80 hover:text-kiiro-yellow transition-colors duration-300"
                 >
-                  <Mail size={20} />
+                <Mail size={18} />
                 </a>
-              </div>
             </div>
           </div>
-
         </div>
       </div>
     </footer>

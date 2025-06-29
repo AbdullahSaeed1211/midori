@@ -62,19 +62,19 @@ function ServiceCard({
   const accent = accentColors[accentColor];
 
   return (
-    <div className={`group relative rounded-xl border ${accent.border} bg-charcoal-black p-6 transition-all 
-                    duration-300 ${accent.hoverShadow} ${accent.hoverBorder} ${className}`}>
+    <div className={`group relative rounded-xl border-transparent border bg-charcoal-gray/80 p-6 transition-all 
+                    duration-300 ${accent.hoverShadow} ${accent.hoverBorder} hover:-translate-y-1 h-full flex flex-col ${className}`}>
       <div className={`absolute inset-0 ${accent.bg} rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
       
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-col h-full">
         <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-full ${accent.bg} ${accent.text}`}>
           {icon}
         </div>
         
         <h3 className={`mb-2 text-xl font-bold text-off-white ${accent.hoverText} transition-colors duration-300`}>{title}</h3>
-        <p className="mb-8 text-off-white/80">{description}</p>
+        <p className="mb-6 text-off-white/80 flex-grow">{description}</p>
         
-        <ul className="space-y-2">
+        <ul className="space-y-2 mt-auto">
           {features.map((feature, idx) => (
             <li key={idx} className="flex items-start">
               <Check className={`mr-2 h-5 w-5 mt-0.5 ${accent.text} flex-shrink-0`} />
@@ -93,8 +93,8 @@ export function ServicesSection() {
   const services = [
     {
       icon: <Palette className="h-6 w-6" />,
-      title: "Website Design",
-      description: "Stunning, on-brand designs optimized for conversion and engagement.",
+      title: "Conversion-Focused Website Design",
+      description: "Designs engineered to capture attention and convert visitors into customers.",
       features: [
         "Responsive design for all devices",
         "UX-focused layouts that convert visitors",
@@ -105,8 +105,8 @@ export function ServicesSection() {
     },
     {
       icon: <Code className="h-6 w-6" />,
-      title: "Web Development",
-      description: "High-performance, accessible code built with modern technologies.",
+      title: "Conversion-Focused Development",
+      description: "Lightning-fast websites built to capture leads and close sales automatically.",
       features: [
         "Fast-loading, optimized websites",
         "Clean, maintainable code structure",
@@ -117,8 +117,8 @@ export function ServicesSection() {
     },
     {
       icon: <MessageSquare className="h-6 w-6" />,
-      title: "Content Strategy",
-      description: "Compelling copy and messaging that drives action and builds trust.",
+      title: "Sales Copy That Converts",
+      description: "Persuasive messaging that overcomes objections and compels visitors to buy.",
       features: [
         "Conversion-focused copywriting",
         "SEO content optimization",
@@ -129,8 +129,8 @@ export function ServicesSection() {
     },
     {
       icon: <BarChart className="h-6 w-6" />,
-      title: "Growth Optimization",
-      description: "Data-driven improvements to increase conversions and ROI.",
+      title: "Conversion Optimization Systems",
+      description: "Systematic testing and optimization to maximize your website's conversion potential.",
       features: [
         "A/B testing & performance analysis",
         "Conversion rate optimization",
@@ -146,7 +146,7 @@ export function ServicesSection() {
       {/* Dynamic background effect */}
       <BackgroundBeams className="z-0 opacity-40" />
       
-      <div className="container px-4 mx-auto relative z-10">
+      <div className="container px-4 mx-auto relative z-10 max-w-7xl">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -172,7 +172,7 @@ export function ServicesSection() {
               className="text-4xl font-bold md:text-5xl mb-6 text-off-white relative inline-block"
             >
               <TextAnimate animation="blurInUp">
-                Expert Solutions for Digital Growth
+                The 4 Website Fixes That Boost Conversions
               </TextAnimate>
               <motion.span 
                 initial={{ width: 0 }}
@@ -189,14 +189,13 @@ export function ServicesSection() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-xl text-off-white/80 max-w-2xl mx-auto mt-6"
             >
-              We don&apos;t just build websites – we engineer digital assets designed to convert visitors, 
-              generate leads, and drive measurable business growth with data-backed strategies.
+              We identify exactly what&apos;s preventing your website from converting visitors and fix it with proven strategies that turn browsers into buyers.
             </motion.p>
           </div>
         </motion.div>
 
-        <ScrollReveal effect="staggered" direction="up" staggerChildren={0.15} duration={0.5}>
-          <div className="grid gap-8 md:grid-cols-2 lg:gap-12">
+        <ScrollReveal effect="staggered" direction="up" staggerChildren={0.1} duration={0.5}>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {services.map((service, index) => (
               <ServiceCard
                 key={index}
