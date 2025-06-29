@@ -72,7 +72,7 @@ export function EnhancedScrollProgress() {
       {/* Main Progress Bar */}
       <div className="fixed top-0 left-0 w-full h-1 bg-charcoal-gray/50 z-50">
         <motion.div
-          className="h-full bg-gradient-to-r from-kiiro-yellow to-teal-accent"
+          className="h-full bg-kiiro-yellow"
           style={{ width: `${scrollProgress}%` }}
           transition={{ duration: 0.1 }}
         />
@@ -119,19 +119,13 @@ export function EnhancedScrollProgress() {
                 <motion.path
                   d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                   fill="none"
-                  stroke="url(#gradient)"
+                  stroke="#FFD100"
                   strokeWidth="2"
                   strokeDasharray="100, 100"
                   strokeDashoffset={100 - scrollProgress}
                   strokeLinecap="round"
                   transition={{ duration: 0.1 }}
                 />
-                <defs>
-                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#FFEC00" />
-                    <stop offset="100%" stopColor="#00CED1" />
-                  </linearGradient>
-                </defs>
               </svg>
               <div className="absolute inset-0 flex items-center justify-center">
                 <span className="text-xs font-bold text-off-white">

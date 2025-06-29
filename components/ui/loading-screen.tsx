@@ -90,7 +90,7 @@ export function LoadingScreen() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <motion.div
-                className="h-full bg-gradient-to-r from-kiiro-yellow to-teal-accent rounded-full"
+                className="h-full bg-kiiro-yellow rounded-full"
                 initial={{ width: "0%" }}
                 animate={{ width: `${Math.min(progress, 100)}%` }}
                 transition={{ duration: 0.3 }}

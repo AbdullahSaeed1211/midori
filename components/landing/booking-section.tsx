@@ -133,62 +133,95 @@ export function BookingSection() {
           >
             {activeTab === 'call' ? (
               <div className="space-y-6">
-                {/* Enhanced Call Description with Grid Background */}
-                <div className="relative bg-gradient-to-br from-kiiro-yellow/15 via-kiiro-yellow/10 to-teal-accent/15 border border-kiiro-yellow/30 rounded-xl p-6 mb-8 overflow-hidden">
-                  {/* Grid Background for this section */}
-                  <div className="absolute inset-0 opacity-10">
+                {/* Redesigned Call Description - More Compelling */}
+                <div className="relative bg-gradient-to-br from-kiiro-yellow/20 via-kiiro-yellow/15 to-teal-accent/20 border border-kiiro-yellow/40 rounded-2xl p-8 mb-8 overflow-hidden">
+                  {/* Enhanced Background Elements */}
+                  <div className="absolute inset-0 opacity-20">
                     <div className="absolute inset-0" style={{
                       backgroundImage: `
-                        linear-gradient(rgba(255, 209, 0, 0.3) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255, 209, 0, 0.3) 1px, transparent 1px)
+                        linear-gradient(rgba(255, 209, 0, 0.4) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255, 209, 0, 0.4) 1px, transparent 1px)
                       `,
-                      backgroundSize: '20px 20px'
+                      backgroundSize: '25px 25px'
                     }} />
                   </div>
                   
-                  {/* Gradient Overlays */}
-                  <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-kiiro-yellow/20 to-transparent rounded-full blur-3xl opacity-60" />
-                  <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-teal-accent/20 to-transparent rounded-full blur-2xl opacity-40" />
+                  {/* Floating Elements */}
+                  <div className="absolute top-4 left-4 w-20 h-20 bg-gradient-to-br from-kiiro-yellow/30 to-transparent rounded-full blur-2xl" />
+                  <div className="absolute bottom-4 right-4 w-16 h-16 bg-gradient-to-tl from-teal-accent/30 to-transparent rounded-full blur-xl" />
                   
-                  <div className="relative z-10">
-                    <h3 className="text-xl font-bold text-off-white mb-3">
-                      What Happens on This Call?
+                  <div className="relative z-10 text-center">
+                    {/* New Compelling Headline */}
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-kiiro-yellow/30 border border-kiiro-yellow/50 rounded-full mb-4">
+                      <Calendar className="w-4 h-4 text-kiiro-yellow" />
+                      <span className="text-sm font-bold text-kiiro-yellow">FREE 15-MINUTE STRATEGY CALL</span>
+                    </div>
+                    
+                    <h3 className="text-2xl md:text-3xl font-bold text-off-white mb-4">
+                      See Exactly What's Costing You 
+                      <span className="text-kiiro-yellow"> $3,000+ Monthly</span>
                     </h3>
-                    <div className="grid md:grid-cols-3 gap-4 text-left">
-                      <div className="bg-charcoal-black/30 backdrop-blur-sm rounded-lg p-4 border border-off-white/10">
-                        <div className="w-8 h-8 bg-gradient-to-br from-kiiro-yellow/30 to-kiiro-yellow/20 rounded-full flex items-center justify-center mb-2">
-                          <span className="text-kiiro-yellow font-bold text-sm">1</span>
+                    
+                    <p className="text-lg text-off-white/90 mb-6 max-w-2xl mx-auto">
+                      I'll audit your website <span className="text-kiiro-yellow font-semibold">live on the call</span> and show you the exact fixes 
+                      that will turn more visitors into customers. No pitch, just value.
+                    </p>
+                    
+                    {/* Value Props Grid */}
+                    <div className="grid md:grid-cols-3 gap-4 mb-6">
+                      <div className="bg-charcoal-black/40 backdrop-blur-sm rounded-xl p-4 border border-kiiro-yellow/20">
+                        <div className="w-10 h-10 bg-gradient-to-br from-kiiro-yellow/40 to-kiiro-yellow/20 rounded-full flex items-center justify-center mb-3 mx-auto">
+                          <span className="text-kiiro-yellow font-bold">1</span>
                         </div>
-                        <p className="text-sm font-medium text-off-white mb-1">Website Review</p>
-                        <p className="text-xs text-off-white/70">I&apos;ll audit your site live and show you what&apos;s blocking conversions</p>
+                        <p className="text-sm font-semibold text-off-white mb-2">Live Website Audit</p>
+                        <p className="text-xs text-off-white/80">I'll review your site in real-time and identify conversion blockers</p>
                       </div>
-                      <div className="bg-charcoal-black/30 backdrop-blur-sm rounded-lg p-4 border border-off-white/10">
-                        <div className="w-8 h-8 bg-gradient-to-br from-teal-accent/30 to-teal-accent/20 rounded-full flex items-center justify-center mb-2">
-                          <span className="text-teal-accent font-bold text-sm">2</span>
+                      <div className="bg-charcoal-black/40 backdrop-blur-sm rounded-xl p-4 border border-teal-accent/20">
+                        <div className="w-10 h-10 bg-gradient-to-br from-teal-accent/40 to-teal-accent/20 rounded-full flex items-center justify-center mb-3 mx-auto">
+                          <span className="text-teal-accent font-bold">2</span>
                         </div>
-                        <p className="text-sm font-medium text-off-white mb-1">Strategy Discussion</p>
-                        <p className="text-xs text-off-white/70">We&apos;ll discuss your goals and create a roadmap</p>
+                        <p className="text-sm font-semibold text-off-white mb-2">Custom Action Plan</p>
+                        <p className="text-xs text-off-white/80">Get a personalized roadmap to increase your conversions</p>
                       </div>
-                      <div className="bg-charcoal-black/30 backdrop-blur-sm rounded-lg p-4 border border-off-white/10">
-                        <div className="w-8 h-8 bg-gradient-to-br from-kiiro-yellow/30 to-kiiro-yellow/20 rounded-full flex items-center justify-center mb-2">
-                          <span className="text-kiiro-yellow font-bold text-sm">3</span>
+                      <div className="bg-charcoal-black/40 backdrop-blur-sm rounded-xl p-4 border border-kiiro-yellow/20">
+                        <div className="w-10 h-10 bg-gradient-to-br from-kiiro-yellow/40 to-kiiro-yellow/20 rounded-full flex items-center justify-center mb-3 mx-auto">
+                          <span className="text-kiiro-yellow font-bold">3</span>
                         </div>
-                        <p className="text-sm font-medium text-off-white mb-1">Next Steps</p>
-                        <p className="text-xs text-off-white/70">Get clear action items whether we work together or not</p>
+                        <p className="text-sm font-semibold text-off-white mb-2">Zero Pressure</p>
+                        <p className="text-xs text-off-white/80">Value-first approach - no aggressive sales tactics</p>
+                      </div>
+                    </div>
+                    
+                    {/* Social Proof & Urgency */}
+                    <div className="flex flex-wrap justify-center gap-6 text-sm">
+                      <div className="flex items-center gap-2 text-off-white/80">
+                        <CheckCircle className="w-4 h-4 text-teal-accent" />
+                        <span>15+ successful audits this month</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-off-white/80">
+                        <Clock className="w-4 h-4 text-kiiro-yellow" />
+                        <span>Average 197% ROI improvement</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-off-white/80">
+                        <Zap className="w-4 h-4 text-kiiro-yellow" />
+                        <span>Only 3 spots left this week</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Enhanced Calendar */}
-                <div className="bg-charcoal-black/60 backdrop-blur-sm p-2 sm:p-4 rounded-lg shadow-2xl border border-off-white/20">
-                <Cal
-                  calLink="abdullahsaeed/15min"
-                  style={{ width: "100%", height: "100%", overflow: "scroll" }}
-                  config={{
-                    layout: 'month_view' 
-                  }}
-                />
+                {/* Enhanced Calendar with Better Framing */}
+                <div className="relative">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-kiiro-yellow/20 to-teal-accent/20 rounded-xl blur opacity-60"></div>
+                  <div className="relative bg-charcoal-black/80 backdrop-blur-sm p-3 sm:p-6 rounded-xl shadow-2xl border border-off-white/20">
+                    <Cal
+                      calLink="abdullahsaeed/15min"
+                      style={{ width: "100%", height: "100%", overflow: "scroll" }}
+                      config={{
+                        layout: 'month_view' 
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
             ) : (
