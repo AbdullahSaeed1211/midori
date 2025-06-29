@@ -24,6 +24,7 @@ const navItems: NavItem[] = [
   { label: 'Audit', href: '/audit' },
   { label: 'Pricing', href: '/#pricing' },
   { label: 'Process', href: '/#process' },
+  { label: 'Testimonials', href: '/testimonials' },
   { label: 'Contact', href: '/contact' },
 ];
 

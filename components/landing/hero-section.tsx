@@ -13,6 +13,8 @@ import { ScrollIndicator } from "@/components/ui/scroll-indicator";
 import { Marquee } from "@/components/magicui/marquee";
 import { DotPattern } from "@/components/magicui/dot-pattern";
 import { CountdownTimer } from "@/components/ui/countdown-timer";
+import { DemoNotification } from "@/components/ui/demo-notification";
+import { LiveActivityFeed } from "@/components/ui/live-activity-feed";
 
 export function HeroSection() {
   // State to handle client-side animations
@@ -36,6 +38,10 @@ export function HeroSection() {
       className="relative min-h-screen flex flex-col items-center justify-center bg-charcoal-black text-off-white overflow-hidden"
       id="hero"
     >
+      {/* Live notifications - only in hero */}
+      <DemoNotification />
+      <LiveActivityFeed />
+
       {/* Background effects - layered */}
       <DotPattern
         className={cn(
@@ -88,7 +94,7 @@ export function HeroSection() {
             animate={isMounted ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            Whether you&apos;re launching your first business, growing a course, or optimizing what you have, we create <span className="text-kiiro-yellow">professional websites</span> that establish credibility and turn visitors into <span className="text-kiiro-yellow">customers</span> - fast delivery, no fluff, no overpriced retainers.
+            Your website is your best salesperson - but only if it&apos;s designed to convert. Whether you&apos;re launching your first business, growing a course, or optimizing what you have, we create <span className="text-kiiro-yellow">professional websites</span> that establish credibility and turn visitors into <span className="text-kiiro-yellow">customers</span> - fast delivery, no fluff, no overpriced retainers.
           </motion.p>
         </div>
         

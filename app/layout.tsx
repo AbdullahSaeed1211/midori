@@ -3,8 +3,6 @@ import { Space_Grotesk, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { ChatButton } from "@/components/ui/chat-button";
 import { EnhancedScrollProgress } from "@/components/ui/enhanced-scroll-progress";
-import { DemoNotification } from "@/components/ui/demo-notification";
-import { LiveActivityFeed } from "@/components/ui/live-activity-feed";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -149,8 +147,6 @@ export default function RootLayout({
       >
         {children}
         <ChatButton />
-        <DemoNotification />
-        <LiveActivityFeed />
         <EnhancedScrollProgress />
       </body>
     </html>
