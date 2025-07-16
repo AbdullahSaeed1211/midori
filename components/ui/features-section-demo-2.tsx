@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import {
   Clock,
@@ -8,9 +10,14 @@ import {
   Headphones,
   Shield,
   Heart,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react";
+import { useState } from "react";
 
 export default function FeaturesSectionDemo() {
+  const [showAllFeatures, setShowAllFeatures] = useState(false);
+
   const features = [
     {
       title: "7-Day Delivery",
@@ -58,12 +65,44 @@ export default function FeaturesSectionDemo() {
       icon: <Heart className="h-6 w-6" />,
     },
   ];
+
+  // Show only first 4 features on mobile unless showAllFeatures is true
+  const visibleFeatures = showAllFeatures ? features : features.slice(0, 4);
   
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-10 max-w-7xl mx-auto">
-      {features.map((feature, index) => (
-        <Feature key={feature.title} {...feature} index={index} />
-      ))}
+    <div className="max-w-7xl mx-auto">
+      {/* Mobile: 2-column grid, Desktop: 4-column grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-10">
+        {visibleFeatures.map((feature, index) => (
+          <Feature key={feature.title} {...feature} index={index} />
+        ))}
+      </div>
+
+      {/* View More Button - Only show on mobile when not all features are visible */}
+      {!showAllFeatures && (
+        <div className="flex justify-center mt-6 lg:hidden">
+          <button
+            onClick={() => setShowAllFeatures(true)}
+            className="flex items-center gap-2 px-6 py-3 rounded-lg bg-kiiro-yellow/10 text-kiiro-yellow border border-kiiro-yellow/20 hover:bg-kiiro-yellow/20 transition-all duration-300"
+          >
+            <span className="text-sm font-medium">View More Features</span>
+            <ChevronDown className="w-4 h-4" />
+          </button>
+        </div>
+      )}
+
+      {/* View Less Button - Only show on mobile when all features are visible */}
+      {showAllFeatures && (
+        <div className="flex justify-center mt-6 lg:hidden">
+          <button
+            onClick={() => setShowAllFeatures(false)}
+            className="flex items-center gap-2 px-6 py-3 rounded-lg bg-kiiro-yellow/10 text-kiiro-yellow border border-kiiro-yellow/20 hover:bg-kiiro-yellow/20 transition-all duration-300"
+          >
+            <span className="text-sm font-medium">View Less</span>
+            <ChevronUp className="w-4 h-4" />
+          </button>
+        </div>
+      )}
     </div>
   );
 }

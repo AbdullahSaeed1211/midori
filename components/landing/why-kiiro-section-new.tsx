@@ -8,14 +8,14 @@ const features = [
     icon: <Clock className="h-6 w-6" />,
     title: "7-Day Delivery",
     description: "Most projects completed in just one week. No drawn-out timelines that delay your growth.",
-    stat: "83% faster than industry average",
+    stat: "Fast turnaround without compromising quality",
     color: "teal"
   },
   {
     icon: <TrendingUp className="h-6 w-6" />,
     title: "ROI-Focused",
     description: "Every design decision and line of code is optimized for conversion and business impact.",
-    stat: "Average 197% ROI within 30 days",
+    stat: "Proven results for client growth",
     color: "yellow"
   },
   {

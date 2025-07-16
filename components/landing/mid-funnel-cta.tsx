@@ -46,7 +46,7 @@ export function MidFunnelCTA() {
             {/* Simple Social Proof */}
             <div className="mt-8 pt-6 border-t border-off-white/10">
               <p className="text-sm text-off-white/60">
-                Join 15+ successful businesses • Average 197% ROI within 30 days
+                Join growing businesses • Proven results for growing companies
               </p>
             </div>
           </div>

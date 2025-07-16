@@ -52,14 +52,14 @@ export function WhyKiiroSection() {
             icon={Zap}
             title="7-Day Delivery"
             description="Most projects completed in just one week. No drawn-out timelines that delay your growth."
-            highlight="83% faster than industry average"
+            highlight="Fast turnaround without compromising quality"
             delay={0.1}
           />
           <Reason
             icon={Target}
             title="ROI-Focused"
             description="Every design decision and line of code is optimized for conversion and business impact."
-            highlight="Average 197% ROI within 30 days"
+            highlight="Proven results for growing businesses"
             delay={0.2}
           />
           <Reason

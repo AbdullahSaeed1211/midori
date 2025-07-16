@@ -39,7 +39,7 @@ export default function ContactPage() {
                 </div>
                 <div className="flex items-center gap-2 text-off-white/60 text-sm">
                   <div className="w-2 h-2 bg-kiiro-yellow rounded-full"></div>
-                  Currently accepting 5 new clients this month
+                  Currently accepting new projects - limited capacity
                 </div>
               </div>
             </div>
@@ -56,8 +56,8 @@ export default function ContactPage() {
                   </div>
                   <h3 className="text-off-white font-semibold mb-2">Email Us</h3>
                   <p className="text-off-white/60 text-sm mb-3">For detailed inquiries</p>
-                  <a href="mailto:abdullah.saeed1724@gmail.com" className="text-kiiro-yellow hover:underline">
-                    abdullah.saeed1724@gmail.com
+                              <a href="mailto:hello@kiiro.cx" className="text-kiiro-yellow hover:underline">
+              hello@kiiro.cx
                   </a>
                 </div>
 

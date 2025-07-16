@@ -8,27 +8,27 @@ import { ArrowRight } from "lucide-react";
 const achievements = [
   {
     icon: Users,
-    metric: "15+",
-    label: "Projects Delivered",
-    description: "Across 8+ industries"
+    metric: "Solo",
+    label: "Founder Operation",
+    description: "Direct access, no middleman"
   },
   {
     icon: Zap,
-    metric: "7 Days",
-    label: "Average Delivery",
-    description: "Fast turnaround"
+    metric: "7-14 Days",
+    label: "Delivery Window",
+    description: "Fast execution"
   },
   {
     icon: CheckCircle,
-    metric: "197%",
-    label: "Average ROI",
-    description: "Within 30 days"
+    metric: "3+ Years",
+    label: "Next.js Experience",
+    description: "Fresh perspective"
   },
   {
     icon: Award,
-    metric: "5.0★",
-    label: "Client Rating",
-    description: "100% satisfaction rate"
+    metric: "100%",
+    label: "Project Completion",
+    description: "Every project delivered"
   }
 ];
 
@@ -63,7 +63,7 @@ export function FounderStorySection() {
                       K
                     </motion.div>
                     <div>
-                      <h3 className="text-2xl font-bold text-off-white">Our Founder</h3>
+                      <h3 className="text-2xl font-bold text-off-white">Our Story</h3>
                       <div className="flex items-center gap-1 mt-1">
                         {[...Array(5)].map((_, i) => (
                           <motion.div
@@ -80,7 +80,7 @@ export function FounderStorySection() {
                             <Star className="w-4 h-4 fill-kiiro-yellow text-kiiro-yellow" />
                           </motion.div>
                         ))}
-                        <span className="text-sm text-off-white/60 ml-2">Trusted by 15+ businesses</span>
+                        <span className="text-sm text-off-white/60 ml-2">Direct founder access</span>
                       </div>
                     </div>
                   </motion.div>
@@ -93,17 +93,21 @@ export function FounderStorySection() {
                     transition={{ duration: 0.5, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                   >
                     <p>
-                      <strong className="text-off-white">I started Kiiro.cx with a simple mission:</strong> help businesses 
-                      turn their websites into conversion machines without the typical agency BS.
+                      <strong className="text-off-white">We&apos;re a fresh Computer Science graduate</strong> with 
+                      3+ years of hands-on Next.js experience building conversion-focused websites.
                     </p>
                     <p>
-                      After seeing too many businesses struggle with overpriced agencies that take months 
-                      to deliver mediocre results, I decided to do things differently. <strong className="text-kiiro-yellow">
-                      Fast delivery, transparent pricing, and measurable results.</strong>
+                      We started Kiiro.cx straight out of university because we saw too many businesses struggling with 
+                      websites that look good but don&apos;t convert. <strong className="text-kiiro-yellow">Our approach: 
+                      build fast, build to convert, no fluff.</strong>
+                    </p>
+                    <p>
+                      <strong className="text-off-white">Why we work lean:</strong> No account managers, no project delays, 
+                      no miscommunication. You get direct access to the person building your site.
                     </p>
                   </motion.div>
 
-                  {/* Simplified Personal Touch */}
+                  {/* Enhanced Personal Touch */}
                   <motion.div 
                     className="bg-kiiro-yellow/10 border border-kiiro-yellow/20 rounded-xl p-6"
                     initial={{ opacity: 0, scale: 0.95 }}
@@ -113,9 +117,8 @@ export function FounderStorySection() {
                   >
                     <Quote className="w-8 h-8 text-kiiro-yellow/40 mb-3" />
                     <p className="text-sm text-off-white/90 italic">
-                      I personally review every project and am available for direct communication 
-                      throughout the entire process. No account managers, no junior developers - 
-                      just me, focused on your success.
+                      &quot;We position Kiiro as an agency because it allows us to charge premium rates for premium work. 
+                      But you&apos;re getting something agencies can&apos;t offer: the founder&apos;s full attention on your project.&quot;
                     </p>
                     <p className="text-sm text-kiiro-yellow mt-3 font-medium">- Kiiro Founder</p>
                   </motion.div>
@@ -184,14 +187,13 @@ export function FounderStorySection() {
                     </h3>
                     <div className="space-y-4 text-off-white/80 leading-relaxed">
                       <p>
-                        Most agencies treat you like a number. They assign junior developers, 
-                        use templated solutions, and disappear after launch. I believe your 
-                        business deserves better.
+                        Big agencies assign your project to junior developers while charging premium rates. 
+                        Freelancers are inconsistent and often disappear mid-project. As a solo founder, 
+                        I offer agency-quality work with freelancer accessibility.
                       </p>
                       <p>
-                        Every project I take on is treated like my own business. Because at the end of the day, 
-                        your success is my success. That&apos;s why <strong className="text-teal-accent">97% of my clients 
-                        see measurable improvements within 30 days.</strong>
+                        Every website I build is a reflection of my reputation. That&apos;s why I focus on 
+                        <strong className="text-teal-accent"> one thing: websites that convert visitors into customers.</strong>
                       </p>
                     </div>
                   </div>
@@ -206,34 +208,22 @@ export function FounderStorySection() {
                     <h3 className="text-xl font-bold text-off-white mb-4">
                       My Personal Promise to You
                     </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-kiiro-yellow mt-0.5 flex-shrink-0" />
-                        <div>
-                          <p className="font-medium text-off-white">Direct Communication</p>
-                          <p className="text-sm text-off-white/70">You&apos;ll work directly with me, not account managers</p>
-                        </div>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="w-5 h-5 text-teal-accent" />
+                        <span className="text-off-white/90">Direct access to the founder - no project managers</span>
                       </div>
-                      <div className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-kiiro-yellow mt-0.5 flex-shrink-0" />
-                        <div>
-                          <p className="font-medium text-off-white">Transparent Process</p>
-                          <p className="text-sm text-off-white/70">Daily updates and full project visibility</p>
-                        </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="w-5 h-5 text-teal-accent" />
+                        <span className="text-off-white/90">Fixed pricing - know exactly what you&apos;re paying</span>
                       </div>
-                      <div className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-kiiro-yellow mt-0.5 flex-shrink-0" />
-                        <div>
-                          <p className="font-medium text-off-white">Results Guarantee</p>
-                          <p className="text-sm text-off-white/70">If you&apos;re not happy, we&apos;ll make it right</p>
-                        </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="w-5 h-5 text-teal-accent" />
+                        <span className="text-off-white/90">7-14 day delivery - no 6-month projects</span>
                       </div>
-                      <div className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-kiiro-yellow mt-0.5 flex-shrink-0" />
-                        <div>
-                          <p className="font-medium text-off-white">Fast Delivery</p>
-                          <p className="text-sm text-off-white/70">Most projects completed in 7-14 days</p>
-                        </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="w-5 h-5 text-teal-accent" />
+                        <span className="text-off-white/90">Conversion-focused - built to make you money</span>
                       </div>
                     </div>
                   </div>

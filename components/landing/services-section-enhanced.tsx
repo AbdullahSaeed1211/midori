@@ -1,8 +1,9 @@
 "use client";
 
 import { BlurFade } from "@/components/magicui/blur-fade";
-import { CheckCircle, ArrowRight, TrendingUp, Users, Zap, Target } from "lucide-react";
+import { CheckCircle, ArrowRight, TrendingUp, Users, Zap, Target, ChevronDown, ChevronUp } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 const conversionProblems = [
   {
@@ -60,12 +61,17 @@ const conversionProblems = [
 ];
 
 export function ServicesSection() {
+  const [showAll, setShowAll] = useState(false);
+
+  // Show only first 2 cards on mobile unless showAll is true
+  const visibleProblems = showAll ? conversionProblems : conversionProblems.slice(0, 2);
+
   return (
     <BlurFade delay={0.1} inView>
       <section className="py-20 bg-charcoal-black text-off-white">
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Header */}
-          <div className="text-center mb-16">
+          <div className="text-left mb-16">
             <p className="mb-3 text-xs uppercase tracking-[0.25em] text-kiiro-yellow font-semibold">
               🎯 WEBSITE OPTIMIZATION
             </p>
@@ -74,14 +80,14 @@ export function ServicesSection() {
               <br />
               <span className="text-kiiro-yellow">Costing You Customers</span>
             </h2>
-            <p className="text-xl text-off-white/80 max-w-3xl mx-auto">
+            <p className="text-xl text-off-white/80 max-w-3xl">
               Whether you need a new website or want to fix what you have, these 4 problems are costing you customers every day. We identify exactly what&apos;s broken and fix it with proven strategies.
             </p>
           </div>
 
           {/* Problems & Solutions Grid */}
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
-            {conversionProblems.map((item, index) => {
+          <div className="grid md:grid-cols-2 gap-8 mb-8">
+            {visibleProblems.map((item, index) => {
               const Icon = item.icon;
               return (
                 <div
@@ -130,6 +136,36 @@ export function ServicesSection() {
               );
             })}
           </div>
+
+          {/* View More Button - Only show on mobile when not all cards are visible */}
+          {!showAll && (
+            <BlurFade delay={0.3} inView>
+              <div className="flex justify-center mb-8 md:hidden">
+                <button
+                  onClick={() => setShowAll(true)}
+                  className="flex items-center gap-2 px-6 py-3 rounded-lg bg-kiiro-yellow/10 text-kiiro-yellow border border-kiiro-yellow/20 hover:bg-kiiro-yellow/20 transition-all duration-300"
+                >
+                  <span className="text-sm font-medium">View More Problems</span>
+                  <ChevronDown className="w-4 h-4" />
+                </button>
+              </div>
+            </BlurFade>
+          )}
+
+          {/* View Less Button - Only show on mobile when all cards are visible */}
+          {showAll && (
+            <BlurFade delay={0.3} inView>
+              <div className="flex justify-center mb-8 md:hidden">
+                <button
+                  onClick={() => setShowAll(false)}
+                  className="flex items-center gap-2 px-6 py-3 rounded-lg bg-kiiro-yellow/10 text-kiiro-yellow border border-kiiro-yellow/20 hover:bg-kiiro-yellow/20 transition-all duration-300"
+                >
+                  <span className="text-sm font-medium">View Less</span>
+                  <ChevronUp className="w-4 h-4" />
+                </button>
+              </div>
+            </BlurFade>
+          )}
 
           {/* Bottom CTA */}
           <div className="text-center">

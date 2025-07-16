@@ -48,8 +48,8 @@ function PricingOptionCard({
         )}>
           <div className="bg-kiiro-yellow text-charcoal-black text-xs font-bold px-2.5 py-1 rounded-md shadow-lg flex items-center gap-1">
             <AlertCircle className="h-3 w-3" /> 
-            <span className="hidden sm:inline">Founding Client Pricing</span>
-            <span className="sm:hidden">Founding</span>
+            <span className="hidden sm:inline">Early Client Pricing</span>
+            <span className="sm:hidden">Early</span>
           </div>
         </div>
       )}
@@ -76,7 +76,7 @@ function PricingOptionCard({
         {/* Limited spots counter */}
         {limitedSpots && (
           <div className="mt-2 text-sm text-kiiro-yellow">
-            <span className="font-medium">{limitedSpots} spots available</span> at this rate
+            <span className="font-medium">Limited capacity</span> - accepting new clients quarterly
           </div>
         )}
       </div>
@@ -240,13 +240,13 @@ export function PricingSection() {
                     <th className="py-5 px-6 text-center font-medium text-off-white">
                       <div className="flex flex-col items-center gap-1">
                         <div>One-off (Starting from $400)</div>
-                        <div className="text-xs text-kiiro-yellow font-normal">8 spots left</div>
+                        <div className="text-xs text-kiiro-yellow font-normal">Available Q1 2025</div>
                       </div>
                     </th>
                     <th className="py-5 px-6 text-center font-medium text-off-white">
                       <div className="flex flex-col items-center gap-1">
                         <div>Retainer (Starting from $500/mo)</div>
-                        <div className="text-xs text-kiiro-yellow font-normal">5 spots left</div>
+                        <div className="text-xs text-kiiro-yellow font-normal">Available Q1 2025</div>
                       </div>
                     </th>
                   </tr>
@@ -276,7 +276,7 @@ export function PricingSection() {
                   featureLabel="Included in package:"
                   cta="Get Custom Quote"
                   ctaLink="#booking"
-                  limitedSpots={8}
+                  limitedSpots={1}
                 />
               </motion.div>
               
@@ -297,7 +297,7 @@ export function PricingSection() {
                   cta="Schedule a Call"
                   ctaLink="#booking"
                   highlighted
-                  limitedSpots={5}
+                  limitedSpots={1}
                 />
               </motion.div>
             </div>
@@ -306,7 +306,7 @@ export function PricingSection() {
           <div className="mt-16 text-center">
             <div className="bg-kiiro-yellow/10 p-4 rounded-lg border border-kiiro-yellow/20 inline-block mb-8">
               <p className="text-kiiro-yellow font-medium">
-                Limited-time founding client pricing — secure your spot before rates increase
+                Transparent pricing with no hidden fees — all quotes include full project scope
               </p>
             </div>
             <p className="text-off-white/80 max-w-2xl mx-auto mb-4">

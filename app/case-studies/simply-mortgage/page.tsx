@@ -13,8 +13,49 @@ export const metadata: Metadata = {
 };
 
 export default function SimplyMortgageCaseStudy() {
+  const caseStudySchema = {
+    "@context": "https://schema.org",
+    "@type": "CaseStudy",
+    "name": "Simply Mortgage - Premium Mortgage Consultancy Website",
+    "description": "How we created a premium digital presence for a high-end mortgage brokerage in Dubai, resulting in improved client conversion rates and enhanced user experience.",
+    "author": {
+      "@type": "Organization",
+      "name": "Kiiro.cx",
+      "url": "https://kiiro.cx"
+    },
+    "datePublished": "2024-01-15",
+    "url": "https://kiiro.cx/case-studies/simply-mortgage",
+    "image": "https://kiiro.cx/projects/simply.webp",
+    "about": {
+      "@type": "Service",
+      "name": "Mortgage Consultancy Website",
+      "provider": {
+        "@type": "Organization",
+        "name": "Simply Mortgage"
+      }
+    },
+    "result": {
+      "@type": "QuantitativeValue",
+      "description": "Improved user experience and enhanced digital presence for premium mortgage consultancy"
+    },
+    "keywords": [
+      "mortgage consultancy",
+      "finance website",
+      "UAE mortgage",
+      "premium web design",
+      "lead generation",
+      "interactive calculators"
+    ]
+  };
+
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(caseStudySchema)
+        }}
+      />
       <Header />
       
       <div className="pt-24 pb-20">

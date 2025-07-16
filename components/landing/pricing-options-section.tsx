@@ -108,8 +108,8 @@ export function PricingOptionsSection() {
     <BlurFade inView>
       <section className="py-28 bg-charcoal-black text-off-white" id="pricing">
         <div className="container px-4 mx-auto max-w-7xl">
-          <div className="flex flex-col items-center text-center mb-16 max-w-3xl mx-auto">
-            <div className="px-4 py-1.5 rounded-full bg-kiiro-yellow/10 text-kiiro-yellow text-sm font-medium mb-6 border border-kiiro-yellow/20">
+          <div className="flex flex-col text-left mb-16 max-w-3xl">
+            <div className="px-4 py-1.5 rounded-full bg-kiiro-yellow/10 text-kiiro-yellow text-sm font-medium mb-6 border border-kiiro-yellow/20 inline-block w-fit">
               Value-Based Pricing
             </div>
             <h2 className="text-4xl font-bold md:text-5xl mb-6 text-off-white">

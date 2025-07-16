@@ -158,12 +158,12 @@ export function BookingSection() {
                     </div>
                     
                     <h3 className="text-2xl md:text-3xl font-bold text-off-white mb-4">
-                      See Exactly What's Costing You 
+                      See Exactly What&apos;s Costing You 
                       <span className="text-kiiro-yellow"> $3,000+ Monthly</span>
                     </h3>
                     
                     <p className="text-lg text-off-white/90 mb-6 max-w-2xl mx-auto">
-                      I'll audit your website <span className="text-kiiro-yellow font-semibold">live on the call</span> and show you the exact fixes 
+                      I&apos;ll audit your website <span className="text-kiiro-yellow font-semibold">live on the call</span> and show you the exact fixes 
                       that will turn more visitors into customers. No pitch, just value.
                     </p>
                     
@@ -174,7 +174,7 @@ export function BookingSection() {
                           <span className="text-kiiro-yellow font-bold">1</span>
                         </div>
                         <p className="text-sm font-semibold text-off-white mb-2">Live Website Audit</p>
-                        <p className="text-xs text-off-white/80">I'll review your site in real-time and identify conversion blockers</p>
+                        <p className="text-xs text-off-white/80">I&apos;ll review your site in real-time and identify conversion blockers</p>
                       </div>
                       <div className="bg-charcoal-black/40 backdrop-blur-sm rounded-xl p-4 border border-teal-accent/20">
                         <div className="w-10 h-10 bg-gradient-to-br from-teal-accent/40 to-teal-accent/20 rounded-full flex items-center justify-center mb-3 mx-auto">
@@ -196,11 +196,11 @@ export function BookingSection() {
                     <div className="flex flex-wrap justify-center gap-6 text-sm">
                       <div className="flex items-center gap-2 text-off-white/80">
                         <CheckCircle className="w-4 h-4 text-teal-accent" />
-                        <span>15+ successful audits this month</span>
+                        <span>Growing number of successful audits</span>
                       </div>
                       <div className="flex items-center gap-2 text-off-white/80">
                         <Clock className="w-4 h-4 text-kiiro-yellow" />
-                        <span>Average 197% ROI improvement</span>
+                        <span>Measurable ROI improvements</span>
                       </div>
                       <div className="flex items-center gap-2 text-off-white/80">
                         <Zap className="w-4 h-4 text-kiiro-yellow" />
@@ -215,7 +215,7 @@ export function BookingSection() {
                   <div className="absolute -inset-1 bg-gradient-to-r from-kiiro-yellow/20 to-teal-accent/20 rounded-xl blur opacity-60"></div>
                   <div className="relative bg-charcoal-black/80 backdrop-blur-sm p-3 sm:p-6 rounded-xl shadow-2xl border border-off-white/20">
                     <Cal
-                      calLink="abdullahsaeed/15min"
+                      calLink="kiiro-consultation/15min"
                       style={{ width: "100%", height: "100%", overflow: "scroll" }}
                       config={{
                         layout: 'month_view' 
@@ -251,7 +251,7 @@ export function BookingSection() {
           {/* Enhanced Bottom Trust Signals */}
           <div className="mt-12 pt-8 border-t border-off-white/20">
             <p className="text-sm text-off-white/60 mb-4">
-              Trusted by 15+ businesses • 100% satisfaction rate • Average 197% ROI
+              Results-focused approach • Single founder, premium quality • Direct communication
             </p>
             <div className="flex justify-center gap-8 text-xs text-off-white/50">
               <span>✓ No long-term contracts</span>

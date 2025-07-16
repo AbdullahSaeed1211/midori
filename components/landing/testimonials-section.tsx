@@ -76,9 +76,9 @@ export function TestimonialsSection() {
   return (
     <section className="py-16 md:py-20 bg-charcoal-black text-off-white" id="client-wins">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-8">
+        <div className="text-left mb-8">
           <h2 className="text-3xl md:text-4xl font-bold text-off-white">Real Results From Real Clients</h2>
-          <p className="text-lg text-off-white/70 mt-2 max-w-2xl mx-auto">
+          <p className="text-lg text-off-white/70 mt-2 max-w-2xl">
             See how we&apos;ve helped businesses improve their website conversions.
           </p>
         </div>

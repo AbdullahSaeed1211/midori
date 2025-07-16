@@ -1,8 +1,9 @@
 "use client";
 
-import { AlertTriangle, TrendingDown, Clock, DollarSign, X } from "lucide-react";
+import { AlertTriangle, TrendingDown, Clock, DollarSign, X, ChevronDown, ChevronUp } from "lucide-react";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 interface PainPointProps {
   icon: React.ElementType;
@@ -51,6 +52,8 @@ function PainPointCard({ icon: Icon, title, description, cost, realCost, delay =
 }
 
 export function PainPointSection() {
+  const [showAll, setShowAll] = useState(false);
+
   const painPoints: PainPointProps[] = [
     {
       icon: TrendingDown,
@@ -86,6 +89,9 @@ export function PainPointSection() {
     }
   ];
 
+  // Show only first 2 cards on mobile unless showAll is true
+  const visiblePainPoints = showAll ? painPoints : painPoints.slice(0, 2);
+
   return (
     <section className="py-24 bg-charcoal-black text-off-white relative overflow-hidden" id="pain-points">
       {/* Subtle red background accent */}
@@ -93,7 +99,7 @@ export function PainPointSection() {
       
       <div className="container px-4 mx-auto relative max-w-7xl">
         <BlurFade delay={0.1} inView>
-          <div className="text-center mb-16 max-w-4xl mx-auto">
+          <div className="text-left mb-16 max-w-4xl mx-auto">
             <motion.div 
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 text-red-400 text-sm font-medium mb-6 border border-red-500/20"
               initial={{ opacity: 0, scale: 0.9 }}
@@ -127,7 +133,7 @@ export function PainPointSection() {
             </motion.p>
             
             {/* Visual break with icons */}
-            <div className="flex justify-center items-center gap-4 mt-6 mb-8">
+            <div className="flex justify-start items-center gap-4 mt-6 mb-8">
               <div className="flex items-center gap-2 text-red-400">
                 <TrendingDown className="w-5 h-5" />
                 <span className="text-sm font-medium">Lost Credibility</span>
@@ -146,13 +152,43 @@ export function PainPointSection() {
           </div>
         </BlurFade>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto mb-16">
-          {painPoints.map((painPoint, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto mb-8">
+          {visiblePainPoints.map((painPoint, index) => (
             <div key={index} className="h-full">
               <PainPointCard {...painPoint} />
             </div>
           ))}
         </div>
+
+        {/* View More Button - Only show on mobile when not all cards are visible */}
+        {!showAll && (
+          <BlurFade delay={0.4} inView>
+            <div className="flex justify-center mb-8 md:hidden">
+              <button
+                onClick={() => setShowAll(true)}
+                className="flex items-center gap-2 px-6 py-3 rounded-lg bg-red-500/10 text-red-400 border border-red-500/20 hover:bg-red-500/20 transition-all duration-300"
+              >
+                <span className="text-sm font-medium">View More Problems</span>
+                <ChevronDown className="w-4 h-4" />
+              </button>
+            </div>
+          </BlurFade>
+        )}
+
+        {/* View Less Button - Only show on mobile when all cards are visible */}
+        {showAll && (
+          <BlurFade delay={0.4} inView>
+            <div className="flex justify-center mb-8 md:hidden">
+              <button
+                onClick={() => setShowAll(false)}
+                className="flex items-center gap-2 px-6 py-3 rounded-lg bg-red-500/10 text-red-400 border border-red-500/20 hover:bg-red-500/20 transition-all duration-300"
+              >
+                <span className="text-sm font-medium">View Less</span>
+                <ChevronUp className="w-4 h-4" />
+              </button>
+            </div>
+          </BlurFade>
+        )}
 
         <BlurFade delay={0.5} inView>
           <motion.div 

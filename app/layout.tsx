@@ -119,8 +119,71 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Kiiro.cx",
+    "url": "https://kiiro.cx",
+    "logo": "https://kiiro.cx/projects/kiiro.webp",
+    "description": "Professional website design and development for entrepreneurs and growing businesses. Conversion-focused websites that turn visitors into customers.",
+    "sameAs": [
+      "https://linkedin.com/company/kiiro-cx",
+      "https://github.com/kiiro-cx"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+971-XXX-XXXX",
+      "contactType": "Customer Service",
+      "areaServed": ["AE", "IN", "US"],
+      "availableLanguage": ["English", "Hindi"]
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "AE",
+      "addressRegion": "Dubai"
+    },
+    "foundingDate": "2023",
+    "founders": [
+      {
+        "@type": "Person",
+        "name": "Kiiro Founder",
+        "jobTitle": "Founder & Lead Developer"
+      }
+    ],
+    "knowsAbout": [
+      "Web Development",
+      "React",
+      "Next.js",
+      "TypeScript",
+      "UI/UX Design",
+      "Conversion Optimization",
+      "SEO",
+      "Digital Marketing"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Web Development Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Website Development",
+          "description": "Custom website development with React/Next.js",
+          "price": "400",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "name": "Monthly Retainer",
+          "description": "Ongoing website maintenance and optimization",
+          "price": "500",
+          "priceCurrency": "USD"
+        }
+      ]
+    }
+  };
+
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -139,6 +202,12 @@ export default function RootLayout({
                 page_location: window.location.href,
               });
             `,
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd)
           }}
         />
       </head>

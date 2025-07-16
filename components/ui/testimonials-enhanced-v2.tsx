@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 import { BlurFade } from "@/components/magicui/blur-fade";
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -139,15 +140,12 @@ export function TestimonialsEnhancedV2() {
                     {/* Author Info */}
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 rounded-full bg-kiiro-yellow/10 flex items-center justify-center overflow-hidden">
-                        <img 
-                          src={testimonials[currentIndex].image} 
-                          alt={testimonials[currentIndex].name}
+                        <Image
+                          src={testimonials[currentIndex].image}
+                          alt={`${testimonials[currentIndex].name} avatar`}
+                          width={48}
+                          height={48}
                           className="w-full h-full object-cover"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.style.display = 'none';
-                            target.parentElement!.innerHTML = testimonials[currentIndex].name.charAt(0);
-                          }}
                         />
                       </div>
                       <div>

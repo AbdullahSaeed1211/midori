@@ -84,8 +84,8 @@ export function HeroSection() {
             animate={isMounted ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
           >
-            <span className="block mb-3 text-off-white">Build a Website That</span>
-            <span className="block text-kiiro-yellow">Works Like a Sales Team</span>
+            <span className="block mb-3 text-off-white">Websites That Work Like</span>
+            <span className="block text-kiiro-yellow">Your Best Salesperson</span>
           </motion.h1>
           
           <motion.p 
@@ -94,7 +94,7 @@ export function HeroSection() {
             animate={isMounted ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            Your website is your best salesperson - but only if it&apos;s designed to convert. Whether you&apos;re launching your first business, growing a course, or optimizing what you have, we create <span className="text-kiiro-yellow">professional websites</span> that establish credibility and turn visitors into <span className="text-kiiro-yellow">customers</span> - fast delivery, no fluff, no overpriced retainers.
+            Built to convert. Delivered fast. No retainers, no fluff. Every project is personally led and built with a focus on clarity, speed, and results. Get a professional website that establishes credibility and turns visitors into customers.
           </motion.p>
         </div>
         

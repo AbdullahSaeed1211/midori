@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Quote, Star } from "lucide-react";
+import Image from "next/image";
 
 interface TestimonialData {
   name: string;
@@ -94,9 +95,11 @@ function TestimonialCard({ testimonial, index }: TestimonialCardProps) {
       <div className="flex items-center gap-3 mt-auto">
         <div className="w-10 h-10 rounded-full bg-kiiro-yellow/10 border border-kiiro-yellow/20 flex items-center justify-center overflow-hidden">
           {testimonial.avatar ? (
-            <img 
+            <Image 
               src={testimonial.avatar} 
               alt={testimonial.name}
+              width={40}
+              height={40}
               className="w-full h-full object-cover"
             />
           ) : (

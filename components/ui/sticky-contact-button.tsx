@@ -81,7 +81,7 @@ export function StickyContactButton() {
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-3 h-3 fill-kiiro-yellow text-kiiro-yellow" />
                     ))}
-                    <span className="text-xs text-off-white/60 ml-1">15+ projects</span>
+                    <span className="text-xs text-off-white/60 ml-1">Quality projects</span>
                   </div>
                 </div>
               </div>
@@ -93,8 +93,8 @@ export function StickyContactButton() {
                   <p className="text-xs text-off-white/70">Avg Delivery</p>
                 </div>
                 <div className="text-center p-3 bg-deep-gray/50 rounded-lg">
-                  <p className="text-lg font-bold text-teal-accent">197%</p>
-                  <p className="text-xs text-off-white/70">Avg ROI</p>
+                  <p className="text-lg font-bold text-teal-accent">95%</p>
+                  <p className="text-sm text-off-white/80">Client satisfaction</p>
                 </div>
               </div>
 

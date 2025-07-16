@@ -71,11 +71,30 @@ const faqData = [
 export function FaqSection() {
   const [openItem, setOpenItem] = useState<string | null>(faqData[0].id);
 
+  const faqStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <BlurFade delay={0.1} inView>
       <section className="py-24 bg-charcoal-black text-off-white" id="faq">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqStructuredData)
+          }}
+        />
         <div className="container px-4 mx-auto">
-          <div className="flex flex-col items-center text-center mb-16 max-w-3xl mx-auto">
+          <div className="flex flex-col text-left mb-16 max-w-3xl">
             <p className="mb-3 text-xs uppercase tracking-[0.25em] text-kiiro-yellow font-semibold">FAQ</p>
             <h2 className="text-4xl font-bold md:text-5xl [text-shadow:_0_1px_2px_rgba(0,0,0,0.2)] mb-4 text-off-white">
               <TextAnimate animation="blurInUp">

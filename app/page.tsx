@@ -34,8 +34,80 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Kiiro.cx",
+    "url": "https://kiiro.cx",
+    "logo": "https://kiiro.cx/projects/kiiro.webp",
+    "description": "Professional website design and development services in Dubai, UAE. Conversion-focused websites for entrepreneurs and growing businesses.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "AE",
+      "addressRegion": "Dubai",
+      "addressLocality": "Dubai"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "25.2048",
+      "longitude": "55.2708"
+    },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Dubai"
+      },
+      {
+        "@type": "Country",
+        "name": "United Arab Emirates"
+      },
+      {
+        "@type": "Country",
+        "name": "India"
+      }
+    ],
+    "serviceType": [
+      "Web Development",
+      "Website Design",
+      "E-commerce Development",
+      "Mobile-First Design",
+      "SEO Services",
+      "Conversion Optimization"
+    ],
+    "priceRange": "$400-$2000",
+    "currenciesAccepted": ["USD", "AED"],
+    "paymentAccepted": "Bank Transfer, PayPal, Stripe",
+    "openingHours": "Mo-Fr 09:00-18:00",
+    "telephone": "+971-XXX-XXXX",
+    "email": "hello@kiiro.cx",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Web Development Services Dubai",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "name": "Website Development Dubai",
+          "description": "Custom website development services for Dubai businesses",
+          "areaServed": "Dubai, UAE"
+        },
+        {
+          "@type": "Offer",
+          "name": "E-commerce Development UAE",
+          "description": "Online store development for UAE businesses",
+          "areaServed": "United Arab Emirates"
+        }
+      ]
+    }
+  };
+
   return (
     <main className="flex min-h-screen flex-col" id="main-content">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(localBusinessSchema)
+        }}
+      />
       <Header />
       
       <HeroSection />
@@ -54,11 +126,11 @@ export default function Home() {
       
       <ProcessTimeline />
       
-      <SectionDivider variant="gradient" />
+      <SectionDivider variant="wave" />
       
       <CaseStudiesSection />
       
-      <SectionDivider variant="dotted" />
+      <SectionDivider variant="geometric" />
       
       <div id="client-wins">
         <TestimonialsSection />
@@ -71,6 +143,8 @@ export default function Home() {
         <PricingSection />
       </div>
       
+      <SectionDivider variant="dotted" />
+      
       <WhyKiiroSectionEnhanced />
       
       <FounderStorySection />
@@ -80,6 +154,8 @@ export default function Home() {
       <div id="faq">
         <FaqSection />
       </div>
+      
+      <SectionDivider variant="gradient" />
       
       <BookingSection />
       

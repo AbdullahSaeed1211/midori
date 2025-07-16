@@ -268,7 +268,7 @@ export function ContactFormSection() {
                   Book a Call
                 </a>
                 <a
-                  href="mailto:abdullah.saeed1724@gmail.com"
+                  href="mailto:hello@kiiro.cx"
                   className="inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 rounded-lg border border-off-white/20 text-off-white hover:bg-off-white/5 transition-colors duration-300 text-sm sm:text-base"
                 >
                   Email Us

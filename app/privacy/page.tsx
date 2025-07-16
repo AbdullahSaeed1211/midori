@@ -99,7 +99,7 @@ export default function PrivacyPolicy() {
                   <li><strong>Object:</strong> Object to certain processing of your information</li>
                 </ul>
                 <p className="text-sm text-off-white/70 mt-4">
-                  To exercise these rights, contact us at <a href="mailto:abdullah.saeed1724@gmail.com" className="text-kiiro-yellow hover:underline">abdullah.saeed1724@gmail.com</a>
+                  To exercise these rights, contact us at <a href="mailto:hello@kiiro.cx" className="text-kiiro-yellow hover:underline">hello@kiiro.cx</a>
                 </p>
               </div>
             </section>
@@ -158,7 +158,7 @@ export default function PrivacyPolicy() {
                   For questions about this Privacy Policy or to exercise your rights, contact us:
                 </p>
                 <div className="bg-charcoal-gray/50 rounded-lg p-4 border border-white/10">
-                  <p className="text-off-white/90"><strong>Email:</strong> <a href="mailto:abdullah.saeed1724@gmail.com" className="text-kiiro-yellow hover:underline">abdullah.saeed1724@gmail.com</a></p>
+                  <p className="text-off-white/90"><strong>Email:</strong> <a href="mailto:hello@kiiro.cx" className="text-kiiro-yellow hover:underline">hello@kiiro.cx</a></p>
                   <p className="text-off-white/90"><strong>Website:</strong> <a href="https://kiiro.cx" className="text-kiiro-yellow hover:underline">kiiro.cx</a></p>
                   <p className="text-off-white/90"><strong>Response Time:</strong> We respond to privacy requests within 30 days</p>
                 </div>

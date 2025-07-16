@@ -1,13 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface PerformanceMetrics {
   lcp: number | null;
   fid: number | null;
   cls: number | null;
   fcp: number | null;
+}
+
+interface PerformanceEntry extends globalThis.PerformanceEntry {
+  processingStart?: number;
+  hadRecentInput?: boolean;
+  value?: number;
 }
 
 export function PerformanceMonitor() {
@@ -29,16 +35,19 @@ export function PerformanceMonitor() {
     // Monitor Core Web Vitals
     const observer = new PerformanceObserver((list) => {
       for (const entry of list.getEntries()) {
+        const perfEntry = entry as PerformanceEntry;
         switch (entry.entryType) {
           case 'largest-contentful-paint':
             setMetrics(prev => ({ ...prev, lcp: entry.startTime }));
             break;
           case 'first-input':
-            setMetrics(prev => ({ ...prev, fid: (entry as any).processingStart - entry.startTime }));
+            if (perfEntry.processingStart) {
+              setMetrics(prev => ({ ...prev, fid: perfEntry.processingStart! - entry.startTime }));
+            }
             break;
           case 'layout-shift':
-            if (!(entry as any).hadRecentInput) {
-              setMetrics(prev => ({ ...prev, cls: (prev.cls || 0) + (entry as any).value }));
+            if (!perfEntry.hadRecentInput && perfEntry.value) {
+              setMetrics(prev => ({ ...prev, cls: (prev.cls || 0) + perfEntry.value! }));
             }
             break;
           case 'paint':
@@ -53,9 +62,9 @@ export function PerformanceMonitor() {
     // Observe different metric types
     try {
       observer.observe({ entryTypes: ['largest-contentful-paint', 'first-input', 'layout-shift', 'paint'] });
-    } catch (e) {
+    } catch (error) {
       // Fallback for older browsers
-      console.log('Performance Observer not fully supported');
+      console.log('Performance Observer not fully supported', error);
     }
 
     setShowMetrics(isDev || isAdmin);

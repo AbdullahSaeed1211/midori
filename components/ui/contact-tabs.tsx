@@ -66,7 +66,7 @@ export function ContactTabs() {
             {/* Cal.com embed */}
             <div className="bg-deep-gray/50 border border-white/10 rounded-lg p-2 sm:p-4 min-h-[500px]">
               <Cal
-                calLink="abdullahsaeed/15min"
+                calLink="kiiro-consultation/15min"
                 style={{ width: "100%", height: "100%", overflow: "scroll" }}
                 config={{
                   layout: 'month_view' 
@@ -189,13 +189,13 @@ export function ContactTabs() {
               </a>
 
               <a
-                href="mailto:abdullah.saeed1724@gmail.com?subject=Quick Question About Website Project"
+                href="mailto:hello@kiiro.cx?subject=Quick Question About Website Project"
                 className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-6 hover:bg-blue-500/20 transition-colors group"
               >
                 <div className="text-4xl mb-3">📧</div>
                 <h4 className="text-off-white font-semibold mb-2 group-hover:text-blue-400 transition-colors">Email</h4>
                 <p className="text-off-white/60 text-sm mb-3">For detailed questions and file sharing</p>
-                <div className="text-blue-400 text-sm font-medium">abdullah.saeed1724@gmail.com</div>
+                <div className="text-blue-400 text-sm font-medium">hello@kiiro.cx</div>
               </a>
             </div>
 

@@ -81,7 +81,7 @@ export function ChatButton() {
 
               {/* Direct Email */}
               <motion.a
-                href="mailto:abdullah.saeed1724@gmail.com"
+                href="mailto:hello@kiiro.cx"
                 className="flex items-center gap-2 p-2 bg-off-white/10 text-off-white rounded-lg hover:bg-off-white/20 transition-all duration-200 w-full"
                 whileHover={{ scale: 1.01, x: 2 }}
                 whileTap={{ scale: 0.99 }}

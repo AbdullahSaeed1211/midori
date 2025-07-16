@@ -338,7 +338,7 @@ export function LeadMagnetSection() {
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-kiiro-yellow text-kiiro-yellow" />
                 ))}
-                <span className="ml-2 text-off-white/80">Rated 5/5 by 15+ business owners</span>
+                <span className="ml-2 text-off-white/80">Trusted by growing businesses</span>
               </div>
               <h3 className="text-2xl font-bold text-off-white mb-4">
                 Want Personal Help Implementing These?

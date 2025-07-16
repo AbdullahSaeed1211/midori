@@ -6,8 +6,8 @@ import { motion } from "framer-motion";
 const badges = [
   {
     icon: Award,
-    title: "5-Star Rated",
-    subtitle: "Client satisfaction"
+    title: "Quality Focus",
+    description: "Every project delivered"
   },
   {
     icon: Users,

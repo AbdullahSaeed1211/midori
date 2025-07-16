@@ -10,7 +10,7 @@ export function WhyKiiroSectionEnhanced() {
     <section className="py-24 bg-charcoal-black text-off-white" id="why-kiiro">
       <div className="container px-4 mx-auto max-w-7xl">
         <BlurFade delay={0.1} inView>
-          <div className="text-center mb-16 max-w-4xl mx-auto">
+          <div className="text-left mb-16 max-w-4xl">
             <div className="px-4 py-1.5 rounded-full bg-kiiro-yellow/10 text-kiiro-yellow text-sm font-medium mb-6 border border-kiiro-yellow/20 inline-block">
               Why Choose Kiiro
             </div>

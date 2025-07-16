@@ -70,7 +70,7 @@ export function Footer() {
             <h4 className="font-semibold text-off-white mb-3 uppercase tracking-wider text-xs">Connect</h4>
             <div className="flex space-x-4 justify-center md:justify-start">
                 <a 
-                href="https://www.linkedin.com/in/abdullah-saeed-dev/"
+                href="https://www.linkedin.com/company/kiiro-cx/"
                   target="_blank" 
                   rel="noopener noreferrer" 
                   aria-label="LinkedIn"

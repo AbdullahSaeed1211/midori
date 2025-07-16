@@ -73,7 +73,7 @@ export function CaseStudiesSection() {
       <BackgroundBeams className="z-0 opacity-40" />
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-left mb-16">
           <motion.span 
             className="inline-block text-kiiro-yellow font-semibold tracking-wider uppercase text-sm mb-3"
             initial={{ opacity: 0, y: 10 }}
@@ -95,7 +95,7 @@ export function CaseStudiesSection() {
           </motion.h2>
           
           <motion.p 
-            className="text-white/70 max-w-2xl mx-auto text-lg"
+            className="text-white/70 max-w-2xl text-lg"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -105,23 +105,24 @@ export function CaseStudiesSection() {
           </motion.p>
           
           {/* Quick Stats */}
-          <div className="flex flex-wrap justify-center gap-6 mt-8">
-            <div className="text-center">
+          <div className="flex flex-wrap justify-start gap-6 mt-8">
+            <div className="text-left">
               <div className="text-2xl font-bold text-kiiro-yellow">Better Results</div>
               <div className="text-sm text-off-white/70">For Every Client</div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-kiiro-yellow">15+</div>
-              <div className="text-sm text-off-white/70">Successful Projects</div>
+            <div className="text-left">
+              <div className="text-2xl font-bold text-kiiro-yellow">Growing</div>
+              <div className="text-sm text-off-white/80">Project Portfolio</div>
             </div>
-            <div className="text-center">
+            <div className="text-left">
               <div className="text-2xl font-bold text-kiiro-yellow">1-2 weeks</div>
               <div className="text-sm text-off-white/70">Average Delivery</div>
             </div>
           </div>
         </div>
         
-        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {/* Desktop Grid */}
+        <div className="hidden md:grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {CASE_STUDIES.map((caseStudy, index) => (
             <CaseStudyCard
               key={caseStudy.title}
@@ -132,6 +133,32 @@ export function CaseStudiesSection() {
               )}
             />
           ))}
+        </div>
+
+        {/* Mobile Horizontal Scroll */}
+        <div className="md:hidden">
+          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+            {CASE_STUDIES.map((caseStudy) => (
+              <div key={caseStudy.title} className="flex-shrink-0 w-[85vw] snap-start">
+                <CaseStudyCard {...caseStudy} />
+              </div>
+            ))}
+          </div>
+          
+          {/* Scroll indicator for mobile */}
+          <div className="flex justify-center mt-4 gap-2">
+            {CASE_STUDIES.map((caseStudy) => (
+              <div
+                key={caseStudy.title}
+                className="w-2 h-2 rounded-full bg-white/20"
+              />
+            ))}
+          </div>
+          
+          {/* Swipe hint */}
+          <div className="text-center mt-2">
+            <p className="text-xs text-off-white/50">← Swipe to see more projects →</p>
+          </div>
         </div>
         
         <motion.div 

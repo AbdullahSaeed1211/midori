@@ -173,7 +173,7 @@ export default function TermsOfService() {
                   For questions about these Terms of Service or to discuss your project:
                 </p>
                 <div className="bg-charcoal-gray/50 rounded-lg p-4 border border-white/10">
-                  <p className="text-off-white/90"><strong>Email:</strong> <a href="mailto:abdullah.saeed1724@gmail.com" className="text-kiiro-yellow hover:underline">abdullah.saeed1724@gmail.com</a></p>
+                  <p className="text-off-white/90"><strong>Email:</strong> <a href="mailto:hello@kiiro.cx" className="text-kiiro-yellow hover:underline">hello@kiiro.cx</a></p>
                   <p className="text-off-white/90"><strong>Website:</strong> <a href="https://kiiro.cx" className="text-kiiro-yellow hover:underline">kiiro.cx</a></p>
                   <p className="text-off-white/90"><strong>Business Hours:</strong> Monday-Friday, 9 AM - 6 PM IST</p>
                   <p className="text-off-white/90"><strong>Response Time:</strong> We respond to inquiries within 24 hours</p>
