@@ -158,12 +158,12 @@ export function BookingSection() {
                     </div>
                     
                     <h3 className="text-2xl md:text-3xl font-bold text-off-white mb-4">
-                      See Exactly What's Costing You 
+                      See Exactly What&apos;s Costing You 
                       <span className="text-kiiro-yellow"> $3,000+ Monthly</span>
                     </h3>
                     
                     <p className="text-lg text-off-white/90 mb-6 max-w-2xl mx-auto">
-                      I'll audit your website <span className="text-kiiro-yellow font-semibold">live on the call</span> and show you the exact fixes 
+                      I&apos;ll audit your website <span className="text-kiiro-yellow font-semibold">live on the call</span> and show you the exact fixes 
                       that will turn more visitors into customers. No pitch, just value.
                     </p>
                     
@@ -174,7 +174,7 @@ export function BookingSection() {
                           <span className="text-kiiro-yellow font-bold">1</span>
                         </div>
                         <p className="text-sm font-semibold text-off-white mb-2">Live Website Audit</p>
-                        <p className="text-xs text-off-white/80">I'll review your site in real-time and identify conversion blockers</p>
+                        <p className="text-xs text-off-white/80">I&apos;ll review your site in real-time and identify conversion blockers</p>
                       </div>
                       <div className="bg-charcoal-black/40 backdrop-blur-sm rounded-xl p-4 border border-teal-accent/20">
                         <div className="w-10 h-10 bg-gradient-to-br from-teal-accent/40 to-teal-accent/20 rounded-full flex items-center justify-center mb-3 mx-auto">

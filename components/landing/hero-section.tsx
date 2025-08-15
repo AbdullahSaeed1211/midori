@@ -43,8 +43,7 @@ export function HeroSection() {
     { src: "/projects/dubbby.webp", alt: "Dubbby Project", height: "h-40" },
   ];
 
-  // Combined images for horizontal marquee
-  const allImages = [...column1Images, ...column2Images];
+
 
   const renderImageCard = (image: { src: string; alt: string; height: string }, index: number | string, isMobile: boolean = false) => (
     <div key={index} className={cn(

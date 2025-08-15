@@ -2,6 +2,7 @@
 
 import React, { useMemo, useCallback, useState, useEffect, Suspense } from "react";
 import { motion, useReducedMotion, AnimatePresence } from "motion/react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { ScrollIndicator } from "@/components/ui/scroll-indicator";
 import { BackgroundBeams } from "@/components/ui/background-beams";
@@ -127,43 +128,49 @@ const STATS: StatItem[] = [
   }
 ];
 
-// Animation variants
+// Optimized animation variants for better performance
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2
+      staggerChildren: 0.08,
+      delayChildren: 0.15
     }
   }
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  hidden: { 
+    opacity: 0, 
+    y: 20, 
+    scale: 0.98 
+  },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-      duration: 0.5
+      duration: 0.4,
+      ease: "easeOut" as const
     }
   }
 };
 
 const headerVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 15 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6
+      duration: 0.5,
+      ease: "easeOut" as const
     }
   }
 };
 
-// Enhanced Case Study Card Component
-const EnhancedCaseStudyCard: React.FC<CaseStudyProps & { className?: string }> = ({
+// Enhanced Case Study Card Component with performance optimizations
+const EnhancedCaseStudyCard: React.FC<CaseStudyProps & { className?: string }> = React.memo(({
   title,
   description,
   image,
@@ -176,8 +183,9 @@ const EnhancedCaseStudyCard: React.FC<CaseStudyProps & { className?: string }> =
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
-  const getAccentColorClass = (color: string) => {
+  const getAccentColorClass = useCallback((color: string) => {
     const colorMap: Record<string, string> = {
       yellow: "from-yellow-400/20 to-yellow-600/10",
       teal: "from-teal-400/20 to-teal-600/10",
@@ -185,29 +193,43 @@ const EnhancedCaseStudyCard: React.FC<CaseStudyProps & { className?: string }> =
       purple: "from-purple-400/20 to-purple-600/10"
     };
     return colorMap[color] || colorMap.yellow;
-  };
+  }, []);
+
+  const handleCardClick = useCallback(() => {
+    window.open(link, '_blank');
+  }, [link]);
+
+  const handleImageLoad = useCallback(() => {
+    setImageLoaded(true);
+  }, []);
+
+  // Optimized animation configs with transform3d for GPU acceleration
+  const hoverAnimation = useMemo(() => shouldReduceMotion ? {} : {
+    y: -8,
+    scale: 1.015,
+    rotateX: 1,
+    rotateY: 2,
+  }, [shouldReduceMotion]);
+
+  const hoverTransition = useMemo(() => ({
+    type: "spring" as const,
+    stiffness: shouldReduceMotion ? 100 : 200,
+    damping: shouldReduceMotion ? 25 : 18,
+    mass: 0.8
+  }), [shouldReduceMotion]);
 
   return (
     <motion.article
       className={cn(
-        "group relative h-full cursor-pointer",
+        "group relative h-full cursor-pointer will-change-transform",
         featured && "md:col-span-2 lg:col-span-1",
         className
       )}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      whileHover={{
-        y: -12,
-        rotateX: 2,
-        rotateY: 4,
-        scale: 1.02,
-      }}
-      transition={{
-        type: "spring",
-        stiffness: 260,
-        damping: 20
-      }}
-      onClick={() => window.open(link, '_blank')}
+      whileHover={hoverAnimation}
+      transition={hoverTransition}
+      onClick={handleCardClick}
       role="button"
       tabIndex={0}
       aria-label={`View ${title} case study`}
@@ -216,22 +238,28 @@ const EnhancedCaseStudyCard: React.FC<CaseStudyProps & { className?: string }> =
       <div className="absolute -inset-0.5 bg-gradient-to-r from-kiiro-yellow/50 via-blue-500/30 to-purple-500/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
       
       {/* Main card */}
-      <div className="relative h-full bg-white/5 backdrop-blur-xl border border-white/10 group-hover:border-white/20 rounded-2xl overflow-hidden transition-all duration-500">
+      <div className="relative h-full bg-white/5 backdrop-blur-xl border border-white/10 group-hover:border-white/20 rounded-2xl overflow-hidden transition-all duration-300 will-change-transform">
         
         {/* Image section */}
         <div className="relative overflow-hidden h-64 md:h-72">
           {!imageLoaded && (
             <div className="animate-pulse bg-white/10 w-full h-full" />
           )}
-          <motion.img
-            src={image}
-            alt={title}
-            className="w-full h-full object-cover"
-            onLoad={() => setImageLoaded(true)}
-            whileHover={{ scale: 1.08 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            loading="lazy"
-          />
+          <motion.div
+            className="w-full h-full relative"
+            whileHover={shouldReduceMotion ? {} : { scale: 1.08 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.6, ease: "easeOut" }}
+          >
+            <Image
+              src={image}
+              alt={title}
+              fill
+              className="object-cover"
+              onLoad={handleImageLoad}
+              priority={featured}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          </motion.div>
           
           {/* Dynamic color overlay */}
           <div 
@@ -273,8 +301,8 @@ const EnhancedCaseStudyCard: React.FC<CaseStudyProps & { className?: string }> =
           {/* Title */}
           <motion.h3 
             className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent leading-tight"
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.2 }}
+            whileHover={shouldReduceMotion ? {} : { scale: 1.02 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.2 }}
           >
             {title}
           </motion.h3>
@@ -312,7 +340,7 @@ const EnhancedCaseStudyCard: React.FC<CaseStudyProps & { className?: string }> =
           {/* CTA */}
           <motion.div 
             className="flex items-center gap-2 text-kiiro-yellow font-semibold group-hover:gap-4 transition-all duration-300 pt-2"
-            whileHover={{ x: 8 }}
+            whileHover={shouldReduceMotion ? {} : { x: 8 }}
           >
             <span>View Case Study</span>
             <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -321,7 +349,9 @@ const EnhancedCaseStudyCard: React.FC<CaseStudyProps & { className?: string }> =
       </div>
     </motion.article>
   );
-};
+});
+
+EnhancedCaseStudyCard.displayName = 'EnhancedCaseStudyCard';
 
 // Loading skeleton component
 const CaseStudySkeleton = () => (
@@ -380,8 +410,6 @@ export function CaseStudiesSection({
   variant = 'default'
 }: CaseStudySectionProps) {
   const [imagesLoaded, setImagesLoaded] = useState(false);
-  const [imageLoadErrors, setImageLoadErrors] = useState<Set<string>>(new Set());
-  const [isVisible, setIsVisible] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
   const displayedStudies = useMemo(() =>
@@ -406,12 +434,9 @@ export function CaseStudiesSection({
       const criticalImages = displayedStudies.slice(0, 3);
       const imagePromises = criticalImages.map(study =>
         new Promise<void>((resolve) => {
-          const img = new Image();
+          const img = new window.Image();
           img.onload = () => resolve();
-          img.onerror = () => {
-            setImageLoadErrors(prev => new Set(prev).add(study.image));
-            resolve();
-          };
+          img.onerror = () => resolve();
           img.src = study.image;
         })
       );
@@ -426,30 +451,13 @@ export function CaseStudiesSection({
     preloadImages();
   }, [displayedStudies]);
 
-  // Intersection observer for performance
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { rootMargin: '100px' }
-    );
 
-    const section = document.getElementById('case-studies');
-    if (section) {
-      observer.observe(section);
-    }
 
-    return () => observer.disconnect();
-  }, []);
+  // Structured data for SEO - memoized to prevent recalculation
+  const structuredData = useMemo(() => {
+    if (typeof window === 'undefined') return null;
 
-  // Structured data for SEO
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const structuredData = {
+    return {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
       "name": "Case Studies - Midori Agency",
@@ -463,18 +471,31 @@ export function CaseStudiesSection({
         "url": study.link
       }))
     };
+  }, [displayedStudies]);
+
+  useEffect(() => {
+    if (!structuredData) return;
 
     const script = document.createElement('script');
     script.type = 'application/ld+json';
     script.textContent = JSON.stringify(structuredData);
+    script.id = 'case-studies-structured-data';
+    
+    // Remove existing script if it exists
+    const existingScript = document.getElementById('case-studies-structured-data');
+    if (existingScript) {
+      document.head.removeChild(existingScript);
+    }
+    
     document.head.appendChild(script);
 
     return () => {
-      if (document.head.contains(script)) {
-        document.head.removeChild(script);
+      const scriptToRemove = document.getElementById('case-studies-structured-data');
+      if (scriptToRemove && document.head.contains(scriptToRemove)) {
+        document.head.removeChild(scriptToRemove);
       }
     };
-  }, [displayedStudies]);
+  }, [structuredData]);
 
   return (
     <section
@@ -561,8 +582,6 @@ export function CaseStudiesSection({
                       index === 0 && "md:col-span-2 lg:col-span-1",
                       index === 4 && "md:col-span-2 lg:col-span-1"
                     )}
-                    whileHover={{ y: -8 }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
                   >
                     <EnhancedCaseStudyCard
                       {...caseStudy}

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Keyboard, Eye, Users } from "lucide-react";
+import { Keyboard } from "lucide-react";
 
 export function AccessibilityImprovements() {
   const [isKeyboardUser, setIsKeyboardUser] = useState(false);

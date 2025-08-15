@@ -1,7 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+
+interface LayoutShift extends PerformanceEntry {
+  value: number;
+  hadRecentInput: boolean;
+}
 
 interface PerformanceMetrics {
   lcp: number | null;
@@ -34,11 +39,11 @@ export function PerformanceMonitor() {
             setMetrics(prev => ({ ...prev, lcp: entry.startTime }));
             break;
           case 'first-input':
-            setMetrics(prev => ({ ...prev, fid: (entry as any).processingStart - entry.startTime }));
+            setMetrics(prev => ({ ...prev, fid: (entry as PerformanceEventTiming).processingStart - entry.startTime }));
             break;
           case 'layout-shift':
-            if (!(entry as any).hadRecentInput) {
-              setMetrics(prev => ({ ...prev, cls: (prev.cls || 0) + (entry as any).value }));
+            if (!(entry as LayoutShift).hadRecentInput) {
+              setMetrics(prev => ({ ...prev, cls: (prev.cls || 0) + (entry as LayoutShift).value }));
             }
             break;
           case 'paint':
@@ -53,7 +58,7 @@ export function PerformanceMonitor() {
     // Observe different metric types
     try {
       observer.observe({ entryTypes: ['largest-contentful-paint', 'first-input', 'layout-shift', 'paint'] });
-    } catch (e) {
+    } catch {
       // Fallback for older browsers
       console.log('Performance Observer not fully supported');
     }
