@@ -1,172 +1,138 @@
-"use client";
+// components/landing/services-section.tsx
+'use client';
 
-import { BlurFade } from "@/components/magicui/blur-fade";
-import { CheckCircle, ArrowRight, TrendingUp, Users, Zap, Target } from "lucide-react";
-import Link from "next/link";
+import {
+  ArrowRight,
+  CheckCircle,
+  Target,
+  TrendingUp,
+  Users,
+  Zap,
+} from 'lucide-react';
+import Link from 'next/link';
+import { BlurFade } from '@/components/magicui/blur-fade';
+import { cn } from '@/lib/utils';
 
-const conversionProblems = [
+const problems = [
   {
     icon: Users,
-    problem: "No Professional Online Presence",
-    solution: "Strategic Website Foundation",
-    description: "You're losing credibility and customers without a professional website. We build conversion-focused sites that establish trust and drive action from day one.",
-    metrics: "Professional credibility + lead generation",
-    fixes: [
-      "Professional design that builds trust",
-      "Clear messaging that converts visitors", 
-      "Mobile-optimized for all devices",
-      "Fast loading and SEO-ready"
-    ]
+    title: 'No Professional Online Presence',
+    pillar: 'Website Foundation',
+    metric: 'Credibility + Leads',
+    desc: 'We craft sleek, conversion-ready websites that earn trust.',
+    fixes: ['Polished design', 'Clear messaging', 'Mobile-first', 'Fast & SEO'],
   },
   {
     icon: Target,
-    problem: "Unclear Messaging & Value Prop",
-    solution: "Strategic Messaging Framework",
-    description: "Visitors don't understand what you do or why they should choose you. We craft clear, compelling messaging that resonates with your ideal customers.",
-    metrics: "Up to 60% improvement in engagement",
-    fixes: [
-      "Crystal-clear headline and subheadline",
-      "Benefit-focused copy over features",
-      "Compelling calls-to-action",
-      "Objection-handling content"
-    ]
+    title: 'Unclear Messaging',
+    pillar: 'Messaging Framework',
+    metric: '↑ 60% engagement',
+    desc: 'We make your value obvious in the first 5 seconds.',
+    fixes: ['Crisp headline', 'Benefit copy', 'Stronger CTA', 'Handle objections'],
   },
   {
     icon: TrendingUp,
-    problem: "No Social Proof or Credibility",
-    solution: "Trust & Authority Building",
-    description: "People don't trust unknown brands. We implement proven social proof elements that build credibility and reduce buyer hesitation.",
-    metrics: "25-35% increase in form submissions",
-    fixes: [
-      "Strategic testimonial placement",
-      "Case studies with real results",
-      "Trust badges and certifications",
-      "Founder story and personal touch"
-    ]
+    title: 'No Social Proof',
+    pillar: 'Trust Building',
+    metric: '↑ 30% sign-ups',
+    desc: 'We add proof that removes doubt and builds authority.',
+    fixes: ['Testimonials', 'Case studies', 'Trust badges', 'Founder story'],
   },
   {
     icon: Zap,
-    problem: "Poor Mobile Experience",
-    solution: "Mobile-First Optimization",
-    description: "70% of traffic is mobile, but many sites aren't built for it. We ensure your mobile experience converts as well as desktop.",
-    metrics: "Up to 50% mobile conversion improvement",
-    fixes: [
-      "Touch-friendly navigation and buttons",
-      "Fast loading on all devices",
-      "Simplified mobile user flows",
-      "Thumb-optimized design patterns"
-    ]
-  }
+    title: 'Poor Mobile UX',
+    pillar: 'Mobile-First',
+    metric: '↑ 50% mobile CVR',
+    desc: 'We optimise mobile flows for speed and effortless navigation.',
+    fixes: ['Thumb nav', 'Fast load', 'Simple flows', 'Tap targets'],
+  },
 ];
 
 export function ServicesSection() {
   return (
-    <BlurFade delay={0.1} inView>
-      <section className="py-20 bg-charcoal-black text-off-white">
-        <div className="container mx-auto px-4 max-w-7xl">
+    <BlurFade delay={0.15} inView>
+      <section className="relative isolate overflow-hidden bg-charcoal-black py-24 sm:py-28 text-off-white">
+        {/* Soft vignette */}
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-kiiro-yellow/5 via-transparent to-transparent [mask-image:radial-gradient(65%_65%_at_50%_40%,#000_40%,transparent_100%)]" />
+
+        <div className="container mx-auto max-w-6xl px-4">
           {/* Header */}
-          <div className="text-center mb-16">
-            <p className="mb-3 text-xs uppercase tracking-[0.25em] text-kiiro-yellow font-semibold">
-              🎯 WEBSITE OPTIMIZATION
+          <header className="mx-auto mb-16 max-w-2xl text-center">
+            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.25em] text-kiiro-yellow/80">
+              Website Optimisation
             </p>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-off-white">
-              The 4 Website Problems
-              <br />
+
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light leading-snug tracking-tight">
+              4 Problems{' '}
               <span className="text-kiiro-yellow">Costing You Customers</span>
             </h2>
-            <p className="text-xl text-off-white/80 max-w-3xl mx-auto">
-              Whether you need a new website or want to fix what you have, these 4 problems are costing you customers every day. We identify exactly what&apos;s broken and fix it with proven strategies.
-            </p>
-          </div>
 
-          {/* Problems & Solutions Grid */}
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
-            {conversionProblems.map((item, index) => {
+            <p className="mx-auto mt-5 max-w-lg text-sm text-off-white/60">
+              We find the leaks in your conversions—and fix them with timeless design.
+            </p>
+          </header>
+
+          {/* Problem Grid */}
+          <div className="grid gap-8 md:grid-cols-2">
+            {problems.map((item, i) => {
               const Icon = item.icon;
               return (
-                <div
-                  key={index}
-                  className="bg-deep-gray/30 border border-off-white/10 rounded-2xl p-8 hover:border-kiiro-yellow/20 transition-all duration-300 group h-full flex flex-col"
+                <article
+                  key={i}
+                  className={cn(
+                    'group relative flex flex-col gap-5 rounded-3xl border border-white/5 bg-white/5/10 p-8',
+                    'backdrop-blur-md transition-all hover:-translate-y-0.5 hover:border-white/10'
+                  )}
                 >
-                  {/* Header */}
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className="w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-6 h-6 text-red-400" />
+                  {/* Card header */}
+                  <header className="flex gap-4 items-start">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-kiiro-yellow/5">
+                      <Icon className="h-4 w-4 text-kiiro-yellow" />
                     </div>
+
                     <div className="flex-1">
-                      <h3 className="text-lg font-bold text-red-400 mb-2">
-                        Problem #{index + 1}: {item.problem}
+                      <h3 className="text-base font-medium tracking-tight text-off-white">
+                        {item.title}
                       </h3>
-                      <div className="flex items-center gap-2 mb-3">
-                        <ArrowRight className="w-4 h-4 text-kiiro-yellow" />
-                        <span className="font-semibold text-kiiro-yellow">{item.solution}</span>
+                      <div className="mt-1 flex items-center gap-2 text-[11px] uppercase tracking-wide text-teal-accent/80">
+                        {item.pillar}
+                        <span className="ml-auto rounded-full bg-kiiro-yellow/10 px-2 py-0.5 text-[10px] text-kiiro-yellow/80">
+                          {item.metric}
+                        </span>
                       </div>
                     </div>
-                  </div>
+                  </header>
 
-                  {/* Description */}
-                  <p className="text-off-white/80 mb-6 leading-relaxed flex-grow">
-                    {item.description}
-                  </p>
+                  <p className="text-sm text-off-white/70">{item.desc}</p>
 
-                  {/* Metric */}
-                  <div className="bg-kiiro-yellow/10 border border-kiiro-yellow/20 rounded-lg p-3 mb-6">
-                    <p className="text-sm font-medium text-kiiro-yellow text-center">
-                      {item.metrics}
-                    </p>
-                  </div>
-
-                  {/* Fixes List */}
-                  <div className="space-y-2 mt-auto">
-                    <p className="text-sm font-medium text-off-white mb-3">What we fix:</p>
-                    {item.fixes.map((fix, fixIndex) => (
-                      <div key={fixIndex} className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-teal-accent mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-off-white/80">{fix}</span>
-                      </div>
+                  {/* Fix list */}
+                  <ul className="mt-auto grid grid-cols-2 gap-x-4 gap-y-2 pt-4 text-[13px] text-off-white/60">
+                    {item.fixes.map((fix, idx) => (
+                      <li key={idx} className="flex items-center gap-1.5">
+                        <CheckCircle className="h-3 w-3 text-teal-accent/70" />
+                        {fix}
+                      </li>
                     ))}
-                  </div>
-                </div>
+                  </ul>
+                </article>
               );
             })}
           </div>
 
-          {/* Bottom CTA */}
-          <div className="text-center">
-            <div className="bg-gradient-to-r from-kiiro-yellow/10 to-teal-accent/10 border border-kiiro-yellow/20 rounded-2xl p-8 max-w-4xl mx-auto">
-              <h3 className="text-2xl font-bold text-off-white mb-4">
-                                 Ready to Fix What&apos;s Broken?
-              </h3>
-              <p className="text-off-white/80 mb-6 max-w-2xl mx-auto">
-                Get a free conversion audit where we&apos;ll identify exactly which of these problems 
-                are costing you customers and show you how to fix them.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/audit"
-                  className="px-8 py-4 bg-kiiro-yellow text-charcoal-black rounded-lg font-medium hover:bg-kiiro-yellow/90 transition-colors flex items-center justify-center gap-2"
-                >
-                  Get Free Conversion Audit
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link
-                  href="#booking"
-                  className="px-8 py-4 border border-teal-accent text-teal-accent rounded-lg font-medium hover:bg-teal-accent/10 transition-colors"
-                >
-                  Book Strategy Call
-                </Link>
-              </div>
-              
-              {/* Microcopy under CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-3 text-xs text-off-white/60">
-                <span>⚡ Takes 30 seconds. No pressure, just insights.</span>
-                <span className="hidden sm:inline">•</span>
-                <span>📞 Quick 15-minute call to discuss your needs</span>
-              </div>
-            </div>
-          </div>
+          {/* CTA */}
+          <footer className="mt-20 flex flex-col items-center gap-3">
+            <Link
+              href="/audit"
+              className="inline-flex items-center gap-2 rounded-full bg-kiiro-yellow px-6 py-3 text-sm font-medium text-charcoal-black transition hover:bg-kiiro-yellow/90"
+            >
+              Free Audit <ArrowRight className="h-4 w-4" />
+            </Link>
+            <p className="text-[11px] text-off-white/50">
+              30-second form – no strings attached
+            </p>
+          </footer>
         </div>
       </section>
     </BlurFade>
   );
-} 
+}

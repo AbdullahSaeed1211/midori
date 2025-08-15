@@ -1,30 +1,23 @@
 "use client";
-
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Star} from "lucide-react";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import React from "react";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import { Spotlight } from "@/components/ui/spotlight";
 import { SparklesCore } from "@/components/ui/sparkles";
-import { ScrollIndicator } from "@/components/ui/scroll-indicator";
-import { Marquee } from "@/components/magicui/marquee";
 import { DotPattern } from "@/components/magicui/dot-pattern";
-import { CountdownTimer } from "@/components/ui/countdown-timer";
-import { DemoNotification } from "@/components/ui/demo-notification";
-import { LiveActivityFeed } from "@/components/ui/live-activity-feed";
+import { Marquee } from "@/components/magicui/marquee";
 
 export function HeroSection() {
-  // State to handle client-side animations
   const [isMounted, setIsMounted] = useState(false);
-
-  // Ensure animations only run after client-side hydration
+  
   useEffect(() => {
     setIsMounted(true);
   }, []);
-
+  
   const companyLogos = [
     "Simply Mortgage",
     "Dubbby", 
@@ -33,15 +26,62 @@ export function HeroSection() {
     "BlogSquirrel"
   ];
 
+  // Project images for marquee columns
+  const column1Images = [
+    { src: "/projects/dubbby.webp", alt: "Dubbby Project", height: "h-40" },
+    { src: "/projects/brainwise.webp", alt: "BrainWise Project", height: "h-32" },
+    { src: "/projects/simply.webp", alt: "Simply Mortgage Project", height: "h-44" },
+    { src: "/projects/midori.webp", alt: "Midori Project", height: "h-36" },
+    { src: "/projects/evault.webp", alt: "EVault Project", height: "h-32" },
+  ];
+
+  const column2Images = [
+    { src: "/projects/lotus.webp", alt: "Lotus Pro Services Project", height: "h-32" },
+    { src: "/projects/sproutly.webp", alt: "Sproutly Project", height: "h-44" },
+    { src: "/projects/kiiro.webp", alt: "Kiiro Project", height: "h-36" },
+    { src: "/projects/testimonialnudger.webp", alt: "Testimonial Nudger Project", height: "h-32" },
+    { src: "/projects/dubbby.webp", alt: "Dubbby Project", height: "h-40" },
+  ];
+
+  // Combined images for horizontal marquee
+  const allImages = [...column1Images, ...column2Images];
+
+  const renderImageCard = (image: { src: string; alt: string; height: string }, index: number | string, isMobile: boolean = false) => (
+    <div key={index} className={cn(
+      "relative group rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105",
+      isMobile ? "w-48 h-32 flex-shrink-0" : ""
+    )}>
+      <img 
+        src={image.src}
+        alt={image.alt}
+        loading="lazy"
+        className={isMobile ? "w-full h-full object-cover" : `w-full ${image.height} object-cover`}
+        style={{ aspectRatio: '16/9' }}
+      />
+    </div>
+  );
+
+  const renderVerticalMarqueeColumn = (images: typeof column1Images, reverse: boolean = false) => (
+    <div className="flex-1 relative h-full">
+      <Marquee
+        vertical={true}
+        reverse={reverse}
+        className="h-full"
+        pauseOnHover={false}
+        repeat={2}
+      >
+        <div className="space-y-6">
+          {images.map((image, index) => renderImageCard(image, index))}
+        </div>
+      </Marquee>
+    </div>
+  );
+  
   return (
     <section 
-      className="relative min-h-screen flex flex-col items-center justify-center bg-charcoal-black text-off-white overflow-hidden"
+      className="relative min-h-screen bg-charcoal-black text-off-white overflow-hidden"
       id="hero"
     >
-      {/* Live notifications - only in hero */}
-      <DemoNotification />
-      <LiveActivityFeed />
-
       {/* Background effects - layered */}
       <DotPattern
         className={cn(
@@ -68,158 +108,130 @@ export function HeroSection() {
           className="w-full h-full opacity-40"
         />
       </div>
-
       <Spotlight
         className="z-10"
         fill="rgba(0, 206, 209, 0.15)"
       />
       
-      {/* Content */}
-      <div className="container relative z-20 mx-auto px-4 text-center py-12 flex flex-col justify-center min-h-screen max-w-7xl">
-        {/* Heading */}
-        <div className="max-w-4xl mx-auto mb-8 sm:mb-12 mt-20">
-          <motion.h1 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isMounted ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7 }}
-          >
-            <span className="block mb-3 text-off-white">Build a Website That</span>
-            <span className="block text-kiiro-yellow">Works Like a Sales Team</span>
-          </motion.h1>
+      {/* Hero Layout with Responsive Marquee */}
+      <div className="container relative z-20 mx-auto px-4 py-16 lg:py-12 min-h-screen max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 min-h-screen items-center">
           
-          <motion.p 
-            className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-off-white/80 max-w-2xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isMounted ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            Your website is your best salesperson - but only if it&apos;s designed to convert. Whether you&apos;re launching your first business, growing a course, or optimizing what you have, we create <span className="text-kiiro-yellow">professional websites</span> that establish credibility and turn visitors into <span className="text-kiiro-yellow">customers</span> - fast delivery, no fluff, no overpriced retainers.
-          </motion.p>
-        </div>
-        
-        {/* Buttons */}
-        <motion.div 
-          className="flex flex-col sm:flex-row gap-4 justify-center mt-8"
-          initial={{ opacity: 0, y: 10 }}
-          animate={isMounted ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <div className="relative flex justify-center sm:justify-start">
-            {/* Limited Offer Badge */}
-            <motion.div 
-              className="absolute -top-2 -left-2 sm:-left-2 z-10"
-              initial={{ opacity: 0, scale: 0.8, rotate: -12 }}
-              animate={isMounted ? { opacity: 1, scale: 1, rotate: -12 } : {}}
-              transition={{ duration: 0.6, delay: 0.8, type: "spring", stiffness: 200 }}
+          {/* Main Hero Content - Takes majority of width */}
+          <div className="lg:col-span-3 flex flex-col justify-center order-1 lg:order-1">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isMounted ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7 }}  
+              className="space-y-8 text-center lg:text-left"
             >
-              <div className="bg-off-white text-charcoal-black text-xs font-bold px-2 sm:px-3 py-1 rounded-full shadow-lg transform -rotate-12">
-                <span className="hidden sm:inline">LIMITED OFFER</span>
-                <span className="sm:hidden">LIMITED</span>
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tight leading-[0.95]">
+                <span className="block mb-4 lg:mb-6 text-off-white">Build a Website That</span>
+                
+                  Works Like a <span className="italic tracking-tight text-kiiro-yellow">Sales Team</span>
+              </h1>
+              
+              <p className="text-base sm:text-lg lg:text-xl text-off-white/80 leading-snug max-w-3xl mx-auto lg:mx-0">
+                Professional websites designed to convert visitors into <span className="text-kiiro-yellow">customers</span>. Fast delivery, proven results, no overpriced retainers.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 lg:gap-6 pt-4 lg:pt-6 justify-center lg:justify-start">
+                <div className="relative flex justify-center lg:justify-start">
+                  {/* Limited Offer Badge */}
+                  <motion.div 
+                    className="absolute -top-3 lg:-top-4 -left-3 lg:-left-4 z-10"
+                    initial={{ opacity: 0, scale: 0.8, rotate: -12 }}
+                    animate={isMounted ? { opacity: 1, scale: 1, rotate: -12 } : {}}
+                    transition={{ duration: 0.6, delay: 0.8, type: "spring", stiffness: 200 }}
+                  >
+                    <div className="bg-off-white text-charcoal-black text-sm lg:text-base font-bold px-3 lg:px-4 py-2 lg:py-2.5 rounded-full shadow-lg transform -rotate-12">
+                      LIMITED OFFER
+                    </div>
+                  </motion.div>
+            
+                  <Link 
+                    href="#booking" 
+                    className={cn(
+                      "flex items-center justify-center gap-3 px-6 lg:px-8 py-3 lg:py-4 rounded-xl",
+                      "bg-kiiro-yellow text-charcoal-black font-semibold text-base lg:text-lg",
+                      "transition-all duration-300 hover:scale-105",
+                      "hover:shadow-[0_0_30px_rgba(255,236,0,0.4)]",
+                      "w-full sm:w-auto"
+                    )}
+                  >
+                    Get Free Conversion Audit
+                    <ArrowRight className="h-4 lg:h-5 w-4 lg:w-5" />
+                  </Link>
+                </div>
+          
+                <Link 
+                  href="#case-studies"
+                  className={cn(
+                    "flex items-center justify-center gap-3 px-6 lg:px-8 py-3 lg:py-4 rounded-xl",
+                    "bg-transparent text-off-white font-semibold text-base lg:text-lg",
+                    "border-2 border-off-white/20 transition-all duration-300",
+                    "hover:bg-off-white/10 hover:border-off-white/40",
+                    "w-full sm:w-auto"
+                  )}
+                >
+                  View Case Studies
+                </Link>
               </div>
-            </motion.div>
-            
-            <Link 
-              href="#booking" 
-              className={cn(
-                "flex items-center justify-center gap-2 px-4 sm:px-6 md:px-8 py-3 md:py-4 rounded-lg w-full sm:w-auto",
-                "bg-kiiro-yellow text-charcoal-black font-medium text-sm sm:text-base md:text-lg",
-                "transition-all duration-300 hover:scale-105",
-                "hover:shadow-[0_0_25px_rgba(255,236,0,0.4)]"
-              )}
-            >
-              <span className="hidden sm:inline">Get Free Conversion Audit</span>
-              <span className="sm:hidden">Free Audit</span>
-              <ArrowRight className="h-4 w-4 ml-1" />
-            </Link>
-          </div>
-          
-          <Link 
-            href="#case-studies"
-            className={cn(
-              "flex items-center justify-center gap-2 px-4 sm:px-6 md:px-8 py-3 md:py-4 rounded-lg w-full sm:w-auto",
-              "bg-transparent text-off-white font-medium text-sm sm:text-base md:text-lg",
-              "border border-off-white/20 transition-all duration-300",
-              "hover:bg-off-white/5 hover:border-off-white/40"
-            )}
-          >
-            View Case Studies
-          </Link>
-        </motion.div>
         
-        {/* Trusted By */}
-        <motion.div
-          className="mt-16 sm:mt-20 md:mt-24"
-          initial={{ opacity: 0 }}
-          animate={isMounted ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.6 }}
-        >
-          <p className="text-xs uppercase tracking-wider text-kiiro-yellow/80 font-semibold mb-6">
-            TRUSTED BY
-          </p>
-          
-          <div className="relative max-w-4xl mx-auto">
-            <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-charcoal-black to-transparent z-10"></div>
-            <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-charcoal-black to-transparent z-10"></div>
-            
-            <div className="overflow-hidden">
-              <Marquee 
-                className="py-4 [--duration:30s]" 
+              {/* Social Proof */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={isMounted ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="pt-8 lg:pt-12"
+              >
+                <div className="flex flex-col lg:flex-row lg:items-center gap-4 mb-6 justify-center lg:justify-start">
+                  <div className="flex justify-center lg:justify-start">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-5 lg:w-6 h-5 lg:h-6 fill-kiiro-yellow text-kiiro-yellow" />
+                    ))}
+                  </div>
+                  <span className="text-off-white font-semibold text-base lg:text-lg text-center lg:text-left">
+                    Loved by 15+ Startup Founders
+                  </span>
+                </div>
+                
+                {/* Company Logos */}
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 lg:gap-10 text-off-white/60">
+                  {companyLogos.slice(0, 4).map((logo, index) => (
+                    <span key={index} className="text-sm lg:text-base font-medium">{logo}</span>
+                  ))}
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Mobile Horizontal Marquee - Below Hero Content
+            <div className="lg:hidden mt-12 lg:mt-16">
+              <Marquee
+                className="py-4"
                 pauseOnHover={true}
                 reverse={false}
+                repeat={2}
               >
-                {companyLogos.map((logo, index) => (
-                  <div key={index} className="mx-8 sm:mx-10 lg:mx-12 px-3 sm:px-4 lg:px-6">
-                    <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium text-off-white/80 whitespace-nowrap">
-                      {logo}
-                    </span>
-                  </div>
-                ))}
-              </Marquee>
+                <div className="flex space-x-4">
+                  {allImages.map((image, index) => renderImageCard(image, index, true))}
+                </div>
+              </Marquee>  
+             </div>  */}
+          </div> 
+          
+          {/* Desktop Vertical Marquees */}
+          <div className="hidden lg:block lg:col-span-2 relative h-screen overflow-hidden order-2 lg:order-2">
+            <div className="flex gap-4 h-full">
+              {/* First Column - Normal direction */}
+              {renderVerticalMarqueeColumn(column1Images, false)}
+              
+              {/* Second Column - Reverse direction */}
+              {renderVerticalMarqueeColumn(column2Images, true)}
             </div>
           </div>
-          
-          {/* Explore More and Scroll To Explore combined */}
-          <motion.div
-            className="mt-8 flex flex-col items-center"
-            initial={{ opacity: 0 }}
-            animate={isMounted ? { opacity: 1 } : {}}
-            transition={{ duration: 0.5, delay: 1.2 }}
-          >
-            <Link href="#case-studies" className="text-kiiro-yellow/90 hover:text-kiiro-yellow underline text-sm mb-8">
-              Explore More
-            </Link>
-            
-            {/* Status Banner - Moved above scroll indicator */}
-            <div className="flex items-center gap-2 px-3 sm:px-5 py-2.5 rounded-full bg-teal-accent/10 text-teal-accent border border-teal-accent/20 mb-4 mx-4 sm:mx-0">
-              <span className="inline-block h-2 w-2 rounded-full bg-teal-accent animate-pulse"></span>
-              <span className="text-xs sm:text-sm font-medium text-center">
-                <span className="hidden sm:inline">Currently accepting new clients for Q3 2025</span>
-                <span className="sm:hidden">Accepting new clients Q3 2025</span>
-              </span>
-            </div>
-            
-            {/* Countdown Timer */}
-            <div className="mb-8 mx-4 sm:mx-0 max-w-md mx-auto">
-              <CountdownTimer 
-                title="⚡ Limited Time Offer"
-                subtitle="Free conversion audit ends in:"
-              />
-            </div>
-            
-            <ScrollIndicator 
-              text="Scroll to explore" 
-              style="line"
-              onClick={() => {
-                const nextSection = document.querySelector('#services');
-                if (nextSection) {
-                  nextSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-            />
-          </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
-} 
+}

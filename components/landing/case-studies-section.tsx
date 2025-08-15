@@ -1,12 +1,40 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useMemo, useCallback, useState, useEffect, Suspense } from "react";
+import { motion, useReducedMotion, AnimatePresence } from "motion/react";
 import { cn } from "@/lib/utils";
-import { CaseStudyCard, CaseStudyProps } from "../ui/case-study-card";
 import { ScrollIndicator } from "@/components/ui/scroll-indicator";
 import { BackgroundBeams } from "@/components/ui/background-beams";
+import { ChevronRight, Trophy, Clock, Users } from "lucide-react";
 
+// Types
+interface CaseStudySectionProps {
+  className?: string;
+  maxItems?: number;
+  showStats?: boolean;
+  variant?: 'default' | 'compact';
+}
+
+interface CaseStudyProps {
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+  tags: string[];
+  accentColor: string;
+  technologies?: string[];
+  featured?: boolean;
+}
+
+interface StatItem {
+  value: string;
+  label: string;
+  description: string;
+  icon: React.ComponentType<{ className?: string }>;
+  color: string;
+}
+
+// Constants
 const CASE_STUDIES: CaseStudyProps[] = [
   {
     title: "Simply Mortgage",
@@ -14,7 +42,9 @@ const CASE_STUDIES: CaseStudyProps[] = [
     image: "/projects/simply.webp",
     link: "/case-studies/simply-mortgage",
     tags: ["Lead Generation", "Conversion Optimization", "UAE Market"],
-    accentColor: "yellow"
+    accentColor: "yellow",
+    technologies: ["Next.js", "TypeScript", "Framer Motion", "Tailwind CSS"],
+    featured: true
   },
   {
     title: "Lotus Pro Services",
@@ -22,7 +52,8 @@ const CASE_STUDIES: CaseStudyProps[] = [
     image: "/projects/lotus.webp",
     link: "/case-studies/lotus-pro-services",
     tags: ["Premium Positioning", "Brand Identity", "Professional Services"],
-    accentColor: "teal"
+    accentColor: "teal",
+    technologies: ["React", "Node.js", "MongoDB"]
   },
   {
     title: "Sproutly",
@@ -30,7 +61,8 @@ const CASE_STUDIES: CaseStudyProps[] = [
     image: "/projects/sproutly.webp",
     link: "/case-studies/sproutly",
     tags: ["EdTech Platform", "User Experience", "Community Features"],
-    accentColor: "teal"
+    accentColor: "teal",
+    technologies: ["Vue.js", "Firebase", "Stripe"]
   },
   {
     title: "Dubbby",
@@ -38,7 +70,9 @@ const CASE_STUDIES: CaseStudyProps[] = [
     image: "/projects/dubbby.webp",
     link: "/case-studies/dubbby",
     tags: ["SaaS Platform", "Trial Optimization", "AI Technology"],
-    accentColor: "magenta"
+    accentColor: "magenta",
+    technologies: ["React", "Python", "OpenAI API"],
+    featured: true
   },
   {
     title: "BrainWise",
@@ -46,7 +80,8 @@ const CASE_STUDIES: CaseStudyProps[] = [
     image: "/projects/brainwise.webp",
     link: "/case-studies/brain-wise",
     tags: ["Learning Platform", "Mobile Optimization", "User Journey"],
-    accentColor: "purple"
+    accentColor: "purple",
+    technologies: ["Flutter", "Django", "PostgreSQL"]
   },
   {
     title: "BlogSquirrel",
@@ -54,7 +89,8 @@ const CASE_STUDIES: CaseStudyProps[] = [
     image: "/projects/blogport.webp",
     link: "/case-studies/blog-squirrel",
     tags: ["Content Management", "Dashboard Design", "Analytics"],
-    accentColor: "teal"
+    accentColor: "teal",
+    technologies: ["Angular", "Express.js", "Redis"]
   },
   {
     title: "Midori Agency",
@@ -62,106 +98,523 @@ const CASE_STUDIES: CaseStudyProps[] = [
     image: "/projects/midori.webp",
     link: "/",
     tags: ["Agency Website", "Portfolio", "UI/UX", "Next.js"],
-    accentColor: "yellow"
+    accentColor: "yellow",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"]
   }
 ];
 
-export function CaseStudiesSection() {
+const STATS: StatItem[] = [
+  {
+    value: "Better Results",
+    label: "For Every Client",
+    description: "Improved metrics across all projects",
+    icon: Trophy,
+    color: "text-amber-400"
+  },
+  {
+    value: "15+",
+    label: "Successful Projects",
+    description: "Completed projects with positive outcomes",
+    icon: Users,
+    color: "text-emerald-400"
+  },
+  {
+    value: "1-2 weeks",
+    label: "Average Delivery",
+    description: "From concept to launch",
+    icon: Clock,
+    color: "text-blue-400"
+  }
+];
+
+// Animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5
+    }
+  }
+};
+
+const headerVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6
+    }
+  }
+};
+
+// Enhanced Case Study Card Component
+const EnhancedCaseStudyCard: React.FC<CaseStudyProps & { className?: string }> = ({
+  title,
+  description,
+  image,
+  link,
+  tags,
+  accentColor,
+  technologies = [],
+  featured = false,
+  className
+}) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  const getAccentColorClass = (color: string) => {
+    const colorMap: Record<string, string> = {
+      yellow: "from-yellow-400/20 to-yellow-600/10",
+      teal: "from-teal-400/20 to-teal-600/10",
+      magenta: "from-purple-400/20 to-pink-600/10",
+      purple: "from-purple-400/20 to-purple-600/10"
+    };
+    return colorMap[color] || colorMap.yellow;
+  };
+
   return (
-    <section className="py-20 bg-charcoal-black relative overflow-hidden" id="case-studies">
-      {/* Dynamic background */}
-      <BackgroundBeams className="z-0 opacity-40" />
+    <motion.article
+      className={cn(
+        "group relative h-full cursor-pointer",
+        featured && "md:col-span-2 lg:col-span-1",
+        className
+      )}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      whileHover={{
+        y: -12,
+        rotateX: 2,
+        rotateY: 4,
+        scale: 1.02,
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 260,
+        damping: 20
+      }}
+      onClick={() => window.open(link, '_blank')}
+      role="button"
+      tabIndex={0}
+      aria-label={`View ${title} case study`}
+    >
+      {/* Animated border gradient */}
+      <div className="absolute -inset-0.5 bg-gradient-to-r from-kiiro-yellow/50 via-blue-500/30 to-purple-500/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
       
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <motion.span 
-            className="inline-block text-kiiro-yellow font-semibold tracking-wider uppercase text-sm mb-3"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.3 }}
-          >
-            📈 PROVEN RESULTS
-          </motion.span>
+      {/* Main card */}
+      <div className="relative h-full bg-white/5 backdrop-blur-xl border border-white/10 group-hover:border-white/20 rounded-2xl overflow-hidden transition-all duration-500">
+        
+        {/* Image section */}
+        <div className="relative overflow-hidden h-64 md:h-72">
+          {!imageLoaded && (
+            <div className="animate-pulse bg-white/10 w-full h-full" />
+          )}
+          <motion.img
+            src={image}
+            alt={title}
+            className="w-full h-full object-cover"
+            onLoad={() => setImageLoaded(true)}
+            whileHover={{ scale: 1.08 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            loading="lazy"
+          />
           
-          <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-white mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+          {/* Dynamic color overlay */}
+          <div 
+            className={cn(
+              "absolute inset-0 mix-blend-multiply opacity-20 group-hover:opacity-10 transition-opacity duration-500",
+              `bg-gradient-to-br ${getAccentColorClass(accentColor)}`
+            )}
+          />
+          
+          {/* Main overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+          
+          {/* Floating elements for depth */}
+          <div className="absolute top-4 right-4 w-2 h-2 bg-white/60 rounded-full animate-pulse" />
+          <div className="absolute bottom-6 left-6 w-1 h-1 bg-kiiro-yellow/80 rounded-full animate-ping" />
+          
+          {/* Animated background shapes */}
+          <div className="absolute -top-10 -right-10 w-20 h-20 bg-gradient-to-br from-kiiro-yellow/20 to-transparent rounded-full blur-xl group-hover:scale-150 transition-transform duration-700" />
+          <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-transparent rounded-full blur-2xl group-hover:scale-125 transition-transform duration-700" />
+        </div>
+
+        {/* Content section */}
+        <div className="relative p-8 space-y-6">
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2">
+            {tags.map((tag, index) => (
+              <motion.span
+                key={tag}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.1 }}
+                className="px-3 py-1 text-xs font-medium rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 hover:bg-white/20 transition-colors duration-300"
+              >
+                {tag}
+              </motion.span>
+            ))}
+          </div>
+
+          {/* Title */}
+          <motion.h3 
+            className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent leading-tight"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
+          >
+            {title}
+          </motion.h3>
+
+          {/* Description */}
+          <p className="text-white/80 leading-relaxed text-base font-light line-clamp-3">
+            {description}
+          </p>
+
+          {/* Progressive disclosure for technologies */}
+          <AnimatePresence>
+            {isHovered && technologies.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className="space-y-3 pt-4 border-t border-white/10"
+              >
+                <div className="flex items-center gap-2 text-sm text-white/60">
+                  <Trophy className="w-4 h-4" />
+                  <span>Technologies Used</span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {technologies.map(tech => (
+                    <span key={tech} className="px-2 py-1 text-xs bg-white/5 rounded-md text-white/70 border border-white/10">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* CTA */}
+          <motion.div 
+            className="flex items-center gap-2 text-kiiro-yellow font-semibold group-hover:gap-4 transition-all duration-300 pt-2"
+            whileHover={{ x: 8 }}
+          >
+            <span>View Case Study</span>
+            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+          </motion.div>
+        </div>
+      </div>
+    </motion.article>
+  );
+};
+
+// Loading skeleton component
+const CaseStudySkeleton = () => (
+  <div className="animate-pulse">
+    <div className="relative bg-white/5 rounded-2xl overflow-hidden">
+      <div className="h-64 bg-gradient-to-r from-white/5 via-white/10 to-white/5" />
+      <div className="p-6 space-y-4">
+        <div className="h-4 bg-white/10 rounded w-3/4" />
+        <div className="h-3 bg-white/10 rounded w-1/2" />
+        <div className="space-y-2">
+          <div className="h-2 bg-white/5 rounded" />
+          <div className="h-2 bg-white/5 rounded w-5/6" />
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// Enhanced Stats Component
+const StatsSection = React.memo(() => (
+  <motion.div
+    className="flex flex-wrap justify-center gap-8 mt-12"
+    variants={containerVariants}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, margin: "-50px" }}
+  >
+    {STATS.map((stat) => (
+      <motion.div
+        key={stat.label}
+        variants={itemVariants}
+        className="group text-center p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-kiiro-yellow/30 transition-all duration-300"
+        whileHover={{ scale: 1.05, y: -5 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <div className="flex justify-center mb-3">
+          <stat.icon className={cn("w-8 h-8", stat.color, "group-hover:scale-110 transition-transform duration-300")} />
+        </div>
+        <div className="text-2xl font-bold text-kiiro-yellow mb-1">{stat.value}</div>
+        <div className="text-sm text-off-white/70 mb-2">{stat.label}</div>
+        <div className="text-xs text-off-white/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          {stat.description}
+        </div>
+      </motion.div>
+    ))}
+  </motion.div>
+));
+
+StatsSection.displayName = 'StatsSection';
+
+// Main component
+export function CaseStudiesSection({
+  className,
+  maxItems = CASE_STUDIES.length,
+  showStats = true,
+  variant = 'default'
+}: CaseStudySectionProps) {
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [imageLoadErrors, setImageLoadErrors] = useState<Set<string>>(new Set());
+  const [isVisible, setIsVisible] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
+
+  const displayedStudies = useMemo(() =>
+    CASE_STUDIES.slice(0, maxItems),
+    [maxItems]
+  );
+
+  // Optimized scroll handler
+  const handleScrollToSection = useCallback((sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: shouldReduceMotion ? 'auto' : 'smooth',
+        block: 'start'
+      });
+    }
+  }, [shouldReduceMotion]);
+
+  // Image preloading effect
+  useEffect(() => {
+    const preloadImages = async () => {
+      const criticalImages = displayedStudies.slice(0, 3);
+      const imagePromises = criticalImages.map(study =>
+        new Promise<void>((resolve) => {
+          const img = new Image();
+          img.onload = () => resolve();
+          img.onerror = () => {
+            setImageLoadErrors(prev => new Set(prev).add(study.image));
+            resolve();
+          };
+          img.src = study.image;
+        })
+      );
+
+      try {
+        await Promise.allSettled(imagePromises);
+      } finally {
+        setImagesLoaded(true);
+      }
+    };
+
+    preloadImages();
+  }, [displayedStudies]);
+
+  // Intersection observer for performance
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { rootMargin: '100px' }
+    );
+
+    const section = document.getElementById('case-studies');
+    if (section) {
+      observer.observe(section);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Structured data for SEO
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Case Studies - Midori Agency",
+      "description": "Real projects and results from our web design and development work",
+      "url": `${window.location.origin}${window.location.pathname}#case-studies`,
+      "hasPart": displayedStudies.map(study => ({
+        "@type": "CreativeWork",
+        "name": study.title,
+        "description": study.description,
+        "keywords": study.tags.join(", "),
+        "url": study.link
+      }))
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(structuredData);
+    document.head.appendChild(script);
+
+    return () => {
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
+    };
+  }, [displayedStudies]);
+
+  return (
+    <section
+      className={cn(
+        "py-20 bg-charcoal-black relative overflow-hidden",
+        variant === 'compact' && "py-16",
+        className
+      )}
+      id="case-studies"
+      aria-labelledby="case-studies-heading"
+    >
+      {/* Background */}
+      <BackgroundBeams className="z-0 opacity-40" />
+
+      {/* Skip link for accessibility */}
+      <a
+        href="#contact"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 bg-kiiro-yellow text-charcoal-black px-4 py-2 rounded-md font-medium"
+      >
+        Skip to contact form
+      </a>
+
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-16"
+          variants={headerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <motion.span
+            className="inline-flex items-center gap-2 text-kiiro-yellow font-semibold tracking-wider uppercase text-sm mb-6 px-4 py-2 rounded-full bg-kiiro-yellow/10 border border-kiiro-yellow/20"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Trophy className="w-4 h-4" />
+            PROVEN RESULTS
+          </motion.span>
+
+          <h2
+            id="case-studies-heading"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 bg-gradient-to-r from-white to-white/80 bg-clip-text"
           >
             Real Projects, Real Results
-          </motion.h2>
-          
-          <motion.p 
-            className="text-white/70 max-w-2xl mx-auto text-lg"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
+          </h2>
+
+          <p className="text-white/70 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed">
             See how we&apos;ve helped businesses like yours achieve measurable growth with strategic design and development.
-          </motion.p>
-          
-          {/* Quick Stats */}
-          <div className="flex flex-wrap justify-center gap-6 mt-8">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-kiiro-yellow">Better Results</div>
-              <div className="text-sm text-off-white/70">For Every Client</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-kiiro-yellow">15+</div>
-              <div className="text-sm text-off-white/70">Successful Projects</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-kiiro-yellow">1-2 weeks</div>
-              <div className="text-sm text-off-white/70">Average Delivery</div>
-            </div>
-          </div>
-        </div>
-        
-        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {CASE_STUDIES.map((caseStudy, index) => (
-            <CaseStudyCard
-              key={caseStudy.title}
-              {...caseStudy}
-              className={cn(
-                index === 0 && "md:col-span-2 lg:col-span-1",
-                index === 4 && "md:col-span-2 lg:col-span-1"
-              )}
-            />
-          ))}
-        </div>
-        
-        <motion.div 
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
+          </p>
+
+          {/* Stats */}
+          {showStats && <StatsSection />}
+        </motion.div>
+
+        {/* Case Studies Grid */}
+        <AnimatePresence mode="wait">
+          {!imagesLoaded ? (
+            <motion.div
+              className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              {Array.from({ length: 6 }).map((_, index) => (
+                <CaseStudySkeleton key={index} />
+              ))}
+            </motion.div>
+          ) : (
+            <Suspense fallback={<div>Loading case studies...</div>}>
+              <motion.div
+                className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                {displayedStudies.map((caseStudy, index) => (
+                  <motion.div
+                    key={caseStudy.title}
+                    variants={itemVariants}
+                    className={cn(
+                      "group",
+                      index === 0 && "md:col-span-2 lg:col-span-1",
+                      index === 4 && "md:col-span-2 lg:col-span-1"
+                    )}
+                    whileHover={{ y: -8 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                  >
+                    <EnhancedCaseStudyCard
+                      {...caseStudy}
+                      className="h-full"
+                    />
+                  </motion.div>
+                ))}
+              </motion.div>
+            </Suspense>
+          )}
+        </AnimatePresence>
+
+        {/* CTA Section */}
+        <motion.div
+          className="mt-20 text-center"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <a 
-            href="#contact" 
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-kiiro-yellow text-charcoal-black font-medium hover:bg-kiiro-yellow/90 transition-colors duration-300"
+          <motion.button
+            onClick={() => handleScrollToSection('contact')}
+            className="group inline-flex items-center gap-3 px-8 py-4 rounded-lg bg-gradient-to-r from-kiiro-yellow to-kiiro-yellow/90 text-charcoal-black font-semibold hover:shadow-lg hover:shadow-kiiro-yellow/25 focus:outline-none focus:ring-2 focus:ring-kiiro-yellow focus:ring-offset-2 focus:ring-offset-charcoal-black transition-all duration-300"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            aria-describedby="cta-description"
           >
             Start Your Project
-          </a>
+            <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+          </motion.button>
+          <p id="cta-description" className="sr-only">
+            Click to scroll to the contact form and start your project
+          </p>
         </motion.div>
-        
+
         {/* Scroll Indicator */}
-        <div className="flex justify-center mt-20">
-          <ScrollIndicator 
-            text="Client Testimonials" 
-            onClick={() => {
-              const nextSection = document.getElementById('client-wins');
-              if (nextSection) {
-                nextSection.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
+        <motion.div
+          className="flex justify-center mt-20"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+        >
+          <ScrollIndicator
+            text="Client Testimonials"
+            onClick={() => handleScrollToSection('client-wins')}
+            className="hover:scale-105 transition-transform duration-300"
           />
-        </div>
+        </motion.div>
       </div>
     </section>
   );
-} 
+}
+
+export default CaseStudiesSection;

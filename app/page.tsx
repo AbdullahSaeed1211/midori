@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { HeroSection } from "@/components/landing/hero-section";
-import { PainPointSection } from "@/components/landing/pain-point-section";
 import { ServicesSection } from "@/components/landing/services-section-enhanced";
 import { WhyKiiroSectionEnhanced } from "@/components/landing/why-kiiro-section-enhanced";
 import { PricingOptionsSection } from "@/components/landing/pricing-options-section";
@@ -18,7 +17,6 @@ import { FounderStorySection } from "@/components/landing/founder-story-section"
 import { LeadMagnetSection } from "@/components/ui/lead-magnet-section";
 import { MidFunnelCTA } from "@/components/landing/mid-funnel-cta";
 import { ChatButton } from "@/components/ui/chat-button";
-import { SectionDivider } from "@/components/ui/section-divider";
 
 export const metadata: Metadata = {
   title: "Professional Website Design for Entrepreneurs & Growing Businesses | kiiro.cx",
@@ -39,30 +37,29 @@ export default function Home() {
       <Header />
       
       <HeroSection />
-      
-      <SectionDivider variant="subtle" />
-      
-      <PainPointSection />
+
+
       
       <div id="services">
         <ServicesSection />
       </div>
-      
-      <TrustBadges />
-      
-      <MidFunnelCTA />
-      
       <ProcessTimeline />
-      
-      <SectionDivider variant="gradient" />
-      
-      <CaseStudiesSection />
-      
-      <SectionDivider variant="dotted" />
+
       
       <div id="client-wins">
         <TestimonialsSection />
       </div>
+      <MidFunnelCTA />
+
+
+      
+      
+
+      
+      <CaseStudiesSection />
+      
+      <TrustBadges />
+      
       
       <ConversionAuditCTA />
       
