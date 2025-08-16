@@ -13,7 +13,6 @@ import { ProcessTimeline } from "@/components/landing/process-timeline";
 import { CaseStudiesSection } from "@/components/landing/case-studies-section";
 import { ConversionAuditCTA } from "@/components/landing/conversion-audit-cta";
 import { TrustBadges } from "@/components/ui/trust-badges";
-import { FounderStorySection } from "@/components/landing/founder-story-section";
 import { LeadMagnetSection } from "@/components/ui/lead-magnet-section";
 import { MidFunnelCTA } from "@/components/landing/mid-funnel-cta";
 import { ChatButton } from "@/components/ui/chat-button";
@@ -70,7 +69,6 @@ export default function Home() {
       
       <WhyKiiroSectionEnhanced />
       
-      <FounderStorySection />
       
       <LeadMagnetSection />
       
