@@ -152,7 +152,7 @@ export function BookingSection() {
                   
                   <div className="relative z-10 text-center">
                     {/* New Compelling Headline */}
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-kiiro-yellow/30 border border-kiiro-yellow/50 rounded-full mb-4">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 b border border-kiiro-yellow/50 rounded-full mb-4">
                       <Calendar className="w-4 h-4 text-kiiro-yellow" />
                       <span className="text-sm font-bold text-kiiro-yellow">FREE 15-MINUTE STRATEGY CALL</span>
                     </div>
@@ -216,7 +216,7 @@ export function BookingSection() {
                   <div className="relative bg-charcoal-black/80 backdrop-blur-sm p-3 sm:p-6 rounded-xl shadow-2xl border border-off-white/20">
                     <Cal
                       calLink="abdullahsaeed/15min"
-                      style={{ width: "100%", height: "100%", overflow: "scroll" }}
+                      style={{ width: "100%", height: "100%", overflow: "scroll"}}
                       config={{
                         layout: 'month_view' 
                       }}

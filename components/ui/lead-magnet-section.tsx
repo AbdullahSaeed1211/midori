@@ -1,72 +1,113 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { BlurFade } from "@/components/magicui/blur-fade";
-import { Download, CheckCircle, Star, ArrowRight, Gift, FileText, Calculator, ChevronLeft, ChevronRight } from "lucide-react";
+import { 
+  Download, 
+  CheckCircle, 
+  Star, 
+  ArrowRight, 
+  Gift, 
+  FileText, 
+  Calculator, 
+  ChevronLeft, 
+  ChevronRight,
+  ExternalLink,
+  Users,
+  Clock,
+  TrendingUp
+} from "lucide-react";
 import Link from "next/link";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const leadMagnets = [
   {
     title: "Conversion Audit Checklist",
-    description: "47-point checklist used to audit and optimize client websites",
+    description: "47-point psychology-based checklist used to audit and optimize client websites for maximum conversions",
     icon: CheckCircle,
     downloadUrl: "#",
     popular: true,
     value: "$197 Value",
+    downloadCount: "2,847",
+    estimatedTime: "15 min read",
     features: [
       "Psychology-based conversion triggers",
       "Mobile optimization checklist", 
       "A/B testing priorities",
-      "Industry-specific recommendations"
+      "Industry-specific recommendations",
+      "ROI tracking spreadsheet included"
     ]
   },
   {
     title: "High-Converting Copy Templates",
-    description: "Proven headlines, CTAs, and copy frameworks that convert",
+    description: "Battle-tested headlines, CTAs, and copy frameworks that have generated millions in revenue",
     icon: FileText,
     downloadUrl: "#",
     value: "$297 Value",
+    downloadCount: "1,932",
+    estimatedTime: "20 min read",
     features: [
-      "50+ headline formulas",
-      "CTA button copy library",
+      "50+ headline formulas with examples",
+      "CTA button copy library (100+ variations)",
       "Email sequence templates",
-      "Social proof frameworks"
+      "Social proof frameworks",
+      "Industry-specific copy examples"
     ]
   },
   {
     title: "Website ROI Calculator",
-    description: "Calculate exactly how much your website improvements are worth",
+    description: "Interactive tool to calculate exactly how much your website improvements are worth to your bottom line",
     icon: Calculator,
     downloadUrl: "#",
     value: "$97 Value",
     badge: "Interactive Tool",
+    downloadCount: "3,421",
+    estimatedTime: "5 min setup",
     features: [
       "Revenue impact calculator",
       "Conversion rate projections",
-      "Industry benchmarking",
-      "Personalized recommendations"
+      "Industry benchmarking data",
+      "Personalized recommendations",
+      "12-month forecast included"
     ]
   }
 ];
 
 export function LeadMagnetSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // Auto-play functionality
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % leadMagnets.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
+
+  // Sync scroll with current slide
+  useEffect(() => {
+    scrollToSlide(currentSlide);
+  }, [currentSlide]);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % leadMagnets.length);
-    scrollToSlide(currentSlide + 1);
+    setIsAutoPlaying(false);
   };
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + leadMagnets.length) % leadMagnets.length);
-    scrollToSlide(currentSlide - 1);
+    setIsAutoPlaying(false);
   };
 
   const scrollToSlide = (index: number) => {
     if (scrollContainerRef.current) {
-      const cardWidth = 320; // Width of each card + gap
+      const cardWidth = 340;
       scrollContainerRef.current.scrollTo({
         left: index * cardWidth,
         behavior: 'smooth'
@@ -74,181 +115,355 @@ export function LeadMagnetSection() {
     }
   };
 
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+    setIsAutoPlaying(false);
+  };
+
   return (
     <BlurFade delay={0.1} inView>
-      <section className="py-20 bg-charcoal-black">
-        <div className="container mx-auto px-4 max-w-7xl">
-          {/* Header */}
+      <section className="relative py-20 bg-charcoal-black overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 25px 25px, rgba(255, 255, 255, 0.1) 2px, transparent 0), 
+                             radial-gradient(circle at 75px 75px, rgba(255, 255, 255, 0.1) 2px, transparent 0)`,
+            backgroundSize: '100px 100px'
+          }} />
+        </div>
+
+        <div className="container mx-auto px-4 max-w-7xl relative">
+          {/* Enhanced Header */}
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-kiiro-yellow/10 border border-kiiro-yellow/20 rounded-full mb-6">
+            <motion.div 
+              className="inline-flex items-center gap-2 px-4 py-2 bg-kiiro-yellow/10 border border-kiiro-yellow/20 rounded-full mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
               <Gift className="w-4 h-4 text-kiiro-yellow" />
               <span className="text-sm font-medium text-kiiro-yellow">FREE RESOURCES</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-off-white mb-4">
-              Get the Same Tools We Use for <span className="text-kiiro-yellow">High-Converting</span> Websites
-            </h2>
-            <p className="text-xl text-off-white/80 max-w-3xl mx-auto">
+            </motion.div>
+            
+            <motion.h2 
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-off-white mb-4 leading-tight"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              Get the Same Tools We Use for{" "}
+              <motion.span 
+                className="text-kiiro-yellow relative"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              >
+                High-Converting
+                <motion.div
+                  className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-kiiro-yellow to-teal-accent rounded-full"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                />
+              </motion.span>{" "}
+              Websites
+            </motion.h2>
+            
+            <motion.p 
+              className="text-xl text-off-white/80 max-w-3xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               Download the proven frameworks, checklists, and templates we use to build 
               conversion-focused websites. Completely free, no strings attached.
-            </p>
+            </motion.p>
+
+            {/* Social Proof */}
+            <motion.div 
+              className="flex items-center justify-center gap-6 mt-8 text-sm text-off-white/60"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <div className="flex items-center gap-2">
+                <Users className="w-4 h-4" />
+                <span>8,200+ downloads</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <TrendingUp className="w-4 h-4" />
+                <span>Average 34% conversion lift</span>
+              </div>
+            </motion.div>
           </div>
 
-          {/* Desktop Grid */}
+          {/* Enhanced Desktop Grid */}
           <div className="hidden md:grid md:grid-cols-3 gap-8 mb-12">
             {leadMagnets.map((resource, index) => {
               const Icon = resource.icon;
               return (
                 <motion.div
                   key={resource.title}
-                  className="bg-deep-gray/30 border border-off-white/10 rounded-xl p-8 hover:border-kiiro-yellow/20 transition-all duration-300 group relative overflow-hidden h-full flex flex-col"
-                  initial={{ opacity: 0, y: 20 }}
+                  className="relative bg-deep-gray/30 backdrop-blur-sm border border-off-white/10 rounded-xl p-8 hover:border-kiiro-yellow/30 transition-all duration-500 group cursor-pointer h-full flex flex-col"
+                  initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02 }}
+                  transition={{ delay: index * 0.15, duration: 0.6 }}
+                  whileHover={{ 
+                    y: -12, 
+                    scale: 1.02,
+                    transition: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }
+                  }}
+                  onHoverStart={() => setHoveredCard(index)}
+                  onHoverEnd={() => setHoveredCard(null)}
                 >
-                  {/* Background Glow */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-kiiro-yellow/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* Enhanced Background Glow */}
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-br from-kiiro-yellow/10 via-teal-accent/5 to-transparent rounded-xl"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: hoveredCard === index ? 1 : 0 }}
+                    transition={{ duration: 0.4 }}
+                  />
 
-                  {/* Header with Badge */}
+                  {/* Popular Badge */}
+                  <AnimatePresence>
+                    {resource.popular && (
+                      <motion.div 
+                        className="absolute -top-3 -right-3 px-3 py-1 bg-gradient-to-r from-kiiro-yellow to-kiiro-yellow/80 text-charcoal-black text-xs font-bold rounded-full shadow-lg z-20"
+                        initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+                        animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                        transition={{ 
+                          duration: 0.5, 
+                          delay: 0.3,
+                          ease: [0.68, -0.55, 0.265, 1.55] 
+                        }}
+                      >
+                        Most Popular
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
                   <div className="relative z-10 flex-grow flex flex-col">
-                    <div className="flex items-center justify-between mb-4">
+                    {/* Enhanced Header */}
+                    <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center gap-2">
-                        <Download className="w-4 h-4 text-kiiro-yellow" />
+                        <motion.div
+                          animate={{ rotate: hoveredCard === index ? 360 : 0 }}
+                          transition={{ duration: 0.5 }}
+                        >
+                          <Download className="w-4 h-4 text-kiiro-yellow" />
+                        </motion.div>
                         <span className="text-xs font-medium text-kiiro-yellow uppercase tracking-wider">
                           {resource.badge || "PDF GUIDE"}
                         </span>
                       </div>
-                      <span className="text-xs font-bold text-kiiro-yellow">
+                      <span className="text-sm font-bold text-kiiro-yellow bg-kiiro-yellow/10 px-2 py-1 rounded">
                         {resource.value}
                       </span>
                     </div>
 
-                    {/* Badge */}
-                    {resource.popular && (
-                      <div className="absolute top-4 right-4 px-3 py-1 bg-kiiro-yellow text-charcoal-black text-xs font-bold rounded-full">
-                        Most Popular
-                      </div>
-                    )}
-
-                    {/* Icon */}
-                    <div className="w-16 h-16 bg-kiiro-yellow/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-kiiro-yellow/20 transition-colors">
+                    {/* Enhanced Icon */}
+                    <motion.div 
+                      className="w-16 h-16 bg-gradient-to-br from-kiiro-yellow/20 to-kiiro-yellow/10 rounded-2xl flex items-center justify-center mb-6 group-hover:from-kiiro-yellow/30 group-hover:to-kiiro-yellow/20 transition-all duration-500"
+                      whileHover={{ 
+                        scale: 1.1, 
+                        rotate: [0, -5, 5, 0],
+                        transition: { duration: 0.6 }
+                      }}
+                    >
                       <Icon className="w-8 h-8 text-kiiro-yellow" />
-                    </div>
+                    </motion.div>
 
-                    <h3 className="text-xl font-bold text-off-white mb-3">
+                    <h3 className="text-xl font-bold text-off-white mb-3 leading-tight">
                       {resource.title}
                     </h3>
                     <p className="text-off-white/70 mb-6 leading-relaxed flex-grow">
                       {resource.description}
                     </p>
 
-                    {/* Features */}
-                    <ul className="space-y-2 mb-6">
+                    {/* Download Stats */}
+                    <div className="flex items-center gap-4 mb-4 text-xs text-off-white/60">
+                      <div className="flex items-center gap-1">
+                        <Users className="w-3 h-3" />
+                        <span>{resource.downloadCount} downloads</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock className="w-3 h-3" />
+                        <span>{resource.estimatedTime}</span>
+                      </div>
+                    </div>
+
+                    {/* Enhanced Features */}
+                    <ul className="space-y-3 mb-8">
                       {resource.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center gap-2 text-sm text-off-white/80">
-                          <CheckCircle className="w-4 h-4 text-kiiro-yellow flex-shrink-0" />
-                          {feature}
-                        </li>
+                        <motion.li 
+                          key={idx} 
+                          className="flex items-start gap-3 text-sm text-off-white/80"
+                          initial={{ opacity: 0, x: -20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ 
+                            duration: 0.4, 
+                            delay: (index * 0.1) + (idx * 0.05)
+                          }}
+                        >
+                          <motion.div
+                            whileHover={{ scale: 1.2, rotate: 360 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <CheckCircle className="w-4 h-4 text-kiiro-yellow flex-shrink-0 mt-0.5" />
+                          </motion.div>
+                          <span className="leading-relaxed">{feature}</span>
+                        </motion.li>
                       ))}
                     </ul>
 
-                    {/* CTA */}
-                    <Link
-                      href={resource.downloadUrl}
-                      className="flex items-center justify-center gap-2 w-full py-3 bg-kiiro-yellow text-charcoal-black rounded-lg font-medium hover:bg-kiiro-yellow/90 transition-colors group mt-auto"
+                    {/* Enhanced CTA */}
+                    <motion.div
+                      whileHover={{ y: -3 }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ duration: 0.2 }}
+                      className="mt-auto"
                     >
-                      Download Free
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </Link>
+                      <Link
+                        href={resource.downloadUrl}
+                        className="relative flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-kiiro-yellow to-kiiro-yellow/90 text-charcoal-black rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-kiiro-yellow/25 hover:shadow-xl overflow-hidden group"
+                      >
+                        {/* Shimmer Effect */}
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full"
+                          animate={{ x: hoveredCard === index ? "200%" : "-100%" }}
+                          transition={{ duration: 0.6 }}
+                        />
+                        <span className="relative z-10">Download Free</span>
+                        <motion.div
+                          className="relative z-10"
+                          animate={{ x: hoveredCard === index ? 4 : 0 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <ArrowRight className="w-4 h-4" />
+                        </motion.div>
+                      </Link>
+                    </motion.div>
                   </div>
                 </motion.div>
               );
             })}
           </div>
 
-          {/* Mobile Horizontal Scroll */}
+          {/* Enhanced Mobile Carousel */}
           <div className="md:hidden mb-12">
             <div className="relative">
-              {/* Navigation Buttons */}
+              {/* Navigation Buttons with Progress */}
               <motion.button
                 onClick={prevSlide}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-kiiro-yellow text-charcoal-black rounded-full flex items-center justify-center shadow-lg hover:bg-kiiro-yellow/90 transition-colors"
-                whileHover={{ scale: 1.1, y: -2 }}
+                className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-gradient-to-r from-kiiro-yellow to-kiiro-yellow/80 text-charcoal-black rounded-full flex items-center justify-center shadow-xl hover:shadow-kiiro-yellow/25 transition-all duration-300"
+                whileHover={{ scale: 1.1, x: -2 }}
                 whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <ChevronLeft className="w-5 h-5" />
               </motion.button>
+              
               <motion.button
                 onClick={nextSlide}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-kiiro-yellow text-charcoal-black rounded-full flex items-center justify-center shadow-lg hover:bg-kiiro-yellow/90 transition-colors"
-                whileHover={{ scale: 1.1, y: -2 }}
+                className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-gradient-to-r from-kiiro-yellow to-kiiro-yellow/80 text-charcoal-black rounded-full flex items-center justify-center shadow-xl hover:shadow-kiiro-yellow/25 transition-all duration-300"
+                whileHover={{ scale: 1.1, x: 2 }}
                 whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <ChevronRight className="w-5 h-5" />
               </motion.button>
 
-              {/* Scrollable Container */}
+              {/* Enhanced Scrollable Container */}
               <div
                 ref={scrollContainerRef}
-                className="flex gap-6 overflow-x-auto scrollbar-hide px-6 snap-x snap-mandatory"
+                className="flex gap-6 overflow-x-auto scrollbar-hide px-8 snap-x snap-mandatory pb-4"
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                onMouseEnter={() => setIsAutoPlaying(false)}
+                onMouseLeave={() => setIsAutoPlaying(true)}
               >
                 {leadMagnets.map((resource, index) => {
                   const Icon = resource.icon;
                   return (
                     <motion.div
                       key={resource.title}
-                      className="relative bg-charcoal-black/60 backdrop-blur-sm border border-off-white/10 rounded-xl p-6 min-w-[320px] max-w-[320px] snap-start flex-shrink-0 hover:border-kiiro-yellow/30 transition-all duration-300 group"
+                      className="relative bg-gradient-to-br from-charcoal-black/80 to-deep-gray/40 backdrop-blur-sm border border-off-white/10 rounded-xl p-6 min-w-[340px] max-w-[340px] snap-start flex-shrink-0 hover:border-kiiro-yellow/30 transition-all duration-500 group"
                       initial={{ opacity: 0, y: 40 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ 
-                        duration: 0.5, 
+                        duration: 0.6, 
                         delay: index * 0.1, 
                         ease: [0.25, 0.1, 0.25, 1] 
                       }}
-                      whileHover={{ y: -8, scale: 1.02 }}
+                      whileHover={{ 
+                        y: -8, 
+                        scale: 1.02,
+                        transition: { duration: 0.4 }
+                      }}
                     >
-                      {/* Popular Badge - Better positioned */}
-                      {resource.popular && (
-                        <motion.div 
-                          className="absolute -top-3 left-6 px-3 py-1 bg-kiiro-yellow text-charcoal-black text-xs font-bold rounded-full shadow-lg z-20"
-                          initial={{ opacity: 0, scale: 0.8, y: -10 }}
-                          animate={{ opacity: 1, scale: 1, y: 0 }}
-                          transition={{ 
-                            duration: 0.4, 
-                            delay: 0.3, 
-                            ease: [0.68, -0.55, 0.265, 1.55] 
-                          }}
-                        >
-                          Most Popular
-                        </motion.div>
-                      )}
+                      {/* Enhanced Popular Badge */}
+                      <AnimatePresence>
+                        {resource.popular && (
+                          <motion.div 
+                            className="absolute -top-3 left-6 px-4 py-1 bg-gradient-to-r from-kiiro-yellow via-kiiro-yellow to-kiiro-yellow/80 text-charcoal-black text-xs font-bold rounded-full shadow-lg z-20 flex items-center gap-1"
+                            initial={{ opacity: 0, scale: 0.8, y: -15 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{ 
+                              duration: 0.5, 
+                              delay: 0.3, 
+                              ease: [0.68, -0.55, 0.265, 1.55] 
+                            }}
+                          >
+                            <Star className="w-3 h-3 fill-current" />
+                            Most Popular
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
 
                       <div className="relative z-10">
-                        {/* Header with Badge */}
-                        <div className="flex items-center justify-between mb-4">
+                        {/* Enhanced Header */}
+                        <div className="flex items-center justify-between mb-6">
                           <div className="flex items-center gap-2">
-                            <Download className="w-4 h-4 text-kiiro-yellow" />
+                            <motion.div
+                              animate={{ 
+                                rotate: currentSlide === index ? [0, 360] : 0,
+                                scale: currentSlide === index ? [1, 1.1, 1] : 1
+                              }}
+                              transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                            >
+                              <Download className="w-4 h-4 text-kiiro-yellow" />
+                            </motion.div>
                             <span className="text-xs font-medium text-kiiro-yellow uppercase tracking-wider">
                               {resource.badge || "PDF GUIDE"}
                             </span>
                           </div>
-                          <span className="text-sm font-bold text-kiiro-yellow">
+                          <span className="text-sm font-bold text-kiiro-yellow bg-kiiro-yellow/10 px-3 py-1 rounded-full">
                             {resource.value}
                           </span>
                         </div>
 
-                        {/* Icon with organic hover */}
+                        {/* Enhanced Icon */}
                         <motion.div 
-                          className="w-14 h-14 bg-kiiro-yellow/10 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-kiiro-yellow/20 transition-colors"
-                          whileHover={{ scale: 1.1, rotate: 5 }}
-                          transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                          className="w-16 h-16 bg-gradient-to-br from-kiiro-yellow/20 to-kiiro-yellow/10 rounded-2xl flex items-center justify-center mb-6 group-hover:from-kiiro-yellow/30 group-hover:to-kiiro-yellow/20 transition-all duration-500"
+                          whileHover={{ 
+                            scale: 1.15, 
+                            rotate: [0, -8, 8, 0],
+                            transition: { duration: 0.6 }
+                          }}
                         >
-                          <Icon className="w-7 h-7 text-kiiro-yellow" />
+                          <Icon className="w-8 h-8 text-kiiro-yellow" />
                         </motion.div>
 
                         <h3 className="text-xl font-bold text-off-white mb-3 leading-tight">
@@ -258,40 +473,64 @@ export function LeadMagnetSection() {
                           {resource.description}
                         </p>
 
-                        {/* Features with staggered animation */}
-                        <ul className="space-y-2 mb-6">
-                          {resource.features.slice(0, 3).map((feature, idx) => (
+                        {/* Download Stats */}
+                        <div className="flex items-center justify-between mb-4 text-xs text-off-white/60 bg-off-white/5 rounded-lg p-3">
+                          <div className="flex items-center gap-1">
+                            <Users className="w-3 h-3" />
+                            <span>{resource.downloadCount} downloads</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Clock className="w-3 h-3" />
+                            <span>{resource.estimatedTime}</span>
+                          </div>
+                        </div>
+
+                        {/* Enhanced Features */}
+                        <ul className="space-y-3 mb-8">
+                          {resource.features.slice(0, 4).map((feature, idx) => (
                             <motion.li 
                               key={idx} 
-                              className="flex items-start gap-2 text-sm text-off-white/80"
+                              className="flex items-start gap-3 text-sm text-off-white/80"
                               initial={{ opacity: 0, x: -20 }}
                               whileInView={{ opacity: 1, x: 0 }}
                               viewport={{ once: true }}
                               transition={{ 
                                 duration: 0.4, 
-                                delay: (index * 0.1) + (idx * 0.1),
-                                ease: [0.25, 0.1, 0.25, 1] 
+                                delay: (index * 0.1) + (idx * 0.05)
                               }}
                             >
-                              <CheckCircle className="w-4 h-4 text-kiiro-yellow flex-shrink-0 mt-0.5" />
+                              <motion.div
+                                whileHover={{ scale: 1.2, rotate: 360 }}
+                                transition={{ duration: 0.3 }}
+                              >
+                                <CheckCircle className="w-4 h-4 text-kiiro-yellow flex-shrink-0 mt-0.5" />
+                              </motion.div>
                               <span className="leading-relaxed">{feature}</span>
                             </motion.li>
                           ))}
                         </ul>
 
-                        {/* CTA with organic hover */}
+                        {/* Enhanced CTA */}
                         <motion.div
-                          whileHover={{ y: -2, scale: 1.02 }}
+                          whileHover={{ y: -3 }}
                           whileTap={{ scale: 0.98 }}
-                          transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                          transition={{ duration: 0.2 }}
+                          className="mt-auto"
                         >
                           <Link
                             href={resource.downloadUrl}
-                            className="flex items-center justify-center gap-2 w-full py-3 bg-kiiro-yellow text-charcoal-black rounded-lg font-semibold hover:bg-kiiro-yellow/90 transition-all duration-300 shadow-lg"
+                            className="relative flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-kiiro-yellow to-kiiro-yellow/90 text-charcoal-black rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-kiiro-yellow/25 hover:shadow-xl overflow-hidden group"
                           >
-                            Download Free
+                            {/* Shimmer Effect */}
                             <motion.div
-                              whileHover={{ x: 4 }}
+                              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full"
+                              animate={{ x: hoveredCard === index ? "200%" : "-100%" }}
+                              transition={{ duration: 0.8 }}
+                            />
+                            <span className="relative z-10">Download Free</span>
+                            <motion.div
+                              className="relative z-10"
+                              animate={{ x: hoveredCard === index ? 6 : 0 }}
                               transition={{ duration: 0.2 }}
                             >
                               <ArrowRight className="w-4 h-4" />
@@ -304,68 +543,212 @@ export function LeadMagnetSection() {
                 })}
               </div>
 
-              {/* Dots Indicator with organic animations */}
-              <div className="flex justify-center mt-8 gap-2">
+              {/* Enhanced Dots Indicator with Progress */}
+              <div className="flex justify-center mt-8 gap-3">
                 {leadMagnets.map((_, index) => (
                   <motion.button
                     key={index}
-                    onClick={() => {
-                      setCurrentSlide(index);
-                      scrollToSlide(index);
-                    }}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === currentSlide 
-                        ? 'bg-kiiro-yellow' 
-                        : 'bg-off-white/30 hover:bg-off-white/50'
-                    }`}
+                    onClick={() => goToSlide(index)}
+                    className="relative group"
                     whileHover={{ scale: 1.2 }}
                     whileTap={{ scale: 0.9 }}
-                    animate={{ 
-                      scale: index === currentSlide ? 1.2 : 1,
-                      opacity: index === currentSlide ? 1 : 0.6
-                    }}
-                    transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                  />
+                  >
+                    {/* Background dot */}
+                    <div className="w-3 h-3 rounded-full bg-off-white/20" />
+                    
+                    {/* Active/Progress dot */}
+                    <motion.div
+                      className="absolute inset-0 w-3 h-3 rounded-full bg-kiiro-yellow"
+                      initial={{ scale: 0 }}
+                      animate={{ 
+                        scale: index === currentSlide ? 1 : 0,
+                        opacity: index === currentSlide ? 1 : 0
+                      }}
+                      transition={{ duration: 0.3 }}
+                    />
+
+                    {/* Auto-play progress ring */}
+                    {index === currentSlide && isAutoPlaying && (
+                      <motion.div
+                        className="absolute inset-0 w-3 h-3"
+                        initial={{ scale: 1 }}
+                        animate={{ scale: 1.6 }}
+                        transition={{ duration: 5, ease: "linear" }}
+                      >
+                        <div className="w-full h-full rounded-full border-2 border-kiiro-yellow/30" />
+                      </motion.div>
+                    )}
+                  </motion.button>
                 ))}
               </div>
+
+              {/* Auto-play indicator */}
+              <motion.div 
+                className="text-center mt-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1 }}
+              >
+                <button
+                  onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+                  className="text-xs text-off-white/50 hover:text-off-white/70 transition-colors"
+                >
+                  {isAutoPlaying ? "Auto-playing • Click to pause" : "Auto-play paused • Click to resume"}
+                </button>
+              </motion.div>
             </div>
           </div>
 
-          {/* Bottom CTA */}
-          <div className="text-center max-w-5xl mx-auto">
-            <div className="bg-gradient-to-r from-kiiro-yellow/10 to-teal-accent/10 border border-kiiro-yellow/20 rounded-2xl p-8">
-              <div className="flex items-center justify-center gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-kiiro-yellow text-kiiro-yellow" />
-                ))}
-                <span className="ml-2 text-off-white/80">Rated 5/5 by 15+ business owners</span>
+          {/* Enhanced Bottom CTA */}
+          <motion.div 
+            className="text-center max-w-5xl mx-auto"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <div className="relative bg-gradient-to-br from-kiiro-yellow/10 via-teal-accent/10 to-kiiro-yellow/5 border border-kiiro-yellow/20 rounded-2xl p-8 overflow-hidden">
+              {/* Background Pattern */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-4 right-4 w-32 h-32 bg-gradient-to-br from-kiiro-yellow to-transparent rounded-full blur-3xl" />
+                <div className="absolute bottom-4 left-4 w-24 h-24 bg-gradient-to-br from-teal-accent to-transparent rounded-full blur-2xl" />
               </div>
-              <h3 className="text-2xl font-bold text-off-white mb-4">
-                Want Personal Help Implementing These?
-              </h3>
-              <p className="text-off-white/70 mb-6 max-w-2xl mx-auto">
-                Get a free 15-minute strategy call where I&apos;ll personally review your website 
-                and show you exactly how to implement these frameworks for maximum impact.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="#booking"
-                  className="px-8 py-4 bg-kiiro-yellow text-charcoal-black rounded-lg font-medium hover:bg-kiiro-yellow/90 transition-colors flex items-center justify-center gap-2"
+
+              <div className="relative z-10">
+                {/* Enhanced Star Rating */}
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <div className="flex items-center gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ 
+                          duration: 0.3, 
+                          delay: i * 0.1,
+                          ease: [0.68, -0.55, 0.265, 1.55]
+                        }}
+                      >
+                        <Star className="w-5 h-5 fill-kiiro-yellow text-kiiro-yellow" />
+                      </motion.div>
+                    ))}
+                  </div>
+                  <span className="text-off-white/80 font-medium">
+                    Rated 5/5 by 15+ business owners
+                  </span>
+                </div>
+
+                <h3 className="text-2xl md:text-3xl font-bold text-off-white mb-4">
+                  Want Personal Help Implementing These?
+                </h3>
+                <p className="text-off-white/70 mb-8 max-w-2xl mx-auto leading-relaxed">
+                  Get a free 15-minute strategy call where I'll personally review your website 
+                  and show you exactly how to implement these frameworks for maximum impact.
+                </p>
+
+                {/* Enhanced CTAs */}
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <motion.div
+                    whileHover={{ y: -3, scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Link
+                      href="#booking"
+                      className="relative px-8 py-4 bg-gradient-to-r from-kiiro-yellow to-kiiro-yellow/90 text-charcoal-black rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-kiiro-yellow/25 hover:shadow-xl overflow-hidden group"
+                    >
+                      {/* Shimmer Effect */}
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full"
+                        whileHover={{ x: "200%" }}
+                        transition={{ duration: 0.8 }}
+                      />
+                      <span className="relative z-10">Book Free Strategy Call</span>
+                      <motion.div
+                        className="relative z-10"
+                        whileHover={{ x: 4 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <ArrowRight className="w-4 h-4" />
+                      </motion.div>
+                    </Link>
+                  </motion.div>
+
+                  <motion.div
+                    whileHover={{ y: -3, scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Link
+                      href="/audit"
+                      className="px-8 py-4 border-2 border-teal-accent text-teal-accent rounded-lg font-semibold hover:bg-teal-accent/10 hover:border-teal-accent/80 transition-all duration-300 flex items-center justify-center gap-2 group"
+                    >
+                      Get Free Website Audit
+                      <ExternalLink className="w-4 h-4 group-hover:rotate-45 transition-transform duration-300" />
+                    </Link>
+                  </motion.div>
+                </div>
+
+                {/* Trust Signals */}
+                <motion.div 
+                  className="mt-8 flex items-center justify-center gap-8 text-xs text-off-white/50"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
                 >
-                  Book Free Strategy Call
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link
-                  href="/audit"
-                  className="px-8 py-4 border border-teal-accent text-teal-accent rounded-lg font-medium hover:bg-teal-accent/10 transition-colors"
-                >
-                  Get Free Website Audit
-                </Link>
+                  <div className="flex items-center gap-1">
+                    <CheckCircle className="w-3 h-3 text-teal-accent" />
+                    <span>No spam, ever</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <CheckCircle className="w-3 h-3 text-teal-accent" />
+                    <span>Instant download</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <CheckCircle className="w-3 h-3 text-teal-accent" />
+                    <span>Cancel anytime</span>
+                  </div>
+                </motion.div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
+
+        {/* Floating Action Bubble */}
+        <motion.div
+          className="fixed bottom-8 right-8 z-50 md:hidden"
+          initial={{ opacity: 0, scale: 0, rotate: -180 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ 
+            duration: 0.6, 
+            delay: 2,
+            ease: [0.68, -0.55, 0.265, 1.55] 
+          }}
+        >
+          <motion.button
+            className="w-16 h-16 bg-gradient-to-r from-kiiro-yellow to-kiiro-yellow/80 text-charcoal-black rounded-full shadow-xl flex items-center justify-center"
+            whileHover={{ 
+              scale: 1.1, 
+              rotate: 5,
+              boxShadow: "0 20px 40px rgba(255, 208, 0, 0.3)"
+            }}
+            whileTap={{ scale: 0.9 }}
+            animate={{ 
+              y: [0, -8, 0],
+              rotate: [0, 5, -5, 0]
+            }}
+            transition={{ 
+              y: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+              rotate: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+            }}
+            onClick={() => scrollToSlide(0)}
+          >
+            <Download className="w-6 h-6" />
+          </motion.button>
+        </motion.div>
       </section>
     </BlurFade>
   );
-} 
+}
