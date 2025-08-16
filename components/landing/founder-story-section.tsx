@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { Award, Users, Zap, CheckCircle, Star, Quote, ArrowRight, MessageCircle } from "lucide-react";
 import { useState } from "react";
-
 const achievements = [
   {
     icon: Users,
@@ -157,7 +156,7 @@ export function FounderStorySection() {
                   "Direct communication with me throughout",
                   "Custom solutions built for your specific business",
                   "Measurable results within 30 days",
-                  "Unlimited revisions until you're happy"
+                  "Unlimited revisions until you&apos;re happy"
                 ].map((promise, index) => (
                   <motion.div 
                     key={index}
@@ -198,7 +197,7 @@ export function FounderStorySection() {
                   <div>
                     <Quote className="w-8 h-8 text-kiiro-yellow/40 mb-4" />
                     <p className="text-off-white/90 leading-relaxed mb-6 text-lg">
-                      "{testimonials[currentTestimonial].quote}"
+                      &quot;{testimonials[currentTestimonial].quote}&quot;
                     </p>
                   </div>
                   <div>
@@ -249,7 +248,7 @@ export function FounderStorySection() {
               Want to See What These Results Look Like for Your Business?
             </h3>
             <p className="text-off-white/70 mb-8 max-w-2xl mx-auto">
-              Let's have a quick 15-minute call. I'll take a look at your current site 
+              Let&apos;s have a quick 15-minute call. I&apos;ll take a look at your current site 
               and show you exactly where the biggest opportunities are.
             </p>
             

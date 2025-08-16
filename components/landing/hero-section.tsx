@@ -10,6 +10,7 @@ import { Spotlight } from "@/components/ui/spotlight";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { DotPattern } from "@/components/magicui/dot-pattern";
 import { Marquee } from "@/components/magicui/marquee";
+import Image from "next/image";
 
 export function HeroSection() {
   const [isMounted, setIsMounted] = useState(false);
@@ -50,7 +51,7 @@ export function HeroSection() {
       "relative group rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105",
       isMobile ? "w-48 h-32 flex-shrink-0" : ""
     )}>
-      <img 
+      <Image 
         src={image.src}
         alt={image.alt}
         loading="lazy"
