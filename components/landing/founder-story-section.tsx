@@ -76,7 +76,7 @@ export function FounderStorySection() {
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-              Hi, I'm the founder behind <span className="text-kiiro-yellow">Kiiro.cx</span>
+              Hi, I&apos;m the founder behind <span className="text-kiiro-yellow">Kiiro.cx</span>
             </motion.h2>
             
             <motion.p 
@@ -87,7 +87,7 @@ export function FounderStorySection() {
               transition={{ delay: 0.2 }}
             >
               I help businesses turn their websites into conversion machines. 
-              Here's what that looks like in practice.
+              Here&apos;s what that looks like in practice.
             </motion.p>
           </div>
 

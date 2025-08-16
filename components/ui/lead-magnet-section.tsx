@@ -643,7 +643,7 @@ export function LeadMagnetSection() {
                   Want Personal Help Implementing These?
                 </h3>
                 <p className="text-off-white/70 mb-8 max-w-2xl mx-auto leading-relaxed">
-                  Get a free 15-minute strategy call where I'll personally review your website 
+                  Get a free 15-minute strategy call where I&apos;ll personally review your website 
                   and show you exactly how to implement these frameworks for maximum impact.
                 </p>
 
