@@ -181,7 +181,6 @@ const EnhancedCaseStudyCard: React.FC<CaseStudyProps & { className?: string }> =
   featured = false,
   className
 }) => {
-  const [isHovered, setIsHovered] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
@@ -222,8 +221,7 @@ const EnhancedCaseStudyCard: React.FC<CaseStudyProps & { className?: string }> =
         featured && "md:col-span-2 lg:col-span-1",
         className
       )}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
+
       whileHover={hoverAnimation}
       transition={hoverTransition}
       onClick={handleCardClick}

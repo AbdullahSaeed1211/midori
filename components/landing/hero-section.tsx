@@ -10,7 +10,7 @@ import { Spotlight } from "@/components/ui/spotlight";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { DotPattern } from "@/components/magicui/dot-pattern";
 import { Marquee } from "@/components/magicui/marquee";
-import Image from "next/image";
+
 
 export function HeroSection() {
   const [isMounted, setIsMounted] = useState(false);
