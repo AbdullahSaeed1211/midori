@@ -23,7 +23,6 @@ interface CaseStudyProps {
   link: string;
   tags: string[];
   accentColor: string;
-  technologies?: string[];
   featured?: boolean;
 }
 
@@ -38,13 +37,21 @@ interface StatItem {
 // Constants
 const CASE_STUDIES: CaseStudyProps[] = [
   {
+    title: "Guidance Welfare Foundation",
+    description: "A comprehensive Islamic Educational Platform built as a full-stack Learning Management System serving over 100 active learners with enterprise-grade architecture.",
+    image: "/projects/guidancewelfare.webp",
+    link: "https://guidancewelfare.com",
+    tags: ["EdTech", "LMS", "Enterprise Application"],
+    accentColor: "purple",
+    featured: true
+  },
+  {
     title: "Simply Mortgage",
     description: "UAE's premier mortgage consultancy needed a digital transformation. We built a conversion-focused website with interactive calculators and streamlined booking. Results: significant increase in qualified leads and improved conversion rates.",
     image: "/projects/simply.webp",
     link: "/case-studies/simply-mortgage",
     tags: ["Lead Generation", "Conversion Optimization", "UAE Market"],
     accentColor: "yellow",
-    technologies: ["Next.js", "TypeScript", "Framer Motion", "Tailwind CSS"],
     featured: true
   },
   {
@@ -54,7 +61,6 @@ const CASE_STUDIES: CaseStudyProps[] = [
     link: "/case-studies/lotus-pro-services",
     tags: ["Premium Positioning", "Brand Identity", "Professional Services"],
     accentColor: "teal",
-    technologies: ["React", "Node.js", "MongoDB"]
   },
   {
     title: "Sproutly",
@@ -63,7 +69,6 @@ const CASE_STUDIES: CaseStudyProps[] = [
     link: "/case-studies/sproutly",
     tags: ["EdTech Platform", "User Experience", "Community Features"],
     accentColor: "teal",
-    technologies: ["Vue.js", "Firebase", "Stripe"]
   },
   {
     title: "Dubbby",
@@ -72,7 +77,6 @@ const CASE_STUDIES: CaseStudyProps[] = [
     link: "/case-studies/dubbby",
     tags: ["SaaS Platform", "Trial Optimization", "AI Technology"],
     accentColor: "magenta",
-    technologies: ["React", "Python", "OpenAI API"],
     featured: true
   },
   {
@@ -82,7 +86,6 @@ const CASE_STUDIES: CaseStudyProps[] = [
     link: "/case-studies/brain-wise",
     tags: ["Learning Platform", "Mobile Optimization", "User Journey"],
     accentColor: "purple",
-    technologies: ["Flutter", "Django", "PostgreSQL"]
   },
   {
     title: "BlogSquirrel",
@@ -91,7 +94,6 @@ const CASE_STUDIES: CaseStudyProps[] = [
     link: "/case-studies/blog-squirrel",
     tags: ["Content Management", "Dashboard Design", "Analytics"],
     accentColor: "teal",
-    technologies: ["Angular", "Express.js", "Redis"]
   },
   {
     title: "Midori Agency",
@@ -100,7 +102,6 @@ const CASE_STUDIES: CaseStudyProps[] = [
     link: "/",
     tags: ["Agency Website", "Portfolio", "UI/UX", "Next.js"],
     accentColor: "yellow",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"]
   }
 ];
 
@@ -176,8 +177,7 @@ const EnhancedCaseStudyCard: React.FC<CaseStudyProps & { className?: string }> =
   image,
   link,
   tags,
-  accentColor,
-  technologies = [],
+  accentColor,  
   featured = false,
   className
 }) => {
@@ -203,19 +203,16 @@ const EnhancedCaseStudyCard: React.FC<CaseStudyProps & { className?: string }> =
     setImageLoaded(true);
   }, []);
 
-  // Optimized animation configs with transform3d for GPU acceleration
+  // Optimized animation configs with reduced motion for better performance
   const hoverAnimation = useMemo(() => shouldReduceMotion ? {} : {
-    y: -8,
-    scale: 1.015,
-    rotateX: 1,
-    rotateY: 2,
+    y: -2,
   }, [shouldReduceMotion]);
 
   const hoverTransition = useMemo(() => ({
     type: "spring" as const,
-    stiffness: shouldReduceMotion ? 100 : 200,
-    damping: shouldReduceMotion ? 25 : 18,
-    mass: 0.8
+    stiffness: shouldReduceMotion ? 100 : 150,
+    damping: shouldReduceMotion ? 25 : 20,
+    mass: 0.6
   }), [shouldReduceMotion]);
 
   return (
@@ -247,8 +244,8 @@ const EnhancedCaseStudyCard: React.FC<CaseStudyProps & { className?: string }> =
           )}
           <motion.div
             className="w-full h-full relative"
-            whileHover={shouldReduceMotion ? {} : { scale: 1.08 }}
-            transition={{ duration: shouldReduceMotion ? 0 : 0.6, ease: "easeOut" }}
+            whileHover={shouldReduceMotion ? {} : { y: -1 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.4, ease: "easeOut" }}
           >
             <Image
               src={image}
@@ -276,9 +273,9 @@ const EnhancedCaseStudyCard: React.FC<CaseStudyProps & { className?: string }> =
           <div className="absolute top-4 right-4 w-2 h-2 bg-white/60 rounded-full animate-pulse" />
           <div className="absolute bottom-6 left-6 w-1 h-1 bg-kiiro-yellow/80 rounded-full animate-ping" />
           
-          {/* Animated background shapes */}
-          <div className="absolute -top-10 -right-10 w-20 h-20 bg-gradient-to-br from-kiiro-yellow/20 to-transparent rounded-full blur-xl group-hover:scale-150 transition-transform duration-700" />
-          <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-transparent rounded-full blur-2xl group-hover:scale-125 transition-transform duration-700" />
+          {/* Optimized background shapes */}
+          <div className="absolute -top-10 -right-10 w-20 h-20 bg-gradient-to-br from-kiiro-yellow/20 to-transparent rounded-full blur-lg group-hover:scale-125 transition-transform duration-500" />
+          <div className="absolute -bottom-10 -left-10 w-24 h-24 bg-gradient-to-br from-blue-500/10 to-transparent rounded-full blur-xl group-hover:scale-110 transition-transform duration-500" />
         </div>
 
         {/* Content section */}
@@ -299,9 +296,9 @@ const EnhancedCaseStudyCard: React.FC<CaseStudyProps & { className?: string }> =
           </div>
 
           {/* Title */}
-          <motion.h3 
+          <motion.h3
             className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent leading-tight"
-            whileHover={shouldReduceMotion ? {} : { scale: 1.02 }}
+            whileHover={shouldReduceMotion ? {} : {}}
             transition={{ duration: shouldReduceMotion ? 0 : 0.2 }}
           >
             {title}
@@ -312,35 +309,12 @@ const EnhancedCaseStudyCard: React.FC<CaseStudyProps & { className?: string }> =
             {description}
           </p>
 
-          {/* Progressive disclosure for technologies */}
-          <AnimatePresence>
-            {isHovered && technologies.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-                className="space-y-3 pt-4 border-t border-white/10"
-              >
-                <div className="flex items-center gap-2 text-sm text-white/60">
-                  <Trophy className="w-4 h-4" />
-                  <span>Technologies Used</span>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {technologies.map(tech => (
-                    <span key={tech} className="px-2 py-1 text-xs bg-white/5 rounded-md text-white/70 border border-white/10">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+         
 
           {/* CTA */}
-          <motion.div 
+          <motion.div
             className="flex items-center gap-2 text-kiiro-yellow font-semibold group-hover:gap-4 transition-all duration-300 pt-2"
-            whileHover={shouldReduceMotion ? {} : { x: 8 }}
+            whileHover={shouldReduceMotion ? {} : {}}
           >
             <span>View Case Study</span>
             <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -582,6 +556,7 @@ export function CaseStudiesSection({
                       index === 0 && "md:col-span-2 lg:col-span-1",
                       index === 4 && "md:col-span-2 lg:col-span-1"
                     )}
+                    whileHover={{}}
                   >
                     <EnhancedCaseStudyCard
                       {...caseStudy}

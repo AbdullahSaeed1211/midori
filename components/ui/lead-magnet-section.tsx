@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { BlurFade } from "@/components/magicui/blur-fade";
+import { cn } from "@/lib/utils";
 import { 
   Download, 
   CheckCircle, 
@@ -205,7 +206,7 @@ export function LeadMagnetSection() {
 
           {/* Enhanced Desktop Grid */}
           <div className="hidden md:grid md:grid-cols-3 gap-8 mb-12">
-            {leadMagnets.map((resource, index) => {
+            {leadMagnets && leadMagnets.length > 0 && leadMagnets.map((resource, index) => {
               const Icon = resource.icon;
               return (
                 <motion.div
@@ -223,12 +224,12 @@ export function LeadMagnetSection() {
                   onHoverStart={() => setHoveredCard(index)}
                   onHoverEnd={() => setHoveredCard(null)}
                 >
-                  {/* Enhanced Background Glow */}
-                  <motion.div 
-                    className="absolute inset-0 bg-gradient-to-br from-kiiro-yellow/10 via-teal-accent/5 to-transparent rounded-xl"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: hoveredCard === index ? 1 : 0 }}
-                    transition={{ duration: 0.4 }}
+                  {/* Optimized Background Glow */}
+                  <div
+                    className={cn(
+                      "absolute inset-0 bg-gradient-to-br from-kiiro-yellow/10 via-teal-accent/5 to-transparent rounded-xl transition-opacity duration-300",
+                      hoveredCard === index ? "opacity-100" : "opacity-0"
+                    )}
                   />
 
                   {/* Popular Badge */}
@@ -253,12 +254,7 @@ export function LeadMagnetSection() {
                     {/* Enhanced Header */}
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center gap-2">
-                        <motion.div
-                          animate={{ rotate: hoveredCard === index ? 360 : 0 }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          <Download className="w-4 h-4 text-kiiro-yellow" />
-                        </motion.div>
+                        <Download className="w-4 h-4 text-kiiro-yellow" />
                         <span className="text-xs font-medium text-kiiro-yellow uppercase tracking-wider">
                           {resource.badge || "PDF GUIDE"}
                         </span>
@@ -301,7 +297,7 @@ export function LeadMagnetSection() {
 
                     {/* Enhanced Features */}
                     <ul className="space-y-3 mb-8">
-                      {resource.features.map((feature, idx) => (
+                      {resource.features && resource.features.length > 0 && resource.features.map((feature, idx) => (
                         <motion.li 
                           key={idx} 
                           className="flex items-start gap-3 text-sm text-off-white/80"
@@ -335,20 +331,22 @@ export function LeadMagnetSection() {
                         href={resource.downloadUrl}
                         className="relative flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-kiiro-yellow to-kiiro-yellow/90 text-charcoal-black rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-kiiro-yellow/25 hover:shadow-xl overflow-hidden group"
                       >
-                        {/* Shimmer Effect */}
-                        <motion.div
-                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full"
-                          animate={{ x: hoveredCard === index ? "200%" : "-100%" }}
-                          transition={{ duration: 0.6 }}
+                        {/* Optimized Shimmer Effect */}
+                        <div
+                          className={cn(
+                            "absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full transition-transform duration-500 ease-out",
+                            hoveredCard === index ? "translate-x-full" : ""
+                          )}
                         />
                         <span className="relative z-10">Download Free</span>
-                        <motion.div
-                          className="relative z-10"
-                          animate={{ x: hoveredCard === index ? 4 : 0 }}
-                          transition={{ duration: 0.2 }}
+                        <div
+                          className={cn(
+                            "relative z-10 transition-transform duration-200",
+                            hoveredCard === index ? "translate-x-1" : ""
+                          )}
                         >
                           <ArrowRight className="w-4 h-4" />
-                        </motion.div>
+                        </div>
                       </Link>
                     </motion.div>
                   </div>
@@ -436,15 +434,7 @@ export function LeadMagnetSection() {
                         {/* Enhanced Header */}
                         <div className="flex items-center justify-between mb-6">
                           <div className="flex items-center gap-2">
-                            <motion.div
-                              animate={{ 
-                                rotate: currentSlide === index ? [0, 360] : 0,
-                                scale: currentSlide === index ? [1, 1.1, 1] : 1
-                              }}
-                              transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                            >
-                              <Download className="w-4 h-4 text-kiiro-yellow" />
-                            </motion.div>
+                            <Download className="w-4 h-4 text-kiiro-yellow" />
                             <span className="text-xs font-medium text-kiiro-yellow uppercase tracking-wider">
                               {resource.badge || "PDF GUIDE"}
                             </span>
@@ -521,20 +511,22 @@ export function LeadMagnetSection() {
                             href={resource.downloadUrl}
                             className="relative flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-kiiro-yellow to-kiiro-yellow/90 text-charcoal-black rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-kiiro-yellow/25 hover:shadow-xl overflow-hidden group"
                           >
-                            {/* Shimmer Effect */}
-                            <motion.div
-                              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full"
-                              animate={{ x: hoveredCard === index ? "200%" : "-100%" }}
-                              transition={{ duration: 0.8 }}
+                            {/* Optimized Shimmer Effect */}
+                            <div
+                              className={cn(
+                                "absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full transition-transform duration-600 ease-out",
+                                hoveredCard === index ? "translate-x-full" : ""
+                              )}
                             />
                             <span className="relative z-10">Download Free</span>
-                            <motion.div
-                              className="relative z-10"
-                              animate={{ x: hoveredCard === index ? 6 : 0 }}
-                              transition={{ duration: 0.2 }}
+                            <div
+                              className={cn(
+                                "relative z-10 transition-transform duration-200",
+                                hoveredCard === index ? "translate-x-1.5" : ""
+                              )}
                             >
                               <ArrowRight className="w-4 h-4" />
-                            </motion.div>
+                            </div>
                           </Link>
                         </motion.div>
                       </div>
@@ -716,38 +708,7 @@ export function LeadMagnetSection() {
           </motion.div>
         </div>
 
-        {/* Floating Action Bubble */}
-        <motion.div
-          className="fixed bottom-8 right-8 z-50 md:hidden"
-          initial={{ opacity: 0, scale: 0, rotate: -180 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ 
-            duration: 0.6, 
-            delay: 2,
-            ease: [0.68, -0.55, 0.265, 1.55] 
-          }}
-        >
-          <motion.button
-            className="w-16 h-16 bg-gradient-to-r from-kiiro-yellow to-kiiro-yellow/80 text-charcoal-black rounded-full shadow-xl flex items-center justify-center"
-            whileHover={{ 
-              scale: 1.1, 
-              rotate: 5,
-              boxShadow: "0 20px 40px rgba(255, 208, 0, 0.3)"
-            }}
-            whileTap={{ scale: 0.9 }}
-            animate={{ 
-              y: [0, -8, 0],
-              rotate: [0, 5, -5, 0]
-            }}
-            transition={{ 
-              y: { duration: 2, repeat: Infinity, ease: "easeInOut" },
-              rotate: { duration: 4, repeat: Infinity, ease: "easeInOut" }
-            }}
-            onClick={() => scrollToSlide(0)}
-          >
-            <Download className="w-6 h-6" />
-          </motion.button>
-        </motion.div>
+
       </section>
     </BlurFade>
   );

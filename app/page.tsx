@@ -36,8 +36,6 @@ export default function Home() {
       <Header />
       
       <HeroSection />
-
-
       
       <div id="services">
         <ServicesSection />
@@ -50,15 +48,9 @@ export default function Home() {
       </div>
       <MidFunnelCTA />
 
-
-      
-      
-
-      
       <CaseStudiesSection />
       
       <TrustBadges />
-      
       
       <ConversionAuditCTA />
       
@@ -68,7 +60,6 @@ export default function Home() {
       </div>
       
       <WhyKiiroSectionEnhanced />
-      
       
       <LeadMagnetSection />
       

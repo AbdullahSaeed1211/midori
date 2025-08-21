@@ -29,19 +29,19 @@ export function HeroSection() {
 
   // Project images for marquee columns
   const column1Images = [
-    { src: "/projects/dubbby.webp", alt: "Dubbby Project", height: "h-40" },
+    { src: "/projects/guidancewelfare.webp", alt: "Guidance Welfare Foundation Project", height: "h-40"},
+    { src: "/projects/dubbby.webp", alt: "Dubbby Project", height: "h-40"},
     { src: "/projects/brainwise.webp", alt: "BrainWise Project", height: "h-32" },
-    { src: "/projects/simply.webp", alt: "Simply Mortgage Project", height: "h-44" },
+    { src: "/projects/simply.webp", alt: "Simply Mortgage Project", height: "h-44"},
     { src: "/projects/midori.webp", alt: "Midori Project", height: "h-36" },
-    { src: "/projects/evault.webp", alt: "EVault Project", height: "h-32" },
   ];
 
   const column2Images = [
-    { src: "/projects/lotus.webp", alt: "Lotus Pro Services Project", height: "h-32" },
+    { src: "/projects/lotus.webp", alt: "Lotus Pro Services Project", height: "h-32"},
     { src: "/projects/sproutly.webp", alt: "Sproutly Project", height: "h-44" },
     { src: "/projects/kiiro.webp", alt: "Kiiro Project", height: "h-36" },
     { src: "/projects/testimonialnudger.webp", alt: "Testimonial Nudger Project", height: "h-32" },
-    { src: "/projects/dubbby.webp", alt: "Dubbby Project", height: "h-40" },
+    { src: "/projects/dubbby.webp", alt: "Dubbby Project", height: "h-40"},
   ];
 
 
@@ -51,9 +51,10 @@ export function HeroSection() {
       "relative group rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105",
       isMobile ? "w-48 h-32 flex-shrink-0" : ""
     )}>
-      <Image 
+      <img 
         src={image.src}
         alt={image.alt}
+       
         loading="lazy"
         className={isMobile ? "w-full h-full object-cover" : `w-full ${image.height} object-cover`}
         style={{ aspectRatio: '16/9' }}
@@ -68,7 +69,7 @@ export function HeroSection() {
         reverse={reverse}
         className="h-full"
         pauseOnHover={false}
-        repeat={2}
+        repeat={3}
       >
         <div className="space-y-6">
           {images.map((image, index) => renderImageCard(image, index))}
@@ -139,7 +140,7 @@ export function HeroSection() {
                 <div className="relative flex justify-center lg:justify-start">
                   {/* Limited Offer Badge */}
                   <motion.div 
-                    className="absolute -top-3 lg:-top-4 -left-3 lg:-left-4 z-10"
+                    className="absolute -top-5 lg:-top-6 -left-4 lg:-left-8 z-10"
                     initial={{ opacity: 0, scale: 0.8, rotate: -12 }}
                     animate={isMounted ? { opacity: 1, scale: 1, rotate: -12 } : {}}
                     transition={{ duration: 0.6, delay: 0.8, type: "spring", stiffness: 200 }}
@@ -205,7 +206,7 @@ export function HeroSection() {
               </motion.div>
             </motion.div>
 
-            {/* Mobile Horizontal Marquee - Below Hero Content
+            {/* Mobile Horizontal Marquee - Below Hero Content */}
             <div className="lg:hidden mt-12 lg:mt-16">
               <Marquee
                 className="py-4"
@@ -214,10 +215,20 @@ export function HeroSection() {
                 repeat={2}
               >
                 <div className="flex space-x-4">
-                  {allImages.map((image, index) => renderImageCard(image, index, true))}
+                  {column1Images.map((image, index) => renderImageCard(image, index, true))}
                 </div>
               </Marquee>  
-             </div>  */}
+              <Marquee
+                className="py-4"
+                pauseOnHover={true}
+                reverse={true}
+                repeat={2}
+              >
+                <div className="flex space-x-4">
+                  {column2Images.map((image, index) => renderImageCard(image, index, true))}
+                </div>
+              </Marquee> 
+             </div>  
           </div> 
           
           {/* Desktop Vertical Marquees */}
