@@ -210,7 +210,7 @@ export default function RootLayout({
               "founders": [
                 {
                   "@type": "Person",
-                  "name": "Abdullah Saeed",
+                  "name": "Founder",
                   "jobTitle": "Full-Stack Developer"
                 }
               ],

@@ -184,7 +184,7 @@ export function FeaturedWorkSection() {
           className="flex justify-center mt-12"
         >
           <Link
-            href="/portfolio"
+            href="/case-studies"
             className="px-6 py-3 bg-kiiro-yellow/10 text-kiiro-yellow border border-kiiro-yellow/20 rounded-lg hover:bg-kiiro-yellow/20 transition-colors duration-300"
           >
             View All Projects

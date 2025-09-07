@@ -19,9 +19,7 @@ const nextConfig: NextConfig = {
 
   // Experimental features for better performance
   experimental: {
-    optimizeCss: true,
     scrollRestoration: true,
-    typedRoutes: true,
   },
 
   // Headers for security and performance
@@ -53,7 +51,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=300, s-maxage=600, stale-while-revalidate=86400'
+            value: 'public, max-age=180, s-maxage=300, stale-while-revalidate=3600'
           }
         ]
       },
@@ -62,7 +60,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable'
+            value: 'public, max-age=604800, immutable'
           }
         ]
       },
@@ -71,7 +69,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=604800'
+            value: 'public, max-age=3600, s-maxage=7200, stale-while-revalidate=86400'
           }
         ]
       }

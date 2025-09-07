@@ -84,7 +84,7 @@ export function ProjectDetailsModal({ project, isOpen, onClose }: ProjectDetails
                   {project.industry}
                 </div>
                 {project.liveSiteUrl && (
-                  <Link
+                  <a
                     href={project.liveSiteUrl}
                     className="inline-flex items-center gap-1 text-xs font-medium text-off-white/70 hover:text-off-white"
                     target="_blank"
@@ -92,7 +92,7 @@ export function ProjectDetailsModal({ project, isOpen, onClose }: ProjectDetails
                   >
                     <span>Visit Site</span>
                     <ExternalLink className="w-3 h-3" />
-                  </Link>
+                  </a>
                 )}
               </div>
               
