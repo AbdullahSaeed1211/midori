@@ -19,30 +19,22 @@ export function HeroSection() {
     setIsMounted(true);
   }, []);
   
-  const companyLogos = [
-    "Simply Mortgage",
-    "Dubbby", 
-    "Lotus Pro Services",
-    "BrainWise",
-    "BlogSquirrel"
-  ];
 
   // Project images for marquee columns
   const column1Images = [
-    { src: "/projects/guidancewelfare.webp", alt: "Guidance Welfare Foundation Project", height: "h-40"},
-    { src: "/projects/sprintmedia.webp", alt: "Sprint Media Project", height: "h-40"},
-
-    { src: "/projects/dubbby.webp", alt: "Dubbby Project", height: "h-40"},
-    { src: "/projects/brainwise.webp", alt: "BrainWise Project", height: "h-32" },
-    { src: "/projects/simply.webp", alt: "Simply Mortgage Project", height: "h-44"},
-    { src: "/projects/midori.webp", alt: "Midori Project", height: "h-36" },
+    { src: "/projects/guidancewelfare.webp", alt: "Guidance Welfare Foundation - Non-profit website design showcasing charitable work and community impact", height: "h-40"},
+    { src: "/projects/sprintmedia.webp", alt: "Sprint Media - Professional digital marketing agency website with modern design and conversion optimization", height: "h-40"},
+    { src: "/projects/dubbby.webp", alt: "Dubbby - AI-powered video dubbing platform landing page with interactive demo and waitlist signup", height: "h-40"},
+    { src: "/projects/brainwise.webp", alt: "BrainWise - Educational platform website for cognitive development courses and training programs", height: "h-32" },
+    { src: "/projects/simply.webp", alt: "Simply Mortgage - Financial services website design with trust indicators and lead generation forms", height: "h-44"},
+    { src: "/projects/midori.webp", alt: "Midori - Professional web development agency portfolio showcasing expertise in React and Next.js", height: "h-36" },
   ];
 
   const column2Images = [
-    { src: "/projects/lotus.webp", alt: "Lotus Pro Services Project", height: "h-32"},
-    { src: "/projects/sproutly.webp", alt: "Sproutly Project", height: "h-44" },
-    { src: "/projects/kiiro.webp", alt: "Kiiro Project", height: "h-36" },
-    { src: "/projects/testimonialnudger.webp", alt: "Testimonial Nudger Project", height: "h-32" },
+    { src: "/projects/lotus.webp", alt: "Lotus Pro Services - Professional services website design for consultants and business advisors", height: "h-32"},
+    { src: "/projects/sproutly.webp", alt: "Sproutly - Urban gardening course platform with interactive plant selection and ROI calculator", height: "h-44" },
+    { src: "/projects/kiiro.webp", alt: "Kiiro - Modern web design agency homepage featuring conversion-optimized design and fast delivery", height: "h-36" },
+    { src: "/projects/testimonialnudger.webp", alt: "Testimonial Nudger - SaaS platform website for automated customer testimonial collection and management", height: "h-32" },
   ];
 
 
@@ -63,22 +55,7 @@ export function HeroSection() {
     </div>
   );
 
-  const renderVerticalMarqueeColumn = (images: typeof column1Images, reverse: boolean = false) => (
-    <div className="flex-1 relative h-full">
-      <Marquee
-        vertical={true}
-        reverse={reverse}
-        className="h-full"
-        pauseOnHover={false}
-        repeat={3}
-      >
-        <div className="space-y-6">
-          {images.map((image, index) => renderImageCard(image, index))}
-        </div>
-      </Marquee>
-    </div>
-  );
-  
+
   return (
     <section 
       className="relative min-h-screen bg-charcoal-black text-off-white overflow-hidden"
@@ -116,99 +93,133 @@ export function HeroSection() {
       />
       
       {/* Hero Layout with Responsive Marquee */}
-      <div className="container relative z-20 mx-auto px-4 py-16 lg:py-12 min-h-screen max-w-7xl">
+      <div className="container relative z-20 mx-auto px-4 sm:px-6 lg:px-8 min-h-screen max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 min-h-screen items-center">
           
           {/* Main Hero Content - Takes majority of width */}
-          <div className="lg:col-span-3 flex flex-col justify-center order-1 lg:order-1">
+          <div className="lg:col-span-3 flex flex-col justify-center order-1 lg:order-1 pt-16 lg:pt-20 xl:pt-24">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isMounted ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7 }}  
-              className="space-y-8 text-center lg:text-left"
+              transition={{ duration: 0.7 }}
+              className="space-y-12 lg:space-y-16 text-center lg:text-left"
             >
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tight leading-[0.95]">
-                <span className="block mb-4 lg:mb-6 text-off-white">Build a Website That</span>
-                
-                  Works Like a <span className="italic tracking-tight text-kiiro-yellow">Sales Team</span>
-              </h1>
+              <div className="space-y-6">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={isMounted ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="inline-flex items-center gap-3 px-4 py-2 bg-kiiro-yellow/10 border border-kiiro-yellow/30 rounded-full mb-6"
+                >
+                  <div className="w-2 h-2 bg-kiiro-yellow rounded-full animate-pulse" />
+                  <span className="text-kiiro-yellow font-medium text-xs sm:text-sm tracking-wide uppercase">
+                    Professional Website Design Agency
+                  </span>
+                </motion.div>
+
+                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-10xl font-black tracking-tight leading-[0.9] text-off-white">
+                  <span className="block mb-4 sm:mb-6">Build a Website That</span>
+                  <span className="block">Works Like a <span className="text-kiiro-yellow italic">Sales Team</span></span>
+                </h1>
+              </div>
+
+              <div className="space-y-8 lg:space-y-10">
+                <p className="text-lg sm:text-xl lg:text-2xl text-off-white/90 leading-relaxed max-w-4xl mx-auto lg:mx-0 font-light">
+                  Stop wasting time on cold outreach that doesn&apos;t work. Get a professional website that <span className="text-kiiro-yellow font-semibold">attracts qualified prospects</span> and converts them into paying customers automatically.
+                </p>
+
+                <div className="flex items-center justify-center lg:justify-start gap-8 text-sm text-off-white/80">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-[#4CAF50] rounded-full" />
+                    <span>7-Day Delivery</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-[#00CED1] rounded-full" />
+                    <span>30-Day Guarantee</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-[#8A2BE2] rounded-full" />
+                    <span>100% Money Back Guarantee</span>
+                  </div>
+                </div>
+              </div>
               
-              <p className="text-base sm:text-lg lg:text-xl text-off-white/80 leading-snug max-w-3xl mx-auto lg:mx-0">
-                Professional websites designed to convert visitors into <span className="text-kiiro-yellow">customers</span>. Fast delivery, proven results, no overpriced retainers.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 lg:gap-6 pt-4 lg:pt-6 justify-center lg:justify-start">
+              <div className="flex flex-col sm:flex-row gap-6 pt-4 justify-center lg:justify-start">
                 <div className="relative flex justify-center lg:justify-start">
                   {/* Limited Offer Badge */}
-                  <motion.div 
-                    className="absolute -top-5 lg:-top-6 -left-4 lg:-left-8 z-10"
+                  <motion.div
+                    className="absolute -top-6 lg:-top-8 -left-4 lg:-left-8 z-10"
                     initial={{ opacity: 0, scale: 0.8, rotate: -12 }}
                     animate={isMounted ? { opacity: 1, scale: 1, rotate: -12 } : {}}
                     transition={{ duration: 0.6, delay: 0.8, type: "spring", stiffness: 200 }}
                   >
-                    <div className="bg-off-white text-charcoal-black text-sm lg:text-base font-bold px-3 lg:px-4 py-2 lg:py-2.5 rounded-full shadow-lg transform -rotate-12">
-                      LIMITED OFFER
+                    <div className="bg-red-500 text-off-white text-sm lg:text-base font-black px-3 lg:px-4 py-2 lg:py-2.5 rounded-full shadow-2xl transform -rotate-12 border-2 border-red-400">
+                      ⚡ LIMITED TIME
                     </div>
                   </motion.div>
-            
-                  <Link 
-                    href="#booking" 
+
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Link
+                      href="#booking"
+                      className={cn(
+                        "flex items-center justify-center gap-3 px-6 sm:px-8 lg:px-10 py-4 lg:py-5 rounded-2xl",
+                        "bg-kiiro-yellow text-charcoal-black font-bold text-base sm:text-lg lg:text-xl",
+                        "transition-all duration-300 hover:scale-105",
+                        "hover:shadow-[0_0_40px_rgba(255,236,0,0.6)]",
+                        "w-full sm:w-auto min-w-[260px] sm:min-w-[280px]",
+                        "border-2 border-kiiro-yellow"
+                      )}
+                    >
+                      Stop Cold Outreach Today
+                      <ArrowRight className="h-4 sm:h-5 lg:h-6 w-4 sm:w-5 lg:w-6" />
+                    </Link>
+                  </motion.div>
+                </div>
+
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Link
+                    href="#case-studies"
                     className={cn(
-                      "flex items-center justify-center gap-3 px-6 lg:px-8 py-3 lg:py-4 rounded-xl",
-                      "bg-kiiro-yellow text-charcoal-black font-semibold text-base lg:text-lg",
-                      "transition-all duration-300 hover:scale-105",
-                      "hover:shadow-[0_0_30px_rgba(255,236,0,0.4)]",
-                      "w-full sm:w-auto"
+                      "flex items-center justify-center gap-3 px-6 sm:px-8 lg:px-10 py-4 lg:py-5 rounded-2xl",
+                      "bg-transparent text-off-white font-bold text-base sm:text-lg lg:text-xl",
+                      "border-2 border-off-white/40 transition-all duration-300",
+                      "hover:bg-off-white/10 hover:border-off-white/60",
+                      "w-full sm:w-auto min-w-[260px] sm:min-w-[280px]",
+                      "backdrop-blur-sm"
                     )}
                   >
-                    Get Free Conversion Audit
-                    <ArrowRight className="h-4 lg:h-5 w-4 lg:w-5" />
+                    See How It Works
                   </Link>
-                </div>
-          
-                <Link 
-                  href="#case-studies"
-                  className={cn(
-                    "flex items-center justify-center gap-3 px-6 lg:px-8 py-3 lg:py-4 rounded-xl",
-                    "bg-transparent text-off-white font-semibold text-base lg:text-lg",
-                    "border-2 border-off-white/20 transition-all duration-300",
-                    "hover:bg-off-white/10 hover:border-off-white/40",
-                    "w-full sm:w-auto"
-                  )}
-                >
-                  View Case Studies
-                </Link>
+                </motion.div>
               </div>
-        
-              {/* Social Proof */}
+
+              {/* Social Proof - Integrated with CTA */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={isMounted ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="pt-8 lg:pt-12"
+                className="mt-2 text-center lg:text-left"
               >
-                <div className="flex flex-col lg:flex-row lg:items-center gap-4 mb-6 justify-center lg:justify-start">
-                  <div className="flex justify-center lg:justify-start">
+                <div className="flex items-center justify-center lg:justify-start gap-4">
+                  <div className="flex gap-1">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-5 lg:w-6 h-5 lg:h-6 fill-kiiro-yellow text-kiiro-yellow" />
+                      <Star key={i} className="w-5 h-5 fill-kiiro-yellow text-kiiro-yellow" />
                     ))}
                   </div>
-                  <span className="text-off-white font-semibold text-base lg:text-lg text-center lg:text-left">
-                    Loved by 15+ Startup Founders
-                  </span>
-                </div>
-                
-                {/* Company Logos */}
-                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 lg:gap-10 text-off-white/60">
-                  {companyLogos.slice(0, 4).map((logo, index) => (
-                    <span key={index} className="text-sm lg:text-base font-medium">{logo}</span>
-                  ))}
+                  <span className="text-kiiro-yellow font-bold text-lg">5.0</span>
+                  <span className="text-off-white/60 text-sm ml-2">• Trusted by 15+ companies</span>
                 </div>
               </motion.div>
             </motion.div>
 
-            {/* Mobile Horizontal Marquee - Below Hero Content */}
-            <div className="lg:hidden mt-12 lg:mt-16">
+            {/* Mobile Horizontal Marquee */}
+            <div className="lg:hidden mt-12">
               <Marquee
                 className="py-4"
                 pauseOnHover={true}
@@ -218,7 +229,7 @@ export function HeroSection() {
                 <div className="flex space-x-4">
                   {column1Images.map((image, index) => renderImageCard(image, index, true))}
                 </div>
-              </Marquee>  
+              </Marquee>
               <Marquee
                 className="py-4"
                 pauseOnHover={true}
@@ -228,18 +239,42 @@ export function HeroSection() {
                 <div className="flex space-x-4">
                   {column2Images.map((image, index) => renderImageCard(image, index, true))}
                 </div>
-              </Marquee> 
-             </div>  
-          </div> 
-          
+              </Marquee>
+             </div>
+          </div>
+
           {/* Desktop Vertical Marquees */}
           <div className="hidden lg:block lg:col-span-2 relative h-screen overflow-hidden order-2 lg:order-2">
             <div className="flex gap-4 h-full">
               {/* First Column - Normal direction */}
-              {renderVerticalMarqueeColumn(column1Images, false)}
-              
+              <div className="flex-1 relative h-full">
+                <Marquee
+                  vertical={true}
+                  reverse={false}
+                  className="h-full"
+                  pauseOnHover={false}
+                  repeat={3}
+                >
+                  <div className="space-y-6">
+                    {column1Images.map((image, index) => renderImageCard(image, index))}
+                  </div>
+                </Marquee>
+              </div>
+
               {/* Second Column - Reverse direction */}
-              {renderVerticalMarqueeColumn(column2Images, true)}
+              <div className="flex-1 relative h-full">
+                <Marquee
+                  vertical={true}
+                  reverse={true}
+                  className="h-full"
+                  pauseOnHover={false}
+                  repeat={3}
+                >
+                  <div className="space-y-6">
+                    {column2Images.map((image, index) => renderImageCard(image, index))}
+                  </div>
+                </Marquee>
+              </div>
             </div>
           </div>
         </div>

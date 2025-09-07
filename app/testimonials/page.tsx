@@ -6,6 +6,45 @@ import { Star, Send, CheckCircle, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { Header } from '@/components/shared/header';
 import { Footer } from '@/components/shared/footer';
+import type { Metadata } from "next";
+
+// This would typically be in a separate file for server components
+export const metadata: Metadata = {
+  title: "Client Testimonials | Real Results from Kiiro.cx Projects | kiiro.cx",
+  description: "Read authentic testimonials from entrepreneurs, course creators, and businesses who transformed their online presence with Kiiro.cx. Real results, real clients, real success stories.",
+  keywords: [
+    "client testimonials",
+    "kiiro reviews",
+    "website design testimonials",
+    "conversion optimization success stories",
+    "entrepreneur website results",
+    "course creator testimonials",
+    "business website success",
+    "web development client feedback"
+  ],
+  openGraph: {
+    type: "website",
+    title: "Client Testimonials | Real Results from Kiiro.cx Projects",
+    description: "Read authentic testimonials from entrepreneurs and businesses who transformed their online presence with Kiiro.cx professional web design services.",
+    siteName: "kiiro.cx",
+    images: [
+      {
+        url: "/projects/kiiro.webp",
+        width: 1200,
+        height: 630,
+        alt: "Kiiro.cx Client Testimonials and Success Stories"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Client Testimonials | Real Results from Kiiro.cx Projects",
+    description: "Read authentic testimonials from entrepreneurs and businesses who transformed their online presence with Kiiro.cx",
+    images: ["/projects/kiiro.webp"],
+    site: "@kiirocx",
+    creator: "@kiirocx"
+  }
+};
 
 export default function TestimonialsPage() {
   const [formData, setFormData] = useState({

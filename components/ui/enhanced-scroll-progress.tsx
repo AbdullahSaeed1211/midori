@@ -70,7 +70,7 @@ export function EnhancedScrollProgress() {
   return (
     <>
       {/* Main Progress Bar */}
-      <div className="fixed top-0 left-0 w-full h-1 bg-charcoal-gray/50 z-50">
+      <div className="fixed top-0 left-0 w-full h-1 bg-deep-gray/50 z-50">
         <motion.div
           className="h-full bg-kiiro-yellow"
           style={{ width: `${scrollProgress}%` }}
@@ -79,8 +79,8 @@ export function EnhancedScrollProgress() {
       </div>
 
       {/* Section Navigation - Moved to right side and made smaller, hidden on mobile/tablet */}
-      <div className="fixed right-4 top-1/2 -translate-y-1/2 z-40 hidden xl:block">
-        <div className="bg-charcoal-gray/90 backdrop-blur-sm border border-off-white/20 rounded-xl p-3 shadow-2xl max-w-[140px]">
+      <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden xl:block">
+        <div className="bg-deep-gray/90 backdrop-blur-sm border border-off-white/20 rounded-xl p-3 shadow-2xl max-w-[140px]">
           <div className="space-y-2">
             {sections.map((section) => (
               <button
