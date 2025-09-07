@@ -30,6 +30,8 @@ export function HeroSection() {
   // Project images for marquee columns
   const column1Images = [
     { src: "/projects/guidancewelfare.webp", alt: "Guidance Welfare Foundation Project", height: "h-40"},
+    { src: "/projects/sprintmedia.webp", alt: "Sprint Media Project", height: "h-40"},
+
     { src: "/projects/dubbby.webp", alt: "Dubbby Project", height: "h-40"},
     { src: "/projects/brainwise.webp", alt: "BrainWise Project", height: "h-32" },
     { src: "/projects/simply.webp", alt: "Simply Mortgage Project", height: "h-44"},
@@ -41,7 +43,6 @@ export function HeroSection() {
     { src: "/projects/sproutly.webp", alt: "Sproutly Project", height: "h-44" },
     { src: "/projects/kiiro.webp", alt: "Kiiro Project", height: "h-36" },
     { src: "/projects/testimonialnudger.webp", alt: "Testimonial Nudger Project", height: "h-32" },
-    { src: "/projects/dubbby.webp", alt: "Dubbby Project", height: "h-40"},
   ];
 
 
