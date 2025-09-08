@@ -55,12 +55,29 @@ const CASE_STUDIES: CaseStudyProps[] = [
     featured: true
   },
   {
+    title: "Nishoo Mittal",
+    description: "Comprehensive financial planning website for MDRT Galaxy Club member Nishoo Mittal, featuring interactive calculators and trust-building design that serves Indian families with personalized wealth management solutions.",
+    image: "/projects/mittal.webp",
+    link: "/case-studies/nishoo-mittal",
+    tags: ["Financial Planning", "Wealth Management", "Interactive Calculators", "Family-Centric"],
+    accentColor: "yellow",
+    featured: true
+  },
+  {
     title: "Lotus Pro Services",
     description: "Document services company in Dubai needed premium positioning. We created a sophisticated brand identity and conversion-optimized website. Established them as a premium provider in UAE's competitive market.",
     image: "/projects/lotus.webp",
     link: "/case-studies/lotus-pro-services",
     tags: ["Premium Positioning", "Brand Identity", "Professional Services"],
     accentColor: "teal",
+  },
+  {
+    title: "BrainWise",
+    description: "Professional learning platform struggled with course completion. We redesigned the user journey with personalized paths and mobile optimization. Improved completion rates and subscription renewals.",
+    image: "/projects/brainwise.webp",
+    link: "/case-studies/brain-wise",
+    tags: ["Learning Platform", "Mobile Optimization", "User Journey"],
+    accentColor: "purple",
   },
   {
     title: "Sproutly",
@@ -80,14 +97,6 @@ const CASE_STUDIES: CaseStudyProps[] = [
     featured: true
   },
   {
-    title: "BrainWise",
-    description: "Professional learning platform struggled with course completion. We redesigned the user journey with personalized paths and mobile optimization. Improved completion rates and subscription renewals.",
-    image: "/projects/brainwise.webp",
-    link: "/case-studies/brain-wise",
-    tags: ["Learning Platform", "Mobile Optimization", "User Journey"],
-    accentColor: "purple",
-  },
-  {
     title: "BlogSquirrel",
     description: "Content management platform needed better user engagement. We created an intuitive dashboard with enhanced analytics and streamlined workflows. Increased user retention and daily activity.",
     image: "/projects/blogport.webp",
@@ -103,15 +112,7 @@ const CASE_STUDIES: CaseStudyProps[] = [
     tags: ["Agency Website", "Portfolio", "UI/UX", "Next.js"],
     accentColor: "yellow",
   },
-  {
-    title: "Nishoo Mittal",
-    description: "Comprehensive financial planning website for MDRT Galaxy Club member Nishoo Mittal, featuring interactive calculators and trust-building design that serves Indian families with personalized wealth management solutions.",
-    image: "/projects/mittal.webp",
-    link: "/case-studies/nishoo-mittal",
-    tags: ["Financial Planning", "Wealth Management", "Interactive Calculators", "Family-Centric"],
-    accentColor: "yellow",
-    featured: true
-  }
+  
 ];
 
 const STATS: StatItem[] = [

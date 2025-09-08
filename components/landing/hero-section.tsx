@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { ArrowRight, Star} from "lucide-react";
 import { motion } from "framer-motion";
@@ -46,10 +45,10 @@ export function HeroSection() {
       "relative group rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105",
       isMobile ? "w-48 h-32 flex-shrink-0" : ""
     )}>
-      <Image
+      <img 
         src={image.src}
         alt={image.alt}
-        fill
+       
         loading="lazy"
         className={isMobile ? "w-full h-full object-cover" : `w-full ${image.height} object-cover`}
         style={{ aspectRatio: '16/9' }}
@@ -205,9 +204,9 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={isMounted ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="mt-6 text-left"
+                className="text-left"
               >
-                <div className="flex flex-col xs:flex-row items-center xs:items-center justify-center lg:justify-start gap-3 xs:gap-4">
+                <div className="flex xs:flex-row items-start xs:items-center justify-center md:justify-start gap-3 xs:gap-4">
                   <div className="flex items-center gap-3">
                     <div className="flex gap-1">
                       {[...Array(5)].map((_, i) => (
@@ -215,10 +214,12 @@ export function HeroSection() {
                       ))}
                     </div>
                     <span className="text-kiiro-yellow font-bold text-base xs:text-lg">5.0</span>
+                    <span className="text-off-white/60 text-xs xs:text-sm">• Trusted by 15+ companies</span>
                   </div>
-                  <span className="text-off-white/60 text-sm xs:text-sm">• Trusted by 15+ companies</span>
+                  
                 </div>
               </motion.div>
+              
             </motion.div>
 
             {/* Mobile Horizontal Marquee */}
