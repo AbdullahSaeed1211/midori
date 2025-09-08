@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { ArrowRight, Star} from "lucide-react";
 import { motion } from "framer-motion";
@@ -45,10 +46,11 @@ export function HeroSection() {
       "relative group rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105",
       isMobile ? "w-48 h-32 flex-shrink-0" : ""
     )}>
-      <img 
+      <Image
         src={image.src}
         alt={image.alt}
-       
+        width={400}
+        height={225}
         loading="lazy"
         className={isMobile ? "w-full h-full object-cover" : `w-full ${image.height} object-cover`}
         style={{ aspectRatio: '16/9' }}

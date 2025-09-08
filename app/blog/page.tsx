@@ -297,7 +297,7 @@ export default function BlogPage() {
 
               {blogPosts.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {blogPosts.map((post, index) => (
+                  {blogPosts.map((post) => (
                     <article key={post.slug} className="bg-gradient-to-br from-charcoal-gray/95 to-charcoal-gray/90 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-kiiro-yellow/40 hover:shadow-xl hover:shadow-kiiro-yellow/5 transition-all duration-500 group relative">
                       {/* Subtle background gradient on hover */}
                       <div className="absolute inset-0 bg-gradient-to-br from-kiiro-yellow/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
