@@ -124,6 +124,7 @@ function EnhancedPricingCard({ plan, index, expandedPlan, setExpandedPlan }: {
       {/* CTA Button */}
       <motion.a
         href="#booking"
+        onClick={(e) => e.stopPropagation()}
         className={cn(
           "inline-flex items-center justify-center px-6 py-4 rounded-xl font-bold text-lg transition-all duration-300 mb-4",
           isPopular
@@ -484,12 +485,6 @@ export function PricingSection() {
                         <div className="text-kiiro-yellow font-bold">Professional</div>
                         <div className="text-xs text-off-white/60">$600</div>
                         <div className="text-xs text-green-400 font-medium">Most Popular</div>
-                      </div>
-                    </th>
-                    <th className="py-4 px-6 text-center font-semibold text-off-white">
-                      <div className="space-y-1">
-                        <div className="text-kiiro-yellow font-bold">Enterprise</div>
-                        <div className="text-xs text-off-white/60">Custom</div>
                       </div>
                     </th>
                   </tr>
