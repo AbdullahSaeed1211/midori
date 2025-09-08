@@ -3,7 +3,7 @@ import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Download, ExternalLink, CheckCircle, Star } from "lucide-react";
+import { Download, CheckCircle, Star } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Free Resources | Website Templates, Checklists & Tools | kiiro.cx",

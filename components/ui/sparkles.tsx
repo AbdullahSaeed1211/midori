@@ -183,11 +183,11 @@ export const SparklesCore = ({
     if (dimensions.width && dimensions.height) {
       renderCanvas();
     }
-    
+
     return () => {
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
-  }, [renderCanvas]);
+  }, [renderCanvas, dimensions.width, dimensions.height]);
 
   return (
     <canvas

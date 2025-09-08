@@ -2,7 +2,7 @@ import React from "react";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Database, Shield, Zap, Users, Award, TrendingUp, Code, Smartphone, Globe } from "lucide-react";
+import { ArrowLeft, Database, Shield, Zap, Users, Award, TrendingUp, Code, Smartphone } from "lucide-react";
 import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
 

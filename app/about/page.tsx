@@ -35,7 +35,7 @@ export default function AboutPage() {
                 Passionate About <span className="text-kiiro-yellow">Your Success</span>
               </h1>
               <p className="text-xl text-off-white/80 max-w-2xl mx-auto">
-                We're not just website designers. We're entrepreneurs who understand the challenges you face and the importance of establishing credibility online.
+                We&apos;re not just website designers. We&apos;re entrepreneurs who understand the challenges you face and the importance of establishing credibility online.
               </p>
             </div>
           </div>
@@ -62,9 +62,9 @@ export default function AboutPage() {
                       <h2 className="text-3xl font-bold text-off-white mb-2">Abdullah Saeed</h2>
                       <p className="text-kiiro-yellow font-medium mb-4">Founder & Lead Designer</p>
                       <p className="text-off-white/80 leading-relaxed">
-                        With over 3 years of experience in web design and development, I've helped 15+ entrepreneurs
-                        transform their online presence. I understand that your website isn't just a digital business card
-                        – it's your most important salesperson.
+                        With over 3 years of experience in web design and development, I&apos;ve helped 15+ entrepreneurs
+                        transform their online presence. I understand that your website isn&apos;t just a digital business card
+                        – it&apos;s your most important salesperson.
                       </p>
                     </div>
 
@@ -119,7 +119,7 @@ export default function AboutPage() {
                   </div>
                   <h3 className="text-off-white font-semibold mb-3">Entrepreneur-First</h3>
                   <p className="text-off-white/60">
-                    We understand your challenges because we've been there. No corporate jargon, just real solutions.
+                    We understand your challenges because we&apos;ve been there. No corporate jargon, just real solutions.
                   </p>
                 </div>
 
@@ -178,7 +178,7 @@ export default function AboutPage() {
                 Ready to Build Something Amazing?
               </h2>
               <p className="text-xl text-off-white/80 mb-8">
-                Let's discuss how we can help establish your credibility and convert more visitors into customers.
+                Let&apos;s discuss how we can help establish your credibility and convert more visitors into customers.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
