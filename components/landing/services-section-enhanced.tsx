@@ -122,7 +122,7 @@ export function ServicesSection() {
           </header>
 
           {/* Enhanced Problem Grid with Accordion */}
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
             {problems.map((item, i) => {
               const Icon = item.icon;
               const isExpanded = expandedCard === i;
@@ -132,36 +132,39 @@ export function ServicesSection() {
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
                   className={cn(
-                    'group relative flex flex-col rounded-2xl border bg-white/[0.02] backdrop-blur-md transition-all duration-300 cursor-pointer',
-                    'hover:bg-white/[0.05] hover:border-white/20',
-                    isExpanded ? 'border-kiiro-yellow/50 bg-kiiro-yellow/[0.02]' : 'border-white/5'
+                    'group relative flex flex-col rounded-xl sm:rounded-2xl border bg-white/[0.02] backdrop-blur-md transition-all duration-500 cursor-pointer',
+                    'hover:bg-white/[0.05] hover:border-white/20 hover:shadow-lg hover:shadow-kiiro-yellow/10',
+                    'active:scale-[0.98] transform',
+                    isExpanded ? 'border-kiiro-yellow/50 bg-kiiro-yellow/[0.02] shadow-xl shadow-kiiro-yellow/10' : 'border-white/5'
                   )}
                   onClick={() => toggleCard(i)}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   {/* Card Header - Always Visible */}
-                  <div className="p-8 pb-6">
-                    <header className="flex gap-4 items-start mb-4">
+                  <div className="p-4 sm:p-6 lg:p-8 pb-4 sm:pb-6">
+                    <header className="flex gap-3 sm:gap-4 items-start mb-4">
                       <div className={cn(
-                        "flex h-12 w-12 shrink-0 items-center justify-center rounded-xl transition-colors",
-                        isExpanded ? "bg-kiiro-yellow/20" : "bg-kiiro-yellow/10"
+                        "flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl transition-all duration-300",
+                        isExpanded ? "bg-kiiro-yellow/20 scale-110" : "bg-kiiro-yellow/10"
                       )}>
                         <Icon className={cn(
-                          "h-5 w-5 transition-colors",
+                          "h-4 w-4 sm:h-5 sm:w-5 transition-all duration-300",
                           isExpanded ? "text-kiiro-yellow" : "text-kiiro-yellow/80"
                         )} />
                       </div>
 
-                      <div className="flex-1">
-                        <h3 className="text-lg font-semibold tracking-tight text-off-white mb-2">
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-base sm:text-lg font-semibold tracking-tight text-off-white mb-2">
                           {item.title}
                         </h3>
-                        <div className="flex items-center gap-3">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
                           <span className="text-xs uppercase tracking-wide text-teal-accent/80 font-medium">
                             {item.pillar}
                           </span>
-                          <span className="rounded-full bg-kiiro-yellow/10 px-3 py-1 text-xs text-kiiro-yellow font-medium">
+                          <span className="rounded-full bg-kiiro-yellow/10 px-2.5 py-1 text-xs text-kiiro-yellow font-medium inline-block w-fit">
                             {item.metric}
                           </span>
                         </div>
@@ -169,10 +172,10 @@ export function ServicesSection() {
 
                       <motion.div
                         animate={{ rotate: isExpanded ? 180 : 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="flex-shrink-0"
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        className="flex-shrink-0 mt-1"
                       >
-                        <ChevronDown className="h-5 w-5 text-off-white/60" />
+                        <ChevronDown className="h-4 w-4 sm:h-5 sm:w-5 text-off-white/60" />
                       </motion.div>
                     </header>
 
@@ -185,12 +188,18 @@ export function ServicesSection() {
                       <div className="flex items-center gap-2 text-sm text-off-white/60">
                         <span className="font-medium">Quick Fixes:</span>
                       </div>
-                      <div className="grid grid-cols-2 gap-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                         {item.fixes.map((fix, idx) => (
-                          <div key={idx} className="flex items-center gap-2 text-sm text-off-white/70">
+                          <motion.div 
+                            key={idx} 
+                            className="flex items-center gap-2 text-sm text-off-white/70"
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.3, delay: idx * 0.1 }}
+                          >
                             <CheckCircle className="h-3 w-3 text-teal-accent flex-shrink-0" />
-                            <span>{fix}</span>
-                          </div>
+                            <span className="text-xs sm:text-sm">{fix}</span>
+                          </motion.div>
                         ))}
                       </div>
                     </div>
@@ -203,10 +212,10 @@ export function ServicesSection() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <div className="px-8 pb-8 border-t border-white/10 pt-6">
+                        <div className="px-4 sm:px-6 lg:px-8 pb-4 sm:pb-6 lg:pb-8 border-t border-white/10 pt-4 sm:pt-6">
                           <div className="space-y-6">
                             {/* Problem Details */}
                             <div className="space-y-4">
@@ -284,17 +293,22 @@ export function ServicesSection() {
                 Get a free website audit that identifies your biggest conversion leaks and shows you exactly how to fix them.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/audit"
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-kiiro-yellow text-charcoal-black font-bold text-lg rounded-xl hover:bg-kiiro-yellow/90 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-kiiro-yellow/20"
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  Get My Free Audit ($200 Value)
-                  <ArrowRight className="h-5 w-5" />
-                </Link>
+                  <Link
+                    href="/audit"
+                    className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-kiiro-yellow text-charcoal-black font-bold text-base sm:text-lg rounded-xl hover:bg-kiiro-yellow/90 transition-all duration-300 shadow-lg hover:shadow-kiiro-yellow/20 w-full sm:w-auto justify-center"
+                  >
+                    Get My Free Audit ($200 Value)
+                    <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                  </Link>
+                </motion.div>
 
-                <div className="flex items-center gap-2 text-sm text-off-white/60">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
+                <div className="flex items-center gap-2 text-xs sm:text-sm text-off-white/60 justify-center">
+                  <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-green-400" />
                   <span>30-second form • No credit card required</span>
                 </div>
               </div>

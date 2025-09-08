@@ -16,14 +16,14 @@ interface ReasonProps {
 
 function Reason({ icon: Icon, title, description, highlight, delay }: ReasonProps) {
   return (
-    <BlurFade delay={delay} className="flex flex-col p-6 border border-kiiro-yellow/10 rounded-xl bg-deep-gray/50 hover:bg-deep-gray transition-all duration-300">
-      <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-kiiro-yellow/15 text-kiiro-yellow">
-        <Icon className="h-7 w-7" />
+    <BlurFade delay={delay} className="flex flex-col p-4 sm:p-6 border border-kiiro-yellow/10 rounded-xl bg-deep-gray/50 hover:bg-deep-gray transition-all duration-300">
+      <div className="mb-4 sm:mb-5 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-kiiro-yellow/15 text-kiiro-yellow">
+        <Icon className="h-6 w-6 sm:h-7 sm:w-7" />
       </div>
-      <h3 className="mb-3 text-2xl font-bold text-off-white">{title}</h3>
-      <p className="text-base text-off-white/80 font-normal">{description}</p>
+      <h3 className="mb-2 sm:mb-3 text-lg sm:text-xl lg:text-2xl font-bold text-off-white">{title}</h3>
+      <p className="text-sm sm:text-base text-off-white/80 font-normal leading-relaxed">{description}</p>
       {highlight && (
-        <p className="mt-4 text-lg font-medium text-kiiro-yellow">{highlight}</p>
+        <p className="mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg font-medium text-kiiro-yellow">{highlight}</p>
       )}
     </BlurFade>
   );
@@ -47,7 +47,7 @@ export function WhyKiiroSection() {
           </p>
         </div>
 
-        <div className="mx-auto grid max-w-6xl gap-6 mb-16 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto grid max-w-6xl gap-4 sm:gap-6 mb-16 grid-cols-2 lg:grid-cols-4">
           <Reason
             icon={Zap}
             title="7-Day Delivery"

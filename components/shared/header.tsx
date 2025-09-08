@@ -21,6 +21,9 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: 'Services', href: '/#services' },
   { label: 'Case Studies', href: '/case-studies' },
+  { label: 'Resources', href: '/resources' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'About', href: '/about' },
   { label: 'Audit', href: '/audit' },
   { label: 'Pricing', href: '/#pricing' },
   { label: 'Process', href: '/#process' },
@@ -32,8 +35,11 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+
     function handleScroll() {
       if (window.scrollY > 10) {
         setIsScrolled(true);
@@ -84,7 +90,7 @@ export function Header() {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-2">
               {navItems.map((item) => {
-                const isActive = activeSection === item.href.replace('/#', '');
+                const isActive = isClient && activeSection === item.href.replace('/#', '');
                 return (
                   <Link
                     key={item.href}
@@ -141,7 +147,7 @@ export function Header() {
                 <nav className="flex-grow">
                   <ul className="space-y-2">
                     {navItems.map((item) => {
-                      const isActive = activeSection === item.href.replace('/#', '');
+                      const isActive = isClient && activeSection === item.href.replace('/#', '');
                       return (
                         <li key={item.href}>
                           <Link
@@ -149,7 +155,7 @@ export function Header() {
                             className={cn(
                               "flex items-center py-2.5 px-3 rounded-md transition-colors text-base",
                               isActive
-                                ? "text-kiiro-yellow bg-kiiro-yellow/10" 
+                                ? "text-kiiro-yellow bg-kiiro-yellow/10"
                                 : "text-off-white/80 hover:bg-white/10 hover:text-off-white"
                             )}
                             onClick={() => setMobileMenuOpen(false)}

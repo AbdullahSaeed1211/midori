@@ -42,7 +42,7 @@ function EnhancedPricingCard({ plan, index, expandedPlan, setExpandedPlan }: {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className={cn(
-        "rounded-2xl p-8 h-full flex flex-col border relative transition-all duration-300 cursor-pointer",
+        "rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 h-full flex flex-col border relative transition-all duration-300 cursor-pointer",
         isPopular
           ? "border-kiiro-yellow/50 bg-kiiro-yellow/5 shadow-xl shadow-kiiro-yellow/10"
           : "border-white/10 bg-white/[0.02] backdrop-blur-md hover:bg-white/[0.05] hover:border-white/20"
@@ -70,34 +70,35 @@ function EnhancedPricingCard({ plan, index, expandedPlan, setExpandedPlan }: {
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-start justify-between mb-4">
-          <div>
-            <h3 className="text-2xl font-bold mb-2 text-off-white">{plan.title}</h3>
-            <p className="text-off-white/70 text-sm">{plan.shortDesc}</p>
+          <div className="flex-1 min-w-0">
+            <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2 text-off-white">{plan.title}</h3>
+            <p className="text-off-white/70 text-xs sm:text-sm">{plan.shortDesc}</p>
           </div>
           <motion.div
             animate={{ rotate: isExpanded ? 180 : 0 }}
             transition={{ duration: 0.3 }}
+            className="flex-shrink-0 ml-2"
           >
-            <ChevronDown className="h-6 w-6 text-off-white/60" />
+            <ChevronDown className="h-5 w-5 sm:h-6 sm:w-6 text-off-white/60" />
           </motion.div>
         </div>
 
         {/* Pricing */}
         <div className="space-y-2">
-          <div className="flex items-baseline gap-3">
-            <span className="text-4xl font-black text-off-white">{plan.price}</span>
+          <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-3">
+            <span className="text-2xl sm:text-3xl lg:text-4xl font-black text-off-white">{plan.price}</span>
             {plan.originalPrice !== "Market Rate" && (
-              <span className="text-lg text-off-white/50 line-through">{plan.originalPrice}</span>
+              <span className="text-sm sm:text-base lg:text-lg text-off-white/50 line-through">{plan.originalPrice}</span>
             )}
           </div>
 
-          <div className="flex items-center gap-4 text-sm">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm">
             <div className="flex items-center gap-1 text-kiiro-yellow">
-              <Clock className="w-4 h-4" />
+              <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
               <span>{plan.deliveryTime}</span>
             </div>
             <div className="flex items-center gap-1 text-red-400">
-              <AlertCircle className="w-4 h-4" />
+              <AlertCircle className="w-3 h-3 sm:w-4 sm:h-4" />
               <span>{plan.spotsLeft} spots left</span>
             </div>
           </div>
@@ -126,16 +127,16 @@ function EnhancedPricingCard({ plan, index, expandedPlan, setExpandedPlan }: {
         href="#booking"
         onClick={(e) => e.stopPropagation()}
         className={cn(
-          "inline-flex items-center justify-center px-6 py-4 rounded-xl font-bold text-lg transition-all duration-300 mb-4",
+          "inline-flex items-center justify-center px-4 sm:px-6 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 mb-4 w-full",
           isPopular
-            ? "bg-kiiro-yellow text-charcoal-black hover:bg-kiiro-yellow/90 shadow-lg shadow-kiiro-yellow/25 hover:shadow-kiiro-yellow/40 hover:scale-105"
+            ? "bg-kiiro-yellow/90 text-charcoal-black hover:bg-kiiro-yellow/80 shadow-lg shadow-kiiro-yellow/25 hover:shadow-kiiro-yellow/40 hover:scale-105"
             : "bg-transparent text-off-white border-2 border-kiiro-yellow hover:bg-kiiro-yellow/10"
         )}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
-        {isPopular ? "Get Started Now" : "Learn More"}
-        <ChevronDown className="ml-2 h-5 w-5" />
+        <span className="flex-1 text-center">{isPopular ? "Get Started Now" : "Learn More"}</span>
+        <ChevronDown className="ml-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
       </motion.a>
 
       {/* Expandable Content */}
@@ -361,27 +362,27 @@ const FeatureRow = ({ feature, index }: { feature: Feature; index: number }) => 
       transition={{ delay: index * 0.03, duration: 0.5 }}
       viewport={{ once: true }}
     >
-      <td className="py-4 px-6 text-off-white">{feature.name}</td>
-      <td className="py-4 px-6 text-center">
+      <td className="py-3 sm:py-4 px-3 sm:px-6 text-off-white text-xs sm:text-sm">{feature.name}</td>
+      <td className="py-3 sm:py-4 px-3 sm:px-6 text-center">
         {typeof feature.onetime === "boolean" ? (
           feature.onetime ? (
-            <Check className="mx-auto h-5 w-5 text-kiiro-yellow" />
+            <Check className="mx-auto h-4 w-4 sm:h-5 sm:w-5 text-kiiro-yellow" />
           ) : (
-            <X className="mx-auto h-5 w-5 text-red-500/60" />
+            <X className="mx-auto h-4 w-4 sm:h-5 sm:w-5 text-red-500/60" />
           )
         ) : (
-          <span className="text-kiiro-yellow">{feature.onetime}</span>
+          <span className="text-kiiro-yellow text-xs sm:text-sm">{feature.onetime}</span>
         )}
       </td>
-      <td className="py-4 px-6 text-center">
+      <td className="py-3 sm:py-4 px-3 sm:px-6 text-center">
         {typeof feature.retainer === "boolean" ? (
           feature.retainer ? (
-            <Check className="mx-auto h-5 w-5 text-kiiro-yellow" />
+            <Check className="mx-auto h-4 w-4 sm:h-5 sm:w-5 text-kiiro-yellow" />
           ) : (
-            <X className="mx-auto h-5 w-5 text-red-500/60" />
+            <X className="mx-auto h-4 w-4 sm:h-5 sm:w-5 text-red-500/60" />
           )
         ) : (
-          <span className="text-kiiro-yellow font-medium">{feature.retainer}</span>
+          <span className="text-kiiro-yellow font-medium text-xs sm:text-sm">{feature.retainer}</span>
         )}
       </td>
     </motion.tr>
@@ -445,7 +446,7 @@ export function PricingSection() {
           </div>
 
           {/* Enhanced Pricing Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto mb-16">
             {detailedPricingPlans.map((plan, index) => (
               <EnhancedPricingCard
                 key={plan.id}
@@ -470,19 +471,19 @@ export function PricingSection() {
             </div>
 
             <div className="overflow-x-auto rounded-xl border border-kiiro-yellow/10 shadow-lg shadow-kiiro-yellow/5">
-              <table className="w-full text-sm">
+              <table className="w-full text-xs sm:text-sm min-w-[600px]">
                 <thead>
                   <tr className="bg-kiiro-yellow/10 border-b border-kiiro-yellow/20">
-                    <th className="py-4 px-6 text-left font-semibold text-off-white">Features</th>
-                    <th className="py-4 px-6 text-center font-semibold text-off-white">
+                    <th className="py-3 sm:py-4 px-3 sm:px-6 text-left font-semibold text-off-white">Features</th>
+                    <th className="py-3 sm:py-4 px-3 sm:px-6 text-center font-semibold text-off-white">
                       <div className="space-y-1">
-                        <div className="text-kiiro-yellow font-bold">Starter</div>
+                        <div className="text-kiiro-yellow font-bold text-xs sm:text-sm">Starter</div>
                         <div className="text-xs text-off-white/60">$400</div>
                       </div>
                     </th>
-                    <th className="py-4 px-6 text-center font-semibold text-off-white">
+                    <th className="py-3 sm:py-4 px-3 sm:px-6 text-center font-semibold text-off-white">
                       <div className="space-y-1">
-                        <div className="text-kiiro-yellow font-bold">Professional</div>
+                        <div className="text-kiiro-yellow font-bold text-xs sm:text-sm">Professional</div>
                         <div className="text-xs text-off-white/60">$600</div>
                         <div className="text-xs text-green-400 font-medium">Most Popular</div>
                       </div>
@@ -513,19 +514,19 @@ export function PricingSection() {
                 Don&apos;t let another day pass with a website that isn&apos;t working for you. Secure your founding client spot today and get started on the path to real results.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
                 <motion.a
                   href="#booking"
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-kiiro-yellow text-charcoal-black font-bold text-lg rounded-xl hover:bg-kiiro-yellow/90 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-kiiro-yellow/20"
+                  className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-kiiro-yellow text-charcoal-black font-bold text-base sm:text-lg rounded-xl hover:bg-kiiro-yellow/90 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-kiiro-yellow/20 w-full sm:w-auto justify-center"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Claim Your Founding Spot
-                  <Zap className="h-5 w-5" />
+                  <Zap className="h-4 w-4 sm:h-5 sm:w-5" />
                 </motion.a>
 
-                <div className="flex items-center gap-2 text-sm text-off-white/60">
-                  <Shield className="h-4 w-4 text-green-400" />
+                <div className="flex items-center gap-2 text-xs sm:text-sm text-off-white/60 justify-center">
+                  <Shield className="h-3 w-3 sm:h-4 sm:w-4 text-green-400" />
                   <span>30-day money-back guarantee • No risk</span>
                 </div>
               </div>

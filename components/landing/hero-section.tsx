@@ -97,12 +97,12 @@ export function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 min-h-screen items-center">
           
           {/* Main Hero Content - Takes majority of width */}
-          <div className="lg:col-span-3 flex flex-col justify-center order-1 lg:order-1 pt-16 lg:pt-20 xl:pt-24">
+          <div className="lg:col-span-3 flex flex-col justify-center order-1 lg:order-1 pt-16 xs:pt-20 lg:pt-20 xl:pt-24 px-4 sm:px-0">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isMounted ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7 }}
-              className="space-y-12 lg:space-y-16 text-center lg:text-left"
+              className="space-y-6 xs:space-y-8 lg:space-y-16 text-left"
             >
               <div className="space-y-6">
                 <motion.div
@@ -112,40 +112,39 @@ export function HeroSection() {
                   className="inline-flex items-center gap-3 px-4 py-2 bg-kiiro-yellow/10 border border-kiiro-yellow/30 rounded-full mb-6"
                 >
                   <div className="w-2 h-2 bg-kiiro-yellow rounded-full animate-pulse" />
-                  <span className="text-kiiro-yellow font-medium text-xs sm:text-sm tracking-wide uppercase">
+                  <span className="text-kiiro-yellow font-medium text-xs xs:text-sm sm:text-[10px] tracking-wide uppercase">
                     Professional Website Design Agency
                   </span>
                 </motion.div>
 
-                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-10xl font-black tracking-tight leading-[0.9] text-off-white">
-                  <span className="block mb-4 sm:mb-6">Build a Website That</span>
-                  <span className="block">Works Like a <span className="text-kiiro-yellow italic">Sales Team</span></span>
+                <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-10xl font-black tracking-tight leading-[0.95] sm:leading-[0.9] text-off-white">
+                  <span className="block mb-3 xs:mb-4 sm:mb-6">Build a Website That Works Like a <span className="text-kiiro-yellow italic">Sales Team</span></span>
                 </h1>
               </div>
 
-              <div className="space-y-8 lg:space-y-10">
-                <p className="text-lg sm:text-xl lg:text-2xl text-off-white/90 leading-relaxed max-w-4xl mx-auto lg:mx-0 font-light">
+              <div className="space-y-6 xs:space-y-8 lg:space-y-10">
+                <p className="text-base xs:text-lg sm:text-xl lg:text-2xl text-off-white/90 leading-relaxed xs:leading-loose sm:leading-relaxed max-w-3xl lg:max-w-4xl font-light">
                   Stop wasting time on cold outreach that doesn&apos;t work. Get a professional website that <span className="text-kiiro-yellow font-semibold">attracts qualified prospects</span> and converts them into paying customers automatically.
                 </p>
 
-                <div className="flex items-center justify-center lg:justify-start gap-8 text-sm text-off-white/80">
+                <div className="flex flex-col xs:flex-row items-start xs:items-center justify-start gap-2 xs:gap-3 text-xs xs:text-xs sm:text-xs text-off-white/80">
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-[#4CAF50] rounded-full" />
-                    <span>7-Day Delivery</span>
+                    <div className="w-2.5 h-2.5 xs:w-2 xs:h-2 bg-[#4CAF50] rounded-full" />
+                    <span>7-Day Launch</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-[#00CED1] rounded-full" />
-                    <span>30-Day Guarantee</span>
+                    <div className="w-2.5 h-2.5 xs:w-2 xs:h-2 bg-[#00CED1] rounded-full" />
+                    <span>Join 15+ Successful SMBs</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-[#8A2BE2] rounded-full" />
-                    <span>100% Money Back Guarantee</span>
+                    <div className="w-2.5 h-2.5 xs:w-2 xs:h-2 bg-[#8A2BE2] rounded-full" />
+                    <span>Outrank Your Competitors</span>
                   </div>
                 </div>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-6 pt-4 justify-center lg:justify-start">
-                <div className="relative flex justify-center lg:justify-start">
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-4 justify-start">
+                <div className="relative flex justify-start">
                   {/* Limited Offer Badge */}
                   <motion.div
                     className="absolute -top-6 lg:-top-8 -left-4 lg:-left-8 z-10"
@@ -153,7 +152,7 @@ export function HeroSection() {
                     animate={isMounted ? { opacity: 1, scale: 1, rotate: -12 } : {}}
                     transition={{ duration: 0.6, delay: 0.8, type: "spring", stiffness: 200 }}
                   >
-                    <div className="bg-red-500 text-off-white text-sm lg:text-base font-black px-3 lg:px-4 py-2 lg:py-2.5 rounded-full shadow-2xl transform -rotate-12 border-2 border-red-400">
+                    <div className="bg-red-500 text-off-white text-xs xs:text-sm lg:text-base font-black px-2 xs:px-3 lg:px-4 py-1.5 xs:py-2 lg:py-2.5 rounded-full shadow-2xl transform -rotate-12 border-2 border-red-400">
                       ⚡ LIMITED TIME
                     </div>
                   </motion.div>
@@ -165,16 +164,16 @@ export function HeroSection() {
                     <Link
                       href="#booking"
                       className={cn(
-                        "flex items-center justify-center gap-3 px-6 sm:px-8 lg:px-10 py-4 lg:py-5 rounded-2xl",
-                        "bg-kiiro-yellow text-charcoal-black font-bold text-base sm:text-lg lg:text-xl",
+                        "flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-xl sm:rounded-2xl",
+                        "bg-kiiro-yellow text-charcoal-black font-bold text-base xs:text-lg sm:text-base md:text-lg lg:text-xl",
                         "transition-all duration-300 hover:scale-105",
                         "hover:shadow-[0_0_40px_rgba(255,236,0,0.6)]",
-                        "w-full sm:w-auto min-w-[260px] sm:min-w-[280px]",
+                        "w-full sm:w-auto sm:min-w-[240px] md:min-w-[260px] lg:min-w-[280px]",
                         "border-2 border-kiiro-yellow"
                       )}
                     >
-                      Stop Cold Outreach Today
-                      <ArrowRight className="h-4 sm:h-5 lg:h-6 w-4 sm:w-5 lg:w-6" />
+                      <span className="text-center">Stop Cold Outreach Today</span>
+                      <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 lg:h-6 lg:w-6 flex-shrink-0" />
                     </Link>
                   </motion.div>
                 </div>
@@ -186,15 +185,15 @@ export function HeroSection() {
                   <Link
                     href="#case-studies"
                     className={cn(
-                      "flex items-center justify-center gap-3 px-6 sm:px-8 lg:px-10 py-4 lg:py-5 rounded-2xl",
-                      "bg-transparent text-off-white font-bold text-base sm:text-lg lg:text-xl",
+                      "flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-xl sm:rounded-2xl",
+                      "bg-transparent text-off-white font-bold text-base xs:text-lg sm:text-base md:text-lg lg:text-xl",
                       "border-2 border-off-white/40 transition-all duration-300",
                       "hover:bg-off-white/10 hover:border-off-white/60",
-                      "w-full sm:w-auto min-w-[260px] sm:min-w-[280px]",
+                      "w-full sm:w-auto sm:min-w-[240px] md:min-w-[260px] lg:min-w-[280px]",
                       "backdrop-blur-sm"
                     )}
                   >
-                    See How It Works
+                    <span className="text-center">See How It Works</span>
                   </Link>
                 </motion.div>
               </div>
@@ -204,16 +203,18 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={isMounted ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="mt-2 text-center lg:text-left"
+                className="mt-6 text-left"
               >
-                <div className="flex items-center justify-center lg:justify-start gap-4">
-                  <div className="flex gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-kiiro-yellow text-kiiro-yellow" />
-                    ))}
+                <div className="flex flex-col xs:flex-row items-center xs:items-center justify-center lg:justify-start gap-3 xs:gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="flex gap-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 xs:w-5 xs:h-5 fill-kiiro-yellow text-kiiro-yellow" />
+                      ))}
+                    </div>
+                    <span className="text-kiiro-yellow font-bold text-base xs:text-lg">5.0</span>
                   </div>
-                  <span className="text-kiiro-yellow font-bold text-lg">5.0</span>
-                  <span className="text-off-white/60 text-sm ml-2">• Trusted by 15+ companies</span>
+                  <span className="text-off-white/60 text-sm xs:text-sm">• Trusted by 15+ companies</span>
                 </div>
               </motion.div>
             </motion.div>
