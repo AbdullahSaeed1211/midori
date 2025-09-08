@@ -18,17 +18,20 @@ interface NavItem {
   href: string;
 }
 
+// Reorganized navigation - cleaner and less cluttered
 const navItems: NavItem[] = [
   { label: 'Services', href: '/#services' },
-  { label: 'Case Studies', href: '/case-studies' },
-  { label: 'Resources', href: '/resources' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'About', href: '/about' },
-  { label: 'Audit', href: '/audit' },
   { label: 'Pricing', href: '/#pricing' },
-  { label: 'Process', href: '/#process' },
-  { label: 'Testimonials', href: '/testimonials' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Work', href: '/case-studies' },
+  { label: 'Audit', href: '/audit' },
   { label: 'Contact', href: '/contact' },
+];
+
+// Secondary navigation items that can be accessed from main sections
+const secondaryNavItems = [
+  { label: 'Testimonials', href: '/testimonials' },
+  { label: 'Resources', href: '/resources' },
 ];
 
 export function Header() {
@@ -145,27 +148,61 @@ export function Header() {
                   </SheetTitle>
                 </SheetHeader>
                 <nav className="flex-grow">
-                  <ul className="space-y-2">
-                    {navItems.map((item) => {
-                      const isActive = isClient && activeSection === item.href.replace('/#', '');
-                      return (
-                        <li key={item.href}>
-                          <Link
-                            href={item.href}
-                            className={cn(
-                              "flex items-center py-2.5 px-3 rounded-md transition-colors text-base",
-                              isActive
-                                ? "text-kiiro-yellow bg-kiiro-yellow/10"
-                                : "text-off-white/80 hover:bg-white/10 hover:text-off-white"
-                            )}
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            {item.label}
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
+                  {/* Main Navigation */}
+                  <div className="mb-6">
+                    <div className="px-3 mb-3">
+                      <span className="text-xs font-semibold text-off-white/60 uppercase tracking-wider">Navigation</span>
+                    </div>
+                    <ul className="space-y-2">
+                      {navItems.map((item) => {
+                        const isActive = isClient && activeSection === item.href.replace('/#', '');
+                        return (
+                          <li key={item.href}>
+                            <Link
+                              href={item.href}
+                              className={cn(
+                                "flex items-center py-2.5 px-3 rounded-md transition-colors text-base",
+                                isActive
+                                  ? "text-kiiro-yellow bg-kiiro-yellow/10"
+                                  : "text-off-white/80 hover:bg-white/10 hover:text-off-white"
+                              )}
+                              onClick={() => setMobileMenuOpen(false)}
+                            >
+                              {item.label}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+
+                  {/* Secondary Navigation */}
+                  <div>
+                    <div className="px-3 mb-3">
+                      <span className="text-xs font-semibold text-off-white/60 uppercase tracking-wider">More</span>
+                    </div>
+                    <ul className="space-y-2">
+                      {secondaryNavItems.map((item) => {
+                        const isActive = isClient && activeSection === item.href.replace('/#', '');
+                        return (
+                          <li key={item.href}>
+                            <Link
+                              href={item.href}
+                              className={cn(
+                                "flex items-center py-2.5 px-3 rounded-md transition-colors text-sm",
+                                isActive
+                                  ? "text-kiiro-yellow bg-kiiro-yellow/10"
+                                  : "text-off-white/60 hover:bg-white/10 hover:text-off-white"
+                              )}
+                              onClick={() => setMobileMenuOpen(false)}
+                            >
+                              {item.label}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
                 </nav>
                 <div className="pt-6 mt-6 border-t border-white/10">
                   <Button

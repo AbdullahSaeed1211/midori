@@ -144,10 +144,10 @@ export default function BlogPage() {
               <div className="px-4 py-1.5 rounded-full bg-kiiro-yellow/20 text-kiiro-yellow text-sm font-medium mb-6 border border-kiiro-yellow/30 inline-block">
                 📝 Latest Insights
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold text-off-white mb-6">
+              <h1 className="text-3xl md:text-5xl font-bold text-off-white mb-6">
                 SEO & Web Design <span className="text-kiiro-yellow">Blog</span>
               </h1>
-              <p className="text-xl text-off-white/80 max-w-2xl mx-auto">
+              <p className="text-lg md:text-xl text-off-white/80 max-w-2xl mx-auto leading-relaxed">
                 Stay ahead of the curve with actionable insights on SEO, web design, and conversion optimization strategies.
               </p>
             </div>
@@ -156,50 +156,61 @@ export default function BlogPage() {
 
         {/* Featured Post */}
         {blogPosts.filter(post => post.featured).length > 0 && (
-          <section className="py-16">
+          <section className="py-20">
             <div className="container mx-auto px-4">
               <div className="max-w-4xl mx-auto">
-                <h2 className="text-2xl md:text-3xl font-bold text-off-white mb-8 text-center">
-                  Featured Article
-                </h2>
+                <div className="text-center mb-12">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-kiiro-yellow/10 text-kiiro-yellow text-sm font-medium rounded-full border border-kiiro-yellow/20 mb-4">
+                    ⭐ Featured Article
+                  </div>
+                  <h2 className="text-xl md:text-2xl font-bold text-off-white">
+                    Must-Read Content
+                  </h2>
+                </div>
 
                 {blogPosts.filter(post => post.featured).map((post) => (
-                  <div key={post.slug} className="bg-charcoal-gray/95 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12 hover:border-kiiro-yellow/30 transition-colors">
-                    <div className="flex items-center gap-2 mb-4">
-                      <span className="px-3 py-1 bg-kiiro-yellow/20 text-kiiro-yellow text-sm font-medium rounded-full">
-                        {post.category}
-                      </span>
-                      <div className="flex items-center gap-1 text-off-white/60 text-sm">
-                        <Calendar className="w-4 h-4" />
-                        {new Date(post.date).toLocaleDateString('en-US', {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric'
-                        })}
+                  <div key={post.slug} className="bg-gradient-to-br from-charcoal-gray/95 to-charcoal-gray/80 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12 hover:border-kiiro-yellow/40 hover:shadow-2xl hover:shadow-kiiro-yellow/10 transition-all duration-300 group relative overflow-hidden">
+                    {/* Background gradient effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-kiiro-yellow/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                    <div className="relative z-10">
+                      <div className="flex flex-wrap items-center gap-3 mb-6">
+                        <span className="px-4 py-2 bg-kiiro-yellow/20 text-kiiro-yellow text-sm font-semibold rounded-full border border-kiiro-yellow/30">
+                          {post.category}
+                        </span>
+                        <div className="flex items-center gap-2 text-off-white/60 text-sm">
+                          <Calendar className="w-4 h-4" />
+                          <span>{new Date(post.date).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                          })}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-off-white/60 text-sm">
+                          <Clock className="w-4 h-4" />
+                          <span>{post.readTime}</span>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-1 text-off-white/60 text-sm">
-                        <Clock className="w-4 h-4" />
-                        {post.readTime}
-                      </div>
+
+                      <h3 className="text-xl md:text-2xl font-bold text-off-white mb-6 group-hover:text-kiiro-yellow transition-colors duration-300 leading-tight">
+                        {post.title}
+                      </h3>
+
+                      <p className="text-off-white/70 text-base md:text-lg leading-relaxed mb-8 line-clamp-3">
+                        {post.description}
+                      </p>
+
+                      <Button
+                        asChild
+                        size="lg"
+                        className="bg-kiiro-yellow text-charcoal-black hover:bg-kiiro-yellow/90 hover:shadow-lg hover:shadow-kiiro-yellow/25 transition-all duration-300 group/btn"
+                      >
+                        <Link href={`/blog/${post.slug}`}>
+                          <span className="font-semibold">Read Full Article</span>
+                          <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                        </Link>
+                      </Button>
                     </div>
-
-                    <h3 className="text-2xl md:text-3xl font-bold text-off-white mb-4">
-                      {post.title}
-                    </h3>
-
-                    <p className="text-off-white/70 text-lg leading-relaxed mb-6">
-                      {post.description}
-                    </p>
-
-                    <Button
-                      asChild
-                      className="bg-kiiro-yellow text-charcoal-black hover:bg-kiiro-yellow/90"
-                    >
-                      <Link href={`/blog/${post.slug}`}>
-                        Read Full Article
-                        <ArrowRight className="w-4 h-4 ml-2" />
-                      </Link>
-                    </Button>
                   </div>
                 ))}
               </div>
@@ -208,50 +219,63 @@ export default function BlogPage() {
         )}
 
         {/* All Posts */}
-        <section className="py-16">
+        <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-bold text-off-white mb-8 text-center">
-                All Articles
-              </h2>
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-kiiro-yellow/10 text-kiiro-yellow text-sm font-medium rounded-full border border-kiiro-yellow/20 mb-4">
+                  📚 All Articles
+                </div>
+                <h2 className="text-xl md:text-2xl font-bold text-off-white">
+                  Explore Our Content
+                </h2>
+                <p className="text-off-white/60 mt-2 max-w-2xl mx-auto">
+                  Discover insights that drive results across SEO, web design, and digital marketing.
+                </p>
+              </div>
 
               {blogPosts.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {blogPosts.map((post) => (
-                    <article key={post.slug} className="bg-charcoal-gray/95 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-kiiro-yellow/30 transition-colors group">
-                      <div className="flex items-center gap-2 mb-4">
-                        <span className="px-2 py-1 bg-kiiro-yellow/20 text-kiiro-yellow text-xs font-medium rounded-full">
-                          {post.category}
-                        </span>
-                        <div className="flex items-center gap-1 text-off-white/60 text-xs">
-                          <Calendar className="w-3 h-3" />
-                          {new Date(post.date).toLocaleDateString('en-US', {
-                            month: 'short',
-                            day: 'numeric'
-                          })}
+                    <article key={post.slug} className="bg-gradient-to-br from-charcoal-gray/95 to-charcoal-gray/90 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-kiiro-yellow/40 hover:shadow-xl hover:shadow-kiiro-yellow/5 transition-all duration-300 group relative overflow-hidden">
+                      {/* Subtle background gradient on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-kiiro-yellow/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                      <div className="relative z-10">
+                        <div className="flex flex-wrap items-center gap-3 mb-4">
+                          <span className="px-3 py-1.5 bg-kiiro-yellow/20 text-kiiro-yellow text-xs font-semibold rounded-full border border-kiiro-yellow/30">
+                            {post.category}
+                          </span>
+                          <div className="flex items-center gap-1.5 text-off-white/60 text-xs">
+                            <Calendar className="w-3 h-3" />
+                            {new Date(post.date).toLocaleDateString('en-US', {
+                              month: 'short',
+                              day: 'numeric'
+                            })}
+                          </div>
                         </div>
-                      </div>
 
-                      <h3 className="text-xl font-bold text-off-white mb-3 group-hover:text-kiiro-yellow transition-colors">
-                        {post.title}
-                      </h3>
+                        <h3 className="text-lg font-bold text-off-white mb-4 group-hover:text-kiiro-yellow transition-colors duration-300 leading-tight line-clamp-2">
+                          {post.title}
+                        </h3>
 
-                      <p className="text-off-white/70 text-sm leading-relaxed mb-4 line-clamp-3">
-                        {post.description}
-                      </p>
+                        <p className="text-off-white/70 text-sm leading-relaxed mb-6 line-clamp-3">
+                          {post.description}
+                        </p>
 
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-1 text-off-white/60 text-xs">
-                          <Clock className="w-3 h-3" />
-                          {post.readTime}
+                        <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                          <div className="flex items-center gap-1.5 text-off-white/60 text-xs">
+                            <Clock className="w-3 h-3" />
+                            {post.readTime}
+                          </div>
+                          <Link
+                            href={`/blog/${post.slug}`}
+                            className="text-kiiro-yellow hover:text-kiiro-yellow/80 text-sm font-medium flex items-center gap-1.5 transition-all duration-300 group/link hover:translate-x-1"
+                          >
+                            Read More
+                            <ArrowRight className="w-3 h-3 group-hover/link:translate-x-0.5 transition-transform duration-300" />
+                          </Link>
                         </div>
-                        <Link
-                          href={`/blog/${post.slug}`}
-                          className="text-kiiro-yellow hover:text-kiiro-yellow/80 text-sm font-medium flex items-center gap-1 transition-colors"
-                        >
-                          Read More
-                          <ArrowRight className="w-3 h-3" />
-                        </Link>
                       </div>
                     </article>
                   ))}
@@ -272,37 +296,50 @@ export default function BlogPage() {
         </section>
 
         {/* Newsletter CTA */}
-        <section className="py-16">
+        <section className="py-20">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
-              <div className="bg-gradient-to-r from-kiiro-yellow/10 to-green-500/10 rounded-2xl p-8 md:p-12 border border-kiiro-yellow/20 text-center">
-                <h2 className="text-2xl md:text-3xl font-bold text-off-white mb-4">
-                  Stay Updated
-                </h2>
-                <p className="text-off-white/80 mb-6">
-                  Get the latest SEO strategies and web design insights delivered to your inbox.
-                </p>
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-gradient-to-br from-charcoal-gray/95 to-charcoal-gray/90 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12 text-center relative overflow-hidden">
+                {/* Background pattern */}
+                <div className="absolute inset-0 bg-gradient-to-r from-kiiro-yellow/5 via-transparent to-green-500/5 opacity-50" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-kiiro-yellow/10 rounded-full -translate-y-16 translate-x-16" />
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-green-500/10 rounded-full translate-y-12 -translate-x-12" />
 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button
-                    asChild
-                    size="lg"
-                    className="bg-kiiro-yellow text-charcoal-black hover:bg-kiiro-yellow/90"
-                  >
-                    <Link href="/contact">
-                      Get SEO Tips
-                    </Link>
-                  </Button>
-                  <Button
-                    asChild
-                    variant="outline"
-                    size="lg"
-                    className="border-kiiro-yellow text-kiiro-yellow hover:bg-kiiro-yellow/10"
-                  >
-                    <Link href="/audit">
-                      Free Website Audit
-                    </Link>
-                  </Button>
+                <div className="relative z-10">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-kiiro-yellow/10 text-kiiro-yellow text-sm font-medium rounded-full border border-kiiro-yellow/20 mb-6">
+                    📧 Stay Updated
+                  </div>
+
+                  <h2 className="text-xl md:text-2xl font-bold text-off-white mb-4">
+                    Never Miss an Update
+                  </h2>
+
+                  <p className="text-off-white/70 text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+                    Get the latest SEO strategies, web design insights, and conversion optimization tips delivered straight to your inbox.
+                  </p>
+
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Button
+                      asChild
+                      size="lg"
+                      className="bg-kiiro-yellow text-charcoal-black hover:bg-kiiro-yellow/90 hover:shadow-lg hover:shadow-kiiro-yellow/25 transition-all duration-300"
+                    >
+                      <Link href="/contact">
+                        <span className="font-semibold">Get SEO Tips</span>
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Link>
+                    </Button>
+                    <Button
+                      asChild
+                      variant="outline"
+                      size="lg"
+                      className="border-kiiro-yellow/50 text-kiiro-yellow hover:bg-kiiro-yellow/10 hover:border-kiiro-yellow/70 transition-all duration-300"
+                    >
+                      <Link href="/audit">
+                        Free Website Audit
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>

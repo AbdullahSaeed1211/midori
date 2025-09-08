@@ -3,15 +3,13 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { cn } from "@/lib/utils";
-import { 
-  Download, 
-  CheckCircle, 
-  Star, 
-  ArrowRight, 
-  Gift, 
-  FileText, 
-  Calculator, 
-  ChevronLeft, 
+import {
+  CheckCircle,
+  Star,
+  ArrowRight,
+  FileText,
+  Calculator,
+  ChevronLeft,
   ChevronRight,
   ExternalLink,
   Users,
@@ -21,55 +19,54 @@ import {
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 
-const leadMagnets = [
+const blogHighlights = [
   {
-    title: "Conversion Audit Checklist",
-    description: "47-point psychology-based checklist used to audit and optimize client websites for maximum conversions",
-    icon: CheckCircle,
-    downloadUrl: "#",
+    title: "Ultimate SEO Guide for Entrepreneurs",
+    description: "Everything you need to know about SEO in 2025. From technical fundamentals to content strategy, this comprehensive guide covers all essential elements for ranking higher on Google.",
+    icon: FileText,
+    readUrl: "/blog/seo-guide-2024",
     popular: true,
-    value: "$197 Value",
-    downloadCount: "2,847",
-    estimatedTime: "15 min read",
+    readTime: "12 min read",
+    views: "5,200",
+    category: "SEO",
+    features: [
+      "Technical SEO fundamentals",
+      "Content strategy frameworks",
+      "Local SEO optimization",
+      "Mobile-first indexing guide",
+      "Analytics and reporting setup"
+    ]
+  },
+  {
+    title: "7 Deadly Conversion Mistakes",
+    description: "Learn the most common conversion mistakes entrepreneurs make and how to fix them. Stop losing customers to poor website design and user experience.",
+    icon: CheckCircle,
+    readUrl: "/blog/conversion-optimization-mistakes",
+    readTime: "8 min read",
+    views: "3,800",
+    category: "Conversion",
     features: [
       "Psychology-based conversion triggers",
-      "Mobile optimization checklist", 
+      "Mobile optimization checklist",
       "A/B testing priorities",
-      "Industry-specific recommendations",
-      "ROI tracking spreadsheet included"
+      "User experience improvements",
+      "Performance optimization tips"
     ]
   },
   {
-    title: "High-Converting Copy Templates",
-    description: "Battle-tested headlines, CTAs, and copy frameworks that have generated millions in revenue",
-    icon: FileText,
-    downloadUrl: "#",
-    value: "$297 Value",
-    downloadCount: "1,932",
-    estimatedTime: "20 min read",
-    features: [
-      "50+ headline formulas with examples",
-      "CTA button copy library (100+ variations)",
-      "Email sequence templates",
-      "Social proof frameworks",
-      "Industry-specific copy examples"
-    ]
-  },
-  {
-    title: "Website ROI Calculator",
-    description: "Interactive tool to calculate exactly how much your website improvements are worth to your bottom line",
+    title: "Mobile-First Design in 2025",
+    description: "With mobile traffic surpassing desktop, learn why mobile-first design is crucial for your business success and how to implement it effectively.",
     icon: Calculator,
-    downloadUrl: "#",
-    value: "$97 Value",
-    badge: "Interactive Tool",
-    downloadCount: "3,421",
-    estimatedTime: "5 min setup",
+    readUrl: "/blog/mobile-first-design-2024",
+    readTime: "10 min read",
+    views: "4,100",
+    category: "Design",
     features: [
-      "Revenue impact calculator",
-      "Conversion rate projections",
-      "Industry benchmarking data",
-      "Personalized recommendations",
-      "12-month forecast included"
+      "Mobile-first design principles",
+      "Responsive design techniques",
+      "Performance optimization",
+      "User experience best practices",
+      "Cross-device compatibility"
     ]
   }
 ];
@@ -85,7 +82,7 @@ export function LeadMagnetSection() {
     if (!isAutoPlaying) return;
     
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % leadMagnets.length);
+      setCurrentSlide((prev) => (prev + 1) % blogHighlights.length);
     }, 5000);
 
     return () => clearInterval(interval);
@@ -97,12 +94,12 @@ export function LeadMagnetSection() {
   }, [currentSlide]);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % leadMagnets.length);
+    setCurrentSlide((prev) => (prev + 1) % blogHighlights.length);
     setIsAutoPlaying(false);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + leadMagnets.length) % leadMagnets.length);
+    setCurrentSlide((prev) => (prev - 1 + blogHighlights.length) % blogHighlights.length);
     setIsAutoPlaying(false);
   };
 
@@ -136,26 +133,26 @@ export function LeadMagnetSection() {
         <div className="container mx-auto px-4 max-w-7xl relative">
           {/* Enhanced Header */}
           <div className="text-center mb-16">
-            <motion.div 
+            <motion.div
               className="inline-flex items-center gap-2 px-4 py-2 bg-kiiro-yellow/10 border border-kiiro-yellow/20 rounded-full mb-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <Gift className="w-4 h-4 text-kiiro-yellow" />
-              <span className="text-sm font-medium text-kiiro-yellow">FREE RESOURCES</span>
+              📚
+              <span className="text-sm font-medium text-kiiro-yellow">EXPERT INSIGHTS</span>
             </motion.div>
             
-            <motion.h2 
+            <motion.h2
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-off-white mb-4 leading-tight"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              Get the Same Tools We Use for{" "}
-              <motion.span 
+              Latest Insights from{" "}
+              <motion.span
                 className="text-kiiro-yellow relative"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -171,22 +168,22 @@ export function LeadMagnetSection() {
                   transition={{ duration: 0.8, delay: 0.5 }}
                 />
               </motion.span>{" "}
-              Websites
+              Experts
             </motion.h2>
             
-            <motion.p 
+            <motion.p
               className="text-xl text-off-white/80 max-w-3xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Download the proven frameworks, checklists, and templates we use to build 
-              conversion-focused websites. Completely free, no strings attached.
+              Dive deep into our comprehensive blog posts covering SEO strategies, web design trends,
+              and conversion optimization techniques. Get actionable insights that drive results.
             </motion.p>
 
             {/* Social Proof */}
-            <motion.div 
+            <motion.div
               className="flex items-center justify-center gap-6 mt-8 text-sm text-off-white/60"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -195,7 +192,7 @@ export function LeadMagnetSection() {
             >
               <div className="flex items-center gap-2">
                 <Users className="w-4 h-4" />
-                <span>8,200+ downloads</span>
+                <span>15,000+ readers</span>
               </div>
               <div className="flex items-center gap-2">
                 <TrendingUp className="w-4 h-4" />
@@ -206,7 +203,7 @@ export function LeadMagnetSection() {
 
           {/* Enhanced Desktop Grid */}
           <div className="hidden md:grid md:grid-cols-3 gap-8 mb-12">
-            {leadMagnets && leadMagnets.length > 0 && leadMagnets.map((resource, index) => {
+            {blogHighlights && blogHighlights.length > 0 && blogHighlights.map((resource, index) => {
               const Icon = resource.icon;
               return (
                 <motion.div
@@ -254,13 +251,12 @@ export function LeadMagnetSection() {
                     {/* Enhanced Header */}
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center gap-2">
-                        <Download className="w-4 h-4 text-kiiro-yellow" />
-                        <span className="text-xs font-medium text-kiiro-yellow uppercase tracking-wider">
-                          {resource.badge || "PDF GUIDE"}
+                        <span className="px-2 py-1 bg-kiiro-yellow/20 text-kiiro-yellow text-xs font-semibold rounded-full">
+                          {resource.category}
                         </span>
                       </div>
-                      <span className="text-sm font-bold text-kiiro-yellow bg-kiiro-yellow/10 px-2 py-1 rounded">
-                        {resource.value}
+                      <span className="text-sm font-bold text-kiiro-yellow bg-kiiro-yellow/10 px-3 py-1 rounded-full">
+                        {resource.readTime}
                       </span>
                     </div>
 
@@ -283,15 +279,15 @@ export function LeadMagnetSection() {
                       {resource.description}
                     </p>
 
-                    {/* Download Stats */}
+                    {/* Read Stats */}
                     <div className="flex items-center gap-4 mb-4 text-xs text-off-white/60">
                       <div className="flex items-center gap-1">
                         <Users className="w-3 h-3" />
-                        <span>{resource.downloadCount} downloads</span>
+                        <span>{resource.views} views</span>
                       </div>
                       <div className="flex items-center gap-1">
                         <Clock className="w-3 h-3" />
-                        <span>{resource.estimatedTime}</span>
+                        <span>{resource.readTime}</span>
                       </div>
                     </div>
 
@@ -328,7 +324,7 @@ export function LeadMagnetSection() {
                       className="mt-auto"
                     >
                       <Link
-                        href={resource.downloadUrl}
+                        href={resource.readUrl}
                         className="relative flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-kiiro-yellow to-kiiro-yellow/90 text-charcoal-black rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-kiiro-yellow/25 hover:shadow-xl overflow-hidden group"
                       >
                         {/* Optimized Shimmer Effect */}
@@ -338,7 +334,7 @@ export function LeadMagnetSection() {
                             hoveredCard === index ? "translate-x-full" : ""
                           )}
                         />
-                        <span className="relative z-10">Download Free</span>
+                        <span className="relative z-10">Read Article</span>
                         <div
                           className={cn(
                             "relative z-10 transition-transform duration-200",
@@ -391,7 +387,7 @@ export function LeadMagnetSection() {
                 onMouseEnter={() => setIsAutoPlaying(false)}
                 onMouseLeave={() => setIsAutoPlaying(true)}
               >
-                {leadMagnets.map((resource, index) => {
+                {blogHighlights.map((resource, index) => {
                   const Icon = resource.icon;
                   return (
                     <motion.div
@@ -434,13 +430,12 @@ export function LeadMagnetSection() {
                         {/* Enhanced Header */}
                         <div className="flex items-center justify-between mb-6">
                           <div className="flex items-center gap-2">
-                            <Download className="w-4 h-4 text-kiiro-yellow" />
-                            <span className="text-xs font-medium text-kiiro-yellow uppercase tracking-wider">
-                              {resource.badge || "PDF GUIDE"}
+                            <span className="px-2 py-1 bg-kiiro-yellow/20 text-kiiro-yellow text-xs font-semibold rounded-full">
+                              {resource.category}
                             </span>
                           </div>
                           <span className="text-sm font-bold text-kiiro-yellow bg-kiiro-yellow/10 px-3 py-1 rounded-full">
-                            {resource.value}
+                            {resource.readTime}
                           </span>
                         </div>
 
@@ -463,15 +458,15 @@ export function LeadMagnetSection() {
                           {resource.description}
                         </p>
 
-                        {/* Download Stats */}
+                        {/* Read Stats */}
                         <div className="flex items-center justify-between mb-4 text-xs text-off-white/60 bg-off-white/5 rounded-lg p-3">
                           <div className="flex items-center gap-1">
                             <Users className="w-3 h-3" />
-                            <span>{resource.downloadCount} downloads</span>
+                            <span>{resource.views} views</span>
                           </div>
                           <div className="flex items-center gap-1">
                             <Clock className="w-3 h-3" />
-                            <span>{resource.estimatedTime}</span>
+                            <span>{resource.readTime}</span>
                           </div>
                         </div>
 
@@ -508,7 +503,7 @@ export function LeadMagnetSection() {
                           className="mt-auto"
                         >
                           <Link
-                            href={resource.downloadUrl}
+                            href={resource.readUrl}
                             className="relative flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-kiiro-yellow to-kiiro-yellow/90 text-charcoal-black rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-kiiro-yellow/25 hover:shadow-xl overflow-hidden group"
                           >
                             {/* Optimized Shimmer Effect */}
@@ -518,7 +513,7 @@ export function LeadMagnetSection() {
                                 hoveredCard === index ? "translate-x-full" : ""
                               )}
                             />
-                            <span className="relative z-10">Download Free</span>
+                            <span className="relative z-10">Read Article</span>
                             <div
                               className={cn(
                                 "relative z-10 transition-transform duration-200",
@@ -537,7 +532,7 @@ export function LeadMagnetSection() {
 
               {/* Enhanced Dots Indicator with Progress */}
               <div className="flex justify-center mt-8 gap-3">
-                {leadMagnets.map((_, index) => (
+                {blogHighlights.map((_, index) => (
                   <motion.button
                     key={index}
                     onClick={() => goToSlide(index)}
@@ -632,11 +627,11 @@ export function LeadMagnetSection() {
                 </div>
 
                 <h3 className="text-2xl md:text-3xl font-bold text-off-white mb-4">
-                  Want Personal Help Implementing These?
+                  Ready to Apply These Insights?
                 </h3>
                 <p className="text-off-white/70 mb-8 max-w-2xl mx-auto leading-relaxed">
-                  Get a free 15-minute strategy call where I&apos;ll personally review your website 
-                  and show you exactly how to implement these frameworks for maximum impact.
+                  Get personalized guidance on implementing these strategies. Book a free 15-minute
+                  consultation where I&apos;ll help you apply these insights to your specific situation.
                 </p>
 
                 {/* Enhanced CTAs */}
@@ -683,7 +678,7 @@ export function LeadMagnetSection() {
                 </div>
 
                 {/* Trust Signals */}
-                <motion.div 
+                <motion.div
                   className="mt-8 flex items-center justify-center gap-8 text-xs text-off-white/50"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
@@ -692,15 +687,15 @@ export function LeadMagnetSection() {
                 >
                   <div className="flex items-center gap-1">
                     <CheckCircle className="w-3 h-3 text-teal-accent" />
-                    <span>No spam, ever</span>
+                    <span>Expert insights</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <CheckCircle className="w-3 h-3 text-teal-accent" />
-                    <span>Instant download</span>
+                    <span>Actionable strategies</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <CheckCircle className="w-3 h-3 text-teal-accent" />
-                    <span>Cancel anytime</span>
+                    <span>Free consultation</span>
                   </div>
                 </motion.div>
               </div>
