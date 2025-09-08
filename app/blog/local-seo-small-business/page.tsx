@@ -67,7 +67,7 @@ export default function LocalSEOSmallBusiness() {
 
               <h2>Google Business Profile: The Foundation</h2>
               <p>
-                Your Google Business Profile (formerly Google My Business) is the most important local SEO asset you have. It's essentially your free local business listing on Google's platform.
+                Your Google Business Profile (formerly Google My Business) is the most important local SEO asset you&apos;ve got. It&apos;s essentially your free local business listing on Google&apos;s platform.
               </p>
 
               <h3>Complete Profile Setup</h3>
@@ -122,7 +122,7 @@ export default function LocalSEOSmallBusiness() {
               <ul>
                 <li>Yelp</li>
                 <li>Yellow Pages</li>
-                <li>Angie's List</li>
+                <li>Angie&apos;s List</li>
                 <li>Better Business Bureau</li>
                 <li>Local chamber of commerce</li>
                 <li>Industry-specific directories</li>

@@ -87,7 +87,7 @@ export default function WebsiteSpeedBusinessGrowth() {
                 Slow websites erode user trust and increase bounce rates. Visitors associate speed with professionalism and reliability.
               </p>
 
-              <h2>Core Web Vitals: Google's Speed Metrics</h2>
+              <h2>Core Web Vitals: Google&apos;s Speed Metrics</h2>
               <p>
                 Google introduced Core Web Vitals to measure user experience. These metrics directly impact your search rankings:
               </p>

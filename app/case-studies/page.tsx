@@ -67,15 +67,24 @@ export default function CaseStudiesPage() {
       results: "67% course completion rate",
       accentColor: "teal"
     },
-    {
-      title: "BlogSquirrel",
-      description: "Specialized blogging platform for technical writers with enhanced code presentation and developer-focused features.",
-      image: "/projects/blogport.webp",
-      href: "/case-studies/blog-squirrel",
-      category: "Content Platform",
-      results: "200% increase in user retention",
-      accentColor: "yellow"
-    },
+  {
+    title: "BlogSquirrel",
+    description: "Specialized blogging platform for technical writers with enhanced code presentation and developer-focused features.",
+    image: "/projects/blogport.webp",
+    href: "/case-studies/blog-squirrel",
+    category: "Content Platform",
+    results: "200% increase in user retention",
+    accentColor: "yellow"
+  },
+  {
+    title: "Nishoo Mittal",
+    description: "Comprehensive financial planning website for MDRT Galaxy Club member with interactive calculators and trust-building design for Indian families.",
+    image: "/projects/mittal.webp",
+    href: "/case-studies/nishoo-mittal",
+    category: "Financial Services",
+    results: "Enhanced credibility and lead generation",
+    accentColor: "yellow"
+  },
   ];
 
   return (

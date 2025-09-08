@@ -67,7 +67,7 @@ export default function ContentMarketingStrategy() {
 
               <h2>Understanding Your Audience</h2>
               <p>
-                Before creating any content, you need to deeply understand who you're creating it for. Successful content marketing starts with audience research.
+                Before creating any content, you need to deeply understand who you&apos;re creating it for. Successful content marketing starts with audience research.
               </p>
 
               <h3>Create Detailed Buyer Personas</h3>

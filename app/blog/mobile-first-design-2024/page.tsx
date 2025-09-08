@@ -194,7 +194,7 @@ export default function MobileFirstDesign2024() {
                 Use these tools to ensure your mobile experience is optimal:
               </p>
               <ul>
-                <li>Google's Mobile-Friendly Test</li>
+                <li>Google&apos;s Mobile-Friendly Test</li>
                 <li>Lighthouse performance audits</li>
                 <li>Browser developer tools device emulation</li>
                 <li>Real device testing across different screen sizes</li>

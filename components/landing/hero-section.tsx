@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { ArrowRight, Star} from "lucide-react";
 import { motion } from "framer-motion";
@@ -35,6 +36,7 @@ export function HeroSection() {
     { src: "/projects/sproutly.webp", alt: "Sproutly - Urban gardening course platform with interactive plant selection and ROI calculator", height: "h-44" },
     { src: "/projects/kiiro.webp", alt: "Kiiro - Modern web design agency homepage featuring conversion-optimized design and fast delivery", height: "h-36" },
     { src: "/projects/testimonialnudger.webp", alt: "Testimonial Nudger - SaaS platform website for automated customer testimonial collection and management", height: "h-32" },
+    { src: "/projects/mittal.webp", alt: "Nishoo Mittal - Financial planning website for MDRT Galaxy Club member with interactive calculators and family-centric design", height: "h-40" },
   ];
 
 
@@ -44,10 +46,10 @@ export function HeroSection() {
       "relative group rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105",
       isMobile ? "w-48 h-32 flex-shrink-0" : ""
     )}>
-      <img 
+      <Image
         src={image.src}
         alt={image.alt}
-       
+        fill
         loading="lazy"
         className={isMobile ? "w-full h-full object-cover" : `w-full ${image.height} object-cover`}
         style={{ aspectRatio: '16/9' }}

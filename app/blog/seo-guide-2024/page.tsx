@@ -62,7 +62,7 @@ export default function SEOGuide2024() {
             <div className="prose prose-lg prose-invert max-w-none">
               <h2>Introduction</h2>
               <p>
-                Search Engine Optimization (SEO) has evolved significantly in 2025. With Google's constant algorithm updates and the rise of AI-powered search, entrepreneurs need to stay ahead of the curve to maintain and improve their search rankings.
+                Search Engine Optimization (SEO) has evolved significantly in 2025. With Google&apos;s constant algorithm updates and the rise of AI-powered search, entrepreneurs need to stay ahead of the curve to maintain and improve their search rankings.
               </p>
 
               <h2>Technical SEO Fundamentals</h2>

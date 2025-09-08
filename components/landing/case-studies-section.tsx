@@ -102,6 +102,15 @@ const CASE_STUDIES: CaseStudyProps[] = [
     link: "/",
     tags: ["Agency Website", "Portfolio", "UI/UX", "Next.js"],
     accentColor: "yellow",
+  },
+  {
+    title: "Nishoo Mittal",
+    description: "Comprehensive financial planning website for MDRT Galaxy Club member Nishoo Mittal, featuring interactive calculators and trust-building design that serves Indian families with personalized wealth management solutions.",
+    image: "/projects/mittal.webp",
+    link: "/case-studies/nishoo-mittal",
+    tags: ["Financial Planning", "Wealth Management", "Interactive Calculators", "Family-Centric"],
+    accentColor: "yellow",
+    featured: true
   }
 ];
 

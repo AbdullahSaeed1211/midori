@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
 import { Button } from "@/components/ui/button";
@@ -49,9 +50,11 @@ export default function AboutPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                   <div className="relative">
                     <div className="w-64 h-64 mx-auto rounded-full overflow-hidden border-4 border-kiiro-yellow/30">
-                      <img
+                      <Image
                         src="/avatars/michael.webp"
                         alt="Abdullah Saeed - Founder of kiiro.cx"
+                        width={256}
+                        height={256}
                         className="w-full h-full object-cover"
                       />
                     </div>
