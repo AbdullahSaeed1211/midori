@@ -27,7 +27,9 @@ const blogPosts = [
     date: "2025-01-15",
     readTime: "12 min read",
     category: "SEO",
-    featured: true
+    featured: true,
+    image: "/projects/seo-guide-hero.jpg",
+    excerpt: "Master the fundamentals of search engine optimization with this comprehensive 2025 guide. Learn technical SEO, content strategy, and advanced tactics to dominate search results."
   },
   {
     slug: "conversion-optimization-mistakes",
@@ -36,7 +38,9 @@ const blogPosts = [
     date: "2025-01-22",
     readTime: "8 min read",
     category: "Conversion",
-    featured: false
+    featured: false,
+    image: "/projects/conversion-mistakes-hero.jpg",
+    excerpt: "Discover the critical mistakes costing you sales. From poor first impressions to confusing navigation, learn how to fix conversion killers and boost your revenue."
   },
   {
     slug: "mobile-first-design-2024",
@@ -45,7 +49,9 @@ const blogPosts = [
     date: "2025-01-29",
     readTime: "10 min read",
     category: "Design",
-    featured: false
+    featured: false,
+    image: "/projects/mobile-design-hero.jpg",
+    excerpt: "Mobile dominates internet usage. Learn why mobile-first design is essential for modern businesses and discover practical implementation strategies that drive results."
   },
   {
     slug: "website-speed-business-growth",
@@ -54,7 +60,9 @@ const blogPosts = [
     date: "2025-02-05",
     readTime: "9 min read",
     category: "Performance",
-    featured: false
+    featured: false,
+    image: "/projects/website-speed-hero.jpg",
+    excerpt: "Slow websites kill conversions. Learn the measurable impact of speed on revenue and discover actionable optimization strategies that transform your business metrics."
   },
   {
     slug: "local-seo-small-business",
@@ -63,7 +71,9 @@ const blogPosts = [
     date: "2025-02-12",
     readTime: "11 min read",
     category: "SEO",
-    featured: false
+    featured: false,
+    image: "/projects/local-seo-hero.jpg",
+    excerpt: "Local search is a goldmine for small businesses. Master Google Business Profile, local keywords, and reputation management to dominate your local market."
   },
   {
     slug: "website-redesign-roi",
@@ -72,7 +82,9 @@ const blogPosts = [
     date: "2025-02-19",
     readTime: "7 min read",
     category: "Business",
-    featured: false
+    featured: false,
+    image: "/projects/website-redesign-hero.jpg",
+    excerpt: "Is a website redesign worth the investment? Learn to calculate ROI, identify redesign triggers, and maximize returns from your website investment."
   },
   {
     slug: "content-marketing-strategy",
@@ -81,7 +93,9 @@ const blogPosts = [
     date: "2025-02-26",
     readTime: "13 min read",
     category: "Marketing",
-    featured: false
+    featured: false,
+    image: "/projects/content-marketing-hero.jpg",
+    excerpt: "Transform your business with strategic content marketing. From audience research to conversion optimization, build a content engine that drives sustainable growth."
   },
   {
     slug: "user-experience-design",
@@ -90,7 +104,9 @@ const blogPosts = [
     date: "2025-03-05",
     readTime: "10 min read",
     category: "Design",
-    featured: false
+    featured: false,
+    image: "/projects/ux-design-hero.jpg",
+    excerpt: "User experience is your competitive advantage. Master the psychology, principles, and practices that create websites users love and businesses profit from."
   },
   {
     slug: "google-analytics-entrepreneurs",
@@ -99,7 +115,9 @@ const blogPosts = [
     date: "2025-03-12",
     readTime: "8 min read",
     category: "Analytics",
-    featured: false
+    featured: false,
+    image: "/projects/google-analytics-hero.jpg",
+    excerpt: "Cut through the analytics noise. Learn the 5 metrics that actually drive business decisions and how to use Google Analytics to fuel your growth strategy."
   },
   {
     slug: "website-security-101",
@@ -108,7 +126,9 @@ const blogPosts = [
     date: "2025-03-19",
     readTime: "6 min read",
     category: "Security",
-    featured: false
+    featured: false,
+    image: "/projects/website-security-hero.jpg",
+    excerpt: "Security breaches destroy businesses. Learn essential protection strategies, from SSL certificates to backup systems, that safeguard your online presence."
   },
   {
     slug: "landing-page-optimization",
@@ -117,7 +137,9 @@ const blogPosts = [
     date: "2025-03-26",
     readTime: "12 min read",
     category: "Conversion",
-    featured: false
+    featured: false,
+    image: "/projects/landing-page-hero.jpg",
+    excerpt: "Your landing page is your sales force. Master conversion psychology, A/B testing, and optimization frameworks that turn browsers into buyers."
   },
   {
     slug: "ecommerce-website-design",
@@ -126,7 +148,9 @@ const blogPosts = [
     date: "2025-04-02",
     readTime: "15 min read",
     category: "E-commerce",
-    featured: false
+    featured: false,
+    image: "/projects/ecommerce-design-hero.jpg",
+    excerpt: "E-commerce success requires more than products. Master UX design, payment flows, and conversion optimization that create profitable online stores."
   }
 ];
 
@@ -140,16 +164,30 @@ export default function BlogPage() {
         <section className="relative">
           <div className="absolute inset-0 bg-gradient-to-b from-kiiro-yellow/10 to-transparent opacity-30" />
           <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-4xl mx-auto text-center mb-16">
-              <div className="px-4 py-1.5 rounded-full bg-kiiro-yellow/20 text-kiiro-yellow text-sm font-medium mb-6 border border-kiiro-yellow/30 inline-block">
-                📝 Latest Insights
+            <div className="max-w-4xl mx-auto text-center mb-20">
+              <div className="px-4 py-2 rounded-full bg-kiiro-yellow/20 text-kiiro-yellow text-sm font-semibold mb-8 border border-kiiro-yellow/30 inline-block backdrop-blur-sm">
+                📝 Latest Insights & Strategies
               </div>
-              <h1 className="text-3xl md:text-5xl font-bold text-off-white mb-6">
+              <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-off-white mb-8 leading-tight">
                 SEO & Web Design <span className="text-kiiro-yellow">Blog</span>
               </h1>
-              <p className="text-lg md:text-xl text-off-white/80 max-w-2xl mx-auto leading-relaxed">
-                Stay ahead of the curve with actionable insights on SEO, web design, and conversion optimization strategies.
+              <p className="text-lg md:text-xl text-off-white/80 max-w-3xl mx-auto leading-relaxed mb-8">
+                Stay ahead of the curve with actionable insights on SEO, web design, and conversion optimization strategies that drive real business results.
               </p>
+              <div className="flex flex-wrap justify-center gap-4 text-sm text-off-white/60">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-kiiro-yellow rounded-full"></div>
+                  <span>SEO Strategies</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-kiiro-yellow rounded-full"></div>
+                  <span>Web Design Tips</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-kiiro-yellow rounded-full"></div>
+                  <span>Conversion Optimization</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -169,47 +207,70 @@ export default function BlogPage() {
                 </div>
 
                 {blogPosts.filter(post => post.featured).map((post) => (
-                  <div key={post.slug} className="bg-gradient-to-br from-charcoal-gray/95 to-charcoal-gray/80 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12 hover:border-kiiro-yellow/40 hover:shadow-2xl hover:shadow-kiiro-yellow/10 transition-all duration-300 group relative overflow-hidden">
+                  <div key={post.slug} className="bg-gradient-to-br from-charcoal-gray/95 to-charcoal-gray/80 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden hover:border-kiiro-yellow/40 hover:shadow-2xl hover:shadow-kiiro-yellow/10 transition-all duration-500 group relative">
+                    {/* Featured badge */}
+                    <div className="absolute top-6 left-6 z-20">
+                      <div className="px-4 py-2 bg-gradient-to-r from-kiiro-yellow to-kiiro-yellow/80 text-charcoal-black text-sm font-bold rounded-full shadow-lg">
+                        ⭐ Featured
+                      </div>
+                    </div>
+
                     {/* Background gradient effect */}
                     <div className="absolute inset-0 bg-gradient-to-r from-kiiro-yellow/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                    <div className="relative z-10">
-                      <div className="flex flex-wrap items-center gap-3 mb-6">
-                        <span className="px-4 py-2 bg-kiiro-yellow/20 text-kiiro-yellow text-sm font-semibold rounded-full border border-kiiro-yellow/30">
-                          {post.category}
-                        </span>
-                        <div className="flex items-center gap-2 text-off-white/60 text-sm">
-                          <Calendar className="w-4 h-4" />
-                          <span>{new Date(post.date).toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric'
-                          })}</span>
+                    <div className="grid md:grid-cols-2 gap-0">
+                      {/* Content Side */}
+                      <div className="p-8 md:p-12 relative z-10">
+                        <div className="flex flex-wrap items-center gap-3 mb-6">
+                          <span className="px-4 py-2 bg-kiiro-yellow/20 text-kiiro-yellow text-sm font-semibold rounded-full border border-kiiro-yellow/30">
+                            {post.category}
+                          </span>
+                          <div className="flex items-center gap-2 text-off-white/60 text-sm">
+                            <Calendar className="w-4 h-4" />
+                            <span>{new Date(post.date).toLocaleDateString('en-US', {
+                              year: 'numeric',
+                              month: 'long',
+                              day: 'numeric'
+                            })}</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-off-white/60 text-sm">
+                            <Clock className="w-4 h-4" />
+                            <span>{post.readTime}</span>
+                          </div>
                         </div>
-                        <div className="flex items-center gap-2 text-off-white/60 text-sm">
-                          <Clock className="w-4 h-4" />
-                          <span>{post.readTime}</span>
-                        </div>
+
+                        <h3 className="text-2xl md:text-3xl font-bold text-off-white mb-6 group-hover:text-kiiro-yellow transition-colors duration-300 leading-tight">
+                          {post.title}
+                        </h3>
+
+                        <p className="text-off-white/80 text-lg leading-relaxed mb-8 line-clamp-4">
+                          {post.excerpt}
+                        </p>
+
+                        <Button
+                          asChild
+                          size="lg"
+                          className="bg-kiiro-yellow text-charcoal-black hover:bg-kiiro-yellow/90 hover:shadow-lg hover:shadow-kiiro-yellow/25 transition-all duration-300 group/btn"
+                        >
+                          <Link href={`/blog/${post.slug}`}>
+                            <span className="font-semibold">Read Full Article</span>
+                            <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                          </Link>
+                        </Button>
                       </div>
 
-                      <h3 className="text-xl md:text-2xl font-bold text-off-white mb-6 group-hover:text-kiiro-yellow transition-colors duration-300 leading-tight">
-                        {post.title}
-                      </h3>
-
-                      <p className="text-off-white/70 text-base md:text-lg leading-relaxed mb-8 line-clamp-3">
-                        {post.description}
-                      </p>
-
-                      <Button
-                        asChild
-                        size="lg"
-                        className="bg-kiiro-yellow text-charcoal-black hover:bg-kiiro-yellow/90 hover:shadow-lg hover:shadow-kiiro-yellow/25 transition-all duration-300 group/btn"
-                      >
-                        <Link href={`/blog/${post.slug}`}>
-                          <span className="font-semibold">Read Full Article</span>
-                          <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                        </Link>
-                      </Button>
+                      {/* Image Side */}
+                      <div className="relative overflow-hidden">
+                        <div className="aspect-[4/3] md:aspect-square bg-gradient-to-br from-kiiro-yellow/20 to-kiiro-yellow/5 relative">
+                          <div className="absolute inset-0 bg-gradient-to-t from-charcoal-black/50 to-transparent" />
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="text-center text-off-white/60">
+                              <div className="text-6xl mb-4">📊</div>
+                              <p className="text-sm font-medium">Featured Article</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -222,27 +283,48 @@ export default function BlogPage() {
         <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-12">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-kiiro-yellow/10 text-kiiro-yellow text-sm font-medium rounded-full border border-kiiro-yellow/20 mb-4">
+              <div className="text-center mb-16">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-kiiro-yellow/10 text-kiiro-yellow text-sm font-medium rounded-full border border-kiiro-yellow/20 mb-6">
                   📚 All Articles
                 </div>
-                <h2 className="text-xl md:text-2xl font-bold text-off-white">
-                  Explore Our Content
+                <h2 className="text-2xl md:text-3xl font-bold text-off-white mb-4">
+                  Explore Our Content Library
                 </h2>
-                <p className="text-off-white/60 mt-2 max-w-2xl mx-auto">
-                  Discover insights that drive results across SEO, web design, and digital marketing.
+                <p className="text-off-white/60 text-lg max-w-2xl mx-auto">
+                  Discover actionable insights that drive results across SEO, web design, and digital marketing.
                 </p>
               </div>
 
               {blogPosts.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {blogPosts.map((post) => (
-                    <article key={post.slug} className="bg-gradient-to-br from-charcoal-gray/95 to-charcoal-gray/90 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-kiiro-yellow/40 hover:shadow-xl hover:shadow-kiiro-yellow/5 transition-all duration-300 group relative overflow-hidden">
+                  {blogPosts.map((post, index) => (
+                    <article key={post.slug} className="bg-gradient-to-br from-charcoal-gray/95 to-charcoal-gray/90 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-kiiro-yellow/40 hover:shadow-xl hover:shadow-kiiro-yellow/5 transition-all duration-500 group relative">
                       {/* Subtle background gradient on hover */}
                       <div className="absolute inset-0 bg-gradient-to-br from-kiiro-yellow/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                      <div className="relative z-10">
-                        <div className="flex flex-wrap items-center gap-3 mb-4">
+                      {/* Featured Image */}
+                      <div className="aspect-[16/10] bg-gradient-to-br from-kiiro-yellow/20 to-kiiro-yellow/5 relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-black/60 via-transparent to-transparent" />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="text-center text-off-white/60">
+                            <div className="text-4xl mb-2">
+                              {post.category === 'SEO' && '🔍'}
+                              {post.category === 'Design' && '🎨'}
+                              {post.category === 'Conversion' && '📈'}
+                              {post.category === 'Performance' && '⚡'}
+                              {post.category === 'Marketing' && '📢'}
+                              {post.category === 'Business' && '💼'}
+                              {post.category === 'Analytics' && '📊'}
+                              {post.category === 'Security' && '🔒'}
+                              {post.category === 'E-commerce' && '🛒'}
+                            </div>
+                            <p className="text-xs font-medium">{post.category}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="p-6 relative z-10">
+                        <div className="flex items-center gap-2 mb-4">
                           <span className="px-3 py-1.5 bg-kiiro-yellow/20 text-kiiro-yellow text-xs font-semibold rounded-full border border-kiiro-yellow/30">
                             {post.category}
                           </span>
@@ -255,12 +337,12 @@ export default function BlogPage() {
                           </div>
                         </div>
 
-                        <h3 className="text-lg font-bold text-off-white mb-4 group-hover:text-kiiro-yellow transition-colors duration-300 leading-tight line-clamp-2">
+                        <h3 className="text-xl font-bold text-off-white mb-4 group-hover:text-kiiro-yellow transition-colors duration-300 leading-tight line-clamp-2">
                           {post.title}
                         </h3>
 
                         <p className="text-off-white/70 text-sm leading-relaxed mb-6 line-clamp-3">
-                          {post.description}
+                          {post.excerpt}
                         </p>
 
                         <div className="flex items-center justify-between pt-4 border-t border-white/10">
