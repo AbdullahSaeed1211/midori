@@ -147,7 +147,7 @@ export function HeroSection() {
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-4 justify-start">
-                <div className="relative flex justify-start">
+                <div className="relative">
                   {/* Limited Offer Badge */}
                   <motion.div
                     className="absolute -top-6 lg:-top-8 -left-4 lg:-left-8 z-10"

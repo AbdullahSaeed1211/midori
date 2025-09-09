@@ -71,8 +71,8 @@ export default function SimplyMortgageCaseStudy() {
                   </div>
                   <div>
                     <p className="text-sm text-off-white/60 mb-1">Website</p>
-                    <a href="https://simply-ten.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-lg text-kiiro-yellow hover:underline">
-                      simply-ten.vercel.app
+                    <a href="https://simplymortgage.ae" target="_blank" rel="noopener noreferrer" className="text-lg text-kiiro-yellow hover:underline">
+                      simplymortgage.ae
                     </a>
                   </div>
                 </div>
