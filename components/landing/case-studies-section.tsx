@@ -37,6 +37,22 @@ interface StatItem {
 // Constants
 const CASE_STUDIES: CaseStudyProps[] = [
   {
+    title: "Coming Soon",
+    description: "Coming Soon - An innovative web solution currently in development. Stay tuned for the launch of this exciting new project that will push the boundaries of modern web design and user experience.",
+    image: "/projects/alpha.webp",
+    link: "#",
+    tags: ["Coming Soon", "Innovation", "Next-Gen"],
+    accentColor: "yellow",
+  },
+  {
+    title: "Coming Soon",
+    description: "Coming Soon - A transformative wellness platform designed to enhance mindfulness and well-being through innovative digital experiences. An exciting new venture that will revolutionize the wellness industry.",
+    image: "/projects/zen.webp",
+    link: "#",
+    tags: ["Coming Soon", "Wellness", "Mindfulness"],
+    accentColor: "teal",
+  },
+  {
     title: "Guidance Welfare Foundation",
     description: "A comprehensive Islamic Educational Platform built as a full-stack Learning Management System serving over 100 active learners with enterprise-grade architecture.",
     image: "/projects/guidancewelfare.webp",
@@ -112,7 +128,7 @@ const CASE_STUDIES: CaseStudyProps[] = [
     tags: ["Agency Website", "Portfolio", "UI/UX", "Next.js"],
     accentColor: "yellow",
   },
-  
+
 ];
 
 const STATS: StatItem[] = [

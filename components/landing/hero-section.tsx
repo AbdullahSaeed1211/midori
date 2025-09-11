@@ -29,6 +29,7 @@ export function HeroSection() {
     { src: "/projects/brainwise.webp", alt: "BrainWise - Educational platform website for cognitive development courses and training programs", height: "h-32" },
     { src: "/projects/simply.webp", alt: "Simply Mortgage - Financial services website design with trust indicators and lead generation forms", height: "h-44"},
     { src: "/projects/midori.webp", alt: "Midori - Professional web development agency portfolio showcasing expertise in React and Next.js", height: "h-36" },
+    { src: "/projects/zen.webp", alt: "Zen Project - Coming Soon - Innovative wellness platform in development", height: "h-40" },
   ];
 
   const column2Images = [
@@ -37,6 +38,7 @@ export function HeroSection() {
     { src: "/projects/kiiro.webp", alt: "Kiiro - Modern web design agency homepage featuring conversion-optimized design and fast delivery", height: "h-36" },
     { src: "/projects/testimonialnudger.webp", alt: "Testimonial Nudger - SaaS platform website for automated customer testimonial collection and management", height: "h-32" },
     { src: "/projects/mittal.webp", alt: "Nishoo Mittal - Financial planning website for MDRT Galaxy Club member with interactive calculators and family-centric design", height: "h-40" },
+    { src: "/projects/alpha.webp", alt: "Alpha Project - Coming Soon - Innovative web solution in development", height: "h-36" },
   ];
 
 

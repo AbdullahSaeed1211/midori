@@ -23,6 +23,24 @@ interface CaseStudy {
 export default function CaseStudiesPage() {
   const caseStudies: CaseStudy[] = [
     {
+      title: "Coming Soon",
+      description: "Coming Soon - An innovative web solution currently in development. Stay tuned for the launch of this exciting new project that will push the boundaries of modern web design and user experience.",
+      image: "/projects/alpha.webp",
+      href: "#",
+      category: "Innovation",
+      results: "Coming Soon",
+      accentColor: "yellow"
+    },
+    {
+      title: "Coming Soon",
+      description: "Coming Soon - A transformative wellness platform designed to enhance mindfulness and well-being through innovative digital experiences. An exciting new venture that will revolutionize the wellness industry.",
+      image: "/projects/zen.webp",
+      href: "#",
+      category: "Wellness",
+      results: "Coming Soon",
+      accentColor: "teal"
+    },
+    {
       title: "Simply Mortgage",
       description: "UAE premier mortgage consultancy offering personalized solutions with streamlined application process.",
       image: "/projects/simply.webp",
