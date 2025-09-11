@@ -10,6 +10,21 @@ export const metadata: Metadata = {
   title: "Guidance Welfare Foundation | Islamic Educational Platform - LMS Case Study",
   description: "Complete case study of Guidance Welfare Foundation - a comprehensive Islamic educational management system with advanced LMS capabilities, PWA features, and production-grade architecture.",
   keywords: "Islamic LMS, educational platform, learning management system, PWA, Next.js, TypeScript, Islamic education, production-ready, case study",
+  alternates: {
+    canonical: 'https://kiiro.cx/case-studies/guidance-welfare'
+  },
+  openGraph: {
+    type: "article",
+    title: "Guidance Welfare Foundation | Islamic Educational Platform Case Study",
+    description: "Complete case study of Guidance Welfare Foundation - a comprehensive Islamic educational management system.",
+    siteName: "kiiro.cx",
+    url: "https://kiiro.cx/case-studies/guidance-welfare",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Guidance Welfare Foundation | Islamic LMS Case Study",
+    description: "Complete case study of Guidance Welfare Foundation - comprehensive Islamic educational platform.",
+  }
 };
 
 export default function GuidanceWelfareCaseStudy() {

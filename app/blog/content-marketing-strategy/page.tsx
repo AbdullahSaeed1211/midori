@@ -10,11 +10,20 @@ export const metadata: Metadata = {
   description: "Build a content marketing strategy that drives traffic and leads. Learn the fundamentals of creating content that converts visitors into customers.",
   keywords: "content marketing, content strategy, entrepreneur marketing, content creation, lead generation",
   authors: [{ name: "kiiro.cx" }],
+  alternates: {
+    canonical: 'https://kiiro.cx/blog/content-marketing-strategy'
+  },
   openGraph: {
     type: "article",
     title: "Content Marketing Strategy for Entrepreneurs: From Zero to Hero",
     description: "Build a content marketing strategy that drives traffic and leads.",
     siteName: "kiiro.cx",
+    url: "https://kiiro.cx/blog/content-marketing-strategy",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Content Marketing Strategy for Entrepreneurs | kiiro.cx",
+    description: "Build a content marketing strategy that drives traffic and leads.",
   }
 };
 

@@ -10,11 +10,20 @@ export const metadata: Metadata = {
   description: "Everything you need to know about SEO in 2025. From technical fundamentals to content strategy, this comprehensive guide covers all the essential elements for ranking higher on Google.",
   keywords: "SEO guide 2025, search engine optimization, entrepreneur SEO, Google ranking, SEO strategy",
   authors: [{ name: "kiiro.cx" }],
+  alternates: {
+    canonical: 'https://kiiro.cx/blog/seo-guide-2024'
+  },
   openGraph: {
     type: "article",
     title: "Ultimate SEO Guide for Entrepreneurs in 2025",
     description: "Everything you need to know about SEO in 2025. From technical fundamentals to content strategy, this comprehensive guide covers all the essential elements for ranking higher on Google.",
     siteName: "kiiro.cx",
+    url: "https://kiiro.cx/blog/seo-guide-2024",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ultimate SEO Guide for Entrepreneurs in 2025 | kiiro.cx",
+    description: "Everything you need to know about SEO in 2025.",
   }
 };
 
