@@ -22,10 +22,11 @@ export function TimelineContent({
   as = "div",
   onClick,
 }: TimelineContentProps) {
-  const Component = motion[as] as any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const MotionComponent = motion(as as any);
 
   return (
-    <Component
+    <MotionComponent
       className={className}
       initial="hidden"
       whileInView="visible"
@@ -35,6 +36,6 @@ export function TimelineContent({
       onClick={onClick}
     >
       {children}
-    </Component>
+    </MotionComponent>
   );
 }

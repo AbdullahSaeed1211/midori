@@ -131,7 +131,7 @@ function ClientFeedback() {
             customVariants={revealVariants}
             timelineRef={testimonialRef}
           >
-            See how we've helped businesses improve their website conversions
+            See how we&apos;ve helped businesses improve their website conversions
           </TimelineContent>
         </article>
         <div className="lg:grid lg:grid-cols-3 gap-2 flex flex-col w-full lg:py-10 pt-10 pb-4 lg:px-10 px-4">
@@ -146,7 +146,7 @@ function ClientFeedback() {
               <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:50px_56px] opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
               <article className="mt-auto">
                 <p className={`${testimonials[0].textColor}/80 text-sm line-clamp-3`}>
-                  "{testimonials[0].quote}"
+                  &ldquo;{testimonials[0].quote}&rdquo;
                 </p>
                 <div className="pt-4">
                   <h3 className={`font-semibold text-sm ${testimonials[0].textColor}`}>
@@ -168,7 +168,7 @@ function ClientFeedback() {
               <div className="absolute bottom-0 left-0 w-12 h-12 bg-gradient-to-tr from-charcoal-black/10 to-transparent rounded-tr-2xl"></div>
               <article className="mt-auto">
                 <p className={`${testimonials[1].textColor}/80 text-sm line-clamp-3`}>
-                  "{testimonials[1].quote}"
+                  &ldquo;{testimonials[1].quote}&rdquo;
                 </p>
                 <div className="pt-4">
                   <h3 className={`font-semibold text-sm ${testimonials[1].textColor}`}>
@@ -190,7 +190,7 @@ function ClientFeedback() {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.15)_1px,transparent_0)] bg-[size:20px_20px] opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
               <article className="mt-auto">
                 <p className={`${testimonials[2].textColor}/80 text-sm line-clamp-4`}>
-                  "{testimonials[2].quote}"
+                  &ldquo;{testimonials[2].quote}&rdquo;
                 </p>
                 <div className="pt-4">
                   <h3 className={`font-semibold text-sm ${testimonials[2].textColor}`}>
@@ -210,7 +210,7 @@ function ClientFeedback() {
               <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-[size:16px_16px] opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
               <article className="mt-auto">
                 <p className={`${testimonials[3].textColor}/80 text-sm line-clamp-4`}>
-                  "{testimonials[3].quote}"
+                  &ldquo;{testimonials[3].quote}&rdquo;
                 </p>
                 <div className="pt-4">
                   <h3 className={`font-semibold text-sm ${testimonials[3].textColor}`}>{testimonials[3].name}</h3>
@@ -228,7 +228,7 @@ function ClientFeedback() {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_2px_2px,rgba(255,255,255,0.20)_1px,transparent_0)] bg-[size:24px_24px] opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
               <article className="mt-auto">
                 <p className={`${testimonials[4].textColor}/80 text-sm line-clamp-4`}>
-                  "{testimonials[4].quote}"
+                  &ldquo;{testimonials[4].quote}&rdquo;
                 </p>
                 <div className="pt-4">
                   <h3 className={`font-semibold text-sm ${testimonials[4].textColor}`}>
@@ -250,7 +250,7 @@ function ClientFeedback() {
               <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(0,0,0,0.08)_1px,transparent_1px),linear-gradient(-45deg,rgba(0,0,0,0.08)_1px,transparent_1px)] bg-[size:12px_12px] opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
               <article className="mt-auto">
                 <p className={`${testimonials[5].textColor}/80 text-sm line-clamp-3`}>
-                  "{testimonials[5].quote}"
+                  &ldquo;{testimonials[5].quote}&rdquo;
                 </p>
                 <div className="pt-4">
                   <h3 className={`font-semibold text-sm ${testimonials[5].textColor}`}>
@@ -270,7 +270,7 @@ function ClientFeedback() {
               <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-[size:50px_56px] opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
               <article className="mt-auto">
                 <p className={`${testimonials[6].textColor}/80 text-sm line-clamp-3`}>
-                  "{testimonials[6].quote}"
+                  &ldquo;{testimonials[6].quote}&rdquo;
                 </p>
                 <div className="pt-4">
                   <h3 className={`font-semibold text-sm ${testimonials[6].textColor}`}>
@@ -312,7 +312,7 @@ function ClientFeedback() {
                     <div className={`absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,${selectedTestimonial.textColor === 'text-charcoal-black' ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.08)'}_1px,transparent_0)] bg-[size:24px_24px] opacity-50`}></div>
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-kiiro-yellow/0 via-kiiro-yellow/50 to-kiiro-yellow/0"></div>
                     <blockquote className={`${selectedTestimonial.textColor} text-xl leading-relaxed relative z-10 font-medium`}>
-                      "{selectedTestimonial.fullQuote}"
+                      &ldquo;{selectedTestimonial.fullQuote}&rdquo;
                     </blockquote>
                     <div className="absolute bottom-0 right-0 w-8 h-8 bg-kiiro-yellow/20 rounded-tl-2xl"></div>
                   </div>
