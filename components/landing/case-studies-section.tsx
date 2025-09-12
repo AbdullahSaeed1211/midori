@@ -37,7 +37,7 @@ interface StatItem {
 // Constants
 const CASE_STUDIES: CaseStudyProps[] = [
   {
-    title: "Coming Soon",
+    title: "Coming Soon 1",
     description: "Coming Soon - An innovative web solution currently in development. Stay tuned for the launch of this exciting new project that will push the boundaries of modern web design and user experience.",
     image: "/projects/alpha.webp",
     link: "#",
@@ -45,7 +45,7 @@ const CASE_STUDIES: CaseStudyProps[] = [
     accentColor: "yellow",
   },
   {
-    title: "Coming Soon",
+    title: "Coming Soon 2",
     description: "Coming Soon - A transformative wellness platform designed to enhance mindfulness and well-being through innovative digital experiences. An exciting new venture that will revolutionize the wellness industry.",
     image: "/projects/zen.webp",
     link: "#",

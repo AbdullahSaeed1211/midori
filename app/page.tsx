@@ -42,13 +42,13 @@ export default function Home() {
       </div>
       <ProcessTimeline />
 
+      <CaseStudiesSection />
       
       <div id="client-wins">
         <TestimonialsSection />
       </div>
       <MidFunnelCTA />
 
-      <CaseStudiesSection />
       
       <TrustBadges />
       

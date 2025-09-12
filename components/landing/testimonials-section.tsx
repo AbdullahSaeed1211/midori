@@ -30,15 +30,15 @@ const testimonials = [
     quote: "As a pre-launch SaaS, validating our idea was crucial. The landing page Kiiro created was so effective that it secured our first 100 paid users before we even wrote a line of production code.",
   },
   {
-    name: 'Alexandra Kim',
-    title: 'Product Lead, Innovate Inc',
-    quote: 'The redesign not only looks amazing but has dramatically improved our user experience metrics. Our bounce rate decreased by 40%!',
+    name: 'Aisan Shah',
+    title: 'CA',
+    quote: 'The redesign not only looks amazing but has dramatically improved our user experience metrics. Our bounce rate decreased.',
     image: '/avatars/user5.png'
   },
   {
-    name: 'Robert Gonzalez',
-    title: 'CTO, DataFlow',
-    quote: 'The team provided technical solutions that were both elegant and scalable. They truly understand the balance of design and function.',
+    name: 'Guidance Welfare Foundation',
+    title: 'Guidance Welfare Foundation',
+    quote: 'The team provided technical solutions that were both elegant and scalable. They truly understand the balance of design and function in our fullstack LMS.',
     image: '/avatars/user6.png'
   },
 ];
@@ -89,8 +89,8 @@ export function TestimonialsSection() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-h-80 overflow-hidden">
                 {[...Array(3)].map((_, i) => (
                   <Marquee key={i} pauseOnHover vertical className="[--duration:60s]" reverse={i % 2 === 1}>
-                    {testimonials.slice(i * 2, (i + 1) * 2).map((testimonial) => (
-                      <div key={testimonial.name} className="py-3">
+                    {testimonials.slice(i * 2, (i + 1) * 2).map((testimonial, index) => (
+                      <div key={`${testimonial.name}-${i}-${index}`} className="py-3">
                         <TestimonialCard {...testimonial} />
                       </div>
                     ))}

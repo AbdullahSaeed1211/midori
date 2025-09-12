@@ -35,6 +35,7 @@ module.exports = {
         "teal-accent": "#00CED1",
         "purple-accent": "#8A2BE2",
         "magenta-accent": "#FF00FF",
+        "primaryColor": "#f3f4f6",
       },
       animation: {
         "scroll": "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
