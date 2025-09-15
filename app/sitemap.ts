@@ -108,7 +108,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.8,
     },
-    // Missing blog pages
+    // Blog pages
+    {
+      url: `${baseUrl}/blog/content-marketing-strategy`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
     {
       url: `${baseUrl}/blog/conversion-optimization-mistakes`,
       lastModified: new Date(),
