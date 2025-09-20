@@ -56,7 +56,7 @@ const CASE_STUDIES: CaseStudyProps[] = [
     title: "Guidance Welfare Foundation",
     description: "A comprehensive Islamic Educational Platform built as a full-stack Learning Management System serving over 100 active learners with enterprise-grade architecture.",
     image: "/projects/guidancewelfare.webp",
-    link: "https://guidancewelfare.com",
+    link: "/case-studies/guidance-welfare",
     tags: ["EdTech", "LMS", "Enterprise Application"],
     accentColor: "purple",
     featured: true
