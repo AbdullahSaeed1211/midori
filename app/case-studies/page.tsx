@@ -4,6 +4,64 @@ import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
 import { CaseStudiesClient } from "@/components/ui/case-studies-client";
 
+// Case study interface
+interface CaseStudy {
+  title: string;
+  description: string;
+  href: string;
+  category: string;
+  image: string;
+}
+
+// Generate structured data for SEO
+function generateStructuredData(caseStudies: CaseStudy[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Case Studies | Kiiro.cx",
+    "description": "Explore our portfolio of successful projects across various industries. See how we've helped clients achieve their digital goals with custom web solutions.",
+    "url": "https://kiiro.cx/case-studies",
+    "mainEntity": {
+      "@type": "ItemList",
+      "numberOfItems": caseStudies.length,
+      "itemListElement": caseStudies.map((study, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "CreativeWork",
+          "name": study.title,
+          "description": study.description,
+          "url": `https://kiiro.cx${study.href}`,
+          "keywords": study.category,
+          "image": `https://kiiro.cx${study.image}`,
+          "creator": {
+            "@type": "Organization",
+            "name": "Kiiro.cx",
+            "url": "https://kiiro.cx"
+          }
+        }
+      }))
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://kiiro.cx"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Case Studies",
+          "item": "https://kiiro.cx/case-studies"
+        }
+      ]
+    }
+  };
+}
+
 export const metadata: Metadata = {
   title: "Case Studies | Kiiro.cx - Web Design & Development Portfolio",
   description: "Explore our portfolio of successful projects across various industries. See how we've helped clients achieve their digital goals with custom web solutions.",
@@ -103,13 +161,32 @@ export default function CaseStudiesPage() {
     results: "Enhanced credibility and lead generation",
     accentColor: "yellow"
   },
+  {
+    title: "Guidance Welfare Foundation",
+    description: "A comprehensive Islamic Educational Platform built as a full-stack Learning Management System serving over 100 active learners with enterprise-grade architecture.",
+    image: "/projects/guidancewelfare.webp",
+    href: "/case-studies/guidance-welfare",
+    category: "EdTech",
+    results: "100+ active learners",
+    accentColor: "purple"
+  },
   ];
 
+  const structuredData = generateStructuredData(caseStudies);
+
   return (
-    <main className="flex min-h-screen flex-col bg-charcoal-black">
-      <Header />
-      <CaseStudiesClient caseStudies={caseStudies} />
-      <Footer />
-    </main>
+    <>
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
+      <main className="flex min-h-screen flex-col bg-charcoal-black">
+        <Header />
+        <CaseStudiesClient caseStudies={caseStudies} />
+        <Footer />
+      </main>
+    </>
   );
 } 
