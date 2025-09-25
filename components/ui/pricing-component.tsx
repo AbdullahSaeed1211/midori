@@ -2,6 +2,7 @@
 import { Calendar, ChevronDown, Check, X, Award } from "lucide-react"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import Link from "next/link"
 
 function PricingCards() {
   const [showFeatureComparison, setShowFeatureComparison] = useState(false)
@@ -197,19 +198,21 @@ function PricingCards() {
               <span className="text-neutral-400 text-lg ml-1">starting</span>
             </div>
 
-            <button
-              className={[
-                "w-full rounded-xl font-semibold text-base py-4",
-                "bg-neutral-900 text-white",
-                "hover:opacity-95 transition-opacity duration-200",
-                "flex items-center justify-center gap-2.5",
-                "shadow-[0_4px_18px_-6px_rgba(0,0,0,0.4)]",
-                "ring-1 ring-inset ring-neutral-900/10",
-              ].join(" ")}
-            >
-              Book a call
-              <Calendar className="w-5 h-5 text-neutral-300" />
-            </button>
+            <Link href="#booking" className="block">
+              <button
+                className={[
+                  "w-full rounded-xl font-semibold text-base py-4",
+                  "bg-neutral-900 text-white",
+                  "hover:opacity-95 transition-opacity duration-200",
+                  "flex items-center justify-center gap-2.5",
+                  "shadow-[0_4px_18px_-6px_rgba(0,0,0,0.4)]",
+                  "ring-1 ring-inset ring-neutral-900/10",
+                ].join(" ")}
+              >
+                Book a call
+                <Calendar className="w-5 h-5 text-neutral-300" />
+              </button>
+            </Link>
           </div>
 
           <div
@@ -272,19 +275,21 @@ function PricingCards() {
               <span className="text-charcoal-black/70 text-lg ml-1">starting</span>
             </div>
 
-            <button
-              className={[
-                "w-full rounded-xl font-semibold text-base py-4",
-                "bg-charcoal-black text-kiiro-yellow",
-                "hover:opacity-95 transition-opacity duration-200",
-                "flex items-center justify-center gap-2.5",
-                "shadow-[0_4px_18px_-6px_rgba(0,0,0,0.35)]",
-                "ring-1 ring-inset ring-charcoal-black/20",
-              ].join(" ")}
-            >
-              Book a call
-              <Calendar className="w-5 h-5 text-black" />
-            </button>
+            <Link href="#booking" className="block">
+              <button
+                className={[
+                  "w-full rounded-xl font-semibold text-base py-4",
+                  "bg-charcoal-black text-kiiro-yellow",
+                  "hover:opacity-95 transition-opacity duration-200",
+                  "flex items-center justify-center gap-2.5",
+                  "shadow-[0_4px_18px_-6px_rgba(0,0,0,0.35)]",
+                  "ring-1 ring-inset ring-charcoal-black/20",
+                ].join(" ")}
+              >
+                Book a call
+                <Calendar className="w-5 h-5 text-black" />
+              </button>
+            </Link>
           </div>
 
           <div
