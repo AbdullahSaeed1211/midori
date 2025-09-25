@@ -1,18 +1,23 @@
-'use client'; 
+'use client';
 
-import { useState } from "react";
+import { useState, Suspense, lazy } from "react";
 import { motion } from "framer-motion";
-import Cal from "@calcom/embed-react";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { ContactForm } from "@/components/ui/contact-form";
+import { Skiper19 } from "@/components/ui/skiper19";
 import { cn } from "@/lib/utils";
 import { Calendar, MessageSquare, Zap, Clock, CheckCircle } from "lucide-react";
+
+// Lazy load the Cal component
+const LazyCal = lazy(() => import('@calcom/embed-react').then(module => ({
+  default: module.default || module
+})));
 
 export function BookingSection() {
   const [activeTab, setActiveTab] = useState<'call' | 'form'>('call');
 
   const handleBackToTabs = () => {
-    setActiveTab('call'); // Navigate back to the call tab by default
+    setActiveTab('call');
   };
 
   return (
@@ -21,7 +26,7 @@ export function BookingSection() {
       <section className="py-24 relative overflow-hidden" id="booking">
         {/* Simplified Background with Grid */}
         <div className="absolute inset-0 bg-deep-gray/20" />
-        
+
         {/* Subtle Grid Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -32,11 +37,14 @@ export function BookingSection() {
             backgroundSize: '50px 50px'
           }} />
         </div>
-        
+
+        {/* Booking Section Introduction Animation */}
+        <Skiper19 />
+
         <div className="container mx-auto px-4 text-center relative z-10">
           {/* Enhanced subtitle with organic animation */}
           <motion.div 
-            className="inline-flex items-center gap-2 px-4 py-2 bg-kiiro-yellow/10 border border-kiiro-yellow/20 rounded-full mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-kiiro-yellow/5 border border-kiiro-yellow rounded-full mb-6"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -133,112 +141,40 @@ export function BookingSection() {
           >
             {activeTab === 'call' ? (
               <div className="space-y-6">
-                {/* Redesigned Call Description - More Compelling */}
-                <div className="relative bg-gradient-to-br from-kiiro-yellow/20 via-kiiro-yellow/15 to-teal-accent/20 border border-kiiro-yellow/40 rounded-2xl p-8 mb-8 overflow-hidden">
-                  {/* Enhanced Background Elements */}
-                  <div className="absolute inset-0 opacity-20">
-                    <div className="absolute inset-0" style={{
-                      backgroundImage: `
-                        linear-gradient(rgba(255, 209, 0, 0.4) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255, 209, 0, 0.4) 1px, transparent 1px)
-                      `,
-                      backgroundSize: '25px 25px'
-                    }} />
-                  </div>
-                  
-                  {/* Floating Elements */}
-                  <div className="absolute top-4 left-4 w-20 h-20 bg-gradient-to-br from-kiiro-yellow/30 to-transparent rounded-full blur-2xl" />
-                  <div className="absolute bottom-4 right-4 w-16 h-16 bg-gradient-to-tl from-teal-accent/30 to-transparent rounded-full blur-xl" />
-                  
-                  <div className="relative z-10 text-center">
-                    {/* New Compelling Headline */}
-                    <div className="inline-flex items-center gap-2 px-4 py-2 b border border-kiiro-yellow/50 rounded-full mb-4">
-                      <Calendar className="w-4 h-4 text-kiiro-yellow" />
-                      <span className="text-sm font-bold text-kiiro-yellow">FREE 15-MINUTE STRATEGY CALL</span>
-                    </div>
-                    
-                    <h3 className="text-2xl md:text-3xl font-bold text-off-white mb-4">
-                      See Exactly What&apos;s Costing You 
-                      <span className="text-kiiro-yellow"> $3,000+ Monthly</span>
-                    </h3>
-                    
-                    <p className="text-lg text-off-white/90 mb-6 max-w-2xl mx-auto">
-                      I&apos;ll audit your website <span className="text-kiiro-yellow font-semibold">live on the call</span> and show you the exact fixes 
-                      that will turn more visitors into customers. No pitch, just value.
-                    </p>
-                    
-                    {/* Value Props Grid */}
-                    <div className="grid md:grid-cols-3 gap-4 mb-6">
-                      <div className="bg-charcoal-black/40 backdrop-blur-sm rounded-xl p-4 border border-kiiro-yellow/20">
-                        <div className="w-10 h-10 bg-gradient-to-br from-kiiro-yellow/40 to-kiiro-yellow/20 rounded-full flex items-center justify-center mb-3 mx-auto">
-                          <span className="text-kiiro-yellow font-bold">1</span>
-                        </div>
-                        <p className="text-sm font-semibold text-off-white mb-2">Live Website Audit</p>
-                        <p className="text-xs text-off-white/80">I&apos;ll review your site in real-time and identify conversion blockers</p>
-                      </div>
-                      <div className="bg-charcoal-black/40 backdrop-blur-sm rounded-xl p-4 border border-teal-accent/20">
-                        <div className="w-10 h-10 bg-gradient-to-br from-teal-accent/40 to-teal-accent/20 rounded-full flex items-center justify-center mb-3 mx-auto">
-                          <span className="text-teal-accent font-bold">2</span>
-                        </div>
-                        <p className="text-sm font-semibold text-off-white mb-2">Custom Action Plan</p>
-                        <p className="text-xs text-off-white/80">Get a personalized roadmap to increase your conversions</p>
-                      </div>
-                      <div className="bg-charcoal-black/40 backdrop-blur-sm rounded-xl p-4 border border-kiiro-yellow/20">
-                        <div className="w-10 h-10 bg-gradient-to-br from-kiiro-yellow/40 to-kiiro-yellow/20 rounded-full flex items-center justify-center mb-3 mx-auto">
-                          <span className="text-kiiro-yellow font-bold">3</span>
-                        </div>
-                        <p className="text-sm font-semibold text-off-white mb-2">Zero Pressure</p>
-                        <p className="text-xs text-off-white/80">Value-first approach - no aggressive sales tactics</p>
-                      </div>
-                    </div>
-                    
-                    {/* Social Proof & Urgency */}
-                    <div className="flex flex-wrap justify-center gap-6 text-sm">
-                      <div className="flex items-center gap-2 text-off-white/80">
-                        <CheckCircle className="w-4 h-4 text-teal-accent" />
-                        <span>15+ successful audits this month</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-off-white/80">
-                        <Clock className="w-4 h-4 text-kiiro-yellow" />
-                        <span>Average 197% ROI improvement</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-off-white/80">
-                        <Zap className="w-4 h-4 text-kiiro-yellow" />
-                        <span>Only 3 spots left this week</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                {/* Simplified Call Description */}
+                
 
                 {/* Enhanced Calendar with Better Framing */}
                 <div className="relative">
                   <div className="absolute -inset-1 bg-gradient-to-r from-kiiro-yellow/20 to-teal-accent/20 rounded-xl blur opacity-60"></div>
-                  <div className="relative bg-charcoal-black/80 backdrop-blur-sm p-3 sm:p-6 rounded-xl shadow-2xl border border-off-white/20">
-                    <Cal
-                      calLink="abdullahsaeed/15min"
-                      style={{ width: "100%", height: "100%", overflow: "scroll"}}
-                      config={{
-                        layout: 'month_view' 
-                      }}
-                    />
+                  <div className="relative bg-charcoal-black/80 backdrop-blur-sm p-3 sm:p-6 rounded-xl shadow-2xl border border-off-white/20" style={{ minHeight: '600px' }}>
+                    <Suspense fallback={
+                      <div className="w-full h-[600px] flex items-center justify-center">
+                        <div className="text-center text-off-white/60">
+                          <div className="mb-4">
+                            <Calendar className="w-12 h-12 mx-auto text-kiiro-yellow mb-2" />
+                            <h3 className="text-lg font-semibold">Loading Calendar...</h3>
+                          </div>
+                          <p className="text-sm">If calendar doesn&apos;t load, please try refreshing the page</p>
+                        </div>
+                      </div>
+                    }>
+                      <LazyCal
+                        calLink="abdullahsaeed/15min"
+                        style={{ width: "100%", height: "600px", overflow: "auto"}}
+                        config={{
+                          layout: 'month_view',
+                          theme: 'dark'
+                        }}
+                      />
+                    </Suspense>
                   </div>
                 </div>
               </div>
             ) : (
               <div className="space-y-6">
                 {/* Enhanced Form Description */}
-                <div className="relative bg-gradient-to-br from-kiiro-yellow/15 via-kiiro-yellow/10 to-teal-accent/15 border border-kiiro-yellow/30 rounded-xl p-6 mb-8 overflow-hidden">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,209,0,0.1),transparent_70%)]" />
-                  <div className="relative z-10">
-                    <h3 className="text-xl font-bold text-off-white mb-3">
-                      Prefer to Send a Message?
-                    </h3>
-                    <p className="text-off-white/80">
-                      Not ready for a call? No problem. Tell us about your project and we&apos;ll send you 
-                      a detailed proposal with pricing and timeline within 24 hours.
-                    </p>
-                  </div>
-                </div>
+                
 
                 {/* Enhanced Contact Form */}
                 <div className="bg-charcoal-black/60 backdrop-blur-sm border border-off-white/20 rounded-2xl p-4 sm:p-8 md:p-12 shadow-2xl">

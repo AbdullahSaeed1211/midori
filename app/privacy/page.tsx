@@ -20,69 +20,177 @@ export default function PrivacyPolicy() {
           </div>
 
           <div className="space-y-8 text-off-white/80">
-            <section>
-              <h2 className="text-xl font-semibold text-off-white mb-3 border-b border-white/10 pb-2">1. Information We Collect</h2>
-              <div className="space-y-4">
-              <p className="text-base leading-relaxed">
-                  We collect information you provide directly to us, including:
-                </p>
-                <ul className="list-disc list-inside space-y-2 ml-4 text-off-white/80">
-                  <li><strong>Contact Information:</strong> Name, email address, phone number, company name</li>
-                  <li><strong>Project Information:</strong> Business requirements, project scope, technical specifications</li>
-                  <li><strong>Communication Data:</strong> Messages, feedback, and correspondence</li>
-                  <li><strong>Usage Data:</strong> Website interactions, pages visited, time spent on site</li>
-                  <li><strong>Technical Data:</strong> IP address, browser type, device information, cookies</li>
-                </ul>
+            <section className="bg-charcoal-gray/30 rounded-lg p-6 border border-white/10">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center">
+                  <span className="text-blue-400 text-sm">📊</span>
+                </div>
+                <h2 className="text-xl font-semibold text-off-white">1. Information We Collect</h2>
+              </div>
+              <p className="text-base leading-relaxed mb-4">
+                We collect information you provide directly to us, including:
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-charcoal-gray/50 rounded-lg p-4 border border-white/10">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-kiiro-yellow">👤</span>
+                    <span className="font-semibold text-off-white">Contact Information</span>
+                  </div>
+                  <p className="text-sm text-off-white/80">Name, email address, phone number, company name</p>
+                </div>
+                <div className="bg-charcoal-gray/50 rounded-lg p-4 border border-white/10">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-green-400">💼</span>
+                    <span className="font-semibold text-off-white">Project Information</span>
+                  </div>
+                  <p className="text-sm text-off-white/80">Business requirements, project scope, technical specifications</p>
+                </div>
+                <div className="bg-charcoal-gray/50 rounded-lg p-4 border border-white/10">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-purple-400">💬</span>
+                    <span className="font-semibold text-off-white">Communication Data</span>
+                  </div>
+                  <p className="text-sm text-off-white/80">Messages, feedback, and correspondence</p>
+                </div>
+                <div className="bg-charcoal-gray/50 rounded-lg p-4 border border-white/10">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-orange-400">🖥️</span>
+                    <span className="font-semibold text-off-white">Usage & Technical Data</span>
+                  </div>
+                  <p className="text-sm text-off-white/80">Website interactions, IP address, browser type, cookies</p>
+                </div>
               </div>
             </section>
 
-            <section>
-              <h2 className="text-xl font-semibold text-off-white mb-3 border-b border-white/10 pb-2">2. How We Use Your Information</h2>
-              <div className="space-y-4">
-                <p className="text-base leading-relaxed">We use your information to:</p>
-                <ul className="list-disc list-inside space-y-2 ml-4 text-off-white/80">
-                  <li>Provide and deliver our web development services</li>
-                  <li>Communicate about your projects and our services</li>
-                  <li>Process payments and manage billing</li>
-                  <li>Send important updates and technical notices</li>
-                  <li>Improve our website and services</li>
-                  <li>Comply with legal obligations</li>
-                  <li>Protect against fraud and security threats</li>
-                </ul>
+            <section className="bg-charcoal-gray/30 rounded-lg p-6 border border-white/10">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-8 bg-green-500/20 rounded-full flex items-center justify-center">
+                  <span className="text-green-400 text-sm">🎯</span>
+                </div>
+                <h2 className="text-xl font-semibold text-off-white">2. How We Use Your Information</h2>
+              </div>
+              <p className="text-base leading-relaxed mb-4">We use your information to:</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                <div className="flex items-center gap-2 text-sm text-off-white/80">
+                  <div className="w-2 h-2 bg-kiiro-yellow rounded-full flex-shrink-0"></div>
+                  Provide web development services
+                </div>
+                <div className="flex items-center gap-2 text-sm text-off-white/80">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full flex-shrink-0"></div>
+                  Communicate about projects
+                </div>
+                <div className="flex items-center gap-2 text-sm text-off-white/80">
+                  <div className="w-2 h-2 bg-green-400 rounded-full flex-shrink-0"></div>
+                  Process payments & billing
+                </div>
+                <div className="flex items-center gap-2 text-sm text-off-white/80">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full flex-shrink-0"></div>
+                  Send updates & notices
+                </div>
+                <div className="flex items-center gap-2 text-sm text-off-white/80">
+                  <div className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></div>
+                  Improve our services
+                </div>
+                <div className="flex items-center gap-2 text-sm text-off-white/80">
+                  <div className="w-2 h-2 bg-red-400 rounded-full flex-shrink-0"></div>
+                  Ensure security & compliance
+                </div>
               </div>
             </section>
 
-            <section>
-              <h2 className="text-xl font-semibold text-off-white mb-3 border-b border-white/10 pb-2">3. Information Sharing and Disclosure</h2>
-              <div className="space-y-4">
-              <p className="text-base leading-relaxed">
-                  <strong>We do not sell, rent, or trade your personal information.</strong> We may share your information in these limited circumstances:
-                </p>
-                <ul className="list-disc list-inside space-y-2 ml-4 text-off-white/80">
-                  <li><strong>With Your Consent:</strong> When you explicitly agree to share information</li>
-                  <li><strong>Service Providers:</strong> Third-party tools that help us deliver services (hosting, analytics, payment processing)</li>
-                  <li><strong>Legal Requirements:</strong> When required by law or to protect our rights</li>
-                  <li><strong>Business Transfers:</strong> In case of merger, acquisition, or sale of assets</li>
-                </ul>
+            <section className="bg-charcoal-gray/30 rounded-lg p-6 border border-white/10">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-8 bg-red-500/20 rounded-full flex items-center justify-center">
+                  <span className="text-red-400 text-sm">🚫</span>
+                </div>
+                <h2 className="text-xl font-semibold text-off-white">3. Information Sharing and Disclosure</h2>
+              </div>
+              <div className="bg-green-500/10 rounded-lg p-4 border border-green-500/20 mb-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-green-400">✅</span>
+                  <span className="font-semibold text-off-white">What We Don&apos;t Do</span>
+                </div>
+                <p className="text-sm text-off-white/80">We do not sell, rent, or trade your personal information to third parties.</p>
+              </div>
+              <p className="text-base leading-relaxed mb-4">We may share your information only in these limited circumstances:</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-charcoal-gray/50 rounded-lg p-4 border border-white/10">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-blue-400">✓</span>
+                    <span className="font-semibold text-off-white">With Your Consent</span>
+                  </div>
+                  <p className="text-sm text-off-white/80">When you explicitly agree to share information</p>
+                </div>
+                <div className="bg-charcoal-gray/50 rounded-lg p-4 border border-white/10">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-purple-400">🔧</span>
+                    <span className="font-semibold text-off-white">Service Providers</span>
+                  </div>
+                  <p className="text-sm text-off-white/80">Trusted third-party tools for hosting, analytics, payment processing</p>
+                </div>
+                <div className="bg-charcoal-gray/50 rounded-lg p-4 border border-white/10">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-orange-400">⚖️</span>
+                    <span className="font-semibold text-off-white">Legal Requirements</span>
+                  </div>
+                  <p className="text-sm text-off-white/80">When required by law or to protect our rights</p>
+                </div>
+                <div className="bg-charcoal-gray/50 rounded-lg p-4 border border-white/10">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-indigo-400">🏢</span>
+                    <span className="font-semibold text-off-white">Business Transfers</span>
+                  </div>
+                  <p className="text-sm text-off-white/80">In case of merger, acquisition, or sale of assets</p>
+                </div>
               </div>
             </section>
 
-            <section>
-              <h2 className="text-xl font-semibold text-off-white mb-3 border-b border-white/10 pb-2">4. Data Security</h2>
-              <div className="space-y-4">
-                <p className="text-base leading-relaxed">
-                  We implement industry-standard security measures to protect your information:
-                </p>
-                <ul className="list-disc list-inside space-y-2 ml-4 text-off-white/80">
-                  <li>SSL/TLS encryption for data transmission</li>
-                  <li>Secure servers and databases</li>
-                  <li>Regular security audits and updates</li>
-                  <li>Access controls and authentication</li>
-                  <li>Employee training on data protection</li>
-                </ul>
-                <p className="text-sm text-off-white/70 mt-4">
-                  While we strive to protect your information, no method of transmission over the internet is 100% secure.
-                </p>
+            <section className="bg-charcoal-gray/30 rounded-lg p-6 border border-white/10">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-8 bg-indigo-500/20 rounded-full flex items-center justify-center">
+                  <span className="text-indigo-400 text-sm">🔒</span>
+                </div>
+                <h2 className="text-xl font-semibold text-off-white">4. Data Security</h2>
+              </div>
+              <p className="text-base leading-relaxed mb-4">
+                We implement industry-standard security measures to protect your information:
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div className="bg-charcoal-gray/50 rounded-lg p-4 border border-white/10">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-green-400">🔐</span>
+                    <span className="font-semibold text-off-white">Encryption</span>
+                  </div>
+                  <p className="text-sm text-off-white/80">SSL/TLS encryption for data transmission</p>
+                </div>
+                <div className="bg-charcoal-gray/50 rounded-lg p-4 border border-white/10">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-blue-400">🛡️</span>
+                    <span className="font-semibold text-off-white">Infrastructure</span>
+                  </div>
+                  <p className="text-sm text-off-white/80">Secure servers and databases</p>
+                </div>
+                <div className="bg-charcoal-gray/50 rounded-lg p-4 border border-white/10">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-purple-400">🔍</span>
+                    <span className="font-semibold text-off-white">Monitoring</span>
+                  </div>
+                  <p className="text-sm text-off-white/80">Regular security audits and updates</p>
+                </div>
+                <div className="bg-charcoal-gray/50 rounded-lg p-4 border border-white/10">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-orange-400">👥</span>
+                    <span className="font-semibold text-off-white">Training</span>
+                  </div>
+                  <p className="text-sm text-off-white/80">Employee training on data protection</p>
+                </div>
+              </div>
+              <div className="bg-yellow-500/10 rounded-lg p-4 border border-yellow-500/20">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-yellow-400">⚠️</span>
+                  <span className="font-semibold text-off-white">Important Note</span>
+                </div>
+                <p className="text-sm text-off-white/80">While we strive to protect your information, no method of transmission over the internet is 100% secure.</p>
               </div>
             </section>
 

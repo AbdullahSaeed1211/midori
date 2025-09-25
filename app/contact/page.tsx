@@ -48,8 +48,8 @@ export default function ContactPage() {
             <ContactTabs />
 
             {/* Contact Info */}
-            <div className="mt-16 max-w-4xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="mt-16 max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div className="bg-charcoal-gray/95 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-center">
                   <div className="w-12 h-12 bg-kiiro-yellow/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-kiiro-yellow text-xl">📧</span>
@@ -79,6 +79,41 @@ export default function ContactPage() {
                   <h3 className="text-off-white font-semibold mb-2">Time Zone</h3>
                   <p className="text-off-white/60 text-sm mb-3">India Standard Time (IST)</p>
                   <p className="text-kiiro-yellow">UTC +5:30</p>
+                </div>
+
+                <div className="bg-charcoal-gray/95 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-center md:col-span-2 lg:col-span-3">
+                  <div className="w-12 h-12 bg-purple-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-purple-400 text-xl">🏢</span>
+                  </div>
+                  <h3 className="text-off-white font-semibold mb-2">Company Information</h3>
+                  <p className="text-off-white/60 text-sm mb-4">Registered company address and official contact details</p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+                    <div>
+                      <p className="text-off-white/90 text-sm mb-1"><strong>Registered Address:</strong></p>
+                      <p className="text-off-white/70 text-sm">India</p>
+                    </div>
+                    <div>
+                      <p className="text-off-white/90 text-sm mb-1"><strong>Domestic Telephone:</strong></p>
+                      <a href="tel:+917398826339" className="text-kiiro-yellow hover:underline text-sm">
+                        +91 7398826339
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-charcoal-gray/95 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-center md:col-span-2 lg:col-span-3">
+                  <div className="w-12 h-12 bg-orange-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-orange-400 text-xl">🆘</span>
+                  </div>
+                  <h3 className="text-off-white font-semibold mb-2">Customer Support</h3>
+                  <p className="text-off-white/60 text-sm mb-3">Need help? Visit our support center</p>
+                  <a
+                    href="/support"
+                    className="inline-flex items-center gap-2 bg-kiiro-yellow text-charcoal-black px-4 py-2 rounded-lg font-medium hover:bg-kiiro-yellow/90 transition-colors"
+                  >
+                    Visit Support Center
+                    <span className="text-sm">→</span>
+                  </a>
                 </div>
               </div>
             </div>

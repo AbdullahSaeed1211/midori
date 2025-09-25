@@ -37,22 +37,6 @@ interface StatItem {
 // Constants
 const CASE_STUDIES: CaseStudyProps[] = [
   {
-    title: "Coming Soon 1",
-    description: "Coming Soon - An innovative web solution currently in development. Stay tuned for the launch of this exciting new project that will push the boundaries of modern web design and user experience.",
-    image: "/projects/alpha.webp",
-    link: "#",
-    tags: ["Coming Soon", "Innovation", "Next-Gen"],
-    accentColor: "yellow",
-  },
-  {
-    title: "Coming Soon 2",
-    description: "Coming Soon - A transformative wellness platform designed to enhance mindfulness and well-being through innovative digital experiences. An exciting new venture that will revolutionize the wellness industry.",
-    image: "/projects/zen.webp",
-    link: "#",
-    tags: ["Coming Soon", "Wellness", "Mindfulness"],
-    accentColor: "teal",
-  },
-  {
     title: "Guidance Welfare Foundation",
     description: "A comprehensive Islamic Educational Platform built as a full-stack Learning Management System serving over 100 active learners with enterprise-grade architecture.",
     image: "/projects/guidancewelfare.webp",
@@ -127,6 +111,22 @@ const CASE_STUDIES: CaseStudyProps[] = [
     link: "/",
     tags: ["Agency Website", "Portfolio", "UI/UX", "Next.js"],
     accentColor: "yellow",
+  },
+  {
+    title: "Coming Soon 1",
+    description: "Coming Soon - An innovative web solution currently in development. Stay tuned for the launch of this exciting new project that will push the boundaries of modern web design and user experience.",
+    image: "/projects/alpha.webp",
+    link: "#",
+    tags: ["Coming Soon", "Innovation", "Next-Gen"],
+    accentColor: "yellow",
+  },
+  {
+    title: "Coming Soon 2",
+    description: "Coming Soon - A transformative wellness platform designed to enhance mindfulness and well-being through innovative digital experiences. An exciting new venture that will revolutionize the wellness industry.",
+    image: "/projects/zen.webp",
+    link: "#",
+    tags: ["Coming Soon", "Wellness", "Mindfulness"],
+    accentColor: "teal",
   },
 
 ];
@@ -408,12 +408,29 @@ export function CaseStudiesSection({
   variant = 'default'
 }: CaseStudySectionProps) {
   const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
-  const displayedStudies = useMemo(() =>
-    CASE_STUDIES.slice(0, maxItems),
-    [maxItems]
-  );
+  // Hydration-safe effect
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
+
+  const displayedStudies = useMemo(() => {
+    if (showAllProjects) {
+      return CASE_STUDIES.slice(0, maxItems); // Show all projects (respecting maxItems limit)
+    } else {
+      return CASE_STUDIES.slice(0, 3); // Show only first 3 projects
+    }
+  }, [showAllProjects, maxItems]);
+
+  const hasMoreProjects = CASE_STUDIES.length > 3 && maxItems > 3;
+  const remainingCount = CASE_STUDIES.length - 3;
+
+  const handleShowMore = useCallback(() => {
+    setShowAllProjects(!showAllProjects);
+  }, [showAllProjects]);
 
   // Optimized scroll handler
   const handleScrollToSection = useCallback((sectionId: string) => {
@@ -499,7 +516,7 @@ export function CaseStudiesSection({
     <section
       className={cn(
         "py-20 bg-charcoal-black relative overflow-hidden",
-        variant === 'compact' && "py-16",
+        variant === 'compact' && "pb-16",
         className
       )}
       id="case-studies"
@@ -531,14 +548,15 @@ export function CaseStudiesSection({
             whileTap={{ scale: 0.95 }}
           >
             <Trophy className="w-4 h-4" />
-            PROVEN RESULTS
+            CASE STUDIES
           </motion.span>
 
           <h2
             id="case-studies-heading"
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 bg-gradient-to-r from-white to-white/80 bg-clip-text"
           >
-            Real Projects, Real Results
+            Real Projects, Real {' '}
+            <span className="text-kiiro-yellow"> Results</span>
           </h2>
 
           <p className="text-white/70 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed">
@@ -568,30 +586,112 @@ export function CaseStudiesSection({
                 className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
                 variants={containerVariants}
                 initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
+                animate="visible"
+                exit="hidden"
+                key={showAllProjects ? 'all' : 'preview'} // Force re-animation when expanding
+                transition={{
+                  staggerChildren: 0.1,
+                  delayChildren: 0.2
+                }}
               >
-                {displayedStudies.map((caseStudy, index) => (
-                  <motion.div
-                    key={caseStudy.title}
-                    variants={itemVariants}
-                    className={cn(
-                      "group",
-                      index === 0 && "md:col-span-2 lg:col-span-1",
-                      index === 4 && "md:col-span-2 lg:col-span-1"
-                    )}
-                    whileHover={{}}
-                  >
-                    <EnhancedCaseStudyCard
-                      {...caseStudy}
-                      className="h-full"
-                    />
-                  </motion.div>
-                ))}
+                <AnimatePresence mode="popLayout">
+                  {displayedStudies.map((caseStudy, index) => (
+                    <motion.div
+                      key={`${caseStudy.title}-${showAllProjects}`}
+                      variants={itemVariants}
+                      className={cn(
+                        "group",
+                        index === 0 && "md:col-span-2 lg:col-span-1",
+                        index === 4 && "md:col-span-2 lg:col-span-1"
+                      )}
+                      whileHover={{}}
+                      layout
+                      transition={{
+                        duration: 0.4,
+                        ease: "easeOut"
+                      }}
+                    >
+                      <EnhancedCaseStudyCard
+                        {...caseStudy}
+                        className="h-full"
+                      />
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
               </motion.div>
             </Suspense>
           )}
         </AnimatePresence>
+
+        {/* Enhanced View More Button - Only render after hydration */}
+        {isHydrated && hasMoreProjects && (
+          <motion.div
+            className="mt-8 text-center"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 }
+            }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.button
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                // Prevent any potential scroll behavior
+                const currentScrollY = window.scrollY;
+                handleShowMore();
+                // Restore scroll position after state update
+                requestAnimationFrame(() => {
+                  window.scrollTo(0, currentScrollY);
+                });
+              }}
+              className="group inline-flex items-center gap-3 px-6 py-3 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold hover:bg-white/20 hover:border-white/30 focus:outline-none focus:ring-2 focus:ring-kiiro-yellow focus:ring-offset-2 focus:ring-offset-charcoal-black transition-all duration-300"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label={showAllProjects ? "Show fewer case studies" : `View all ${CASE_STUDIES.length} case studies`}
+            >
+              {showAllProjects ? (
+                <>
+                  <span>Show Less</span>
+                  <motion.div
+                    className="w-4 h-4"
+                    animate={{ rotate: 180 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </motion.div>
+                </>
+              ) : (
+                <>
+                  <span>View All Projects ({remainingCount} more)</span>
+                  <motion.div
+                    className="w-4 h-4"
+                    animate={{ y: [0, 2, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </motion.div>
+                </>
+              )}
+            </motion.button>
+
+            {/* Dynamic helper text */}
+            <motion.p
+              className="mt-2 text-sm text-white/60"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              {showAllProjects
+                ? "Showing all available projects"
+                : `${remainingCount} additional projects available`
+              }
+            </motion.p>
+          </motion.div>
+        )}
 
         {/* CTA Section */}
         <motion.div

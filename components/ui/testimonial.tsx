@@ -122,7 +122,7 @@ function ClientFeedback() {
             customVariants={revealVariants}
             timelineRef={testimonialRef}
           >
-            Real Results From Real Clients
+            Real Results From {' '}<span className="text-kiiro-yellow">Real Clients</span>
           </TimelineContent>
           <TimelineContent
             as="p"
@@ -131,7 +131,7 @@ function ClientFeedback() {
             customVariants={revealVariants}
             timelineRef={testimonialRef}
           >
-            See how we&apos;ve helped businesses improve their website conversions
+            See how we&apos;ve helped businesses improve their website conversions 
           </TimelineContent>
         </article>
         <div className="lg:grid lg:grid-cols-3 gap-2 flex flex-col w-full lg:py-10 pt-10 pb-4 lg:px-10 px-4">

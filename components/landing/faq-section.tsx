@@ -70,6 +70,9 @@ const faqData = [
 
 export function FaqSection() {
   const [openItem, setOpenItem] = useState<string | null>(faqData[0].id);
+  const [showAll, setShowAll] = useState(false);
+
+  const visibleFaqs = showAll ? faqData : faqData.slice(0, 4);
 
   return (
     <BlurFade delay={0.1} inView>
@@ -92,7 +95,7 @@ export function FaqSection() {
               onValueChange={setOpenItem}
               className="w-full space-y-4"
             >
-              {faqData.map((item, index) => (
+              {visibleFaqs.map((item, index) => (
                 <AccordionItem 
                   key={item.id} 
                   value={item.id} 
@@ -117,6 +120,32 @@ export function FaqSection() {
                 </AccordionItem>
               ))}
             </Accordion>
+
+            {/* View More/Less Button */}
+            {faqData.length > 4 && (
+              <div className="text-center mt-8">
+                <button
+                  onClick={() => setShowAll(!showAll)}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-kiiro-yellow/10 hover:bg-kiiro-yellow/20 border border-kiiro-yellow/30 hover:border-kiiro-yellow/50 rounded-lg text-kiiro-yellow font-medium transition-all duration-200 hover:scale-105"
+                >
+                  {showAll ? (
+                    <>
+                      View Less
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                      </svg>
+                    </>
+                  ) : (
+                    <>
+                      View {faqData.length - 4} More FAQs
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </>
+                  )}
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </section>

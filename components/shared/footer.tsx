@@ -1,7 +1,5 @@
-"use client";
-
 import { Linkedin, Mail } from 'lucide-react';
-import Link from 'next/link'; // Need Link for internal navigation
+import Link from 'next/link';
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -16,6 +14,12 @@ export function Footer() {
   const legalLinks = [
     { label: 'Terms of Service', href: '/terms' },
     { label: 'Privacy Policy', href: '/privacy' },
+    { label: 'Cancellation Policy', href: '/cancellation' },
+  ];
+
+  const supportLinks = [
+    { label: 'Support', href: '/support' },
+    { label: 'Contact', href: '/contact' },
   ];
 
   return (
@@ -49,14 +53,14 @@ export function Footer() {
               </nav>
             </div>
 
-          {/* Column 3: Legal */}
+          {/* Column 3: Support */}
           <div className="text-center md:text-left">
-            <h4 className="font-semibold text-off-white mb-3 uppercase tracking-wider text-xs">Legal</h4>
+            <h4 className="font-semibold text-off-white mb-3 uppercase tracking-wider text-xs">Support</h4>
             <nav className="flex flex-col space-y-2">
-              {legalLinks.map((link) => (
-                <Link 
+              {supportLinks.map((link) => (
+                <Link
                   key={link.label}
-                  href={link.href} 
+                  href={link.href}
                   className="text-sm text-off-white/80 hover:text-kiiro-yellow transition-colors"
                 >
                   {link.label}
@@ -65,20 +69,32 @@ export function Footer() {
             </nav>
           </div>
 
-          {/* Column 4: Social Links */}
+          {/* Column 4: Legal & Social */}
           <div className="text-center md:text-left">
+            <h4 className="font-semibold text-off-white mb-3 uppercase tracking-wider text-xs">Legal</h4>
+            <nav className="flex flex-col space-y-2 mb-4">
+              {legalLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="text-sm text-off-white/80 hover:text-kiiro-yellow transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
             <h4 className="font-semibold text-off-white mb-3 uppercase tracking-wider text-xs">Connect</h4>
             <div className="flex space-x-4 justify-center md:justify-start">
-                <a 
+                <a
                 href="https://www.linkedin.com/in/abdullah-saeed-dev/"
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="LinkedIn"
                   className="text-off-white/80 hover:text-kiiro-yellow transition-colors"
                 >
                 <Linkedin size={18} />
                 </a>
-                <a 
+                <a
                   href="mailto:hello@kiiro.cx"
                   aria-label="Email"
                   className="text-off-white/80 hover:text-kiiro-yellow transition-colors duration-300"
