@@ -2,7 +2,6 @@
 'use client';
 
 import {
-  AlertTriangle,
   ArrowRight,
   HelpCircle,
   CheckCircle,

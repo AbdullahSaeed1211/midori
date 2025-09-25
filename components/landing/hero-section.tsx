@@ -11,7 +11,6 @@ import { Spotlight } from "@/components/ui/spotlight";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { DotPattern } from "@/components/magicui/dot-pattern";
 import { Marquee } from "@/components/magicui/marquee";
-import { BrandedParallaxText } from "@/components/ui/parallax-text-scroll";
 
 
 export function HeroSection() {

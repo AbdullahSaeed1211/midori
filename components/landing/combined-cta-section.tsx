@@ -1,6 +1,6 @@
 "use client";
 
-import { Star, Users, Zap, ArrowRight, Shield, Award, CheckCircle, Clock } from "lucide-react";
+import { Star, Users, Zap, ArrowRight, Shield, CheckCircle, Clock } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 

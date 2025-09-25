@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
-import { cn } from "@/lib/utils";
 import React, { useRef } from "react";
 
 const Skiper19 = () => {
