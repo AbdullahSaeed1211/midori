@@ -261,12 +261,24 @@ export default function BlogPage() {
 
                       {/* Image Side */}
                       <div className="relative overflow-hidden">
-                        <div className="aspect-[4/3] md:aspect-square bg-gradient-to-br from-kiiro-yellow/20 to-kiiro-yellow/5 relative">
-                          <div className="absolute inset-0 bg-gradient-to-t from-charcoal-black/50 to-transparent" />
+                        <div className="aspect-[4/3] md:aspect-square bg-charcoal-gray relative">
+                          {/* Subtle pattern background */}
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.05)_1px,transparent_0)] bg-[size:20px_20px] opacity-30"></div>
                           <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="text-center text-off-white/60">
-                              <div className="text-6xl mb-4">📊</div>
-                              <p className="text-sm font-medium">Featured Article</p>
+                            <div className="text-center">
+                              <div className="text-6xl mb-4 opacity-60">
+                                {post.category === 'SEO' && '🔍'}
+                                {post.category === 'Design' && '🎨'}
+                                {post.category === 'Conversion' && '📈'}
+                                {post.category === 'Performance' && '⚡'}
+                                {post.category === 'Marketing' && '📢'}
+                                {post.category === 'Business' && '💼'}
+                                {post.category === 'Analytics' && '📊'}
+                                {post.category === 'Security' && '🔒'}
+                                {post.category === 'E-commerce' && '🛒'}
+                              </div>
+                              <p className="text-sm font-medium text-off-white/70">{post.category} Article</p>
+                              <p className="text-xs text-off-white/50 mt-1">Featured</p>
                             </div>
                           </div>
                         </div>
@@ -303,11 +315,12 @@ export default function BlogPage() {
                       <div className="absolute inset-0 bg-gradient-to-br from-kiiro-yellow/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                       {/* Featured Image */}
-                      <div className="aspect-[16/10] bg-gradient-to-br from-kiiro-yellow/20 to-kiiro-yellow/5 relative overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-black/60 via-transparent to-transparent" />
+                      <div className="aspect-[16/10] bg-charcoal-gray relative overflow-hidden">
+                        {/* Clean dot pattern background */}
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.08)_1px,transparent_0)] bg-[size:16px_16px] opacity-40"></div>
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="text-center text-off-white/60">
-                            <div className="text-4xl mb-2">
+                          <div className="text-center">
+                            <div className="text-3xl mb-3 opacity-70">
                               {post.category === 'SEO' && '🔍'}
                               {post.category === 'Design' && '🎨'}
                               {post.category === 'Conversion' && '📈'}
@@ -318,7 +331,9 @@ export default function BlogPage() {
                               {post.category === 'Security' && '🔒'}
                               {post.category === 'E-commerce' && '🛒'}
                             </div>
-                            <p className="text-xs font-medium">{post.category}</p>
+                            <p className="text-xs font-semibold text-off-white/80 px-3 py-1 bg-off-white/10 rounded-full backdrop-blur-sm">
+                              {post.category}
+                            </p>
                           </div>
                         </div>
                       </div>
