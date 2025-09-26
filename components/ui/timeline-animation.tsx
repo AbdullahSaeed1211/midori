@@ -10,7 +10,17 @@ interface TimelineContentProps {
   timelineRef: RefObject<HTMLElement>;
   className?: string;
   as?: keyof JSX.IntrinsicElements;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent) => void;
+  id?: string;
+  role?: string;
+  tabIndex?: number;
+  'aria-label'?: string;
+  onKeyDown?: (e: React.KeyboardEvent) => void;
+  viewport?: {
+    once?: boolean;
+    margin?: string;
+    amount?: number | "some" | "all";
+  };
 }
 
 export function TimelineContent({
@@ -21,6 +31,12 @@ export function TimelineContent({
   className = "",
   as = "div",
   onClick,
+  id,
+  role,
+  tabIndex,
+  'aria-label': ariaLabel,
+  onKeyDown,
+  viewport,
 }: TimelineContentProps) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const MotionComponent = motion(as as any);
@@ -30,10 +46,15 @@ export function TimelineContent({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, root: timelineRef }}
+      viewport={viewport || { once: true, root: timelineRef }}
       custom={animationNum}
       variants={customVariants}
       onClick={onClick}
+      id={id}
+      role={role}
+      tabIndex={tabIndex}
+      aria-label={ariaLabel}
+      onKeyDown={onKeyDown}
     >
       {children}
     </MotionComponent>
