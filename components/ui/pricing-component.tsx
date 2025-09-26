@@ -54,14 +54,14 @@ function PricingCards() {
   }: {
     isYellow?: boolean
   }) => (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-3 hover:scale-105 transition-transform duration-200 cursor-pointer">
       <div
         className={[
           "relative inline-flex h-6 w-11 items-center rounded-full",
-          "ring-1 ring-inset",
+          "ring-1 ring-inset transition-all duration-200",
           isYellow
-            ? "bg-black ring-kiiro-yellow/50"
-            : "bg-neutral-200 ring-neutral-300",
+            ? "bg-black ring-kiiro-yellow/50 hover:ring-kiiro-yellow/70"
+            : "bg-neutral-200 ring-neutral-300 hover:ring-neutral-400",
         ].join(" ")}
       >
         <span
@@ -70,12 +70,12 @@ function PricingCards() {
             isYellow
               ? "bg-kiiro-yellow"
               : "bg-white",
-            "shadow-sm",
+            "shadow-sm transition-transform duration-200",
           ].join(" ")}
         />
       </div>
-      <span className={["text-sm", isYellow ? "text-kiiro-accent" : "text-neutral-600"].join(" ")}>
-        Fast delivery (5 days)
+      <span className={["text-sm transition-colors duration-200", isYellow ? "text-kiiro-accent hover:text-kiiro-yellow" : "text-neutral-600 hover:text-neutral-800"].join(" ")}>
+        Express delivery (+$299)
       </span>
     </div>
   )
@@ -168,6 +168,8 @@ function PricingCards() {
             "border border-neutral-200/70",
             "shadow-[0_12px_40px_-15px_rgba(0,0,0,0.15)]",
             "ring-1 ring-inset ring-white/40",
+            "hover:scale-105 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.25)] hover:border-neutral-300/80",
+            "transition-all duration-300 ease-out cursor-pointer",
           ].join(" ")}
         >
           {/* Most Friendly Badge */}
@@ -245,6 +247,8 @@ function PricingCards() {
             "border border-kiiro-yellow",
             "shadow-[0_12px_50px_-15px_rgba(0,0,0,0.55)]",
             "ring-1 ring-inset ring-kiiro-yellow/20",
+            "hover:scale-105 hover:shadow-[0_20px_70px_-15px_rgba(0,0,0,0.7)] hover:border-kiiro-yellow/80 hover:ring-kiiro-yellow/40",
+            "transition-all duration-300 ease-out cursor-pointer",
           ].join(" ")}
         >
           {/* Best Value Badge */}
