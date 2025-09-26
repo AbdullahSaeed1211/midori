@@ -315,7 +315,7 @@ export function TestimonialsSection() {
           customVariants={revealVariants}
           timelineRef={testimonialRef}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center items-center gap-4 sm:gap-8 mt-6 sm:mt-8 mb-4 px-4"
+          className="grid grid-cols-1 gap-3 mt-6 sm:mt-8 mb-4 px-4 sm:flex sm:flex-wrap sm:justify-center sm:items-center sm:gap-8"
         >
           <div className="flex items-center gap-2 text-off-white/80">
             <div className="flex items-center gap-1">
