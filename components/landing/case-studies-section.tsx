@@ -583,21 +583,23 @@ export function CaseStudiesSection({
           ) : (
             <Suspense fallback={<div>Loading case studies...</div>}>
               <motion.div
-                className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+                className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 overflow-hidden"
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
                 key={showAllProjects ? 'all' : 'preview'} // Force re-animation when expanding
                 transition={{
-                  staggerChildren: 0.1,
-                  delayChildren: 0.2
+                  staggerChildren: 0.08,
+                  delayChildren: 0.1,
+                  duration: 0.4
                 }}
+                layout
               >
-                <AnimatePresence mode="popLayout">
+                <AnimatePresence mode="popLayout" initial={false}>
                   {displayedStudies.map((caseStudy, index) => (
                     <motion.div
-                      key={`${caseStudy.title}-${showAllProjects}`}
+                      key={`${caseStudy.title}-${showAllProjects ? 'expanded' : 'collapsed'}`}
                       variants={itemVariants}
                       className={cn(
                         "group",
@@ -606,9 +608,25 @@ export function CaseStudiesSection({
                       )}
                       whileHover={{}}
                       layout
-                      transition={{
-                        duration: 0.4,
-                        ease: "easeOut"
+                      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                      animate={{
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        transition: {
+                          duration: 0.4,
+                          ease: "easeOut",
+                          delay: index * 0.05
+                        }
+                      }}
+                      exit={{
+                        opacity: 0,
+                        y: -20,
+                        scale: 0.95,
+                        transition: {
+                          duration: 0.3,
+                          ease: "easeIn"
+                        }
                       }}
                     >
                       <EnhancedCaseStudyCard
@@ -626,7 +644,7 @@ export function CaseStudiesSection({
         {/* Enhanced View More Button - Only render after hydration */}
         {isHydrated && hasMoreProjects && (
           <motion.div
-            className="mt-8 text-center"
+            className="mt-12 text-center"
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0 }
@@ -635,55 +653,49 @@ export function CaseStudiesSection({
             whileInView="visible"
             viewport={{ once: true }}
             transition={{ duration: 0.3 }}
+            layout
           >
             <motion.button
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                // Prevent any potential scroll behavior
-                const currentScrollY = window.scrollY;
-                handleShowMore();
-                // Restore scroll position after state update
-                requestAnimationFrame(() => {
-                  window.scrollTo(0, currentScrollY);
-                });
-              }}
-              className="group inline-flex items-center gap-3 px-6 py-3 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold hover:bg-white/20 hover:border-white/30 focus:outline-none focus:ring-2 focus:ring-kiiro-yellow focus:ring-offset-2 focus:ring-offset-charcoal-black transition-all duration-300"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
+              onClick={handleShowMore}
+              className="group inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-sm border border-white/20 text-white font-semibold hover:from-white/20 hover:to-white/10 hover:border-white/30 focus:outline-none focus:ring-2 focus:ring-kiiro-yellow focus:ring-offset-2 focus:ring-offset-charcoal-black transition-all duration-300 shadow-lg hover:shadow-xl"
+              whileHover={{ scale: 1.02, y: -1 }}
+              whileTap={{ scale: 0.98 }}
               aria-label={showAllProjects ? "Show fewer case studies" : `View all ${CASE_STUDIES.length} case studies`}
+              layout
             >
               {showAllProjects ? (
                 <>
                   <span>Show Less</span>
                   <motion.div
-                    className="w-4 h-4"
+                    className="w-5 h-5"
                     animate={{ rotate: 180 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
-                    <ChevronRight className="w-4 h-4" />
+                    <ChevronRight className="w-5 h-5" />
                   </motion.div>
                 </>
               ) : (
                 <>
                   <span>View All Projects ({remainingCount} more)</span>
                   <motion.div
-                    className="w-4 h-4"
-                    animate={{ y: [0, 2, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
+                    className="w-5 h-5"
+                    animate={{ x: [0, 3, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                   >
-                    <ChevronRight className="w-4 h-4" />
+                    <ChevronRight className="w-5 h-5" />
                   </motion.div>
                 </>
               )}
             </motion.button>
 
-            {/* Dynamic helper text */}
+            {/* Dynamic helper text with smooth transition */}
             <motion.p
-              className="mt-2 text-sm text-white/60"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
+              className="mt-3 text-sm text-white/60"
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.3 }}
+              key={showAllProjects ? 'expanded' : 'collapsed'}
+              layout
             >
               {showAllProjects
                 ? "Showing all available projects"
