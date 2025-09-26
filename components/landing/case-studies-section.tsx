@@ -371,7 +371,7 @@ const CaseStudySkeleton = () => (
 // Enhanced Stats Component
 const StatsSection = React.memo(() => (
   <motion.div
-    className="flex flex-wrap justify-center gap-8 mt-12"
+    className="grid grid-cols-3 gap-4 mt-12 sm:flex sm:flex-wrap sm:justify-center sm:gap-8"
     variants={containerVariants}
     initial="hidden"
     whileInView="visible"
@@ -381,7 +381,7 @@ const StatsSection = React.memo(() => (
       <motion.div
         key={stat.label}
         variants={itemVariants}
-        className="group text-center p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-kiiro-yellow/30 transition-all duration-300"
+        className="group text-center p-3 sm:p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-kiiro-yellow/30 transition-all duration-300"
         whileHover={{ scale: 1.05, y: -5 }}
         whileTap={{ scale: 0.95 }}
       >

@@ -331,7 +331,7 @@ export function TestimonialsSection() {
           </div>
           <div className="flex items-center gap-2 text-off-white/80">
             <div className="w-2 h-2 rounded-full bg-kiiro-yellow animate-pulse"></div>
-            <span className="text-sm font-medium">500+ Projects Completed</span>
+            <span className="text-sm font-medium">15+ Projects Completed</span>
                       </div>
         </TimelineContent>
 
