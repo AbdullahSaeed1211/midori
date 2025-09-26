@@ -381,15 +381,15 @@ const StatsSection = React.memo(() => (
       <motion.div
         key={stat.label}
         variants={itemVariants}
-        className="group text-center p-3 sm:p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-kiiro-yellow/30 transition-all duration-300"
+        className="group text-center p-2 sm:p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-kiiro-yellow/30 transition-all duration-300"
         whileHover={{ scale: 1.05, y: -5 }}
         whileTap={{ scale: 0.95 }}
       >
-        <div className="flex justify-center mb-3">
-          <stat.icon className={cn("w-8 h-8", stat.color, "group-hover:scale-110 transition-transform duration-300")} />
+        <div className="flex justify-center mb-2 sm:mb-3">
+          <stat.icon className={cn("w-6 h-6 sm:w-8 sm:h-8", stat.color, "group-hover:scale-110 transition-transform duration-300")} />
         </div>
-        <div className="text-2xl font-bold text-kiiro-yellow mb-1">{stat.value}</div>
-        <div className="text-sm text-off-white/70 mb-2">{stat.label}</div>
+        <div className="text-xl sm:text-2xl font-bold text-kiiro-yellow mb-1">{stat.value}</div>
+        <div className="text-sm text-off-white/70 mb-1 sm:mb-2">{stat.label}</div>
         <div className="text-xs text-off-white/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           {stat.description}
         </div>
