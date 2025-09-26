@@ -594,7 +594,6 @@ export function CaseStudiesSection({
                   delayChildren: 0.1,
                   duration: 0.4
                 }}
-                layout
               >
                 <AnimatePresence mode="popLayout" initial={false}>
                   {displayedStudies.map((caseStudy, index) => (
@@ -607,7 +606,6 @@ export function CaseStudiesSection({
                         index === 4 && "md:col-span-2 lg:col-span-1"
                       )}
                       whileHover={{}}
-                      layout
                       initial={{ opacity: 0, y: 20, scale: 0.95 }}
                       animate={{
                         opacity: 1,
@@ -653,15 +651,21 @@ export function CaseStudiesSection({
             whileInView="visible"
             viewport={{ once: true }}
             transition={{ duration: 0.3 }}
-            layout
           >
             <motion.button
-              onClick={handleShowMore}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                // Prevent any scroll behavior by capturing current position
+                const currentScrollY = window.scrollY;
+                handleShowMore();
+                // Immediately restore scroll position to prevent jump
+                setTimeout(() => window.scrollTo(0, currentScrollY), 0);
+              }}
               className="group inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-sm border border-white/20 text-white font-semibold hover:from-white/20 hover:to-white/10 hover:border-white/30 focus:outline-none focus:ring-2 focus:ring-kiiro-yellow focus:ring-offset-2 focus:ring-offset-charcoal-black transition-all duration-300 shadow-lg hover:shadow-xl"
               whileHover={{ scale: 1.02, y: -1 }}
               whileTap={{ scale: 0.98 }}
               aria-label={showAllProjects ? "Show fewer case studies" : `View all ${CASE_STUDIES.length} case studies`}
-              layout
             >
               {showAllProjects ? (
                 <>
@@ -695,7 +699,6 @@ export function CaseStudiesSection({
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.3 }}
               key={showAllProjects ? 'expanded' : 'collapsed'}
-              layout
             >
               {showAllProjects
                 ? "Showing all available projects"
