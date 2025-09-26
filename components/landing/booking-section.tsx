@@ -85,15 +85,15 @@ export function BookingSection() {
 
           {/* Enhanced Benefits Before CTA */}
           <div className="grid grid-cols-1 gap-3 mb-12 max-w-4xl mx-auto sm:flex sm:flex-wrap sm:justify-center sm:gap-6">
-            <div className="flex items-center gap-2 text-sm text-off-white/80 bg-charcoal-black/30 backdrop-blur-sm px-4 py-2 rounded-full border border-off-white/10">
+            <div className="flex items-center justify-center gap-2 text-sm text-off-white/80 bg-charcoal-black/30 backdrop-blur-sm px-4 py-2 rounded-full border border-off-white/10">
               <Clock className="w-4 h-4 text-kiiro-yellow" />
               <span>15-minute strategy call</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-off-white/80 bg-charcoal-black/30 backdrop-blur-sm px-4 py-2 rounded-full border border-off-white/10">
+            <div className="flex items-center justify-center gap-2 text-sm text-off-white/80 bg-charcoal-black/30 backdrop-blur-sm px-4 py-2 rounded-full border border-off-white/10">
               <CheckCircle className="w-4 h-4 text-teal-accent" />
               <span>Free website analysis</span>
             </div>
-            <div className="flex items-center gap-2 text-sm text-off-white/80 bg-charcoal-black/30 backdrop-blur-sm px-4 py-2 rounded-full border border-off-white/10">
+            <div className="flex items-center justify-center gap-2 text-sm text-off-white/80 bg-charcoal-black/30 backdrop-blur-sm px-4 py-2 rounded-full border border-off-white/10">
               <Zap className="w-4 h-4 text-kiiro-yellow" />
               <span>Actionable recommendations</span>
             </div>

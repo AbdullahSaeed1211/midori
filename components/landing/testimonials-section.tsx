@@ -317,7 +317,7 @@ export function TestimonialsSection() {
           viewport={{ once: true }}
           className="grid grid-cols-1 gap-3 mt-6 sm:mt-8 mb-4 px-4 sm:flex sm:flex-wrap sm:justify-center sm:items-center sm:gap-8"
         >
-          <div className="flex items-center gap-2 text-off-white/80">
+          <div className="flex items-center justify-center gap-2 text-off-white/80">
             <div className="flex items-center gap-1">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-4 h-4 fill-kiiro-yellow text-kiiro-yellow" />
@@ -325,14 +325,14 @@ export function TestimonialsSection() {
             </div>
             <span className="text-sm font-medium">5.0 Average Rating</span>
           </div>
-          <div className="flex items-center gap-2 text-off-white/80">
+          <div className="flex items-center justify-center gap-2 text-off-white/80">
             <CheckCircle className="w-4 h-4 text-green-400" />
             <span className="text-sm font-medium">100% Verified Reviews</span>
           </div>
-          <div className="flex items-center gap-2 text-off-white/80">
+          <div className="flex items-center justify-center gap-2 text-off-white/80">
             <div className="w-2 h-2 rounded-full bg-kiiro-yellow animate-pulse"></div>
             <span className="text-sm font-medium">15+ Projects Completed</span>
-                      </div>
+          </div>
         </TimelineContent>
 
         {/* Animated Statistics */}
