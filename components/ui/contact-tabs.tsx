@@ -90,7 +90,7 @@ export function ContactTabs() {
         message: ''
       });
 
-    } catch (error) {
+    } catch {
       setStatus({
         type: 'error',
         message: 'Something went wrong. Please try again or email us directly.'
