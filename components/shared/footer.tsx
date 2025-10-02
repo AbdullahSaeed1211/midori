@@ -86,7 +86,7 @@ export function Footer() {
             <h4 className="font-semibold text-off-white mb-3 uppercase tracking-wider text-xs">Connect</h4>
             <div className="flex space-x-4 justify-center md:justify-start">
                 <a
-                href="https://www.linkedin.com/in/abdullah-saeed-dev/"
+                href="https://www.linkedin.com/company/kiirocx"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
@@ -95,7 +95,7 @@ export function Footer() {
                 <Linkedin size={18} />
                 </a>
                 <a
-                  href="mailto:hello@kiiro.cx"
+                  href="mailto:abdullah.saeed1724@gmail.com"
                   aria-label="Email"
                   className="text-off-white/80 hover:text-kiiro-yellow transition-colors duration-300"
                 >

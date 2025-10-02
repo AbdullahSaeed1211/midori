@@ -3,18 +3,100 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Cal from "@calcom/embed-react";
-import { Calendar, MessageSquare, Zap, Send } from "lucide-react";
+import { Calendar, MessageSquare, Zap, Send, CheckCircle, AlertCircle } from "lucide-react";
 
 type TabType = "book" | "message" | "chat";
 
+interface FormData {
+  name: string;
+  email: string;
+  company: string;
+  budgetRange: string;
+  message: string;
+}
+
+interface FormStatus {
+  type: 'idle' | 'loading' | 'success' | 'error';
+  message: string;
+}
+
 export function ContactTabs() {
   const [activeTab, setActiveTab] = useState<TabType>("book");
+
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    email: '',
+    company: '',
+    budgetRange: '',
+    message: ''
+  });
+
+  const [status, setStatus] = useState<FormStatus>({
+    type: 'idle',
+    message: ''
+  });
 
   const tabs = [
     { id: "book", label: "📞 Book a Call", icon: Calendar, description: "15-min free consultation" },
     { id: "message", label: "📝 Send Message", icon: MessageSquare, description: "Detailed inquiries" },
     { id: "chat", label: "💬 Quick Chat", icon: Zap, description: "Instant responses" },
   ];
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus({ type: 'loading', message: 'Sending your message...' });
+
+    try {
+      // Map budgetRange to projectType for the API
+      const projectType = formData.budgetRange ? `Budget: ${formData.budgetRange}` : 'General Inquiry';
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          projectType: projectType,
+          message: formData.message
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      setStatus({
+        type: 'success',
+        message: 'Thanks! We\'ll get back to you within 24 hours.'
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        budgetRange: '',
+        message: ''
+      });
+
+    } catch (error) {
+      setStatus({
+        type: 'error',
+        message: 'Something went wrong. Please try again or email us directly.'
+      });
+    }
+  };
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -90,13 +172,16 @@ export function ContactTabs() {
               </p>
             </div>
 
-            <form className="max-w-2xl mx-auto space-y-6">
+            <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-off-white text-sm font-medium mb-2">Name *</label>
                   <input
                     type="text"
+                    name="name"
                     required
+                    value={formData.name}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-3 bg-charcoal-black/50 border border-white/20 rounded-lg text-off-white placeholder:text-off-white/40 focus:outline-none focus:border-kiiro-yellow transition-colors"
                     placeholder="Your full name"
                   />
@@ -105,7 +190,10 @@ export function ContactTabs() {
                   <label className="block text-off-white text-sm font-medium mb-2">Email *</label>
                   <input
                     type="email"
+                    name="email"
                     required
+                    value={formData.email}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-3 bg-charcoal-black/50 border border-white/20 rounded-lg text-off-white placeholder:text-off-white/40 focus:outline-none focus:border-kiiro-yellow transition-colors"
                     placeholder="your@email.com"
                   />
@@ -117,13 +205,21 @@ export function ContactTabs() {
                   <label className="block text-off-white text-sm font-medium mb-2">Company</label>
                   <input
                     type="text"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
                     className="w-full px-4 py-3 bg-charcoal-black/50 border border-white/20 rounded-lg text-off-white placeholder:text-off-white/40 focus:outline-none focus:border-kiiro-yellow transition-colors"
                     placeholder="Your company name"
                   />
                 </div>
                 <div>
                   <label className="block text-off-white text-sm font-medium mb-2">Budget Range</label>
-                  <select className="w-full px-4 py-3 bg-charcoal-black/50 border border-white/20 rounded-lg text-off-white focus:outline-none focus:border-kiiro-yellow transition-colors">
+                  <select
+                    name="budgetRange"
+                    value={formData.budgetRange}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 bg-charcoal-black/50 border border-white/20 rounded-lg text-off-white focus:outline-none focus:border-kiiro-yellow transition-colors"
+                  >
                     <option value="">Select budget range</option>
                     <option value="under-1k">Under $1,000</option>
                     <option value="1k-3k">$1,000 - $3,000</option>
@@ -137,20 +233,55 @@ export function ContactTabs() {
               <div>
                 <label className="block text-off-white text-sm font-medium mb-2">Project Details *</label>
                 <textarea
+                  name="message"
                   required
                   rows={5}
+                  value={formData.message}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 bg-charcoal-black/50 border border-white/20 rounded-lg text-off-white placeholder:text-off-white/40 focus:outline-none focus:border-kiiro-yellow transition-colors resize-none"
                   placeholder="Tell us about your project, timeline, and what you're looking to achieve..."
                 />
               </div>
 
+              {/* Status Message */}
+              {status.type !== 'idle' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`flex items-center gap-2 p-3 rounded-lg text-sm ${
+                    status.type === 'error' && "bg-red-500/10 text-red-400 border border-red-500/20"
+                  } ${
+                    status.type === 'success' && "bg-green-500/10 text-green-400 border border-green-500/20"
+                  } ${
+                    status.type === 'loading' && "bg-kiiro-yellow/10 text-kiiro-yellow border border-kiiro-yellow/20"
+                  }`}
+                >
+                  {status.type === 'error' && <AlertCircle className="h-4 w-4 flex-shrink-0" />}
+                  {status.type === 'success' && <CheckCircle className="h-4 w-4 flex-shrink-0" />}
+                  {status.type === 'loading' && (
+                    <div className="h-4 w-4 border-2 border-kiiro-yellow border-t-transparent rounded-full animate-spin flex-shrink-0" />
+                  )}
+                  <span className="leading-relaxed">{status.message}</span>
+                </motion.div>
+              )}
+
               <div className="text-center">
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-kiiro-yellow text-charcoal-black font-bold rounded-lg hover:bg-kiiro-yellow/90 transition-colors shadow-lg shadow-kiiro-yellow/25"
+                  disabled={status.type === 'loading'}
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-kiiro-yellow text-charcoal-black font-bold rounded-lg hover:bg-kiiro-yellow/90 transition-colors shadow-lg shadow-kiiro-yellow/25 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <Send className="w-5 h-5" />
-                  Send Message
+                  {status.type === 'loading' ? (
+                    <>
+                      <div className="h-5 w-5 border-2 border-charcoal-black border-t-transparent rounded-full animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      Send Message
+                    </>
+                  )}
                 </button>
                 <p className="text-xs text-off-white/50 mt-3">
                   ⚡ We typically respond within 4 hours during business hours

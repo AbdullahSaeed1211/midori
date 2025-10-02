@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Send notification email to Abdullah
+    // Send notification email to business owner
     await resend.emails.send({
       from: 'testimonials@resend.abdullahsaeed.me',
       to: 'abdullah.saeed1724@gmail.com',
