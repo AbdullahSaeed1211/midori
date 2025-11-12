@@ -4,23 +4,29 @@ const nextConfig: NextConfig = {
   // Performance optimizations for Core Web Vitals
   poweredByHeader: false,
 
-  // Image optimization settings
+  // Image optimization settings - updated for Next.js 15
   images: {
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    domains: ['kiiro.cx'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'kiiro.cx',
+      },
+    ],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-
-  // Compression and optimization
-  compress: true,
 
   // Experimental features for better performance
   experimental: {
     scrollRestoration: true,
   },
+
+  // Compression and optimization
+  compress: true,
+
 
   // Headers for security and performance
   async headers() {

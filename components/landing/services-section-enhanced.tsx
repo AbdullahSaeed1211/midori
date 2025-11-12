@@ -73,16 +73,8 @@ export function ServicesSection() {
   return (
     <BlurFade delay={0.15} inView>
       <section className="relative isolate overflow-hidden bg-charcoal-black py-16 sm:py-20 lg:py-24 text-off-white">
-        {/* Enhanced Background Pattern */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 opacity-[0.03]" style={{
-            backgroundImage: `radial-gradient(circle at 25px 25px, rgba(255, 209, 0, 0.15) 1px, transparent 0),
-                             radial-gradient(circle at 75px 75px, rgba(255, 209, 0, 0.1) 1px, transparent 0)`,
-            backgroundSize: '120px 120px'
-          }} />
-          {/* Subtle gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-charcoal-black/50 to-charcoal-black" />
-        </div>
+        {/* Subtle Background Pattern */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.03)_1px,transparent_0)] bg-[size:40px_40px] opacity-30" />
 
         <div className="container mx-auto max-w-7xl px-4 relative">
           {/* Enhanced Header */}
@@ -108,7 +100,7 @@ export function ServicesSection() {
               transition={{ duration: 0.8, delay: 0.1 }}
             >
               4 Problems{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-kiiro-yellow via-kiiro-yellow to-kiiro-yellow/80">
+              <span className="text-kiiro-yellow">
                 Costing You Customers
               </span>
             </motion.h2>
@@ -133,10 +125,9 @@ export function ServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.2 }}
-                className="group relative bg-gradient-to-bt from-red-950/40 via-charcoal-black/80 to-red-900/20 rounded-3xl overflow-hidden shadow-2xl border border-red-500/30 p-4 sm:p-5 lg:p-6 backdrop-blur-sm"
+                className="group relative bg-charcoal-black rounded-3xl overflow-hidden shadow-2xl border-2 border-red-500/30 p-4 sm:p-5 lg:p-6"
               >
-                {/* Enhanced background effects */}
-                <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-transparent to-red-950/30" />
+                {/* Subtle shadow effects */}
                 <div className="absolute top-0 right-0 w-40 h-40 bg-red-500/5 rounded-full blur-3xl transform translate-x-20 -translate-y-20" />
                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-red-400/5 rounded-full blur-2xl transform -translate-x-16 translate-y-16" />
 
@@ -157,8 +148,8 @@ export function ServicesSection() {
                         transition={{ duration: 0.6, delay: index * 0.1 + 0.1 }}
                         className="group/item relative overflow-hidden rounded-xl p-3 hover:border-red-400/40 transition-all duration-300 cursor-pointer"
                       >
-                        {/* Subtle glow effect */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />
+                        {/* Subtle hover effect */}
+                        <div className="absolute inset-0 bg-red-500/5 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />
 
                         <div className="flex items-start gap-3 relative z-10">
                           <div className="flex-shrink-0">
@@ -195,12 +186,11 @@ export function ServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.4 }}
-                className="group relative bg-gradient-to-br from-kiiro-yellow via-kiiro-yellow to-kiiro-yellow/95 rounded-3xl overflow-hidden shadow-2xl border border-kiiro-yellow/40 p-4 sm:p-5 lg:p-6"
+                className="group relative bg-kiiro-yellow rounded-3xl overflow-hidden shadow-2xl border-2 border-kiiro-yellow/40 p-4 sm:p-5 lg:p-6"
               >
-                {/* Enhanced glow effects */}
-                <div className="absolute top-0 right-0 w-48 h-48 bg-white/15 rounded-full blur-3xl transform translate-x-24 -translate-y-24" />
-                <div className="absolute bottom-0 left-0 w-36 h-36 bg-black/5 rounded-full blur-2xl transform -translate-x-18 translate-y-18" />
-                <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-black/10" />
+                {/* Subtle shadow effects */}
+                <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-3xl transform translate-x-24 -translate-y-24" />
+                <div className="absolute bottom-0 left-0 w-36 h-36 bg-charcoal-black/5 rounded-full blur-2xl transform -translate-x-18 translate-y-18" />
 
                 <div className="relative z-10">
                   <div className="mb-4">
@@ -219,8 +209,8 @@ export function ServicesSection() {
                         transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
                         className="group/item relative overflow-hidden rounded-xl p-3 hover:border-black/40  transition-all duration-300 cursor-pointer"
                       >
-                        {/* Subtle glow effect */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-kiiro-yellow/5 to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />
+                        {/* Subtle hover effect */}
+                        <div className="absolute inset-0 bg-kiiro-yellow/5 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />
 
                         <div className="flex items-start gap-3 relative z-10">
                           <div className="flex-shrink-0">
@@ -343,15 +333,8 @@ export function ComparisonTable() {
 
   return (
     <section className="py-20 lg:py-24 bg-charcoal-black text-off-white relative overflow-hidden">
-      {/* Enhanced Background Pattern */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: `radial-gradient(circle at 25px 25px, rgba(255, 209, 0, 0.2) 1px, transparent 0),
-                           radial-gradient(circle at 75px 75px, rgba(255, 209, 0, 0.15) 1px, transparent 0)`,
-          backgroundSize: '140px 140px'
-        }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-charcoal-black/30 to-charcoal-black" />
-      </div>
+      {/* Subtle Background Pattern */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.02)_1px,transparent_0)] bg-[size:40px_40px] opacity-30" />
 
       <div className="container mx-auto px-4 max-w-7xl relative">
         {/* Enhanced Header */}
@@ -365,7 +348,7 @@ export function ComparisonTable() {
           >
             Why 15+ Businesses Trust{" "}
             <motion.span
-              className="text-transparent bg-clip-text bg-gradient-to-r from-kiiro-yellow via-kiiro-yellow to-kiiro-yellow/80 relative"
+              className="text-kiiro-yellow relative"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -373,7 +356,7 @@ export function ComparisonTable() {
             >
               Kiiro
               <motion.div
-                className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-kiiro-yellow to-kiiro-yellow rounded-full"
+                className="absolute -bottom-2 left-0 right-0 h-1 bg-kiiro-yellow rounded-full"
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
@@ -402,8 +385,8 @@ export function ComparisonTable() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            {/* Enhanced gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-kiiro-yellow/3 via-transparent to-charcoal-black/20" />
+            {/* Subtle overlay */}
+            <div className="absolute inset-0 bg-kiiro-yellow/2" />
 
             {/* Grid Container */}
             <div className="min-w-[900px] relative">
@@ -451,7 +434,7 @@ export function ComparisonTable() {
                       className={cn(
                         "group relative transition-all duration-500 hover:bg-off-white/5 grid grid-cols-[300px_1fr_1fr_1fr_1fr] gap-0",
                         item.isHighlight
-                          ? "bg-gradient-to-r from-kiiro-yellow via-kiiro-yellow/95 to-kiiro-yellow shadow-xl shadow-kiiro-yellow/25 border-y border-kiiro-yellow/50"
+                          ? "bg-kiiro-yellow shadow-xl border-y-2 border-kiiro-yellow/40"
                           : "hover:shadow-lg hover:shadow-slate-900/10"
                       )}
                       initial={{ opacity: 0, x: -30 }}
@@ -459,16 +442,15 @@ export function ComparisonTable() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.7, delay: index * 0.12 }}
                     >
-                      {/* Enhanced background effects for highlight row */}
+                      {/* Subtle effects for highlight row */}
                       {item.isHighlight && (
                         <>
-                          <div className="absolute inset-0 bg-gradient-to-r from-kiiro-yellow/15 via-kiiro-yellow/25 to-kiiro-yellow/15" />
-                          <div className="absolute top-0 right-0 w-40 h-40 bg-white/8 rounded-full blur-3xl transform translate-x-20 -translate-y-20" />
-                          <div className="absolute bottom-0 left-0 w-32 h-32 bg-charcoal-black/10 rounded-full blur-2xl transform -translate-x-16 translate-y-16" />
+                          <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-3xl transform translate-x-20 -translate-y-20" />
+                          <div className="absolute bottom-0 left-0 w-32 h-32 bg-charcoal-black/5 rounded-full blur-2xl transform -translate-x-16 translate-y-16" />
                         </>
                       )}
 
-                      <div className="px-6 py-5 border-r border-off-white/10 relative z-10 sticky left-0 bg-inherit backdrop-blur-sm">
+                      <div className="px-6 py-5 border-r border-off-white/10 sticky left-0 z-10 bg-inherit backdrop-blur-sm">
                         <div className="flex items-center gap-4">
                           <div className={cn(
                             "w-14 h-14 rounded-2xl flex items-center justify-center border-2 transition-all duration-300 flex-shrink-0 shadow-lg",

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { ChatButton } from "@/components/ui/chat-button";
+import { GAEventTracker } from "@/components/shared/ga-event-tracker";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -121,78 +122,46 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta httpEquiv="Pragma" content="no-cache" />
+        <meta httpEquiv="Expires" content="0" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
 
-        {/* Google Analytics 4 */}
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_MEASUREMENT_ID}`}></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${process.env.GA_MEASUREMENT_ID}', {
-                page_title: document.title,
-                page_location: window.location.href,
-                // Enhanced tracking features
-                send_page_view: true,
-                allow_google_signals: true,
-                allow_ad_features: true,
-                // Custom dimensions for business tracking
-                custom_map: {
-                  'dimension1': 'page_type',
-                  'dimension2': 'user_type',
-                  'dimension3': 'conversion_funnel'
-                },
-                // Enhanced e-commerce tracking
-                ecommerce: true,
-                // User engagement tracking
-                engagement_time_msec: 100
-              });
-
-              // Track form interactions
-              document.addEventListener('DOMContentLoaded', function() {
-                // Track contact form starts
-                const contactForms = document.querySelectorAll('form[action*="contact"]');
-                contactForms.forEach(form => {
-                  form.addEventListener('focusin', function() {
-                    gtag('event', 'form_start', {
-                      event_category: 'engagement',
-                      event_label: 'contact_form'
-                    });
+        {/* Google Analytics 4 - Temporarily disabled */}
+        {/* {process.env.GA_MEASUREMENT_ID && (
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_MEASUREMENT_ID}`}></script>
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${process.env.GA_MEASUREMENT_ID}', {
+                    page_title: document.title,
+                    page_location: window.location.href,
+                    // Enhanced tracking features
+                    send_page_view: true,
+                    allow_google_signals: true,
+                    allow_ad_features: true,
+                    // Custom dimensions for business tracking
+                    custom_map: {
+                      'dimension1': 'page_type',
+                      'dimension2': 'user_type',
+                      'dimension3': 'conversion_funnel'
+                    },
+                    // Enhanced e-commerce tracking
+                    ecommerce: true,
+                    // User engagement tracking
+                    engagement_time_msec: 100
                   });
-                });
-
-                // Track CTA button clicks
-                const ctaButtons = document.querySelectorAll('a[href*="booking"], a[href*="contact"], button[type="submit"]');
-                ctaButtons.forEach(button => {
-                  button.addEventListener('click', function() {
-                    gtag('event', 'cta_click', {
-                      event_category: 'engagement',
-                      event_label: this.textContent || this.innerText || 'CTA Button',
-                      page_location: window.location.href
-                    });
-                  });
-                });
-
-                // Track scroll depth
-                let maxScroll = 0;
-                window.addEventListener('scroll', function() {
-                  const scrollPercent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
-                  if (scrollPercent > maxScroll && scrollPercent % 25 === 0) {
-                    maxScroll = scrollPercent;
-                    gtag('event', 'scroll_depth', {
-                      event_category: 'engagement',
-                      event_label: scrollPercent + '%'
-                    });
-                  }
-                });
-              });
-            `,
-          }}
-        />
+                `,
+              }}
+            />
+          </>
+        )} */}
 
         {/* JSON-LD Structured Data for SEO */}
         <script
@@ -305,6 +274,7 @@ export default function RootLayout({
       >
         {children}
         <ChatButton />
+        {/* <GAEventTracker /> */}
       </body>
     </html>
   );

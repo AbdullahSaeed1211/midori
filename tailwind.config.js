@@ -36,6 +36,8 @@ module.exports = {
         "purple-accent": "#8A2BE2",
         "magenta-accent": "#FF00FF",
         "primaryColor": "#f3f4f6",
+        "mirch-blue": "#005596",
+        "mirch-red": "#E3362C",
       },
       animation: {
         "scroll": "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",

@@ -24,7 +24,6 @@ export function HeroSection() {
   // Project images for marquee columns
   const column1Images = [
     { src: "/projects/guidancewelfare.webp", alt: "Guidance Welfare Foundation - Non-profit website design showcasing charitable work and community impact", height: "h-40"},
-    { src: "/projects/sprintmedia.webp", alt: "Sprint Media - Professional digital marketing agency website with modern design and conversion optimization", height: "h-40"},
     { src: "/projects/dubbby.webp", alt: "Dubbby - AI-powered video dubbing platform landing page with interactive demo and waitlist signup", height: "h-40"},
     { src: "/projects/brainwise.webp", alt: "BrainWise - Educational platform website for cognitive development courses and training programs", height: "h-32" },
     { src: "/projects/simply.webp", alt: "Simply Mortgage - Financial services website design with trust indicators and lead generation forms", height: "h-44"},
