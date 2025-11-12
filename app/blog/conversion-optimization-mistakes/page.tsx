@@ -3,7 +3,7 @@ import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowLeft, Calendar, Clock, X, CheckCircle } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, X, CheckCircle, TrendingUp } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "7 Deadly Conversion Optimization Mistakes | kiiro.cx",
@@ -59,159 +59,187 @@ export default function ConversionOptimizationMistakes() {
             </p>
 
             {/* Article Content */}
-            <div className="prose prose-lg prose-invert max-w-none">
-              <h2>Introduction</h2>
-              <p>
+            <div className="prose prose-lg prose-invert max-w-none space-y-8">
+              <p className="text-lg leading-relaxed text-off-white/90">
                 Every day, thousands of potential customers visit your website and leave without converting. The problem isn&apos;t always lack of traffic – it&apos;s often poor conversion optimization. Here are the 7 most common mistakes entrepreneurs make that are silently killing their sales.
               </p>
 
-              <h2>Mistake #1: Poor First Impression</h2>
-              <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-6 mb-6">
-                <div className="flex items-start gap-3">
-                  <X className="w-6 h-6 text-red-400 flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="text-red-400 font-semibold mb-2">The Problem</h3>
-                    <p className="text-off-white/80">
-                      Your hero section is cluttered, your value proposition is unclear, or your website looks outdated. Visitors make snap judgments within 3 seconds of landing on your site.
-                    </p>
+              <div className="grid gap-6">
+                <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-6">
+                  <div className="flex items-start gap-3">
+                    <X className="w-6 h-6 text-red-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <h2 className="text-red-400 font-semibold mb-3 text-xl">Mistake #1: Poor First Impression</h2>
+                      <p className="text-off-white/80 mb-4">
+                        Your hero section is cluttered, your value proposition is unclear, or your website looks outdated. Visitors make snap judgments within 3 seconds of landing on your site.
+                      </p>
+                      <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4">
+                        <div className="flex items-start gap-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                          <div>
+                            <p className="text-green-400 font-semibold mb-1">Solution:</p>
+                            <p className="text-off-white/80 text-sm">Create a clean, focused hero section with a clear headline, compelling subheadline, and prominent call-to-action.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg p-6">
+                  <div className="flex items-start gap-3">
+                    <X className="w-6 h-6 text-orange-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <h2 className="text-orange-400 font-semibold mb-3 text-xl">Mistake #2: Too Many Choices</h2>
+                      <p className="text-off-white/80 mb-4">
+                        The paradox of choice is real. When visitors are overwhelmed with options, they often choose nothing. This happens with multiple competing CTAs, overwhelming navigation, or too many form fields.
+                      </p>
+                      <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4">
+                        <div className="flex items-start gap-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                          <div>
+                            <p className="text-green-400 font-semibold mb-1">Solution:</p>
+                            <p className="text-off-white/80 text-sm">Focus on one primary action per page. Simplify navigation and reduce form fields to the essentials.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-purple-500/10 border border-purple-500/20 rounded-lg p-6">
+                  <div className="flex items-start gap-3">
+                    <X className="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <h2 className="text-purple-400 font-semibold mb-3 text-xl">Mistake #3: Hidden Contact Information</h2>
+                      <p className="text-off-white/80 mb-4">
+                        Making it difficult for visitors to contact you or find your business information creates unnecessary friction in the buying process.
+                      </p>
+                      <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4">
+                        <div className="flex items-start gap-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                          <div>
+                            <p className="text-green-400 font-semibold mb-1">Solution:</p>
+                            <p className="text-off-white/80 text-sm">Display contact information prominently in headers, footers, and key pages. Make it easy to get in touch.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-6">
+                  <div className="flex items-start gap-3">
+                    <X className="w-6 h-6 text-blue-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <h2 className="text-blue-400 font-semibold mb-3 text-xl">Mistake #4: Lack of Social Proof</h2>
+                      <p className="text-off-white/80 mb-4">
+                        Without testimonials, case studies, or trust indicators, visitors have no reason to believe you can deliver on your promises.
+                      </p>
+                      <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4">
+                        <div className="flex items-start gap-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                          <div>
+                            <p className="text-green-400 font-semibold mb-1">Solution:</p>
+                            <p className="text-off-white/80 text-sm">Showcase client testimonials, case studies, and social proof throughout your site to build credibility.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-lg p-6">
+                  <div className="flex items-start gap-3">
+                    <X className="w-6 h-6 text-indigo-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <h2 className="text-indigo-400 font-semibold mb-3 text-xl">Mistake #5: Slow Loading Times</h2>
+                      <p className="text-off-white/80 mb-4">
+                        If your website takes more than 3 seconds to load, you&apos;re losing potential customers. Speed is a ranking factor and conversion killer.
+                      </p>
+                      <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4">
+                        <div className="flex items-start gap-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                          <div>
+                            <p className="text-green-400 font-semibold mb-1">Solution:</p>
+                            <p className="text-off-white/80 text-sm">Optimize images, use caching, and minimize code. Aim for under 2 seconds load time.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-pink-500/10 border border-pink-500/20 rounded-lg p-6">
+                  <div className="flex items-start gap-3">
+                    <X className="w-6 h-6 text-pink-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <h2 className="text-pink-400 font-semibold mb-3 text-xl">Mistake #6: Mobile Experience Issues</h2>
+                      <p className="text-off-white/80 mb-4">
+                        With 60% of searches happening on mobile, a poor mobile experience means you&apos;re missing out on most of your potential customers.
+                      </p>
+                      <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4">
+                        <div className="flex items-start gap-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                          <div>
+                            <p className="text-green-400 font-semibold mb-1">Solution:</p>
+                            <p className="text-off-white/80 text-sm">Design mobile-first. Test everything on actual mobile devices and ensure touch targets are large enough.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-teal-500/10 border border-teal-500/20 rounded-lg p-6">
+                  <div className="flex items-start gap-3">
+                    <X className="w-6 h-6 text-teal-400 flex-shrink-0 mt-1" />
+                    <div>
+                      <h2 className="text-teal-400 font-semibold mb-3 text-xl">Mistake #7: No Clear Call-to-Action</h2>
+                      <p className="text-off-white/80 mb-4">
+                        If visitors don&apos;t know what to do next, they&apos;ll leave. Every page needs a clear, compelling next step.
+                      </p>
+                      <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4">
+                        <div className="flex items-start gap-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                          <div>
+                            <p className="text-green-400 font-semibold mb-1">Solution:</p>
+                            <p className="text-off-white/80 text-sm">Place clear, benefit-focused CTAs above the fold and repeat them strategically throughout the page.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-6 mb-8">
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="text-green-400 font-semibold mb-2">The Solution</h3>
-                    <p className="text-off-white/80">
-                      Create a clean, focused hero section with a clear headline, compelling subheadline, and prominent call-to-action. Use modern design principles and ensure your site loads quickly.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <h2>Mistake #2: Too Many Choices</h2>
-              <p>
-                The paradox of choice is real. When visitors are overwhelmed with options, they often choose nothing. This is especially common with:
-              </p>
-              <ul>
-                <li>Multiple primary calls-to-action competing for attention</li>
-                <li>Overwhelming navigation menus</li>
-                <li>Too many form fields</li>
-                <li>Excessive product/service options without clear differentiation</li>
-              </ul>
-
-              <h2>Mistake #3: Weak Calls-to-Action</h2>
-              <p>
-                Generic CTAs like &ldquo;Submit&rdquo; or &ldquo;Click Here&rdquo; don&apos;t motivate action. Effective CTAs should:
-              </p>
-              <ul>
-                <li>Use action-oriented language (&ldquo;Get Started,&rdquo; &ldquo;Claim Your Free Trial&rdquo;)</li>
-                <li>Create urgency or scarcity</li>
-                <li>Highlight specific benefits</li>
-                <li>Be visually prominent and strategically placed</li>
-              </ul>
-
-              <h2>Mistake #4: Ignoring Mobile Users</h2>
-              <p>
-                With over 60% of internet traffic coming from mobile devices, ignoring mobile optimization is suicide. Common mobile mistakes include:
-              </p>
-              <ul>
-                <li>Text that&apos;s too small to read</li>
-                <li>Buttons that are too small to tap</li>
-                <li>Forms that are difficult to fill on mobile</li>
-                <li>Images that don&apos;t scale properly</li>
-              </ul>
-
-              <h2>Mistake #5: Lack of Social Proof</h2>
-              <p>
-                People are naturally skeptical. Without social proof, visitors won&apos;t trust your claims. Essential social proof elements include:
-              </p>
-              <ul>
-                <li>Customer testimonials and reviews</li>
-                <li>Case studies and success stories</li>
-                <li>Trust badges and certifications</li>
-                <li>Social media follower counts</li>
-                <li>Media mentions and awards</li>
-              </ul>
-
-              <h2>Mistake #6: Complicated Checkout Process</h2>
-              <p>
-                Abandoned carts cost e-commerce businesses billions annually. Simplify your checkout by:
-              </p>
-              <ul>
-                <li>Reducing the number of steps</li>
-                <li>Offering guest checkout options</li>
-                <li>Providing multiple payment methods</li>
-                <li>Showing clear shipping costs upfront</li>
-                <li>Adding trust signals throughout the process</li>
-              </ul>
-
-              <h2>Mistake #7: No Clear Value Proposition</h2>
-              <p>
-                The biggest mistake of all is not clearly communicating what makes you different and why customers should choose you. Your value proposition should answer:
-              </p>
-              <ul>
-                <li>What specific problem do you solve?</li>
-                <li>How are you different from competitors?</li>
-                <li>What results can customers expect?</li>
-                <li>Why should they trust you?</li>
-              </ul>
-
-              <h2>How to Fix These Mistakes</h2>
-              <p>
-                Fixing conversion optimization mistakes requires a systematic approach:
-              </p>
-
-              <h3>1. Conduct User Research</h3>
-              <p>
-                Use tools like heatmaps, session recordings, and user surveys to understand how visitors interact with your site.
-              </p>
-
-              <h3>2. A/B Test Everything</h3>
-              <p>
-                Don&apos;t make assumptions. Test different versions of your headlines, CTAs, layouts, and forms to see what performs better.
-              </p>
-
-              <h3>3. Focus on Mobile First</h3>
-              <p>
-                Design for mobile users first, then enhance for desktop. This ensures your site works well for the majority of your visitors.
-              </p>
-
-              <h3>4. Implement Analytics</h3>
-              <p>
-                Track conversion funnels, bounce rates, and user behavior to identify where visitors are dropping off.
-              </p>
-
-              <h2>Conclusion</h2>
-              <p>
-                Conversion optimization isn&apos;t about tricking people into buying – it&apos;s about removing friction and making it easy for the right customers to find and purchase your products or services. By avoiding these 7 deadly mistakes and implementing proven optimization strategies, you&apos;ll see significant improvements in your conversion rates and revenue.
-              </p>
-
-              <p>
-                Remember, small improvements compound over time. Start with one or two changes, measure the results, and iterate from there.
-              </p>
-            </div>
-
-            {/* CTA Section */}
-            <div className="mt-12 pt-8 border-t border-white/10">
-              <div className="bg-gradient-to-r from-kiiro-yellow/10 to-green-500/10 rounded-2xl p-8 border border-kiiro-yellow/20 text-center">
-                <h3 className="text-2xl font-bold text-off-white mb-4">
-                  Ready to Fix Your Conversion Issues?
-                </h3>
-                <p className="text-off-white/70 mb-6">
-                  Get a professional conversion audit and optimization strategy for your website.
+              <div className="bg-gradient-to-r from-kiiro-yellow/10 to-yellow-500/10 rounded-2xl border border-kiiro-yellow/20 p-8 mt-12">
+                <h2 className="text-2xl md:text-3xl font-bold text-off-white mb-6">Ready to Fix Your Conversion Problems?</h2>
+                <p className="text-off-white/80 text-lg leading-relaxed mb-8">
+                  Don&apos;t let these common mistakes continue costing you sales. Get a professional website audit and discover exactly what&apos;s hurting your conversions.
                 </p>
-                <Button
-                  asChild
-                  size="lg"
-                  className="bg-kiiro-yellow text-charcoal-black hover:bg-kiiro-yellow/90"
-                >
-                  <Link href="/contact">
-                    Get Conversion Audit
-                    <ArrowLeft className="w-4 h-4 ml-2 rotate-180" />
-                  </Link>
-                </Button>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-kiiro-yellow text-charcoal-black hover:bg-kiiro-yellow/90 hover:shadow-lg hover:shadow-kiiro-yellow/25 transition-all duration-300"
+                  >
+                    <Link href="/audit">
+                      <span className="font-semibold">Get Free Website Audit</span>
+                      <TrendingUp className="w-4 h-4 ml-2" />
+                    </Link>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="lg"
+                    className="border-kiiro-yellow/50 text-kiiro-yellow hover:bg-kiiro-yellow/10 hover:border-kiiro-yellow/70 transition-all duration-300"
+                  >
+                    <Link href="/contact">
+                      Book Consultation
+                    </Link>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, Noto_Sans_JP } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ChatButton } from "@/components/ui/chat-button";
 
@@ -9,11 +9,6 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
 });
 
-const notoSansJP = Noto_Sans_JP({
-  subsets: ["latin"],
-  weight: ["300", "400"], // Load Light (300) and Regular (400)
-  variable: "--font-noto-sans-jp",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -269,7 +264,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${spaceGrotesk.variable} ${notoSansJP.variable} font-body font-normal text-base antialiased bg-charcoal-black dark`}
+        className={`${spaceGrotesk.variable} font-body font-normal text-base antialiased bg-charcoal-black dark`}
       >
         {children}
         <ChatButton />

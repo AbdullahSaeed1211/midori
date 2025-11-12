@@ -6,36 +6,25 @@ import Link from "next/link";
 import { Download, CheckCircle, Star } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Free Resources | Website Templates, Checklists & Tools | kiiro.cx",
-  description: "Download free website design templates, conversion optimization checklists, and SEO tools to improve your online business. All resources designed for entrepreneurs.",
-  keywords: "free website templates, SEO checklist, conversion optimization tools, entrepreneur resources, web design checklist",
+  title: "Free Services | Website Audit & SEO Consultation | kiiro.cx",
+  description: "Get free website conversion audits, SEO consultations, and professional website reviews. All services designed to help entrepreneurs improve their online business.",
+  keywords: "free website audit, SEO consultation, conversion optimization, entrepreneur resources, web design review",
   authors: [{ name: "kiiro.cx" }],
   openGraph: {
     type: "website",
-    title: "Free Resources | Website Templates, Checklists & Tools | kiiro.cx",
-    description: "Download free website design templates and conversion optimization tools for entrepreneurs.",
+    title: "Free Services | Website Audit & SEO Consultation | kiiro.cx",
+    description: "Get free website conversion audits and SEO consultations for entrepreneurs.",
     siteName: "kiiro.cx",
   }
 };
 
-// Resource data - in a real app, this could come from a CMS
+// Resource data - simplified to remove broken links
 const resources = [
   {
-    id: "seo-checklist",
-    title: "Complete SEO Checklist for Entrepreneurs",
-    description: "A comprehensive 50-point checklist covering everything from technical SEO to content optimization. Perfect for entrepreneurs launching their first website.",
-    type: "Checklist",
-    downloadUrl: "/scripts/seo-checklist.js",
-    category: "SEO",
-    featured: true,
-    rating: 4.8,
-    downloads: 250
-  },
-  {
     id: "conversion-audit",
-    title: "Website Conversion Audit Template",
-    description: "Step-by-step framework to audit your website's conversion potential. Identify bottlenecks and optimization opportunities worth thousands in revenue.",
-    type: "Template",
+    title: "Free Website Conversion Audit",
+    description: "Get a professional analysis of your website's conversion potential. We'll identify bottlenecks and provide actionable recommendations worth thousands in revenue.",
+    type: "Free Service",
     downloadUrl: "/audit",
     category: "Conversion",
     featured: true,
@@ -43,26 +32,26 @@ const resources = [
     downloads: 180
   },
   {
-    id: "landing-page-blueprint",
-    title: "High-Converting Landing Page Blueprint",
-    description: "A proven template structure that has generated 300%+ improvement in conversion rates for our clients. Includes copy framework and design principles.",
-    type: "Template",
-    downloadUrl: "#blueprint",
+    id: "seo-consultation",
+    title: "SEO Strategy Consultation",
+    description: "Book a free 15-minute consultation to discuss your SEO goals. We'll provide immediate insights and a customized strategy for your business.",
+    type: "Free Consultation",
+    downloadUrl: "/contact",
+    category: "SEO",
+    featured: true,
+    rating: 4.8,
+    downloads: 250
+  },
+  {
+    id: "website-review",
+    title: "Professional Website Review",
+    description: "Get expert feedback on your website's design, user experience, and conversion optimization. Includes actionable recommendations for improvement.",
+    type: "Free Service",
+    downloadUrl: "/contact",
     category: "Design",
     featured: false,
     rating: 4.7,
     downloads: 320
-  },
-  {
-    id: "pricing-strategy",
-    title: "Entrepreneur Pricing Strategy Guide",
-    description: "How to price your services for maximum profit while remaining competitive. Real examples from successful entrepreneur websites.",
-    type: "Guide",
-    downloadUrl: "#pricing",
-    category: "Business",
-    featured: false,
-    rating: 4.6,
-    downloads: 150
   }
 ];
 
@@ -77,14 +66,14 @@ export default function ResourcesPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-kiiro-yellow/10 to-transparent opacity-30" />
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center mb-16">
-              <div className="px-4 py-1.5 rounded-full bg-green-500/20 text-green-400 text-sm font-medium mb-6 border border-green-500/30 inline-block">
-                🎁 Free Resources
+              <div className="px-4 py-2 rounded-full bg-green-500/20 text-green-400 text-sm font-medium mb-6 border border-green-500/30 inline-block">
+                🎁 Free Services
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-off-white mb-6">
-                Tools & Templates to <span className="text-kiiro-yellow">Grow Your Business</span>
+                Expert Analysis to <span className="text-kiiro-yellow">Grow Your Business</span>
               </h1>
               <p className="text-xl text-off-white/80 max-w-2xl mx-auto">
-                Download proven templates, checklists, and guides that have helped 15+ entrepreneurs improve their websites and increase conversions.
+                Get professional website audits, SEO consultations, and design reviews that have helped entrepreneurs increase conversions and revenue.
               </p>
             </div>
           </div>
@@ -206,7 +195,7 @@ export default function ResourcesPage() {
               <div className="bg-gradient-to-r from-kiiro-yellow/10 to-blue-500/10 rounded-2xl p-8 md:p-12 border border-kiiro-yellow/20">
                 <div className="text-center mb-8">
                   <h2 className="text-3xl font-bold text-off-white mb-4">
-                    Why These Resources Work
+                    Why These Services Work
                   </h2>
                   <p className="text-off-white/80">
                     Based on real results from our client projects
@@ -253,12 +242,12 @@ export default function ResourcesPage() {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-off-white mb-4">
-                Need More Personalized Help?
-              </h2>
-              <p className="text-xl text-off-white/80 mb-8">
-                Get a free website audit and homepage demo customized for your business.
-              </p>
+                  <h2 className="text-3xl md:text-4xl font-bold text-off-white mb-4">
+                    Ready to Get Started?
+                  </h2>
+                  <p className="text-xl text-off-white/80 mb-8">
+                    Book your free consultation and get expert analysis for your website.
+                  </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
