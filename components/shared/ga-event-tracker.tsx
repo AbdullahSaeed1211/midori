@@ -23,11 +23,11 @@ export function GAEventTracker() {
     // Track CTA button clicks
     const ctaButtons = document.querySelectorAll('a[href*="booking"], a[href*="contact"], button[type="submit"]');
     ctaButtons.forEach(button => {
-      button.addEventListener('click', function() {
+      button.addEventListener('click', () => {
         if (window.gtag) {
           window.gtag('event', 'cta_click', {
             event_category: 'engagement',
-            event_label: this.textContent || this.innerText || 'CTA Button',
+            event_label: button.textContent || 'CTA Button',
             page_location: window.location.href
           });
         }
