@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { ChatButton } from "@/components/ui/chat-button";
-import { GAEventTracker } from "@/components/shared/ga-event-tracker";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],

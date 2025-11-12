@@ -63,6 +63,6 @@ export function GAEventTracker() {
 // Add gtag to window type
 declare global {
   interface Window {
-    gtag: (...args: any[]) => void;
+    gtag: (command: string, action: string, parameters?: Record<string, unknown>) => void;
   }
 }

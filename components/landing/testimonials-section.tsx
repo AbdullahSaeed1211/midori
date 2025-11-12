@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { Star, CheckCircle, Award, TrendingUp, Users, Target, Zap, Video } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { Marquee } from "@/components/magicui/marquee";
 
 interface TestimonialData {
@@ -242,9 +243,11 @@ export function TestimonialsSection() {
               {testimonial.useVideoIcon ? (
                 <Video className="w-4 h-4 text-white" />
               ) : testimonial.avatar ? (
-                <img
+                <Image
                   src={testimonial.avatar}
                   alt={`${testimonial.name} avatar`}
+                  width={testimonial.avatar.includes('nishoomittalLogo') ? 20 : 32}
+                  height={testimonial.avatar.includes('nishoomittalLogo') ? 20 : 32}
                   className={`${testimonial.avatar.includes('nishoomittalLogo') ? 'w-5 h-5' : 'w-full h-full'} object-contain rounded-full`}
                   loading="lazy"
                 />
@@ -262,9 +265,11 @@ export function TestimonialsSection() {
           {testimonial.logo && (
             <div className="flex-shrink-0">
               <div className={`w-6 h-6 rounded-md ${testimonial.bgColor === 'bg-gradient-to-br from-kiiro-yellow via-kiiro-yellow to-kiiro-yellow/90' ? 'bg-charcoal-black/30' : 'bg-off-white/10'} flex items-center justify-center border border-off-white/20 overflow-hidden`}>
-                <img
+                <Image
                   src={testimonial.logo}
                   alt={`${testimonial.company} logo`}
+                  width={16}
+                  height={16}
                   className="w-4 h-4 object-contain"
                   loading="lazy"
                 />
@@ -487,9 +492,11 @@ export function TestimonialsSection() {
                         {testimonial.useVideoIcon ? (
                           <Video className="w-5 h-5 text-white" />
                         ) : testimonial.avatar ? (
-                          <img
+                          <Image
                             src={testimonial.avatar}
                             alt={`${testimonial.name} avatar`}
+                            width={testimonial.avatar.includes('nishoomittalLogo') ? 24 : 40}
+                            height={testimonial.avatar.includes('nishoomittalLogo') ? 24 : 40}
                             className={`${testimonial.avatar.includes('nishoomittalLogo') ? 'w-6 h-6' : 'w-full h-full'} object-contain rounded-full`}
                             loading="lazy"
                           />
@@ -507,9 +514,11 @@ export function TestimonialsSection() {
                     {testimonial.logo && (
                       <div className="flex-shrink-0">
                         <div className={`w-8 h-8 rounded-md ${testimonial.bgColor === 'bg-gradient-to-br from-kiiro-yellow via-kiiro-yellow to-kiiro-yellow/90' ? 'bg-charcoal-black/30' : 'bg-off-white/10'} flex items-center justify-center border border-off-white/20 overflow-hidden group/logo hover:scale-110 transition-transform duration-200`}>
-                          <img
+                          <Image
                             src={testimonial.logo}
                             alt={`${testimonial.company} logo`}
+                            width={24}
+                            height={24}
                             className="w-6 h-6 object-contain group-hover/logo:scale-110 transition-transform duration-200"
                             loading="lazy"
                           />
@@ -607,9 +616,11 @@ export function TestimonialsSection() {
                     {selectedTestimonial.useVideoIcon ? (
                       <Video className="w-10 h-10 text-white" />
                     ) : selectedTestimonial.avatar ? (
-                      <img
+                      <Image
                         src={selectedTestimonial.avatar}
                         alt={`${selectedTestimonial.name} avatar`}
+                        width={80}
+                        height={80}
                         className="w-full h-full object-cover rounded-full"
                         loading="lazy"
                       />
