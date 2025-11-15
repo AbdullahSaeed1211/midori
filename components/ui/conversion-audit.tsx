@@ -80,6 +80,35 @@ export function ConversionAudit() {
   const [email, setEmail] = useState("");
   const [showEmailForm, setShowEmailForm] = useState(false);
 
+  // Pre-rendered static content for SEO
+  const staticContent = (
+    <div className="sr-only">
+      <h2>Website Conversion Audit Tool</h2>
+      <p>Get a comprehensive analysis of your website&apos;s conversion potential. Our free audit covers 10 critical factors that impact your sales and lead generation.</p>
+
+      <h3>Key Audit Areas:</h3>
+      <ul>
+        <li>Headline effectiveness and clarity</li>
+        <li>Call-to-action visibility and placement</li>
+        <li>Social proof and testimonials</li>
+        <li>Benefits-focused messaging</li>
+        <li>Mobile experience and responsiveness</li>
+        <li>Page loading speed optimization</li>
+        <li>Objection handling and trust building</li>
+        <li>Urgency and scarcity elements</li>
+        <li>Contact accessibility</li>
+        <li>Trust signals and credibility indicators</li>
+      </ul>
+
+      <p>Each factor is weighted by importance, giving you a clear score from 0-100. Higher scores indicate better conversion optimization.</p>
+
+      <h3>Why Website Audits Matter</h3>
+      <p>Most websites lose 70-90% of visitors without capturing their contact information or making a sale. Our audit identifies specific bottlenecks preventing conversions and provides actionable recommendations to fix them.</p>
+
+      <p>Perfect for entrepreneurs, course creators, service providers, and e-commerce businesses looking to optimize their online presence.</p>
+    </div>
+  );
+
   const handleAnswer = (id: string, answer: boolean) => {
     setAnswers(prev => ({ ...prev, [id]: answer }));
   };
@@ -118,7 +147,9 @@ export function ConversionAudit() {
   };
 
   return (
-    <section className="py-24 bg-charcoal-black" id="audit">
+    <>
+      {staticContent}
+      <section className="py-24 bg-charcoal-black" id="audit">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
@@ -290,5 +321,6 @@ export function ConversionAudit() {
         </div>
       </div>
     </section>
+    </>
   );
 } 
