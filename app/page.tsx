@@ -15,13 +15,13 @@ import { ChatButton } from "@/components/ui/chat-button";
 import { BrandedParallaxText } from "@/components/ui/parallax-text-scroll";
 
 export const metadata: Metadata = {
-  title: "Professional Website Design for Entrepreneurs & Growing Businesses | kiiro.cx",
+  title: "High-Conversion Websites, Delivered in 7–14 Days | kiiro.cx",
   description: "Get a professional website that establishes credibility and converts visitors into customers. Perfect for new entrepreneurs, course creators, and growing businesses. Fast delivery, transparent pricing.",
   keywords: "professional website design, entrepreneur website, course creator website, small business website, website for new business, conversion optimization, website design for startups, business credibility website",
   authors: [{ name: "kiiro.cx" }],
   openGraph: {
     type: "website",
-    title: "Professional Websites for Entrepreneurs & Growing Businesses | kiiro.cx",
+    title: "High-Conversion Websites, Delivered in 7–14 Days | kiiro.cx",
     description: "Build credibility and convert visitors into customers with a professional website. Designed for entrepreneurs, course creators, and growing businesses.",
     url: "https://kiiro.cx",
     siteName: "kiiro.cx",
@@ -37,8 +37,6 @@ export default function Home() {
       <Header />
 
       <HeroSection />
-
-      
 
       <div id="services">
         <ServicesSection />

@@ -735,19 +735,19 @@ export function CaseStudiesSection({
 
         {/* Scroll Indicator */}
         {showScrollIndicator && (
-          <motion.div
-            className="flex justify-center mt-20"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5 }}
-          >
-            <ScrollIndicator
-              text="Client Testimonials"
-              onClick={() => handleScrollToSection('client-wins')}
-              className="hover:scale-105 transition-transform duration-300"
-            />
-          </motion.div>
+        <motion.div
+          className="flex justify-center mt-20"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+        >
+          <ScrollIndicator
+            text="Client Testimonials"
+            onClick={() => handleScrollToSection('client-wins')}
+            className="hover:scale-105 transition-transform duration-300"
+          />
+        </motion.div>
         )}
       </div>
     </section>

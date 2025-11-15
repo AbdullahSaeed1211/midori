@@ -5,536 +5,306 @@ import {
   ArrowRight,
   HelpCircle,
   CheckCircle,
-  XCircle,
 } from 'lucide-react';
 import Link from 'next/link';
 import { BlurFade } from '@/components/magicui/blur-fade';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
-// Kiiro's 4 Problems Costing You Customers
-const kiiroProblems = [
+// Simplified 4 problems with clear outcomes
+const problems = [
   {
+    id: 1,
     title: "No Professional Online Presence",
-    description: "Website Foundation",
-    subtitle: "Credibility + Leads",
-    solution: "We craft sleek, conversion-ready websites that earn trust.",
-    quickFixes: [
-      "Polished design",
-      "Clear messaging",
-      "Mobile-first",
-      "Fast & SEO"
-    ],
-    icon: "🏗️"
+    problem: "Your brand doesn't look credible — which means fewer leads and lower trust.",
+    microBenefit: "We rebuild your website so your brand instantly earns trust.",
+    solution: "A premium, fast, modern website that instantly positions you as a real business.",
+    icon: "🏗️",
+    outcome: "60% more professional leads"
   },
   {
+    id: 2,
     title: "Unclear Messaging",
-    description: "Messaging Framework",
-    subtitle: "↑ 60% engagement",
-    solution: "We make your value obvious in the first 5 seconds.",
-    quickFixes: [
-      "Crisp headline",
-      "Benefit copy",
-      "Stronger CTA",
-      "Handle objections"
-    ],
-    icon: "📝"
+    problem: "Visitors don't understand what you offer or why they should care.",
+    microBenefit: "We turn your offer into a simple message people understand in 5 seconds.",
+    solution: "A simple value-first message that explains your value in 5 seconds.",
+    icon: "📝",
+    outcome: "3x clearer conversion path"
   },
   {
+    id: 3,
     title: "No Social Proof",
-    description: "Trust Building",
-    subtitle: "↑ 30% sign-ups",
-    solution: "We add proof that removes doubt and builds authority.",
-    quickFixes: [
-      "Testimonials",
-      "Case studies",
-      "Trust badges",
-      "Founder story"
-    ],
-    icon: "🛡️"
+    problem: "People don't buy from strangers.",
+    microBenefit: "We add testimonials, trust elements, and proof that reduces doubt.",
+    solution: "Testimonials, case studies, experience and trust elements that remove doubt.",
+    icon: "🛡️",
+    outcome: "40% higher conversion rate"
   },
   {
-    title: "Poor Mobile UX",
-    description: "Mobile-First",
-    subtitle: "↑ 50% mobile CVR",
-    solution: "We optimise mobile flows for speed and effortless navigation.",
-    quickFixes: [
-      "Thumb nav",
-      "Fast load",
-      "Simple flows",
-      "Tap targets"
-    ],
-    icon: "📱"
+    id: 4,
+    title: "Poor Mobile Experience",
+    problem: "If your mobile UX fails, you lose 60–80% of traffic.",
+    microBenefit: "We redesign your mobile flows for speed, clarity, and high conversions.",
+    solution: "Mobile-first layouts, fast loading, clean flows, clear CTAs.",
+    icon: "📱",
+    outcome: "Mobile conversions doubled"
   }
 ];
 
-
 export function ServicesSection() {
+  const [selectedProblem, setSelectedProblem] = useState<number | null>(null);
+
   return (
+    <div suppressHydrationWarning>
     <BlurFade delay={0.15} inView>
       <section className="relative isolate overflow-hidden bg-charcoal-black py-16 sm:py-20 lg:py-24 text-off-white">
         {/* Subtle Background Pattern */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.03)_1px,transparent_0)] bg-[size:40px_40px] opacity-30" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.02)_1px,transparent_0)] bg-[size:40px_40px] opacity-20" />
 
         <div className="container mx-auto max-w-7xl px-4 relative">
-          {/* Enhanced Header */}
-          <div className="text-center mb-12 lg:mb-16">
+          {/* Clean Header */}
+          <div className="text-center mb-16 lg:mb-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="mb-6 inline-flex items-center gap-3 px-5 py-2.5 bg-gradient-to-r from-kiiro-yellow/10 to-kiiro-yellow/5 border border-kiiro-yellow/20 rounded-full shadow-lg shadow-kiiro-yellow/5"
+              className="mb-8 inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-off-white/5 to-off-white/10 border border-off-white/20 rounded-full"
             >
-              <HelpCircle className="w-4 h-4 text-kiiro-yellow" />
-              <span className="text-sm font-semibold text-kiiro-yellow uppercase tracking-wider">
-                Website Optimization
+              <HelpCircle className="w-5 h-5 text-kiiro-yellow" />
+              <span className="text-sm font-semibold text-off-white uppercase tracking-wider">
+                Website Problems
               </span>
             </motion.div>
 
             <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
             >
-              4 Problems{' '}
+              4 Problems Silently{' '}
               <span className="text-kiiro-yellow">
-                Costing You Customers
+                Killing Your Website
               </span>
             </motion.h2>
 
             <motion.p
-              className="text-lg text-off-white/70 max-w-2xl mx-auto leading-relaxed"
+              className="text-lg sm:text-xl text-off-white/80 max-w-3xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Click any problem below to see exactly how much it&apos;s costing you and how we fix it.
+              And exactly how we fix each one in 7–14 days.
             </motion.p>
           </div>
 
-          {/* Enhanced Problem Cards */}
+          {/* Clean Problem/Solution Layout */}
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-              {/* Problem Card */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+              {/* Left: Problem Cards */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="group relative bg-charcoal-black rounded-3xl overflow-hidden shadow-2xl border-2 border-red-500/30 p-4 sm:p-5 lg:p-6"
+                transition={{ duration: 0.7 }}
+                className="space-y-4"
               >
-                {/* Subtle shadow effects */}
-                <div className="absolute top-0 right-0 w-40 h-40 bg-red-500/5 rounded-full blur-3xl transform translate-x-20 -translate-y-20" />
-                <div className="absolute bottom-0 left-0 w-32 h-32 bg-red-400/5 rounded-full blur-2xl transform -translate-x-16 translate-y-16" />
-
-                <div className="relative z-10">
-                  <div className="mb-4">
-                    <h3 className="text-xl sm:text-2xl font-bold text-off-white">
-                      The Problem
-                    </h3>
-                  </div>
-
-                  <div className="space-y-2">
-                    {kiiroProblems.map((problem, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: index * 0.1 + 0.1 }}
-                        className="group/item relative overflow-hidden rounded-xl p-3 hover:border-red-400/40 transition-all duration-300 cursor-pointer"
-                      >
-                        {/* Subtle hover effect */}
-                        <div className="absolute inset-0 bg-red-500/5 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />
-
-                        <div className="flex items-start gap-3 relative z-10">
-                          <div className="flex-shrink-0">
-                            <div className="w-10 h-10 bg-red-500/20 rounded-xl flex items-center justify-center border border-red-400/30 group-hover/item:bg-red-500/30 group-hover/item:border-red-400/50 transition-all duration-300 shadow-lg shadow-red-500/10">
-                              <span className="text-lg">{problem.icon}</span>
-                            </div>
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <h4 className="text-sm font-bold text-off-white mb-1 leading-tight group-hover/item:text-red-100 transition-colors duration-300">
-                              {problem.title}
-                            </h4>
-                            <div className="flex items-center gap-2 mb-1">
-                              <span className="text-xs font-semibold text-kiiro-yellow bg-kiiro-yellow/10 px-2 py-0.5 rounded-full border border-kiiro-yellow/20">
-                                {problem.description}
-                              </span>
-                              <span className="text-xs font-medium text-green-400 bg-green-500/10 px-2 py-0.5 rounded-full border border-green-500/20">
-                                {problem.subtitle}
-                              </span>
-                            </div>
+                <h3 className="text-2xl font-bold text-off-white mb-8">The Problems</h3>
+                <div className="space-y-3">
+                  {problems.map((problem, index) => (
+                    <motion.div
+                      key={problem.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      onClick={() => setSelectedProblem(selectedProblem === problem.id ? null : problem.id)}
+                      className={cn(
+                        "group relative p-6 rounded-2xl border cursor-pointer transition-all duration-300 hover:scale-[1.02]",
+                        selectedProblem === problem.id
+                          ? "bg-red-500/10 border-red-400/50 shadow-lg shadow-red-500/10"
+                          : "bg-charcoal-gray/30 border-off-white/10 hover:border-red-400/30 hover:bg-red-500/5 hover:shadow-lg hover:shadow-red-500/5"
+                      )}
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0">
+                          <div className={cn(
+                            "w-12 h-12 rounded-xl flex items-center justify-center text-2xl transition-all duration-300 border-2",
+                            selectedProblem === problem.id
+                              ? "bg-red-500/20 border-red-400/40 shadow-lg shadow-red-500/20"
+                              : "bg-off-white/10 border-off-white/20 group-hover:bg-red-500/15 group-hover:border-red-400/40 group-hover:shadow-lg group-hover:shadow-red-500/10"
+                          )}>
+                            {problem.icon}
                           </div>
                         </div>
-
-                        {/* Animated indicator */}
-                        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 w-1 h-6 bg-red-400/30 rounded-full opacity-0 group-hover/item:opacity-100 transition-all duration-300 scale-y-0 group-hover/item:scale-y-100 origin-center" />
-                      </motion.div>
-                    ))}
-                  </div>
+                        <div className="flex-1">
+                          <h4 className="text-lg font-bold text-off-white mb-2 group-hover:text-red-100 transition-colors">
+                            {problem.title}
+                          </h4>
+                          <p className="text-off-white/70 leading-relaxed mb-3">
+                            {problem.microBenefit}
+                          </p>
+                          <div className="text-xs text-off-white/50 italic">
+                            {problem.problem}
+                          </div>
+                          {selectedProblem === problem.id && (
+                            <div className="mt-4 pt-4 border-t border-red-400/20">
+                              <div className="flex items-center gap-2 text-red-400 text-sm font-medium">
+                                <span className="w-2 h-2 bg-red-400 rounded-full" />
+                                Costing you {problem.outcome.toLowerCase()}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
               </motion.div>
 
-              {/* Solution Card */}
+              {/* Right: Solution Reveal */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.4 }}
-                className="group relative bg-kiiro-yellow rounded-3xl overflow-hidden shadow-2xl border-2 border-kiiro-yellow/40 p-4 sm:p-5 lg:p-6"
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="relative"
               >
-                {/* Subtle shadow effects */}
-                <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-3xl transform translate-x-24 -translate-y-24" />
-                <div className="absolute bottom-0 left-0 w-36 h-36 bg-charcoal-black/5 rounded-full blur-2xl transform -translate-x-18 translate-y-18" />
+                <h3 className="text-2xl font-bold text-off-white mb-8">How We Fix It</h3>
 
-                <div className="relative z-10">
-                  <div className="mb-4">
-                    <h3 className="text-xl sm:text-2xl font-bold text-charcoal-black">
-                      How We Fix It
-                    </h3>
-                  </div>
+                {selectedProblem ? (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className="bg-gradient-to-br from-kiiro-yellow/5 via-kiiro-yellow/3 to-transparent border border-kiiro-yellow/20 rounded-3xl p-8 shadow-2xl relative overflow-hidden"
+                  >
+                    {/* Subtle background pattern */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-kiiro-yellow/[0.02] to-transparent" />
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-kiiro-yellow/[0.03] rounded-full blur-2xl" />
+                    <div className="absolute bottom-0 left-0 w-24 h-24 bg-kiiro-yellow/[0.02] rounded-full blur-xl" />
 
-                  <div className="space-y-2">
-                    {kiiroProblems.map((problem, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
-                        className="group/item relative overflow-hidden rounded-xl p-3 hover:border-black/40  transition-all duration-300 cursor-pointer"
-                      >
-                        {/* Subtle hover effect */}
-                        <div className="absolute inset-0 bg-kiiro-yellow/5 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300" />
-
-                        <div className="flex items-start gap-3 relative z-10">
-                          <div className="flex-shrink-0">
-                            <div className="w-10 h-10 bg-kiiro-yellow/20 rounded-xl flex items-center justify-center border border-kiiro-yellow/30 group-hover/item:bg-kiiro-yellow/30 group-hover/item:border-kiiro-yellow/50 transition-all duration-300 shadow-lg shadow-kiiro-yellow/10">
-                              <CheckCircle className="w-5 h-5 text-charcoal-black" />
-                            </div>
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <h4 className="text-sm font-bold text-charcoal-black mb-2 leading-tight group-hover/item:text-charcoal-black transition-colors duration-300">
-                              {problem.solution}
-                            </h4>
-                            <div className="flex flex-wrap gap-1.5">
-                              {problem.quickFixes.map((fix, fixIndex) => (
-                                <span
-                                  key={fixIndex}
-                                  className="inline-flex items-center gap-1.5 px-2 py-1 bg-kiiro-yellow/15 text-charcoal-black/90 text-xs font-medium rounded-lg border border-kiiro-yellow/20 hover:bg-kiiro-yellow/25 transition-colors duration-200"
-                                >
-                                  <div className="w-1.5 h-1.5 bg-kiiro-yellow rounded-full" />
-                                  {fix}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
+                    <div className="flex items-start gap-4 mb-6 relative z-10">
+                      <div className="flex-shrink-0">
+                        <div className="w-16 h-16 bg-kiiro-yellow/20 rounded-2xl flex items-center justify-center border border-kiiro-yellow/30 shadow-lg shadow-kiiro-yellow/10">
+                          <CheckCircle className="w-8 h-8 text-kiiro-yellow" />
                         </div>
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-bold text-off-white mb-3">
+                          {problems.find(p => p.id === selectedProblem)?.title}
+                        </h4>
+                        <p className="text-off-white/80 text-lg leading-relaxed">
+                          {problems.find(p => p.id === selectedProblem)?.solution}
+                        </p>
+                      </div>
+                    </div>
 
-                        {/* Animated indicator */}
-                        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 w-1 h-6 bg-kiiro-yellow/30 rounded-full opacity-0 group-hover/item:opacity-100 transition-all duration-300 scale-y-0 group-hover/item:scale-y-100 origin-center" />
-                      </motion.div>
-                    ))}
+                    <div className="bg-gradient-to-r from-kiiro-yellow/10 to-kiiro-yellow/5 border border-kiiro-yellow/20 rounded-xl p-4 relative z-10">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 bg-kiiro-yellow rounded-full flex items-center justify-center shadow-lg">
+                          <span className="text-charcoal-black font-bold text-sm">↗</span>
+                        </div>
+                        <span className="text-off-white font-semibold">
+                          Result: {problems.find(p => p.id === selectedProblem)?.outcome}
+                        </span>
+                      </div>
+                    </div>
+                  </motion.div>
+                ) : (
+                  <div className="bg-gradient-to-br from-charcoal-gray/20 to-charcoal-gray/10 border border-off-white/10 rounded-3xl p-12 text-center relative overflow-hidden">
+                    {/* Subtle background pattern */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-off-white/[0.02] to-transparent" />
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-off-white/[0.03] rounded-full blur-xl" />
+
+                    <div className="relative z-10">
+                      <div className="w-20 h-20 bg-gradient-to-br from-off-white/10 to-off-white/5 rounded-full flex items-center justify-center mx-auto mb-6 border border-off-white/20">
+                        <HelpCircle className="w-10 h-10 text-off-white/40" />
+                      </div>
+                      <h4 className="text-xl font-bold text-off-white mb-4">Click a problem to see how we fix it</h4>
+                      <p className="text-off-white/60 leading-relaxed">
+                        Each one has a proven 7–14 day solution with measurable results — from messaging and design to UX, trust, and performance.
+                      </p>
+                    </div>
                   </div>
-                </div>
+                )}
               </motion.div>
             </div>
           </div>
 
-          {/* Enhanced CTA */}
+          {/* Trust Cues */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mt-16 pt-16 border-t border-off-white/10"
+          >
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 text-center md:text-left">
+              <div className="flex items-center gap-4">
+                <div className="flex -space-x-2">
+                  <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full border-2 border-charcoal-black flex items-center justify-center text-xs font-bold text-white shadow-lg">
+                    B
+                  </div>
+                  <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-full border-2 border-charcoal-black flex items-center justify-center text-xs font-bold text-white shadow-lg">
+                    L
+                  </div>
+                  <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full border-2 border-charcoal-black flex items-center justify-center text-xs font-bold text-white shadow-lg">
+                    S
+                  </div>
+                </div>
+                <div className="text-sm text-off-white/70">
+                  <div className="font-semibold text-off-white">Trusted by SMBs in</div>
+                  <div>UAE, India & US</div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-6">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-kiiro-yellow">20+</div>
+                  <div className="text-xs text-off-white/60 uppercase tracking-wider">Websites Shipped</div>
+                </div>
+                <div className="w-px h-8 bg-off-white/20"></div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-kiiro-yellow">7-14</div>
+                  <div className="text-xs text-off-white/60 uppercase tracking-wider">Day Delivery</div>
+                </div>
+                <div className="w-px h-8 bg-off-white/20"></div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-kiiro-yellow">100%</div>
+                  <div className="text-xs text-off-white/60 uppercase tracking-wider">Client Satisfaction</div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Clean CTA */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="mt-12 lg:mt-16 text-center"
+            className="mt-16 text-center"
           >
             <Link
               href="#booking"
-              className="group inline-flex items-center gap-4 px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-kiiro-yellow to-kiiro-yellow/90 text-charcoal-black font-bold text-lg sm:text-xl rounded-2xl hover:from-kiiro-yellow/90 hover:to-kiiro-yellow transition-all duration-300 shadow-2xl hover:shadow-kiiro-yellow/30 hover:scale-105 transform"
+              className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-kiiro-yellow to-kiiro-yellow/90 text-charcoal-black font-bold text-lg rounded-xl hover:from-kiiro-yellow/90 hover:to-kiiro-yellow transition-all duration-300 shadow-xl hover:shadow-kiiro-yellow/30 hover:scale-105 transform"
             >
               <span>Book Your Free Strategy Call</span>
-              <ArrowRight className="h-5 w-5 sm:h-6 sm:w-6 group-hover:translate-x-1 transition-transform duration-300" />
+              <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
-            <p className="text-off-white/60 text-sm mt-4 max-w-md mx-auto">
+            <p className="text-off-white/60 text-sm sm:text-lg mt-4 sm:mt-6 max-w-lg mx-auto">
               No commitment • 30-minute call • Instant insights
             </p>
           </motion.div>
         </div>
       </section>
     </BlurFade>
+    </div>
   );
 }
 
-// Enhanced Comparison table component
-export function ComparisonTable() {
-  const comparisonData = [
-    {
-      category: "Kiiro",
-      speed: "Launches 40-70% faster",
-      conversion: "+30% conversion in 60 days",
-      quality: "Consistent, on-brand outputs",
-      costEfficiency: "One partner, no vendor bloat",
-      color: "text-kiiro-yellow",
-      isHighlight: true,
-      icon: CheckCircle
-    },
-    {
-      category: "In-house Team",
-      speed: "Slow hiring/onboarding",
-      conversion: "Know product, but messaging foggy",
-      quality: "Consistent brand voice",
-      costEfficiency: "Expensive, inflexible salaries",
-      color: "text-red-400",
-      icon: XCircle
-    },
-    {
-      category: "Agencies",
-      speed: "Long timelines, rigid scopes",
-      conversion: "Generic positioning focus",
-      quality: "High production quality",
-      costEfficiency: "High retainers, overhead-heavy",
-      color: "text-orange-400",
-      icon: XCircle
-    },
-    {
-      category: "Freelancers",
-      speed: "Inconsistent delivery",
-      conversion: "Mixed clarity, talent-dependent",
-      quality: "Variable quality",
-      costEfficiency: "Cheap per project, costly in mgmt",
-      color: "text-orange-400",
-      icon: XCircle
-    },
-    {
-      category: "AI Tools",
-      speed: "Instant outputs",
-      conversion: "No narrative clarity",
-      quality: "Inconsistent quality",
-      costEfficiency: "Low cost, but high manual polish",
-      color: "text-red-400",
-      icon: XCircle
-    },
-    {
-      category: "DIY Tools",
-      speed: "Fast, but basic",
-      conversion: "No strategic clarity",
-      quality: "Off-brand, inconsistent",
-      costEfficiency: "High hidden labor cost",
-      color: "text-red-400",
-      icon: XCircle
-    }
-  ];
-
-  return (
-    <section className="py-20 lg:py-24 bg-charcoal-black text-off-white relative overflow-hidden">
-      {/* Subtle Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.02)_1px,transparent_0)] bg-[size:40px_40px] opacity-30" />
-
-      <div className="container mx-auto px-4 max-w-7xl relative">
-        {/* Enhanced Header */}
-        <div className="text-center mb-16">
-          <motion.h2
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-off-white mb-6 leading-tight"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            Why 15+ Businesses Trust{" "}
-            <motion.span
-              className="text-kiiro-yellow relative"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.2 }}
-            >
-              Kiiro
-              <motion.div
-                className="absolute -bottom-2 left-0 right-0 h-1 bg-kiiro-yellow rounded-full"
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.5 }}
-              />
-            </motion.span>
-          </motion.h2>
-
-          <motion.p
-            className="text-lg text-off-white/70 max-w-2xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            We don&apos;t just build websites. We build trust and credibility that converts visitors into customers.
-          </motion.p>
-        </div>
-
-        {/* Modern Comparison Grid */}
-        <div className="max-w-7xl mx-auto overflow-x-auto px-4 sm:px-0">
-          <motion.div
-            className="bg-charcoal-black border border-off-white/10 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-sm relative"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            {/* Subtle overlay */}
-            <div className="absolute inset-0 bg-kiiro-yellow/2" />
-
-            {/* Grid Container */}
-            <div className="min-w-[900px] relative">
-              {/* Grid Header */}
-              <div className="grid grid-cols-[300px_1fr_1fr_1fr_1fr] gap-0 bg-charcoal-black border-b border-kiiro-yellow/40 backdrop-blur-sm">
-                <div className="px-6 py-5 text-lg font-bold text-off-white sticky left-0 bg-charcoal-black backdrop-blur-sm z-10 border-r border-off-white/10">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-6 bg-kiiro-yellow rounded-full"></div>
-                    <span>Solution</span>
-                  </div>
-                </div>
-                <div className="px-4 py-5 text-sm font-bold text-off-white/90 text-center border-r border-off-white/10">
-                  <div className="flex flex-col items-center gap-1">
-                    <span className="text-xs text-off-white/60 uppercase tracking-wider">Delivery</span>
-                    <span className="text-base">Speed</span>
-                  </div>
-                </div>
-                <div className="px-4 py-5 text-sm font-bold text-off-white/90 text-center border-r border-off-white/10">
-                  <div className="flex flex-col items-center gap-1">
-                    <span className="text-xs text-off-white/60 uppercase tracking-wider">Marketing</span>
-                    <span className="text-base">Conversion</span>
-                  </div>
-                </div>
-                <div className="px-4 py-5 text-sm font-bold text-off-white/90 text-center border-r border-off-white/10">
-                  <div className="flex flex-col items-center gap-1">
-                    <span className="text-xs text-off-white/60 uppercase tracking-wider">Brand</span>
-                    <span className="text-base">Quality</span>
-                  </div>
-                </div>
-                <div className="px-4 py-5 text-sm font-bold text-off-white/90 text-center">
-                  <div className="flex flex-col items-center gap-1">
-                    <span className="text-xs text-off-white/60 uppercase tracking-wider">Business</span>
-                    <span className="text-base">ROI</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Grid Body */}
-              <div className="divide-y divide-off-white/10">
-                {comparisonData.map((item, index) => {
-                  const IconComponent = item.icon;
-                  return (
-                    <motion.div
-                      key={item.category}
-                      className={cn(
-                        "group relative transition-all duration-500 hover:bg-off-white/5 grid grid-cols-[300px_1fr_1fr_1fr_1fr] gap-0",
-                        item.isHighlight
-                          ? "bg-kiiro-yellow shadow-xl border-y-2 border-kiiro-yellow/40"
-                          : "hover:shadow-lg hover:shadow-slate-900/10"
-                      )}
-                      initial={{ opacity: 0, x: -30 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.7, delay: index * 0.12 }}
-                    >
-                      {/* Subtle effects for highlight row */}
-                      {item.isHighlight && (
-                        <>
-                          <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-3xl transform translate-x-20 -translate-y-20" />
-                          <div className="absolute bottom-0 left-0 w-32 h-32 bg-charcoal-black/5 rounded-full blur-2xl transform -translate-x-16 translate-y-16" />
-                        </>
-                      )}
-
-                      <div className="px-6 py-5 border-r border-off-white/10 sticky left-0 z-10 bg-inherit backdrop-blur-sm">
-                        <div className="flex items-center gap-4">
-                          <div className={cn(
-                            "w-14 h-14 rounded-2xl flex items-center justify-center border-2 transition-all duration-300 flex-shrink-0 shadow-lg",
-                            item.isHighlight
-                              ? "bg-white border-white shadow-white/40"
-                              : "bg-charcoal-black/60 border-off-white/20 group-hover:border-off-white/40 group-hover:shadow-off-white/10"
-                          )}>
-                            <IconComponent className={cn(
-                              "w-7 h-7",
-                              item.isHighlight ? "text-charcoal-black" : item.color
-                            )} />
-                          </div>
-                          <span className={cn(
-                            "font-bold text-lg leading-tight",
-                            item.isHighlight ? "text-charcoal-black" : "text-off-white"
-                          )}>
-                            {item.category}
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className={cn(
-                        "px-4 py-5 text-center font-medium text-sm leading-relaxed border-r border-off-white/10 relative z-10",
-                        item.isHighlight ? "text-charcoal-black" : "text-off-white/80"
-                      )}>
-                        <div className="max-w-36 mx-auto">
-                          {item.speed}
-                        </div>
-                      </div>
-
-                      <div className={cn(
-                        "px-4 py-5 text-center font-medium text-sm leading-relaxed border-r border-off-white/10 relative z-10",
-                        item.isHighlight ? "text-charcoal-black" : "text-off-white/80"
-                      )}>
-                        <div className="max-w-36 mx-auto">
-                          {item.conversion}
-                        </div>
-                      </div>
-
-                      <div className={cn(
-                        "px-4 py-5 text-center font-medium text-sm leading-relaxed border-r border-off-white/10 relative z-10",
-                        item.isHighlight ? "text-charcoal-black" : "text-off-white/80"
-                      )}>
-                        <div className="max-w-36 mx-auto">
-                          {item.quality}
-                        </div>
-                      </div>
-
-                      <div className={cn(
-                        "px-4 py-5 text-center font-medium text-sm leading-relaxed relative z-10",
-                        item.isHighlight ? "text-charcoal-black" : "text-off-white/80"
-                      )}>
-                        <div className="max-w-36 mx-auto">
-                          {item.costEfficiency}
-                        </div>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Enhanced Bottom CTA */}
-        <motion.div
-          className="text-center mt-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <Link
-            href="#booking"
-            className="group inline-flex items-center gap-4 px-10 py-5 bg-gradient-to-r from-kiiro-yellow via-kiiro-yellow to-kiiro-yellow/90 text-charcoal-black rounded-2xl font-bold text-xl transition-all duration-300 shadow-2xl hover:shadow-kiiro-yellow/40 hover:scale-105 transform"
-          >
-            <span>Build Trust That Converts</span>
-            <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
-          </Link>
-          <p className="text-off-white/60 text-base mt-4 max-w-lg mx-auto">
-            Join 15+ businesses already building credibility with Kiiro
-          </p>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
