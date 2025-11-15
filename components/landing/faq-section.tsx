@@ -9,7 +9,7 @@ import {
 import { TextAnimate } from "@/components/magicui/text-animate";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { cn } from "@/lib/utils";
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 const faqData = [
   {
@@ -71,6 +71,18 @@ const faqData = [
 export function FaqSection() {
   const [openItem, setOpenItem] = useState<string | null>(faqData[0].id);
   const [showAll, setShowAll] = useState(false);
+  const faqSchema = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(({ question, answer }) => ({
+      "@type": "Question",
+      "name": question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": answer,
+      },
+    })),
+  }), []);
 
   const visibleFaqs = showAll ? faqData : faqData.slice(0, 4);
 
@@ -78,6 +90,10 @@ export function FaqSection() {
     <BlurFade delay={0.1} inView>
       <section className="py-24 bg-charcoal-black text-off-white" id="faq">
         <div className="container px-4 mx-auto">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+          />
           <div className="flex flex-col items-center text-center mb-16 max-w-3xl mx-auto">
             <p className="mb-3 text-xs uppercase tracking-[0.25em] text-kiiro-yellow font-semibold">FAQ</p>
             <h2 className="text-4xl font-bold md:text-5xl [text-shadow:_0_1px_2px_rgba(0,0,0,0.2)] mb-4 text-off-white">

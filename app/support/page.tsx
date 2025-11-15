@@ -7,12 +7,66 @@ export const metadata: Metadata = {
   title: "Customer Support | Kiiro.cx - Get Help & Support",
   description: "Get help with your web development projects. Find answers to frequently asked questions, contact support, and get assistance with your Kiiro.cx services.",
   keywords: ["customer support", "help", "faq", "web development support", "kiiro support"],
+  authors: [{ name: "kiiro.cx" }],
+  openGraph: {
+    type: "website",
+    title: "Customer Support | Kiiro.cx - Get Help & Support",
+    description: "Get help with your web development projects. Find answers to frequently asked questions and contact support.",
+    url: "https://kiiro.cx/support",
+    siteName: "kiiro.cx",
+  },
+  alternates: {
+    canonical: "https://kiiro.cx/support",
+  },
 };
 
 export default function SupportPage() {
+  const structuredFAQ = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How quickly do you respond to support requests?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We respond to all inquiries within 24 hours on business days. Emergency requests that impact live websites can be escalated via phone for immediate help."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What support channels can I use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can reach us via live chat, email at abdullah.saeed1724@gmail.com, or phone at +91 7398826339. For detailed briefs we recommend email."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you provide ongoing maintenance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Every project includes 180 days of post-launch support for bug fixes and minor updates. Beyond that we offer retainers or per-request updates."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is emergency support available?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Critical outages can be escalated via our emergency line. This service is reserved for production incidents that affect availability, payments, or lead flow."
+        }
+      }
+    ]
+  };
+
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black text-off-white">
       <Header />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredFAQ) }}
+      />
 
       <div className="pt-24 pb-20">
         {/* Hero Section */}

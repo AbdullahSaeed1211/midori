@@ -4,8 +4,20 @@ import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
 
 export const metadata: Metadata = {
-  title: "Cancellation & Refund Policy | Kiiro.cx",
-  description: "Cancellation & Refund Policy for Kiiro.cx - Our policy for cancellations and refunds abiding Indian laws.",
+  title: "Cancellation & Refund Policy | Kiiro.cx - Consumer Rights",
+  description: "Complete cancellation and refund policy for Kiiro.cx. Understand your consumer rights, refund eligibility, and dispute resolution process under Indian law.",
+  keywords: ["cancellation policy", "refund policy", "consumer rights", "indian consumer law", "project cancellation", "kiiro refunds"],
+  authors: [{ name: "kiiro.cx" }],
+  openGraph: {
+    type: "website",
+    title: "Cancellation & Refund Policy | Kiiro.cx - Consumer Rights",
+    description: "Complete cancellation and refund policy for Kiiro.cx. Understand your consumer rights and refund eligibility under Indian law.",
+    url: "https://kiiro.cx/cancellation",
+    siteName: "kiiro.cx",
+  },
+  alternates: {
+    canonical: "https://kiiro.cx/cancellation",
+  },
 };
 
 export default function CancellationPolicy() {

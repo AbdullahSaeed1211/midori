@@ -5,17 +5,48 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
+import { ArticleJsonLd } from "@/components/seo/article-json-ld";
 
 export const metadata: Metadata = {
-  title: "Lotus Pro Services | Premium Document Services in Dubai",
+  title: "Lotus Pro Services | Premium Document Services in Dubai - Case Study",
   description: "How we created a sophisticated website for Lotus Pro Services that established them as a premium provider in Dubai's competitive document services market.",
   keywords: "document services, business setup, visa services, UAE business, website redesign, brand identity, responsive design",
+  authors: [{ name: "kiiro.cx" }],
+  alternates: {
+    canonical: 'https://kiiro.cx/case-studies/lotus-pro-services'
+  },
+  openGraph: {
+    type: "article",
+    title: "Lotus Pro Services | Premium Document Services in Dubai - Case Study",
+    description: "How we created a sophisticated website for Lotus Pro Services that established them as a premium provider in Dubai.",
+    siteName: "kiiro.cx",
+    url: "https://kiiro.cx/case-studies/lotus-pro-services",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lotus Pro Services | Premium Document Services Case Study",
+    description: "Sophisticated website design for Dubai document services company.",
+  }
 };
 
 export default function LotusCaseStudy() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <ArticleJsonLd
+        title="Lotus Pro Services | Premium Document Services in Dubai - Case Study"
+        description="How we created a sophisticated website for Lotus Pro Services that established them as a premium provider in Dubai's competitive document services market."
+        url="https://kiiro.cx/case-studies/lotus-pro-services"
+        image="https://kiiro.cx/projects/lotus.webp"
+        datePublished="2024-11-20"
+        dateModified="2024-11-20"
+        keywords={[
+          "document services Dubai",
+          "business setup website",
+          "premium web design",
+          "UAE web design case study",
+        ]}
+      />
       
       <div className="pt-24 pb-20">
         {/* Hero Section */}

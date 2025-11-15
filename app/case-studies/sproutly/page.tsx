@@ -5,17 +5,48 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
+import { ArticleJsonLd } from "@/components/seo/article-json-ld";
 
 export const metadata: Metadata = {
-  title: "Sproutly | Urban Gardening Education Platform",
+  title: "Sproutly | Urban Gardening Education Platform - Case Study",
   description: "How we designed and developed Sproutly, a modern web platform empowering urban dwellers to transform their living spaces into thriving gardens through expert-led courses, resources, and community.",
   keywords: "urban gardening, education platform, web development, UI/UX, Next.js, React, branding, case study",
+  authors: [{ name: "kiiro.cx" }],
+  alternates: {
+    canonical: 'https://kiiro.cx/case-studies/sproutly'
+  },
+  openGraph: {
+    type: "article",
+    title: "Sproutly | Urban Gardening Education Platform - Case Study",
+    description: "Modern web platform empowering urban dwellers to transform their living spaces into thriving gardens.",
+    siteName: "kiiro.cx",
+    url: "https://kiiro.cx/case-studies/sproutly",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sproutly | Urban Gardening Education Platform Case Study",
+    description: "Modern web platform for urban gardening education and community.",
+  }
 };
 
 export default function SproutlyCaseStudy() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <ArticleJsonLd
+        title="Sproutly | Urban Gardening Education Platform - Case Study"
+        description="How we designed and developed Sproutly, a modern web platform empowering urban dwellers to transform their living spaces into thriving gardens through expert-led courses, resources, and community."
+        url="https://kiiro.cx/case-studies/sproutly"
+        image="https://kiiro.cx/projects/sproutly.webp"
+        datePublished="2025-01-02"
+        dateModified="2025-01-02"
+        keywords={[
+          "urban gardening platform",
+          "education web app",
+          "community platform",
+          "Next.js case study",
+        ]}
+      />
       <div className="pt-24 pb-20">
         {/* Hero Section */}
         <section className="relative">

@@ -14,8 +14,12 @@ export const metadata: Metadata = {
     type: "website",
     title: "Blog | SEO Tips & Web Design Insights | kiiro.cx",
     description: "Stay updated with the latest SEO strategies and web design tips to grow your online business.",
+    url: "https://kiiro.cx/blog",
     siteName: "kiiro.cx",
-  }
+  },
+  alternates: {
+    canonical: "https://kiiro.cx/blog",
+  },
 };
 
 // Simplified blog post data - focus on quality over quantity

@@ -23,8 +23,12 @@ export const metadata: Metadata = {
     type: "website",
     title: "Professional Websites for Entrepreneurs & Growing Businesses | kiiro.cx",
     description: "Build credibility and convert visitors into customers with a professional website. Designed for entrepreneurs, course creators, and growing businesses.",
+    url: "https://kiiro.cx",
     siteName: "kiiro.cx",
-  }
+  },
+  alternates: {
+    canonical: "https://kiiro.cx",
+  },
 };
 
 export default function Home() {

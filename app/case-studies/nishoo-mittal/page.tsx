@@ -5,18 +5,27 @@ import Link from "next/link";
 import { ArrowLeft, Calculator, Shield, TrendingUp, Users } from "lucide-react";
 import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
+import { ArticleJsonLd } from "@/components/seo/article-json-ld";
 
 export const metadata: Metadata = {
   title: "Nishoo Mittal | Financial Advisor Website Design & Development Case Study",
   description: "How we created a comprehensive financial planning website for MDRT Galaxy Club member Nishoo Mittal, featuring interactive calculators and modern design that builds trust with Indian families.",
   keywords: "financial advisor website, Nishoo Mittal, MDRT Galaxy Club, financial planning website, interactive calculators, wealth management, family financial planning, investment planning, risk management",
-  authors: [{ name: "Midori Agency" }],
+  authors: [{ name: "kiiro.cx" }],
+  alternates: {
+    canonical: 'https://kiiro.cx/case-studies/nishoo-mittal'
+  },
   openGraph: {
+    type: "article",
     title: "Nishoo Mittal | Financial Advisor Website Case Study",
     description: "Comprehensive financial planning website with interactive calculators, modern design, and trust-building elements for MDRT Galaxy Club member.",
-    type: "article",
-    url: "https://midori.cx/case-studies/nishoo-mittal",
-    siteName: "Midori Agency"
+    siteName: "kiiro.cx",
+    url: "https://kiiro.cx/case-studies/nishoo-mittal",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nishoo Mittal | Financial Advisor Website Case Study",
+    description: "Comprehensive financial planning website with interactive calculators for MDRT Galaxy Club member.",
   }
 };
 
@@ -24,6 +33,20 @@ export default function NishooMittalCaseStudy() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <ArticleJsonLd
+        title="Nishoo Mittal | Financial Advisor Website Design & Development Case Study"
+        description="How we created a comprehensive financial planning website for MDRT Galaxy Club member Nishoo Mittal, featuring interactive calculators and modern design that builds trust with Indian families."
+        url="https://kiiro.cx/case-studies/nishoo-mittal"
+        image="https://kiiro.cx/projects/mittal.webp"
+        datePublished="2025-01-18"
+        dateModified="2025-01-18"
+        keywords={[
+          "financial advisor website",
+          "wealth management website",
+          "interactive calculators",
+          "MDRT Galaxy Club",
+        ]}
+      />
 
       <div className="pt-20 md:pt-24 pb-16 md:pb-20">
         {/* Hero Section */}

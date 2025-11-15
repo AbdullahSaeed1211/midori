@@ -9,6 +9,17 @@ export const metadata: Metadata = {
   title: "Contact Us | Kiiro.cx - Let's Build Something Amazing",
   description: "Ready to transform your website into a lead-generating machine? Book a free consultation or send us a message. Response guaranteed within 4 hours.",
   keywords: ["contact kiiro", "web development consultation", "website contact", "book a call", "Dubai web developer contact"],
+  authors: [{ name: "kiiro.cx" }],
+  openGraph: {
+    type: "website",
+    title: "Contact Us | Kiiro.cx - Let's Build Something Amazing",
+    description: "Ready to transform your website into a lead-generating machine? Book a free consultation or send us a message.",
+    url: "https://kiiro.cx/contact",
+    siteName: "kiiro.cx",
+  },
+  alternates: {
+    canonical: "https://kiiro.cx/contact",
+  },
 };
 
 export default function ContactPage() {

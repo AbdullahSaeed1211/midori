@@ -12,8 +12,12 @@ export const metadata: Metadata = {
     type: "website",
     title: "Free Website Audit | Discover What's Costing You Customers",
     description: "Free website audit for entrepreneurs and growing businesses. Discover what's preventing your website from converting visitors into customers.",
+    url: "https://kiiro.cx/audit",
     siteName: "kiiro.cx",
-  }
+  },
+  alternates: {
+    canonical: "https://kiiro.cx/audit",
+  },
 };
 
 export default function AuditPage() {

@@ -5,17 +5,48 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
+import { ArticleJsonLd } from "@/components/seo/article-json-ld";
 
 export const metadata: Metadata = {
-  title: "Blog Squirrel | Modern Blogging Platform for Technical Writers",
+  title: "Blog Squirrel | Modern Blogging Platform for Technical Writers - Case Study",
   description: "How we created a specialized blogging platform for technical writers that improved content organization, reader engagement, and code presentation with a 67% increase in article completions.",
   keywords: "technical blogging, developer platform, code presentation, markdown, NextJS, blogging platform, technical writing",
+  authors: [{ name: "kiiro.cx" }],
+  alternates: {
+    canonical: 'https://kiiro.cx/case-studies/blog-squirrel'
+  },
+  openGraph: {
+    type: "article",
+    title: "Blog Squirrel | Modern Blogging Platform for Technical Writers - Case Study",
+    description: "Specialized blogging platform for technical writers with improved content organization and code presentation.",
+    siteName: "kiiro.cx",
+    url: "https://kiiro.cx/case-studies/blog-squirrel",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog Squirrel | Technical Blogging Platform Case Study",
+    description: "Modern blogging platform for technical writers with 67% article completion increase.",
+  }
 };
 
 export default function BlogSquirrelCaseStudy() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <ArticleJsonLd
+        title="Blog Squirrel | Modern Blogging Platform for Technical Writers - Case Study"
+        description="How we created a specialized blogging platform for technical writers that improved content organization, reader engagement, and code presentation with a 67% increase in article completions."
+        url="https://kiiro.cx/case-studies/blog-squirrel"
+        image="https://kiiro.cx/projects/blogport.webp"
+        datePublished="2024-12-12"
+        dateModified="2024-12-12"
+        keywords={[
+          "technical blogging platform",
+          "developer content",
+          "Next.js SaaS",
+          "code presentation",
+        ]}
+      />
       
       <div className="pt-20 md:pt-24 pb-16 md:pb-20">
         {/* Hero Section */}

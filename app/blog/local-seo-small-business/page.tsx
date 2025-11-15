@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { BlogTemplate, BlogSection, HighlightBox, StatsGrid, BlogCTA } from "@/components/blog/BlogTemplate";
 import { MapPin, Star, TrendingUp, Users, Phone, Globe, Target, CheckCircle2, AlertTriangle } from "lucide-react";
+import { ArticleJsonLd } from "@/components/seo/article-json-ld";
 
 export const metadata: Metadata = {
   title: "Local SEO Strategies for Small Businesses | kiiro.cx",
@@ -35,7 +36,23 @@ export default function LocalSEOSmallBusiness() {
   ];
 
   return (
-    <BlogTemplate
+    <>
+      <ArticleJsonLd
+        title="Local SEO Strategies for Small Businesses | kiiro.cx"
+        description="Dominate your local market with proven SEO strategies. Learn how to optimize for local search and attract more customers from your area."
+        url="https://kiiro.cx/blog/local-seo-small-business"
+        image="https://kiiro.cx/projects/kiiro.webp"
+        datePublished="2025-02-12"
+        dateModified="2025-02-12"
+        keywords={[
+          "local SEO",
+          "small business SEO",
+          "Google Business Profile",
+          "local search optimization",
+          "local marketing",
+        ]}
+      />
+      <BlogTemplate
       title="Local SEO Strategies That Actually Work for Small Businesses"
       description="Dominate your local market with proven SEO strategies. Learn how to optimize for local search and attract more customers from your area."
       category="SEO"
@@ -343,6 +360,7 @@ export default function LocalSEOSmallBusiness() {
           href: "/contact"
         }}
       />
-    </BlogTemplate>
+      </BlogTemplate>
+    </>
   );
 }

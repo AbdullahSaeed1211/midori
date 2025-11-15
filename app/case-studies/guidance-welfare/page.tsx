@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowLeft, Database, Shield, Zap, Users, Award, TrendingUp, Code, Smartphone } from "lucide-react";
 import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
+import { ArticleJsonLd } from "@/components/seo/article-json-ld";
 
 export const metadata: Metadata = {
   title: "Guidance Welfare Foundation | Islamic Educational Platform - LMS Case Study",
@@ -31,6 +32,21 @@ export default function GuidanceWelfareCaseStudy() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <ArticleJsonLd
+        title="Guidance Welfare Foundation | Islamic Educational Platform - LMS Case Study"
+        description="Complete case study of Guidance Welfare Foundation - a comprehensive Islamic educational management system with advanced LMS capabilities, PWA features, and production-grade architecture."
+        url="https://kiiro.cx/case-studies/guidance-welfare"
+        image="https://kiiro.cx/projects/guidancewelfare.webp"
+        datePublished="2024-12-01"
+        dateModified="2024-12-01"
+        keywords={[
+          "Islamic LMS",
+          "educational platform",
+          "learning management system",
+          "PWA",
+          "Next.js case study",
+        ]}
+      />
       <div className="pt-24 pb-20">
         {/* Hero Section */}
         <section className="relative">

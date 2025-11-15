@@ -4,6 +4,7 @@ import { Footer } from "@/components/shared/footer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
+import { ArticleJsonLd } from "@/components/seo/article-json-ld";
 
 export const metadata: Metadata = {
   title: "How Website Speed Impacts Business Growth | kiiro.cx",
@@ -22,6 +23,21 @@ export default function WebsiteSpeedBusinessGrowth() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <ArticleJsonLd
+        title="How Website Speed Impacts Business Growth | kiiro.cx"
+        description="Discover the direct correlation between website speed and business metrics. Learn practical strategies to optimize your site speed and boost conversions."
+        url="https://kiiro.cx/blog/website-speed-business-growth"
+        image="https://kiiro.cx/projects/kiiro.webp"
+        datePublished="2025-02-05"
+        dateModified="2025-02-05"
+        keywords={[
+          "website speed",
+          "page speed optimization",
+          "site performance",
+          "Core Web Vitals",
+          "business growth",
+        ]}
+      />
 
       <article className="pt-24 pb-20">
         <div className="container mx-auto px-4">

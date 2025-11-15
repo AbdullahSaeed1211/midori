@@ -5,17 +5,49 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
+import { ArticleJsonLd } from "@/components/seo/article-json-ld";
 
 export const metadata: Metadata = {
-  title: "Dubbby | AI-Powered Video Dubbing Platform",
+  title: "Dubbby | AI-Powered Video Dubbing Platform - Case Study",
   description: "How we developed an innovative AI-powered video dubbing platform that helps creators reach global audiences by breaking language barriers with perfect lip synchronization.",
   keywords: "AI dubbing, video translation, content creation, SaaS platform, language barriers, global reach, NextJS development",
+  authors: [{ name: "kiiro.cx" }],
+  alternates: {
+    canonical: 'https://kiiro.cx/case-studies/dubbby'
+  },
+  openGraph: {
+    type: "article",
+    title: "Dubbby | AI-Powered Video Dubbing Platform - Case Study",
+    description: "How we developed an innovative AI-powered video dubbing platform that helps creators reach global audiences.",
+    siteName: "kiiro.cx",
+    url: "https://kiiro.cx/case-studies/dubbby",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dubbby | AI-Powered Video Dubbing Platform Case Study",
+    description: "AI-powered video dubbing platform for global content creators.",
+  }
 };
 
 export default function DubbbyCaseStudy() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <ArticleJsonLd
+        title="Dubbby | AI-Powered Video Dubbing Platform - Case Study"
+        description="How we developed an innovative AI-powered video dubbing platform that helps creators reach global audiences by breaking language barriers with perfect lip synchronization."
+        url="https://kiiro.cx/case-studies/dubbby"
+        image="https://kiiro.cx/projects/dubbby.webp"
+        datePublished="2025-01-05"
+        dateModified="2025-01-05"
+        keywords={[
+          "AI dubbing",
+          "video translation",
+          "content creation platform",
+          "SaaS case study",
+          "language localization",
+        ]}
+      />
       
       <div className="pt-24 pb-20">
         {/* Hero Section */}

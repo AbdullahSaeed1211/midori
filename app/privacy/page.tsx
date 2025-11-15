@@ -4,8 +4,20 @@ import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Kiiro.cx",
-  description: "Privacy Policy for Kiiro.cx - How we collect, use, and protect your personal information.",
+  title: "Privacy Policy | Kiiro.cx - How We Protect Your Data",
+  description: "Complete privacy policy for Kiiro.cx. Learn how we collect, use, and protect your personal information in compliance with data protection laws.",
+  keywords: ["privacy policy", "data protection", "GDPR", "personal information", "data security", "kiiro privacy"],
+  authors: [{ name: "kiiro.cx" }],
+  openGraph: {
+    type: "website",
+    title: "Privacy Policy | Kiiro.cx - How We Protect Your Data",
+    description: "Learn how we collect, use, and protect your personal information in compliance with data protection laws.",
+    url: "https://kiiro.cx/privacy",
+    siteName: "kiiro.cx",
+  },
+  alternates: {
+    canonical: "https://kiiro.cx/privacy",
+  },
 };
 
 export default function PrivacyPolicy() {

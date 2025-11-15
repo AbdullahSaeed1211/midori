@@ -5,17 +5,48 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
+import { ArticleJsonLd } from "@/components/seo/article-json-ld";
 
 export const metadata: Metadata = {
-  title: "BrainWise | AI-Driven Learning Platform",
+  title: "BrainWise | AI-Driven Learning Platform - Case Study",
   description: "How we built an AI-powered learning platform that delivers personalized microlearning experiences for busy professionals, resulting in a 67% increase in course completion rates.",
   keywords: "microlearning, AI education, personalized learning, online courses, educational technology, NextJS development, AI implementation",
+  authors: [{ name: "kiiro.cx" }],
+  alternates: {
+    canonical: 'https://kiiro.cx/case-studies/brain-wise'
+  },
+  openGraph: {
+    type: "article",
+    title: "BrainWise | AI-Driven Learning Platform - Case Study",
+    description: "AI-powered learning platform with personalized microlearning experiences - 67% completion rate increase.",
+    siteName: "kiiro.cx",
+    url: "https://kiiro.cx/case-studies/brain-wise",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BrainWise | AI-Driven Learning Platform Case Study",
+    description: "AI-powered learning platform with 67% completion rate increase.",
+  }
 };
 
 export default function BrainWiseCaseStudy() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <ArticleJsonLd
+        title="BrainWise | AI-Driven Learning Platform - Case Study"
+        description="How we built an AI-powered learning platform that delivers personalized microlearning experiences for busy professionals, resulting in a 67% increase in course completion rates."
+        url="https://kiiro.cx/case-studies/brain-wise"
+        image="https://kiiro.cx/projects/brainwise.webp"
+        datePublished="2025-01-08"
+        dateModified="2025-01-08"
+        keywords={[
+          "AI learning platform",
+          "microlearning",
+          "education technology",
+          "Next.js LMS",
+        ]}
+      />
       
       <div className="pt-24 pb-20">
         {/* Hero Section */}

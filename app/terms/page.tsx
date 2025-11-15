@@ -4,8 +4,20 @@ import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Kiiro.cx",
-  description: "Terms of Service for Kiiro.cx - Our terms and conditions for using our web development services.",
+  title: "Terms of Service | Kiiro.cx - Service Agreement",
+  description: "Complete terms of service for Kiiro.cx web development services. Understand our service agreements, payment terms, and project deliverables.",
+  keywords: ["terms of service", "service agreement", "web development terms", "payment terms", "project deliverables", "kiiro terms"],
+  authors: [{ name: "kiiro.cx" }],
+  openGraph: {
+    type: "website",
+    title: "Terms of Service | Kiiro.cx - Service Agreement",
+    description: "Complete terms of service for Kiiro.cx web development services. Understand our service agreements and payment terms.",
+    url: "https://kiiro.cx/terms",
+    siteName: "kiiro.cx",
+  },
+  alternates: {
+    canonical: "https://kiiro.cx/terms",
+  },
 };
 
 export default function TermsOfService() {

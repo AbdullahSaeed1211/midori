@@ -14,6 +14,7 @@ interface CaseStudySectionProps {
   maxItems?: number;
   showStats?: boolean;
   variant?: 'default' | 'compact';
+  showScrollIndicator?: boolean;
 }
 
 interface CaseStudyProps {
@@ -405,7 +406,8 @@ export function CaseStudiesSection({
   className,
   maxItems = CASE_STUDIES.length,
   showStats = true,
-  variant = 'default'
+  variant = 'default',
+  showScrollIndicator = true
 }: CaseStudySectionProps) {
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [showAllProjects, setShowAllProjects] = useState(false);
@@ -732,19 +734,21 @@ export function CaseStudiesSection({
         </motion.div>
 
         {/* Scroll Indicator */}
-        <motion.div
-          className="flex justify-center mt-20"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-        >
-          <ScrollIndicator
-            text="Client Testimonials"
-            onClick={() => handleScrollToSection('client-wins')}
-            className="hover:scale-105 transition-transform duration-300"
-          />
-        </motion.div>
+        {showScrollIndicator && (
+          <motion.div
+            className="flex justify-center mt-20"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+          >
+            <ScrollIndicator
+              text="Client Testimonials"
+              onClick={() => handleScrollToSection('client-wins')}
+              className="hover:scale-105 transition-transform duration-300"
+            />
+          </motion.div>
+        )}
       </div>
     </section>
   );

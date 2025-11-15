@@ -1,192 +1,86 @@
+
 import React from "react";
 import { Metadata } from "next";
+import { ArrowUpRight } from "lucide-react";
 import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
-import { CaseStudiesClient } from "@/components/ui/case-studies-client";
-
-// Case study interface
-interface CaseStudy {
-  title: string;
-  description: string;
-  href: string;
-  category: string;
-  image: string;
-}
-
-// Generate structured data for SEO
-function generateStructuredData(caseStudies: CaseStudy[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Case Studies | Kiiro.cx",
-    "description": "Explore our portfolio of successful projects across various industries. See how we've helped clients achieve their digital goals with custom web solutions.",
-    "url": "https://kiiro.cx/case-studies",
-    "mainEntity": {
-      "@type": "ItemList",
-      "numberOfItems": caseStudies.length,
-      "itemListElement": caseStudies.map((study, index) => ({
-        "@type": "ListItem",
-        "position": index + 1,
-        "item": {
-          "@type": "CreativeWork",
-          "name": study.title,
-          "description": study.description,
-          "url": `https://kiiro.cx${study.href}`,
-          "keywords": study.category,
-          "image": `https://kiiro.cx${study.image}`,
-          "creator": {
-            "@type": "Organization",
-            "name": "Kiiro.cx",
-            "url": "https://kiiro.cx"
-          }
-        }
-      }))
-    },
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://kiiro.cx"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Case Studies",
-          "item": "https://kiiro.cx/case-studies"
-        }
-      ]
-    }
-  };
-}
+import { CaseStudiesSection } from "@/components/landing/case-studies-section";
 
 export const metadata: Metadata = {
-  title: "Case Studies | Kiiro.cx - Web Design & Development Portfolio",
+  title: "Case Studies - Web Design & Development Portfolio",
   description: "Explore our portfolio of successful projects across various industries. See how we've helped clients achieve their digital goals with custom web solutions.",
   keywords: "case studies, web design projects, development portfolio, client success stories, web applications, digital transformation",
+  openGraph: {
+    title: "Case Studies - Web Design & Development Portfolio | kiiro.cx",
+    description: "Explore our portfolio of successful projects across various industries. See how we've helped clients achieve their digital goals with custom web solutions.",
+    url: "https://kiiro.cx/case-studies",
+    type: "website",
+  },
+  alternates: {
+    canonical: "https://kiiro.cx/case-studies",
+  },
 };
 
-interface CaseStudy {
-  title: string;
-  description: string;
-  image: string;
-  href: string;
-  category: string;
-  results: string;
-  accentColor: "yellow" | "teal" | "purple" | "magenta";
-}
-
 export default function CaseStudiesPage() {
-  const caseStudies: CaseStudy[] = [
-    {
-      title: "Coming Soon",
-      description: "Coming Soon - An innovative web solution currently in development. Stay tuned for the launch of this exciting new project that will push the boundaries of modern web design and user experience.",
-      image: "/projects/alpha.webp",
-      href: "#",
-      category: "Innovation",
-      results: "Coming Soon",
-      accentColor: "yellow"
-    },
-    {
-      title: "Coming Soon",
-      description: "Coming Soon - A transformative wellness platform designed to enhance mindfulness and well-being through innovative digital experiences. An exciting new venture that will revolutionize the wellness industry.",
-      image: "/projects/zen.webp",
-      href: "#",
-      category: "Wellness",
-      results: "Coming Soon",
-      accentColor: "teal"
-    },
-    {
-      title: "Simply Mortgage",
-      description: "UAE premier mortgage consultancy offering personalized solutions with streamlined application process.",
-      image: "/projects/simply.webp",
-      href: "/case-studies/simply-mortgage",
-      category: "Financial Services",
-      results: "42% increase in lead generation",
-      accentColor: "yellow"
-    },
-    {
-      title: "Lotus Pro Services",
-      description: "Document clearing and business services specialist in Dubai with comprehensive service offerings.",
-      image: "/projects/lotus.webp",
-      href: "/case-studies/lotus-pro-services",
-      category: "Business Services",
-      results: "300% improvement in online visibility",
-      accentColor: "teal"
-    },
-    {
-      title: "Sproutly",
-      description: "Urban Gardening Education Platform empowering city dwellers to transform their living spaces into thriving gardens.",
-      image: "/projects/sproutly.webp",
-      href: "/case-studies/sproutly",
-      category: "Education Platform",
-      results: "92% mobile conversion rate",
-      accentColor: "purple"
-    },
-    {
-      title: "Dubbby",
-      description: "AI-driven content creation platform helping creators scale their production with advanced automation tools.",
-      image: "/projects/dubbby.webp",
-      href: "/case-studies/dubbby",
-      category: "AI Platform",
-      results: "150% user engagement increase",
-      accentColor: "magenta"
-    },
-    {
-      title: "BrainWise",
-      description: "AI-driven learning platform for busy professionals seeking targeted skills development and career advancement.",
-      image: "/projects/brainwise.webp",
-      href: "/case-studies/brain-wise",
-      category: "EdTech Platform",
-      results: "67% course completion rate",
-      accentColor: "teal"
-    },
-  {
-    title: "BlogSquirrel",
-    description: "Specialized blogging platform for technical writers with enhanced code presentation and developer-focused features.",
-    image: "/projects/blogport.webp",
-    href: "/case-studies/blog-squirrel",
-    category: "Content Platform",
-    results: "200% increase in user retention",
-    accentColor: "yellow"
-  },
-  {
-    title: "Nishoo Mittal",
-    description: "Comprehensive financial planning website for MDRT Galaxy Club member with interactive calculators and trust-building design for Indian families.",
-    image: "/projects/mittal.webp",
-    href: "/case-studies/nishoo-mittal",
-    category: "Financial Services",
-    results: "Enhanced credibility and lead generation",
-    accentColor: "yellow"
-  },
-  {
-    title: "Guidance Welfare Foundation",
-    description: "A comprehensive Islamic Educational Platform built as a full-stack Learning Management System serving over 100 active learners with enterprise-grade architecture.",
-    image: "/projects/guidancewelfare.webp",
-    href: "/case-studies/guidance-welfare",
-    category: "EdTech",
-    results: "100+ active learners",
-    accentColor: "purple"
-  },
-  ];
-
-  const structuredData = generateStructuredData(caseStudies);
 
   return (
-    <>
-      {/* Structured Data for SEO */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-
       <main className="flex min-h-screen flex-col bg-charcoal-black">
         <Header />
-        <CaseStudiesClient caseStudies={caseStudies} />
+      <CaseStudiesSection maxItems={50} showStats={true} showScrollIndicator={false} />
+
+      {/* Dedicated Booking CTA for Case Studies Page */}
+      <section className="py-20 bg-gradient-to-br from-kiiro-yellow/5 to-teal-accent/5 border-y border-off-white/10">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="text-center">
+            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-kiiro-yellow/10 border border-kiiro-yellow/20 text-kiiro-yellow text-sm font-bold mb-8">
+              <div className="w-2 h-2 bg-kiiro-yellow rounded-full animate-pulse" />
+              Ready to Create Your Success Story?
+            </div>
+
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-off-white mb-6">
+              Let&apos;s Build Something <span className="text-kiiro-yellow">Amazing</span> Together
+            </h2>
+
+            <p className="text-xl text-off-white/80 mb-12 max-w-2xl mx-auto leading-relaxed">
+              Inspired by our client success stories? Let&apos;s discuss your project and create measurable results for your business.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a
+                href="#booking"
+                className="px-8 py-4 bg-kiiro-yellow text-charcoal-black rounded-xl font-bold text-lg hover:bg-kiiro-yellow/90 transition-all duration-300 flex items-center gap-3 hover:scale-105 hover:shadow-2xl hover:shadow-kiiro-yellow/30"
+              >
+                Book Free Strategy Call
+                <ArrowUpRight className="w-5 h-5" />
+              </a>
+              <a
+                href="/contact"
+                className="px-8 py-4 border-2 border-teal-accent text-teal-accent rounded-xl font-bold text-lg hover:bg-teal-accent/10 transition-all duration-300 hover:scale-105"
+              >
+                Get In Touch
+              </a>
+            </div>
+
+            {/* Social Proof */}
+            <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto">
+              <div className="text-center">
+                <div className="text-3xl font-black text-kiiro-yellow mb-1">15+</div>
+                <div className="text-sm text-off-white/70">Projects Delivered</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-black text-teal-accent mb-1">100%</div>
+                <div className="text-sm text-off-white/70">Client Satisfaction</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-black text-purple-accent mb-1">1-2</div>
+                <div className="text-sm text-off-white/70">Weeks Average</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
         <Footer />
       </main>
-    </>
   );
 } 

@@ -5,17 +5,49 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
+import { ArticleJsonLd } from "@/components/seo/article-json-ld";
 
 export const metadata: Metadata = {
-  title: "Simply Mortgage | Premier Mortgage Consultancy in Dubai",
+  title: "Simply Mortgage | Premier Mortgage Consultancy in Dubai - Case Study",
   description: "How we created a premium digital presence for a high-end mortgage brokerage in Dubai, resulting in a 42% increase in qualified leads and improved client conversion rates.",
   keywords: "mortgage consultancy, finance website, UAE mortgage, premium web design, lead generation, interactive calculators, responsive design",
+  authors: [{ name: "kiiro.cx" }],
+  alternates: {
+    canonical: 'https://kiiro.cx/case-studies/simply-mortgage'
+  },
+  openGraph: {
+    type: "article",
+    title: "Simply Mortgage | Premier Mortgage Consultancy in Dubai - Case Study",
+    description: "How we created a premium digital presence for a high-end mortgage brokerage in Dubai, resulting in a 42% increase in qualified leads.",
+    siteName: "kiiro.cx",
+    url: "https://kiiro.cx/case-studies/simply-mortgage",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Simply Mortgage | Premier Mortgage Consultancy Case Study",
+    description: "Premium digital presence for Dubai mortgage brokerage - 42% lead increase.",
+  }
 };
 
 export default function SimplyMortgageCaseStudy() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <ArticleJsonLd
+        title="Simply Mortgage | Premier Mortgage Consultancy in Dubai - Case Study"
+        description="How we created a premium digital presence for a high-end mortgage brokerage in Dubai, resulting in a 42% increase in qualified leads and improved client conversion rates."
+        url="https://kiiro.cx/case-studies/simply-mortgage"
+        image="https://kiiro.cx/projects/simply.webp"
+        datePublished="2025-01-10"
+        dateModified="2025-01-10"
+        keywords={[
+          "mortgage consultancy",
+          "finance website",
+          "UAE mortgage",
+          "premium web design",
+          "lead generation",
+        ]}
+      />
       
       <div className="pt-24 pb-20">
         {/* Hero Section */}
