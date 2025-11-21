@@ -259,7 +259,7 @@ export function ServicesSection() {
                 </div>
                 <div className="text-sm text-off-white/70">
                   <div className="font-semibold text-off-white">Trusted by SMBs in</div>
-                  <div>UAE, India & US</div>
+                  <div>MENA, India & US</div>
                 </div>
               </div>
 
