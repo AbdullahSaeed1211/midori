@@ -8,36 +8,36 @@ import { Footer } from "@/components/shared/footer";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
 
 export const metadata: Metadata = {
-  title: "BrainWise | AI-Driven Learning Platform - Case Study",
+  title: "Care4Brain | AI-Driven Learning Platform - Case Study",
   description: "How we built an AI-powered learning platform that delivers personalized microlearning experiences for busy professionals, resulting in a 67% increase in course completion rates.",
   keywords: "microlearning, AI education, personalized learning, online courses, educational technology, NextJS development, AI implementation",
   authors: [{ name: "kiiro.cx" }],
   alternates: {
-    canonical: 'https://kiiro.cx/case-studies/brain-wise'
+    canonical: 'https://kiiro.cx/case-studies/care4brain'
   },
   openGraph: {
     type: "article",
-    title: "BrainWise | AI-Driven Learning Platform - Case Study",
+    title: "Care4Brain | AI-Driven Learning Platform - Case Study",
     description: "AI-powered learning platform with personalized microlearning experiences - 67% completion rate increase.",
     siteName: "kiiro.cx",
-    url: "https://kiiro.cx/case-studies/brain-wise",
+    url: "https://kiiro.cx/case-studies/care4brain",
   },
   twitter: {
     card: "summary_large_image",
-    title: "BrainWise | AI-Driven Learning Platform Case Study",
+    title: "Care4Brain | AI-Driven Learning Platform Case Study",
     description: "AI-powered learning platform with 67% completion rate increase.",
   }
 };
 
-export default function BrainWiseCaseStudy() {
+export default function Care4BrainCaseStudy() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
       <ArticleJsonLd
-        title="BrainWise | AI-Driven Learning Platform - Case Study"
+        title="Care4Brain | AI-Driven Learning Platform - Case Study"
         description="How we built an AI-powered learning platform that delivers personalized microlearning experiences for busy professionals, resulting in a 67% increase in course completion rates."
-        url="https://kiiro.cx/case-studies/brain-wise"
-        image="https://kiiro.cx/projects/brainwise.webp"
+        url="https://kiiro.cx/case-studies/care4brain"
+        image="https://kiiro.cx/projects/care4brain.webp"
         datePublished="2025-01-08"
         dateModified="2025-01-08"
         keywords={[
@@ -70,7 +70,7 @@ export default function BrainWiseCaseStudy() {
                   Educational Technology
                 </span>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-off-white mb-6">
-                  BrainWise
+                  Care4Brain
                 </h1>
                 <p className="text-xl text-off-white/80 mb-6">
                   AI-driven learning platform that delivers personalized microlearning experiences for busy professionals seeking targeted skill development.
@@ -102,8 +102,8 @@ export default function BrainWiseCaseStudy() {
                   </div>
                   <div>
                     <p className="text-sm text-off-white/60 mb-1">Website</p>
-                    <a href="https://brainwise.pro" target="_blank" rel="noopener noreferrer" className="text-lg text-kiiro-yellow hover:underline">
-                      brainwise.pro
+                    <a href="https://brain.abdullahsaeed.me" target="_blank" rel="noopener noreferrer" className="text-lg text-kiiro-yellow hover:underline">
+                      brain.abdullahsaeed.me
                     </a>
                   </div>
                 </div>
@@ -111,8 +111,8 @@ export default function BrainWiseCaseStudy() {
               
               <div className="relative aspect-video rounded-lg overflow-hidden border border-white/10">
                 <Image
-                  src="/projects/brainwise.webp"
-                  alt="BrainWise platform showcase"
+                  src="/projects/care4brain.webp"
+                  alt="Care4Brain platform showcase"
                   fill
                   className="object-cover"
                 />
@@ -129,9 +129,9 @@ export default function BrainWiseCaseStudy() {
               
               <div className="space-y-6 text-off-white/80">
                 <p>
-                  BrainWise was developed to address the growing need for efficient, targeted learning solutions for busy professionals.
+                  Care4Brain was developed to address the growing need for efficient, targeted learning solutions for busy professionals.
                   Traditional online courses and learning platforms often suffer from low completion rates due to their time-intensive nature.
-                  BrainWise tackles this problem through personalized microlearning powered by advanced AI.
+                  Care4Brain tackles this problem through personalized microlearning powered by advanced AI.
                 </p>
                 
                 <p>

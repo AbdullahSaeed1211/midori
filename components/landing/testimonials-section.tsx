@@ -91,20 +91,20 @@ const testimonials: TestimonialData[] = [
   },
   {
     id: 3,
-    name: "BrainWise Team",
+    name: "Care4Brain Team",
     title: "AI-Powered Brain Health Platform",
-    company: "BrainWise.pro",
+    company: "brain.abdullahsaeed.me",
     category: "HealthTech",
     quote: "Kiiro built our research-validated medical AI platform with 95% accuracy in stroke prediction and brain tumor detection, plus 15+ cognitive assessment tools for clinical-grade brain health monitoring.",
-    fullQuote: "BrainWise.pro needed a sophisticated platform that could handle clinical-grade medical AI processing while maintaining the highest standards of medical ethics and data security. Kiiro delivered an enterprise-grade solution featuring 3 production AI models with 94-95% accuracy for stroke prediction, brain tumor detection, and Alzheimer's disease assessment. The platform includes 15+ validated cognitive assessment tools covering memory, attention, pattern recognition, and verbal fluency, all with comprehensive performance tracking. Advanced features include real-time MRI scan analysis, distributed AI architecture with Hugging Face Spaces, and 60-75% model size optimization through quantization. The platform achieves 89-91% agreement rates with radiologist assessments, approaching clinical standards. This research-validated medical AI platform serves real patients while maintaining HIPAA-compliant data security and ethical AI practices.",
+    fullQuote: "brain.abdullahsaeed.me needed a sophisticated platform that could handle clinical-grade medical AI processing while maintaining the highest standards of medical ethics and data security. Kiiro delivered an enterprise-grade solution featuring 3 production AI models with 94-95% accuracy for stroke prediction, brain tumor detection, and Alzheimer's disease assessment. The platform includes 15+ validated cognitive assessment tools covering memory, attention, pattern recognition, and verbal fluency, all with comprehensive performance tracking. Advanced features include real-time MRI scan analysis, distributed AI architecture with Hugging Face Spaces, and 60-75% model size optimization through quantization. The platform achieves 89-91% agreement rates with radiologist assessments, approaching clinical standards. This research-validated medical AI platform serves real patients while maintaining HIPAA-compliant data security and ethical AI practices.",
     bgColor: "bg-charcoal-black",
     textColor: "text-off-white",
     rating: 5,
     verified: true,
-    logo: "/projects/brainwise.webp",
-    avatar: "/client-pfp/brainwise.png",
+    logo: "/projects/care4brain.webp",
+    avatar: "/client-pfp/care4brain.png",
     avatarBg: "bg-black",
-    caseStudyUrl: "/case-studies/brain-wise"
+    caseStudyUrl: "/case-studies/care4brain"
   },
   {
     id: 4,

@@ -25,7 +25,7 @@ export function HeroSection() {
   const column1Images = [
     { src: "/projects/guidancewelfare.webp", alt: "Guidance Welfare Foundation - Non-profit website design showcasing charitable work and community impact", height: "h-40"},
     { src: "/projects/dubbby.webp", alt: "Dubbby - AI-powered video dubbing platform landing page with interactive demo and waitlist signup", height: "h-40"},
-    { src: "/projects/brainwise.webp", alt: "BrainWise - Educational platform website for cognitive development courses and training programs", height: "h-32" },
+    { src: "/projects/care4brain.webp", alt: "Care4Brain - Educational platform website for cognitive development courses and training programs", height: "h-32" },
     { src: "/projects/simply.webp", alt: "Simply Mortgage - Financial services website design with trust indicators and lead generation forms", height: "h-44"},
     { src: "/projects/midori.webp", alt: "Midori - Professional web development agency portfolio showcasing expertise in React and Next.js", height: "h-36" },
     { src: "/projects/onecare.png", alt: "OneCare - Professional healthcare website design with patient portal and appointment booking system", height: "h-40" },

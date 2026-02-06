@@ -73,10 +73,10 @@ const CASE_STUDIES: CaseStudyProps[] = [
     accentColor: "teal",
   },
   {
-    title: "BrainWise",
+    title: "Care4Brain",
     description: "Professional learning platform struggled with course completion. We redesigned the user journey with personalized paths and mobile optimization. Improved completion rates and subscription renewals.",
-    image: "/projects/brainwise.webp",
-    link: "/case-studies/brain-wise",
+    image: "/projects/care4brain.webp",
+    link: "/case-studies/care4brain",
     tags: ["Learning Platform", "Mobile Optimization", "User Journey"],
     accentColor: "purple",
   },

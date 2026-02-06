@@ -97,11 +97,11 @@ Most websites look great but don't convert visitors into customers due to simple
 ### **Results-Focused Testimonials**
 1. **Sproutly (Olivia):** "92% mobile conversion rate" 
 2. **Simply Mortgage (Kashif):** "42% increase in qualified leads"
-3. **BrainWise Team:** "67% increase in course completions"
+3. **Care4Brain Team:** "67% increase in course completions"
 4. **Dubbby Team:** "Successful pre-launch validation"
 
 ### **Social Proof Elements**
-- **Client Logos:** Simply Mortgage, Dubbby, Lotus Pro Services, BrainWise, BlogSquirrel
+- **Client Logos:** Simply Mortgage, Dubbby, Lotus Pro Services, Care4Brain, BlogSquirrel
 - **Status Indicators:** "Currently accepting new clients for Q3 2025"
 - **Urgency Indicators:** "Only 3 conversion audit spots left this month"
 

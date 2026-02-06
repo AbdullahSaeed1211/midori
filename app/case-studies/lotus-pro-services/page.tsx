@@ -199,17 +199,17 @@ export default function LotusCaseStudy() {
                 <p className="text-sm text-off-white/60">AI-Powered Video Dubbing Platform</p>
               </Link>
               
-              {/* BrainWise */}
-              <Link href="/case-studies/brain-wise" className="group block">
+              {/* Care4Brain */}
+              <Link href="/case-studies/care4brain" className="group block">
                 <div className="relative aspect-video rounded-lg overflow-hidden border border-white/10 mb-4 transition-all duration-300 group-hover:border-kiiro-yellow/50">
                   <Image
-                    src="/projects/brainwise.webp"
-                    alt="BrainWise"
+                    src="/projects/care4brain.webp"
+                    alt="Care4Brain"
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <h3 className="text-lg font-bold text-off-white group-hover:text-kiiro-yellow transition-colors">BrainWise</h3>
+                <h3 className="text-lg font-bold text-off-white group-hover:text-kiiro-yellow transition-colors">Care4Brain</h3>
                 <p className="text-sm text-off-white/60">AI-Driven Learning Platform</p>
               </Link>
               

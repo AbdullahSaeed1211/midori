@@ -66,7 +66,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/case-studies/brain-wise`,
+      url: `${baseUrl}/case-studies/care4brain`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,
