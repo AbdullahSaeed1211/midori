@@ -2,7 +2,7 @@
   "name": "midori",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@latest-10",
+  "packageManager": "pnpm@10.20.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
