@@ -80,3 +80,66 @@ export async function publishToMedium(postId: string) {
 
     return mediumUrl
 }
+
+export async function updatePost(postId: string, title: string, content: string, status: 'draft' | 'published' | 'scheduled' = 'draft', scheduledAt?: Date, destinations: string[] = []) {
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (!user) throw new Error('Unauthorized')
+
+    const client = await prisma.client.findUnique({
+        where: { userId: user.id }
+    })
+
+    if (!client) throw new Error('Client not found')
+
+    const post = await prisma.post.findUnique({
+        where: { id: postId, clientId: client.id }
+    })
+
+    if (!post) throw new Error('Post not found')
+
+    const slug = title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)/g, '')
+
+    await prisma.post.update({
+        where: { id: postId },
+        data: {
+            title,
+            content,
+            slug,
+            status,
+            scheduledAt,
+            destinations
+        }
+    })
+
+    revalidatePath('/portal/posts')
+}
+
+export async function deletePost(postId: string) {
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (!user) throw new Error('Unauthorized')
+
+    const client = await prisma.client.findUnique({
+        where: { userId: user.id }
+    })
+
+    if (!client) throw new Error('Client not found')
+
+    const post = await prisma.post.findUnique({
+        where: { id: postId, clientId: client.id }
+    })
+
+    if (!post) throw new Error('Post not found')
+
+    await prisma.post.delete({
+        where: { id: postId }
+    })
+
+    revalidatePath('/portal/posts')
+}
