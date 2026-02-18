@@ -26,6 +26,8 @@ const navItems: NavItem[] = [
   { label: 'Work', href: '/case-studies' },
   { label: 'Audit', href: '/audit' },
   { label: 'Contact', href: '/contact' },
+  { label: 'Login', href: '/login' },
+  { label: 'Admin', href: '/admin' },
 ];
 
 // Secondary navigation items that can be accessed from main sections

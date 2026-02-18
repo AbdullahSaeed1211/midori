@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   keywords: "local SEO, small business SEO, Google My Business, local search optimization, local marketing",
   authors: [{ name: "kiiro.cx" }],
   openGraph: {
+    images: ["https://kiiro.cx/og/blog/local-seo-small-business.png"],
+
     type: "article",
     title: "Local SEO Strategies That Actually Work for Small Businesses",
     description: "Dominate your local market with proven SEO strategies.",

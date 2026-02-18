@@ -93,9 +93,24 @@ export const metadata: Metadata = {
       'max-video-preview': -1
     }
   },
+  verification: {
+    google: 'google-site-verification-code',
+    yandex: 'yandex-verification-code',
+  },
+  other: {
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'black-translucent',
+    'apple-mobile-web-app-title': 'Kiiro.cx',
+  },
   alternates: {
-    canonical: 'https://kiiro.cx'
-  }
+    canonical: 'https://kiiro.cx',
+    languages: {
+      'en': 'https://kiiro.cx',
+    },
+    types: {
+      'application/rss+xml': 'https://kiiro.cx/feed.xml',
+    },
+  },
 };
 
 export const viewport: Viewport = {
@@ -123,8 +138,8 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
 
-        {/* Google Analytics 4 - Temporarily disabled */}
-        {/* {process.env.GA_MEASUREMENT_ID && (
+        {/* Google Analytics 4 */}
+        {process.env.GA_MEASUREMENT_ID && (
           <>
             <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_MEASUREMENT_ID}`}></script>
             <script
@@ -136,26 +151,16 @@ export default function RootLayout({
                   gtag('config', '${process.env.GA_MEASUREMENT_ID}', {
                     page_title: document.title,
                     page_location: window.location.href,
-                    // Enhanced tracking features
                     send_page_view: true,
                     allow_google_signals: true,
                     allow_ad_features: true,
-                    // Custom dimensions for business tracking
-                    custom_map: {
-                      'dimension1': 'page_type',
-                      'dimension2': 'user_type',
-                      'dimension3': 'conversion_funnel'
-                    },
-                    // Enhanced e-commerce tracking
-                    ecommerce: true,
-                    // User engagement tracking
                     engagement_time_msec: 100
                   });
                 `,
               }}
             />
           </>
-        )} */}
+        )}
 
         {/* JSON-LD Structured Data for SEO */}
         <script

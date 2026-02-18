@@ -1,12 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { rateLimit, getClientIp } from '@/lib/rate-limit';
 
-const resend = new Resend(process.env.RESEND_API_KEY || 'dummy_key_for_build');
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+const BUSINESS_EMAIL = process.env.BUSINESS_EMAIL || 'abdullah.saeed1724@gmail.com';
 
 export async function POST(request: NextRequest) {
   try {
+    // Rate limiting
+    const ip = getClientIp(request)
+    const { success } = rateLimit(ip)
+    
+    if (!success) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please try again later.' },
+        { status: 429, headers: { 'Retry-After': '60' } }
+      );
+    }
+
     // Check if API key is properly configured
-    if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === 'dummy_key_for_build') {
+    if (!resend) {
       return NextResponse.json(
         { error: 'Email service not configured' },
         { status: 503 }
@@ -26,7 +39,7 @@ export async function POST(request: NextRequest) {
     // Send notification email to business owner
     await resend.emails.send({
       from: 'testimonials@resend.abdullahsaeed.me',
-      to: 'abdullah.saeed1724@gmail.com',
+      to: BUSINESS_EMAIL,
       subject: `New Testimonial Submission - ${rating} stars from ${name}`,
       html: `
         <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f8f9fa; padding: 20px;">

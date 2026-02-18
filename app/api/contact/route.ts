@@ -1,12 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { rateLimit, getClientIp } from '@/lib/rate-limit';
 
-const resend = new Resend(process.env.RESEND_API_KEY || 'dummy_key_for_build');
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+const BUSINESS_EMAIL = process.env.BUSINESS_EMAIL || 'abdullah.saeed1724@gmail.com';
 
 export async function POST(request: NextRequest) {
   try {
+    // Rate limiting
+    const ip = getClientIp(request)
+    const { success, remaining } = rateLimit(ip)
+    
+    if (!success) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please try again later.' },
+        { status: 429, headers: { 'Retry-After': '60' } }
+      );
+    }
+
     // Check if API key is properly configured
-    if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === 'dummy_key_for_build') {
+    if (!resend) {
       return NextResponse.json(
         { error: 'Email service not configured' },
         { status: 503 }
@@ -27,7 +40,7 @@ export async function POST(request: NextRequest) {
     // Send email to your business email
     const { error } = await resend.emails.send({
       from: 'Kiiro Contact Form <noreply@resend.abdullahsaeed.me>',
-      to: ['abdullah.saeed1724@gmail.com'], // Replace with your business email
+      to: [BUSINESS_EMAIL],
       subject: `New Contact Form Submission - ${projectType}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -103,7 +116,7 @@ export async function POST(request: NextRequest) {
             
             <hr style="margin: 30px 0; border: none; border-top: 1px solid #eee;">
             <p style="font-size: 12px; color: #666;">
-              If you have any urgent questions, feel free to reply to this email or reach out to us directly at abdullah.saeed1724@gmail.com
+              If you have any urgent questions, feel free to reply to this email or reach out to us directly at ${BUSINESS_EMAIL}
             </p>
           </div>
         </div>

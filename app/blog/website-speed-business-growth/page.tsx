@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   keywords: "website speed, page speed optimization, site performance, Core Web Vitals, business growth",
   authors: [{ name: "kiiro.cx" }],
   openGraph: {
+    images: ["https://kiiro.cx/og/blog/website-speed-business-growth.png"],
+
     type: "article",
     title: "How Website Speed Impacts Your Business Growth (And How to Fix It)",
     description: "Discover the direct correlation between website speed and business metrics.",

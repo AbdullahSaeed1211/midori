@@ -1,9 +1,50 @@
 import "./polyfills/node-localstorage";
 import type { NextConfig } from "next";
+import withPWA from "next-pwa";
 
 const nextConfig: NextConfig = {
+  // Redirects for missing pages
+  async redirects() {
+    return [
+      // Blog redirects - moved to similar existing content
+      {
+        source: '/blog/landing-page-optimization',
+        destination: '/blog/landing-page-psychology',
+        permanent: true,
+      },
+      {
+        source: '/blog/google-analytics-entrepreneurs',
+        destination: '/blog/google-analytics-4-setup',
+        permanent: true,
+      },
+      {
+        source: '/blog/user-experience-design',
+        destination: '/blog/trust-design-ux',
+        permanent: true,
+      },
+      {
+        source: '/blog/website-redesign-roi',
+        destination: '/blog/new-year-website-refresh',
+        permanent: true,
+      },
+      {
+        source: '/blog/website-security-101',
+        destination: '/blog/wcag-accessibility-guide',
+        permanent: true,
+      },
+      {
+        source: '/blog/ecommerce-website-design',
+        destination: '/blog/mobile-first-design-2024',
+        permanent: true,
+      },
+    ]
+  },
+
   // Performance optimizations for Core Web Vitals
   poweredByHeader: false,
+
+  // Turbopack config (Next.js 16)
+  turbopack: {},
 
   // Image optimization settings - updated for Next.js 15
   images: {
@@ -126,4 +167,9 @@ const nextConfig: NextConfig = {
   output: 'standalone',
 };
 
-export default nextConfig;
+export default withPWA({
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === 'development',
+})(nextConfig);

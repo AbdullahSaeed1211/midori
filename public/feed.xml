@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Kiiro.cx Blog - SEO, Web Design &amp; Conversion Insights</title>
+    <link>https://kiiro.cx</link>
+    <description>Expert insights on SEO, web design, conversion optimization, and digital marketing for entrepreneurs and growing businesses.</description>
+    <language>en-us</language>
+    <lastBuildDate>{new Date().toUTCString()}</lastBuildDate>
+    <atom:link href="https://kiiro.cx/feed.xml" rel="self" type="application/rss+xml"/>
+    <managingEditor>abdullah.saeed1724@gmail.com (Kiiro.cx)</managingEditor>
+    <webMaster>abdullah.saeed1724@gmail.com (Kiiro.cx)</webMaster>
+    <image>
+      <url>https://kiiro.cx/projects/kiiro.webp</url>
+      <title>Kiiro.cx</title>
+      <link>https://kiiro.cx</link>
+    </image>
+    
+    <item>
+      <title>Ultimate SEO Guide for Entrepreneurs in 2025</title>
+      <link>https://kiiro.cx/blog/seo-guide-2024</link>
+      <description>Master the fundamentals of search engine optimization with this comprehensive 2025 guide. Learn technical SEO, content strategy, and advanced tactics to dominate search results.</description>
+      <pubDate>Wed, 15 Jan 2025 00:00:00 GMT</pubDate>
+      <guid>https://kiiro.cx/blog/seo-guide-2024</guid>
+      <category>SEO</category>
+    </item>
+    
+    <item>
+      <title>Google's Core Web Vitals Update: What Changed in 2025</title>
+      <link>https://kiiro.cx/blog/core-web-vitals-2025</link>
+      <description>Complete guide to Core Web Vitals changes in 2025, including the INP metric replacement. Learn how to optimize LCP, CLS, and the new Interaction to Next Paint metric.</description>
+      <pubDate>Thu, 20 Feb 2025 00:00:00 GMT</pubDate>
+      <guid>https://kiiro.cx/blog/core-web-vitals-2025</guid>
+      <category>Performance</category>
+    </item>
+    
+    <item>
+      <title>7 Deadly Conversion Optimization Mistakes That Are Killing Your Sales</title>
+      <link>https://kiiro.cx/blog/conversion-optimization-mistakes</link>
+      <description>Discover the critical mistakes costing you sales. From poor first impressions to confusing navigation, learn how to fix conversion killers and boost your revenue.</description>
+      <pubDate>Wed, 22 Jan 2025 00:00:00 GMT</pubDate>
+      <guid>https://kiiro.cx/blog/conversion-optimization-mistakes</guid>
+      <category>Conversion</category>
+    </item>
+    
+    <item>
+      <title>Mobile-First Design in 2025: Why It Matters More Than Ever</title>
+      <link>https://kiiro.cx/blog/mobile-first-design-2024</link>
+      <description>Mobile dominates internet usage. Learn why mobile-first design is essential for modern businesses and discover practical implementation strategies that drive results.</description>
+      <pubDate>Wed, 29 Jan 2025 00:00:00 GMT</pubDate>
+      <guid>https://kiiro.cx/blog/mobile-first-design-2024</guid>
+      <category>Design</category>
+    </item>
+    
+    <item>
+      <title>How Website Speed Impacts Your Business Growth</title>
+      <link>https://kiiro.cx/blog/website-speed-business-growth</link>
+      <description>Slow websites kill conversions. Learn the measurable impact of speed on revenue and discover actionable optimization strategies that transform your business metrics.</description>
+      <pubDate>Wed, 05 Feb 2025 00:00:00 GMT</pubDate>
+      <guid>https://kiiro.cx/blog/website-speed-business-growth</guid>
+      <category>Performance</category>
+    </item>
+    
+    <item>
+      <title>Local SEO Strategies That Actually Work for Small Businesses</title>
+      <link>https://kiiro.cx/blog/local-seo-small-business</link>
+      <description>Local search is a goldmine for small businesses. Master Google Business Profile, local keywords, and reputation management to dominate your local market.</description>
+      <pubDate>Wed, 12 Feb 2025 00:00:00 GMT</pubDate>
+      <guid>https://kiiro.cx/blog/local-seo-small-business</guid>
+      <category>SEO</category>
+    </item>
+    
+    <item>
+      <title>Content Marketing Strategy for Entrepreneurs</title>
+      <link>https://kiiro.cx/blog/content-marketing-strategy</link>
+      <description>Transform your business with strategic content marketing. From audience research to conversion optimization, build a content engine that drives sustainable growth.</description>
+      <pubDate>Wed, 26 Feb 2025 00:00:00 GMT</pubDate>
+      <guid>https://kiiro.cx/blog/content-marketing-strategy</guid>
+      <category>Marketing</category>
+    </item>
+    
+    <item>
+      <title>The Psychology of Landing Page Conversions</title>
+      <link>https://kiiro.cx/blog/landing-page-psychology</link>
+      <description>Understand the cognitive triggers that make visitors convert. Learn about social proof, urgency, trust signals, and the psychology behind high-converting landing pages.</description>
+      <pubDate>Thu, 10 Apr 2025 00:00:00 GMT</pubDate>
+      <guid>https://kiiro.cx/blog/landing-page-psychology</guid>
+      <category>Conversion</category>
+    </item>
+    
+    <item>
+      <title>Building Trust Online: UX Design That Converts</title>
+      <link>https://kiiro.cx/blog/trust-design-ux</link>
+      <description>Design elements that build credibility and trust. Discover how strategic UX decisions can increase conversions and create lasting customer relationships.</description>
+      <pubDate>Thu, 15 May 2025 00:00:00 GMT</pubDate>
+      <guid>https://kiiro.cx/blog/trust-design-ux</guid>
+      <category>Design</category>
+    </item>
+    
+    <item>
+      <title>Google Analytics 4: Complete Setup Guide for 2025</title>
+      <link>https://kiiro.cx/blog/google-analytics-4-setup</link>
+      <description>Master GA4 with this comprehensive setup guide. Learn about events, conversions, audience building, and the new reporting interface for better data-driven decisions.</description>
+      <pubDate>Thu, 12 Jun 2025 00:00:00 GMT</pubDate>
+      <guid>https://kiiro.cx/blog/google-analytics-4-setup</guid>
+      <category>SEO</category>
+    </item>
+    
+  </channel>
+</rss>

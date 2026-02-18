@@ -1,0 +1,417 @@
+# kiiro.cx - Complete Business Documentation for LLMs
+
+> Last Updated: 2025-02-17
+> Version: 2.0
+> Purpose: This document provides comprehensive information about kiiro.cx for AI assistants, search engines, and automated systems.
+
+---
+
+## BUSINESS IDENTITY
+
+**Name:** kiiro.cx
+**Tagline:** "Turn Your Website Into a Conversion Machine"
+**Description:** A web design and conversion optimization agency specializing in high-converting websites for entrepreneurs, course creators, and small businesses. Delivers professional websites in 7-14 days without the overhead, delays, or high costs of traditional agencies.
+
+**Type:** Web Design Agency / Conversion Optimization
+**Founded:** 2024
+**Location:** Remote / Global
+
+---
+
+## CORE VALUE PROPOSITION
+
+**Primary Message:** Most websites look great but don't convert visitors into customers due to simple, fixable issues. kiiro.cx fixes these issues and builds websites designed to convert.
+
+**Key Differentiators:**
+- Delivery in 7-14 days (not months)
+- Conversion-focused design methodology
+- No agency overhead or retainers
+- Transparent pricing
+- Results-backed approach
+
+---
+
+## TARGET AUDIENCE
+
+### Primary
+- Entrepreneurs starting new ventures
+- Course creators and educators
+- Small business owners
+- Service-based professionals
+
+### Secondary
+- Coaches and consultants
+- E-learning businesses
+- Local service businesses
+- Startups needing web presence
+
+---
+
+## SERVICES OFFERED
+
+### 1. Conversion-Focused Website Design
+
+**Description:** Designs engineered to capture attention and convert visitors into customers.
+
+**Key Features:**
+- Responsive design for all devices
+- UX-focused layouts that convert
+- Cohesive branding and visual identity
+- Interactive prototypes and mockups
+- Mobile-first approach
+- Accessibility compliance
+
+**Ideal For:** Businesses needing a new website or complete redesign
+
+**Starting Price:** See pricing section
+
+---
+
+### 2. Conversion-Focused Development
+
+**Description:** Lightning-fast websites built to capture leads and close sales automatically.
+
+**Key Features:**
+- Fast-loading, optimized websites
+- Clean, maintainable code structure
+- SEO-friendly implementation
+- Integration with CMS and third-party tools
+- Core Web Vitals optimization
+- Performance monitoring
+
+**Tech Stack:**
+- Next.js 16 (React)
+- Tailwind CSS
+- TypeScript
+- Supabase / PostgreSQL
+- Vercel deployment
+
+**Ideal For:** Businesses needing technical implementation of designs
+
+---
+
+### 3. Sales Copy That Converts
+
+**Description:** Persuasive messaging that overcomes objections and compels visitors to buy.
+
+**Key Features:**
+- Conversion-focused copywriting
+- SEO content optimization
+- User journey mapping
+- Value proposition development
+- A/B test-ready variations
+
+**Ideal For:** Businesses with traffic but low conversions
+
+---
+
+### 4. Conversion Optimization Systems
+
+**Description:** Systematic testing and optimization to maximize your website's conversion potential.
+
+**Key Features:**
+- A/B testing and performance analysis
+- Conversion rate optimization
+- User behavior tracking
+- Continuous iteration and improvement
+- Heatmap analysis
+- Funnel optimization
+
+**Ideal For:** Businesses with existing websites wanting to improve performance
+
+---
+
+## HOSTING & MAINTENANCE PLANS
+
+### Included Features
+- Daily automated backups with one-click restore
+- 24/7 security monitoring and SSL management
+- Monthly performance audits and optimization
+- Small content updates included monthly
+- Plugin and core updates handled
+- Priority support (under 4 hour response time)
+
+### Plans
+1. **Starter Plan** - Basic hosting and maintenance
+2. **Growth Plan** - Enhanced features for growing businesses
+3. **Premium Plan** - Full-service website care
+
+---
+
+## CASE STUDIES
+
+### Sproutly
+- **Industry:** EdTech / E-learning
+- **Result:** 92% mobile conversion rate
+- **Services:** Mobile-first design, UX optimization
+- **URL:** /case-studies/sproutly
+
+### Simply Mortgage
+- **Industry:** Financial Services / Mortgage Brokers
+- **Result:** 42% increase in qualified leads
+- **Services:** Lead generation optimization, copywriting
+- **URL:** /case-studies/simply-mortgage
+
+### Care4Brain (BrainWise)
+- **Industry:** E-learning / Mental Health Education
+- **Result:** 67% increase in course completions
+- **Services:** UX redesign, conversion optimization
+- **URL:** /case-studies/care4brain
+
+### Dubbby
+- **Industry:** SaaS / Tech Startup
+- **Result:** Successful pre-launch validation
+- **Services:** Landing page design, conversion setup
+- **URL:** /case-studies/dubbby
+
+### Blog Squirrel
+- **Industry:** Content / SaaS
+- **Result:** Content platform launch
+- **Services:** Full website design and development
+- **URL:** /case-studies/blog-squirrel
+
+### Lotus Pro Services
+- **Industry:** Professional Services
+- **Result:** Service business web presence
+- **Services:** Website design, booking integration
+- **URL:** /case-studies/lotus-pro-services
+
+### Nishoo Mittal
+- **Industry:** Personal Brand / Coaching
+- **Result:** Personal brand website launch
+- **Services:** Portfolio website, brand design
+- **URL:** /case-studies/nishoo-mittal
+
+---
+
+## PRICING PHILOSOPHY
+
+"Get high-converting websites without the agency overhead. Choose the investment level that matches your growth goals."
+
+### Package Types
+
+1. **Conversion Accelerator (One-off)**
+   - Tagline: "Transform your website into a conversion machine"
+   - Focus: Speed, conversion optimization, immediate results
+   - Ideal for: Focused growth and specific outcomes
+
+2. **Growth Partnership (Retainer)**
+   - Tagline: "Ongoing optimization to maximize your conversions"
+   - Focus: Comprehensive system, ongoing support, advanced optimization
+   - Ideal for: Serious scaling and continuous improvement
+
+---
+
+## FREE CONVERSION AUDIT
+
+### What It Is
+A complimentary website analysis that identifies conversion blockers and provides actionable recommendations.
+
+### What You Get
+- Personalized Conversion Improvement Blueprint
+- Specific recommendations in priority order
+- Clear implementation steps
+- Instant delivery via email
+
+### Audit Score Ranges
+- **80%+:** Excellent - Strong fundamentals with advanced opportunities
+- **60-79%:** Good Start - Significant improvement opportunities
+- **40-59%:** Needs Work - Key areas require attention
+- **<40%:** Conversion Opportunity - Major improvement potential
+
+### URL: /audit
+
+---
+
+## BLOG CONTENT TOPICS
+
+### Categories
+- SEO Strategies
+- Web Design Tips
+- Conversion Optimization
+- Performance Optimization
+- Content Marketing
+- Local SEO
+
+### Featured Articles
+- Ultimate SEO Guide for Entrepreneurs in 2025
+- 7 Deadly Conversion Optimization Mistakes
+- Mobile-First Design in 2025
+- How Website Speed Impacts Business Growth
+- Local SEO Strategies for Small Businesses
+- Content Marketing Strategy for Entrepreneurs
+
+### URL: /blog
+
+---
+
+## FAQ TOPICS
+
+### General Questions
+- How long does a typical project take?
+- What is your design process?
+- Do you work with clients remotely?
+- What platforms do you build on?
+
+### Pricing Questions
+- What is your pricing structure?
+- Do you offer payment plans?
+- What is included in the price?
+
+### Technical Questions
+- Do you provide hosting?
+- What about website maintenance?
+- Can I update content myself?
+
+### Results Questions
+- How do you measure success?
+- What kind of results can I expect?
+- Do you offer guarantees?
+
+### URL: /#faq
+
+---
+
+## PROCESS & WORKFLOW
+
+### Typical Project Timeline
+1. **Discovery Call** - Understand goals and requirements
+2. **Proposal & Agreement** - Scope, timeline, and pricing
+3. **Design Phase** - Wireframes and visual designs
+4. **Development** - Build and implementation
+5. **Review & Revisions** - Client feedback and adjustments
+6. **Launch** - Deployment and go-live
+7. **Post-Launch Support** - Monitoring and optimization
+
+### Communication
+- Primary: Email and scheduled calls
+- Project updates: Regular progress reports
+- Support: Via contact form or chat
+
+---
+
+## TECHNICAL EXPERTISE
+
+### Frontend Technologies
+- React / Next.js 16
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+
+### Backend Technologies
+- Node.js
+- PostgreSQL / Supabase
+- Prisma ORM
+- Serverless Functions
+
+### Deployment & Infrastructure
+- Vercel
+- Cloudflare
+- CDN Optimization
+- SSL Management
+
+### Integrations
+- Stripe (payments)
+- Cal.com (booking)
+- Resend (email)
+- Analytics platforms
+
+---
+
+## BRAND VOICE & TONE
+
+### Voice Characteristics
+- Professional but approachable
+- Results-focused, not feature-focused
+- Confident without being aggressive
+- Helpful and educational
+
+### Tone Guidelines
+- Use specific results and numbers
+- Focus on benefits over features
+- Create appropriate urgency
+- Maintain Grade 6-8 reading level
+- Optimistic confidence with problem-solving focus
+
+---
+
+## KEY METRICS TRACKED
+
+### For Clients
+- Conversion rate improvement
+- Lead generation increase
+- Page load speed
+- Core Web Vitals scores
+- Mobile responsiveness
+- SEO rankings
+
+### Internal Metrics
+- Client satisfaction
+- Project delivery time
+- Support response time
+- Client retention rate
+
+---
+
+## DOCUMENT METADATA
+
+```
+@context: https://schema.org
+@type: ProfessionalService
+name: kiiro.cx
+description: Web design and conversion optimization agency for entrepreneurs
+url: https://kiiro.cx
+priceRange: $$
+areaServed: Worldwide
+serviceType: ["Web Design", "Conversion Optimization", "Web Development"]
+```
+
+---
+
+## IMPORTANT URLS
+
+| Purpose | URL |
+|---------|-----|
+| Homepage | / |
+| Services | /#services |
+| Case Studies | /case-studies |
+| Testimonials | /testimonials |
+| Pricing | /#pricing |
+| Contact | /contact |
+| Free Audit | /audit |
+| Blog | /blog |
+| Hosting | /hosting |
+| Support | /support |
+| Terms | /terms |
+| Privacy | /privacy |
+
+---
+
+## CONTACT INFORMATION
+
+- **Website:** https://kiiro.cx
+- **Contact Form:** /contact
+- **Support:** /support
+
+---
+
+## FREQUENTLY ASKED QUESTIONS
+
+### How long does a website project take?
+Most projects are completed in 7-14 days, depending on complexity and scope.
+
+### Do you work with clients globally?
+Yes, kiiro.cx works with clients worldwide through remote collaboration.
+
+### What platforms do you build on?
+Primarily Next.js for performance, SEO, and scalability. Can work with other platforms based on client needs.
+
+### Do you provide ongoing support?
+Yes, hosting and maintenance plans are available for continued support and optimization.
+
+### What makes kiiro.cx different?
+Focus on conversions over just aesthetics, fast delivery, transparent pricing, and no agency overhead.
+
+---
+
+*This document is maintained for LLM optimization and accurate information retrieval. For the most current information, visit kiiro.cx or use the contact form.*

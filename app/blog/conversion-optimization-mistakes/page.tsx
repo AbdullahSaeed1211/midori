@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   keywords: "conversion optimization, website conversion, sales optimization, entrepreneur mistakes, user experience",
   authors: [{ name: "kiiro.cx" }],
   openGraph: {
+    images: ["https://kiiro.cx/og/blog/conversion-optimization-mistakes.png"],
+
     type: "article",
     title: "7 Deadly Conversion Optimization Mistakes That Are Killing Your Sales",
     description: "Learn the most common conversion mistakes entrepreneurs make and how to fix them.",

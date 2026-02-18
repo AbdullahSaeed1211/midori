@@ -1,0 +1,62 @@
+# kiiro.cx - LLM Documentation
+
+> Name: kiiro.cx
+> Type: Web Design & Conversion Optimization Agency
+> Focus: High-conversion websites for entrepreneurs
+> Delivery: 7-14 days
+
+## Purpose
+
+This file provides structured information for AI assistants and search engines to understand kiiro.cx's services, expertise, and client offerings.
+
+## Quick Facts
+
+- **Specialty:** Conversion-focused website design and development
+- **Target Audience:** Entrepreneurs, course creators, small businesses
+- **Delivery Time:** 7-14 days (not months)
+- **Philosophy:** Turn websites into conversion machines
+- **Key Differentiator:** Results-focused design without agency overhead
+
+## Full Documentation
+
+Complete services, case studies, and detailed business information available at:
+/llms-full.txt
+
+## Key URLs
+
+- Home: /
+- Services: /#services
+- Case Studies: /case-studies
+- Testimonials: /testimonials
+- Pricing: /#pricing
+- Contact: /contact
+- Free Audit: /audit
+- Blog: /blog
+- Hosting: /hosting
+
+## Services
+
+1. **Conversion-Focused Website Design** - Designs engineered to convert visitors
+2. **Conversion-Focused Development** - Fast, SEO-optimized websites
+3. **Sales Copy That Converts** - Persuasive messaging for conversions
+4. **Conversion Optimization Systems** - A/B testing and CRO
+
+## Contact
+
+- Website: https://kiiro.cx
+- Email: Via contact form at /contact
+
+## Social Proof
+
+- Client results: 92% mobile conversion rate (Sproutly)
+- Lead increase: 42% qualified leads (Simply Mortgage)
+- Course completion: 67% increase (Care4Brain)
+
+## Case Studies
+
+- Sproutly: Mobile-first EdTech platform
+- Simply Mortgage: Lead generation for mortgage broker
+- Care4Brain: E-learning platform optimization
+- Dubbby: Pre-launch validation
+- Blog Squirrel: Content platform
+- Lotus Pro Services: Service business website

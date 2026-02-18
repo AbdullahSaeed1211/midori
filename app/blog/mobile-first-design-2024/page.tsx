@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   keywords: "mobile first design, responsive design, mobile optimization, website design 2025, mobile UX",
   authors: [{ name: "kiiro.cx" }],
   openGraph: {
+    images: ["https://kiiro.cx/og/blog/mobile-first-design-2024.png"],
+
     type: "article",
     title: "Mobile-First Design in 2025: Why It Matters More Than Ever",
     description: "With mobile traffic surpassing desktop, learn why mobile-first design is crucial for your business success.",

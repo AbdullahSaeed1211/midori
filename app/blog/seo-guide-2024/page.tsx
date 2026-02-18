@@ -15,6 +15,8 @@ export const metadata: Metadata = {
     canonical: 'https://kiiro.cx/blog/seo-guide-2024'
   },
   openGraph: {
+    images: ["https://kiiro.cx/og/blog/seo-guide-2024.png"],
+
     type: "article",
     title: "Ultimate SEO Guide for Entrepreneurs in 2025",
     description: "Everything you need to know about SEO in 2025. From technical fundamentals to content strategy, this comprehensive guide covers all the essential elements for ranking higher on Google.",
