@@ -9,7 +9,6 @@ const fs = require('fs');
 const path = require('path');
 
 // Configuration
-const SITE_URL = 'https://kiiro.cx';
 const SITE_DIR = path.join(__dirname, '..', 'app');
 
 // Known indexed pages from Search Console

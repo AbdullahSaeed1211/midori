@@ -6,7 +6,6 @@
  */
 
 const fs = require('fs');
-const path = require('path');
 
 console.log('🔍 Kiiro.cx SEO Checklist & Monitoring\n');
 
