@@ -1,0 +1,141 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Client {
+  id               String   @id @default(cuid())
+  userId           String   @unique
+  email            String   @unique
+  name             String?
+  stripeCustomerId String?  @unique
+  allowedTools     String[] @default([])
+
+  projects      Project[]
+  subscriptions Subscription[]
+  integrations  Integration[]
+  posts         Post[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Project {
+  id          String    @id @default(cuid())
+  name        String
+  description String?
+  status      String    @default("planning")
+  progress    Int       @default(0)
+  startDate   DateTime?
+  endDate     DateTime?
+
+  clientId   String
+  client     Client      @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  milestones Milestone[]
+  files      File[]
+  messages   Message[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Milestone {
+  id          String    @id @default(cuid())
+  title       String
+  description String?
+  status      String    @default("pending")
+  dueDate     DateTime?
+  completedAt DateTime?
+
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+}
+
+model Subscription {
+  id                   String    @id @default(cuid())
+  stripeSubscriptionId String?   @unique
+  stripePriceId        String?
+  plan                 String
+  status               String    @default("active")
+  currentPeriodStart   DateTime?
+  currentPeriodEnd     DateTime?
+
+  clientId String
+  client   Client @relation(fields: [clientId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Message {
+  id         String  @id @default(cuid())
+  content    String
+  senderId   String
+  senderName String?
+  isInternal Boolean @default(false)
+
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+}
+
+model File {
+  id         String  @id @default(cuid())
+  name       String
+  url        String
+  type       String?
+  size       Int?
+  uploadedBy String?
+
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+}
+
+model Integration {
+  id        String  @id @default(cuid())
+  provider  String // "openai", "gemini", "minimax", "glm"
+  key       String // Encrypted/Hashed ideally, raw for MVP
+  config    Json? // Extra config like orgId
+  baseUrl   String? // For custom OpenAI-compatible providers
+  modelName String? // For custom models
+
+  clientId String
+  client   Client @relation(fields: [clientId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Post {
+  id      String  @id @default(cuid())
+  title   String
+  content String // Markdown support
+  slug    String? // For internal blog URL
+  status  String  @default("draft") // draft, published
+
+  mediumUrl    String? // If syndicated to Medium
+  linkedinUrl  String?
+  instagramUrl String?
+  facebookUrl  String?
+
+  scheduledAt  DateTime? // For scheduled publishing
+  destinations String[]  @default([]) // ["internal", "medium", "linkedin"]
+
+  clientId String
+
+  client Client @relation(fields: [clientId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([clientId, slug]) // Slugs unique per client
+}
