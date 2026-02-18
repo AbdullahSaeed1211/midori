@@ -158,13 +158,41 @@ async function callGemini(apiKey: string, prompt: string) {
 }
 
 async function callMinimax(apiKey: string, prompt: string) {
-    // Placeholder for Minimax
-    return `Minimax integration is a placeholder. Key saved.`
+    const response = await fetch('https://api.minimax.chat/v1/text/chatcompletion_pro', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+            model: 'abab6.5s-chat',
+            messages: [{ role: 'user', content: prompt }],
+            temperature: 0.7
+        })
+    })
+
+    const data = await response.json()
+    if (!response.ok) throw new Error(data.base_resp?.status_msg || 'Minimax API error')
+    return data.choices?.[0]?.message?.content || 'No response from Minimax'
 }
 
 async function callGLM(apiKey: string, prompt: string) {
-    // Placeholder for Zhipu GLM
-    return `GLM integration is a placeholder. Key saved.`
+    const response = await fetch('https://open.bigmodel.cn/api/paas/v4/chat/completions', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+            model: 'glm-4',
+            messages: [{ role: 'user', content: prompt }],
+            temperature: 0.7
+        })
+    })
+
+    const data = await response.json()
+    if (!response.ok) throw new Error(data.error?.message || 'GLM API error')
+    return data.choices?.[0]?.message?.content || 'No response from GLM'
 }
 
 async function callCustom(apiKey: string, prompt: string, baseUrl?: string | null, modelName?: string | null) {
