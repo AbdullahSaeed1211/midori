@@ -328,7 +328,12 @@ export function PortalContent({ user, client, isAdmin, allowedTools = [] }: { us
             <section>
               <h2 className="text-lg font-semibold text-off-white mb-4">All Projects</h2>
               {projects.length === 0 ? (
-                <EmptyState icon={FileText} title="No projects yet" />
+                <EmptyState 
+                  icon={FileText} 
+                  title="No projects yet" 
+                  description="Start your first project with us"
+                  action={{ label: 'Get started', href: '/hosting' }}
+                />
               ) : (
                 <div className="grid gap-4">
                   {projects.map(project => <ProjectCard key={project.id} project={project} />)}
@@ -348,7 +353,8 @@ export function PortalContent({ user, client, isAdmin, allowedTools = [] }: { us
             <EmptyState 
               icon={Settings} 
               title={`${activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} coming soon`} 
-              description="We're working on this feature"
+              description="We're working on this feature. Need help now?"
+              action={{ label: 'Contact support', href: '/contact' }}
             />
           )}
         </div>
