@@ -205,7 +205,8 @@ export function PortalContent({ user, client, isAdmin, allowedTools = [] }: { us
               <Menu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="bg-charcoal-gray border-off-white/10 p-0 w-72">
+          <SheetContent side="left" className="bg-charcoal-black border-r border-off-white/10 p-0 w-[280px] [&>button]:hidden">
+            <div className="h-full flex flex-col bg-charcoal-gray/95 backdrop-blur-xl">
             <div className="p-4 border-b border-off-white/10">
               <Link href="/" className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-kiiro-yellow flex items-center justify-center">
@@ -259,6 +260,7 @@ export function PortalContent({ user, client, isAdmin, allowedTools = [] }: { us
                   </div>
                 </Link>
               )}
+            </div>
             </div>
           </SheetContent>
         </Sheet>
