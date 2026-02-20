@@ -20,8 +20,13 @@ export default async function PortalPage() {
       projects: {
         orderBy: { createdAt: 'desc' }
       },
-      subscriptions: true
+      subscriptions: true,
+      integrations: true,
+      posts: true
     }
+  }).catch((error: Error) => {
+    console.error('Error fetching client:', error)
+    return null
   })
 
   if (!client) {
@@ -33,8 +38,13 @@ export default async function PortalPage() {
       },
       include: {
         projects: true,
-        subscriptions: true
+        subscriptions: true,
+        integrations: true,
+        posts: true
       }
+    }).catch((error: Error) => {
+      console.error('Error creating client:', error)
+      redirect('/login')
     })
   }
 

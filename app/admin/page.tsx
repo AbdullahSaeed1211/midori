@@ -18,14 +18,23 @@ export default async function AdminPage() {
   }
 
   const [clients, projects, subscriptions] = await Promise.all([
-    prisma.client.findMany({ orderBy: { createdAt: 'desc' } }),
+    prisma.client.findMany({ orderBy: { createdAt: 'desc' } }).catch((error: Error) => {
+      console.error('Error fetching clients:', error)
+      return []
+    }),
     prisma.project.findMany({ 
       include: { client: true },
       orderBy: { createdAt: 'desc' } 
+    }).catch((error: Error) => {
+      console.error('Error fetching projects:', error)
+      return []
     }),
     prisma.subscription.findMany({ 
       include: { client: true },
       orderBy: { createdAt: 'desc' } 
+    }).catch((error: Error) => {
+      console.error('Error fetching subscriptions:', error)
+      return []
     }),
   ])
 

@@ -44,7 +44,7 @@ export function HeroSection() {
 
 
 
-  const renderImageCard = (image: { src: string; alt: string; height: string }, index: number | string, isMobile: boolean = false) => (
+  const renderImageCard = (image: { src: string; alt: string; height: string }, index: number | string, isMobile: boolean = false, isDesktopMarquee: boolean = false) => (
     <div key={index} className={cn(
       "relative group rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-105",
       isMobile ? "w-48 h-32 flex-shrink-0" : ""
@@ -54,7 +54,9 @@ export function HeroSection() {
         alt={image.alt}
         width={400}
         height={225}
-        loading="lazy"
+        priority={isDesktopMarquee}
+        placeholder={isDesktopMarquee ? "blur" : "empty"}
+        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAn/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBEQCEAwEPwAB//9k="
         className={isMobile ? "w-full h-full object-cover" : `w-full ${image.height} object-cover`}
         style={{ aspectRatio: '16/9' }}
       />
@@ -236,7 +238,7 @@ export function HeroSection() {
                 repeat={2}
               >
                 <div className="flex space-x-4">
-                  {column1Images.map((image, index) => renderImageCard(image, index, true))}
+                  {column1Images.map((image, index) => renderImageCard(image, index, true, true))}
                 </div>
               </Marquee>
               <Marquee
@@ -246,7 +248,7 @@ export function HeroSection() {
                 repeat={2}
               >
                 <div className="flex space-x-4">
-                  {column2Images.map((image, index) => renderImageCard(image, index, true))}
+                  {column2Images.map((image, index) => renderImageCard(image, index, true, true))}
                 </div>
               </Marquee>
              </div>
