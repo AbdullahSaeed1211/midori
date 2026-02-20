@@ -4,11 +4,13 @@ import { createClient } from '@/lib/supabase/client'
 import { User } from '@supabase/supabase-js'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Users, FolderKanban, CreditCard, LogOut, Plus, Search, Shield, LayoutDashboard, BarChart3, Sparkles, ArrowRight } from 'lucide-react'
+import { Users, FolderKanban, CreditCard, LogOut, Plus, Search, Shield, LayoutDashboard, BarChart3, Sparkles, ArrowRight, Menu, Home, Check, X, Trash2, Loader2 } from 'lucide-react'
 import { useState } from 'react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Checkbox } from "@/components/ui/checkbox"
-import { updateClientAccess } from '@/app/actions/admin'
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Button } from "@/components/ui/button"
+import { updateClientAccess, approveClient, rejectClient, deleteClient } from '@/app/actions/admin'
 
 interface Client {
   id: string
@@ -16,6 +18,7 @@ interface Client {
   email: string
   createdAt: Date
   allowedTools: string[]
+  status: string
 }
 
 interface Project {
@@ -160,8 +163,78 @@ export function AdminContent({
         </button>
       </aside>
 
+      {/* Mobile Header */}
+      <div className="fixed top-0 left-0 right-0 h-16 bg-charcoal-gray/80 backdrop-blur-md border-b border-off-white/10 flex items-center justify-between px-4 z-30 md:hidden">
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="ghost" size="icon" className="text-off-white">
+              <Menu className="h-5 w-5" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="left" className="bg-charcoal-gray border-off-white/10 p-0 w-72 [&>button]:hidden">
+            <div className="h-full flex flex-col bg-charcoal-gray/95 backdrop-blur-xl">
+              <div className="p-4 border-b border-off-white/10">
+                <Link href="/" className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                    <Shield className="w-5 h-5 text-purple-400" />
+                  </div>
+                  <div>
+                    <span className="font-bold text-off-white">Admin</span>
+                    <p className="text-xs text-off-white/60">Kiiro Dashboard</p>
+                  </div>
+                </Link>
+              </div>
+              <div className="p-3 space-y-1 flex-1">
+                {SIDEBAR_ITEMS.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => setActiveTab(item.id as typeof activeTab)}
+                    className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm ${
+                      activeTab === item.id 
+                        ? 'bg-purple-500/10 text-purple-400' 
+                        : 'text-off-white/70'
+                    }`}
+                  >
+                    <item.icon className="w-5 h-5" />
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+              <div className="p-4 border-t border-off-white/10">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-9 h-9 rounded-full bg-purple-500/20 flex items-center justify-center">
+                    <span className="text-purple-400 text-sm font-semibold">{user.email?.charAt(0).toUpperCase()}</span>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-off-white font-medium truncate">Admin</p>
+                    <p className="text-xs text-off-white/60 truncate">{user.email}</p>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <Link href="/" className="flex-1">
+                    <Button variant="outline" size="sm" className="w-full border-off-white/20 text-off-white">
+                      <Home className="w-4 h-4 mr-1" /> Site
+                    </Button>
+                  </Link>
+                  <Button variant="outline" size="sm" onClick={handleLogout} className="border-off-white/20 text-off-white">
+                    <LogOut className="w-4 h-4" />
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </SheetContent>
+        </Sheet>
+        <Link href="/" className="flex items-center gap-2">
+          <Shield className="w-5 h-5 text-purple-400" />
+          <span className="font-bold text-off-white">Admin</span>
+        </Link>
+        <div className="w-9 h-9 rounded-full bg-purple-500/20 flex items-center justify-center">
+          <span className="text-purple-400 text-sm font-semibold">{user.email?.charAt(0).toUpperCase()}</span>
+        </div>
+      </div>
+
       {/* Main Content */}
-      <main className={`flex-1 transition-all duration-300 ${sidebarOpen ? 'md:ml-64' : 'md:ml-20'}`}>
+      <main className={`flex-1 transition-all duration-300 ${sidebarOpen ? 'md:ml-64' : 'md:ml-20'} pt-16 md:pt-0`}>
         <div className="p-6 md:p-8">
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
@@ -258,8 +331,10 @@ export function AdminContent({
                       <tr className="border-b border-off-white/10">
                         <th className="text-left p-4 text-sm font-medium text-off-white/60">Client</th>
                         <th className="text-left p-4 text-sm font-medium text-off-white/60">Email</th>
+                        <th className="text-left p-4 text-sm font-medium text-off-white/60">Status</th>
                         <th className="text-left p-4 text-sm font-medium text-off-white/60">Access</th>
                         <th className="text-left p-4 text-sm font-medium text-off-white/60">Joined</th>
+                        <th className="text-left p-4 text-sm font-medium text-off-white/60">Actions</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -270,10 +345,22 @@ export function AdminContent({
                           </td>
                           <td className="p-4 text-off-white/60 text-sm">{client.email}</td>
                           <td className="p-4">
+                            <span className={`text-xs px-2 py-1 rounded-full ${
+                              client.status === 'approved' ? 'bg-green-500/20 text-green-400' :
+                              client.status === 'rejected' ? 'bg-red-500/20 text-red-400' :
+                              'bg-yellow-500/20 text-yellow-400'
+                            }`}>
+                              {client.status || 'pending'}
+                            </span>
+                          </td>
+                          <td className="p-4">
                             <ManageAccessDialog client={client} />
                           </td>
                           <td className="p-4 text-off-white/60 text-sm">
                             {new Date(client.createdAt).toLocaleDateString()}
+                          </td>
+                          <td className="p-4">
+                            <ClientActions client={client} />
                           </td>
                         </tr>
                       ))}
@@ -460,5 +547,88 @@ function ManageAccessDialog({ client }: { client: Client }) {
         </div>
       </DialogContent>
     </Dialog>
+  )
+}
+
+function ClientActions({ client }: { client: Client }) {
+  const [loading, setLoading] = useState<string | null>(null)
+
+  const handleApprove = async () => {
+    setLoading('approve')
+    try {
+      await approveClient(client.id)
+      window.location.reload()
+    } catch (error) {
+      console.error('Failed to approve client:', error)
+      alert('Failed to approve client')
+    } finally {
+      setLoading(null)
+    }
+  }
+
+  const handleReject = async () => {
+    if (!confirm('Are you sure you want to reject this client?')) return
+    setLoading('reject')
+    try {
+      await rejectClient(client.id)
+      window.location.reload()
+    } catch (error) {
+      console.error('Failed to reject client:', error)
+      alert('Failed to reject client')
+    } finally {
+      setLoading(null)
+    }
+  }
+
+  const handleDelete = async () => {
+    if (!confirm('Are you sure you want to delete this client? This cannot be undone.')) return
+    setLoading('delete')
+    try {
+      await deleteClient(client.id)
+      window.location.reload()
+    } catch (error) {
+      console.error('Failed to delete client:', error)
+      alert('Failed to delete client')
+    } finally {
+      setLoading(null)
+    }
+  }
+
+  const isPending = !client.status || client.status === 'pending'
+
+  return (
+    <div className="flex items-center gap-1">
+      {isPending && (
+        <>
+          <Button
+            size="sm"
+            variant="ghost"
+            onClick={handleApprove}
+            disabled={!!loading}
+            className="text-green-400 hover:text-green-300 hover:bg-green-400/10 h-8 px-2"
+          >
+            {loading === 'approve' ? <Loader2 className="w-4 h-4 animate-spin" /> : <Check className="w-4 h-4" />}
+          </Button>
+          <Button
+            size="sm"
+            variant="ghost"
+            onClick={handleReject}
+            disabled={!!loading}
+            className="text-yellow-400 hover:text-yellow-300 hover:bg-yellow-400/10 h-8 px-2"
+          >
+            {loading === 'reject' ? <Loader2 className="w-4 h-4 animate-spin" /> : <X className="w-4 h-4" />}
+          </Button>
+        </>
+      )}
+      <Button
+        size="sm"
+        variant="ghost"
+        onClick={handleDelete}
+        disabled={!!loading}
+        className="text-red-400 hover:text-red-300 hover:bg-red-400/10 h-8 px-2"
+      >
+        {loading === 'delete' ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />}
+      </Button>
+    </div>
   )
 }

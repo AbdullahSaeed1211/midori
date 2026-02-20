@@ -1621,6 +1621,7 @@ export namespace Prisma {
     email: string | null
     name: string | null
     stripeCustomerId: string | null
+    status: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1631,6 +1632,7 @@ export namespace Prisma {
     email: string | null
     name: string | null
     stripeCustomerId: string | null
+    status: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1642,6 +1644,7 @@ export namespace Prisma {
     name: number
     stripeCustomerId: number
     allowedTools: number
+    status: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -1654,6 +1657,7 @@ export namespace Prisma {
     email?: true
     name?: true
     stripeCustomerId?: true
+    status?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1664,6 +1668,7 @@ export namespace Prisma {
     email?: true
     name?: true
     stripeCustomerId?: true
+    status?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1675,6 +1680,7 @@ export namespace Prisma {
     name?: true
     stripeCustomerId?: true
     allowedTools?: true
+    status?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -1759,6 +1765,7 @@ export namespace Prisma {
     name: string | null
     stripeCustomerId: string | null
     allowedTools: string[]
+    status: string
     createdAt: Date
     updatedAt: Date
     _count: ClientCountAggregateOutputType | null
@@ -1787,6 +1794,7 @@ export namespace Prisma {
     name?: boolean
     stripeCustomerId?: boolean
     allowedTools?: boolean
+    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     projects?: boolean | Client$projectsArgs<ExtArgs>
@@ -1803,6 +1811,7 @@ export namespace Prisma {
     name?: boolean
     stripeCustomerId?: boolean
     allowedTools?: boolean
+    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["client"]>
@@ -1814,6 +1823,7 @@ export namespace Prisma {
     name?: boolean
     stripeCustomerId?: boolean
     allowedTools?: boolean
+    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["client"]>
@@ -1825,11 +1835,12 @@ export namespace Prisma {
     name?: boolean
     stripeCustomerId?: boolean
     allowedTools?: boolean
+    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ClientOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "email" | "name" | "stripeCustomerId" | "allowedTools" | "createdAt" | "updatedAt", ExtArgs["result"]["client"]>
+  export type ClientOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "email" | "name" | "stripeCustomerId" | "allowedTools" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["client"]>
   export type ClientInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     projects?: boolean | Client$projectsArgs<ExtArgs>
     subscriptions?: boolean | Client$subscriptionsArgs<ExtArgs>
@@ -1855,6 +1866,7 @@ export namespace Prisma {
       name: string | null
       stripeCustomerId: string | null
       allowedTools: string[]
+      status: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["client"]>
@@ -2290,6 +2302,7 @@ export namespace Prisma {
     readonly name: FieldRef<"Client", 'String'>
     readonly stripeCustomerId: FieldRef<"Client", 'String'>
     readonly allowedTools: FieldRef<"Client", 'String[]'>
+    readonly status: FieldRef<"Client", 'String'>
     readonly createdAt: FieldRef<"Client", 'DateTime'>
     readonly updatedAt: FieldRef<"Client", 'DateTime'>
   }
@@ -10770,6 +10783,7 @@ export namespace Prisma {
     name: 'name',
     stripeCustomerId: 'stripeCustomerId',
     allowedTools: 'allowedTools',
+    status: 'status',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -11021,6 +11035,7 @@ export namespace Prisma {
     name?: StringNullableFilter<"Client"> | string | null
     stripeCustomerId?: StringNullableFilter<"Client"> | string | null
     allowedTools?: StringNullableListFilter<"Client">
+    status?: StringFilter<"Client"> | string
     createdAt?: DateTimeFilter<"Client"> | Date | string
     updatedAt?: DateTimeFilter<"Client"> | Date | string
     projects?: ProjectListRelationFilter
@@ -11036,6 +11051,7 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     stripeCustomerId?: SortOrderInput | SortOrder
     allowedTools?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     projects?: ProjectOrderByRelationAggregateInput
@@ -11054,6 +11070,7 @@ export namespace Prisma {
     NOT?: ClientWhereInput | ClientWhereInput[]
     name?: StringNullableFilter<"Client"> | string | null
     allowedTools?: StringNullableListFilter<"Client">
+    status?: StringFilter<"Client"> | string
     createdAt?: DateTimeFilter<"Client"> | Date | string
     updatedAt?: DateTimeFilter<"Client"> | Date | string
     projects?: ProjectListRelationFilter
@@ -11069,6 +11086,7 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     stripeCustomerId?: SortOrderInput | SortOrder
     allowedTools?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ClientCountOrderByAggregateInput
@@ -11086,6 +11104,7 @@ export namespace Prisma {
     name?: StringNullableWithAggregatesFilter<"Client"> | string | null
     stripeCustomerId?: StringNullableWithAggregatesFilter<"Client"> | string | null
     allowedTools?: StringNullableListFilter<"Client">
+    status?: StringWithAggregatesFilter<"Client"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Client"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Client"> | Date | string
   }
@@ -11651,6 +11670,7 @@ export namespace Prisma {
     name?: string | null
     stripeCustomerId?: string | null
     allowedTools?: ClientCreateallowedToolsInput | string[]
+    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     projects?: ProjectCreateNestedManyWithoutClientInput
@@ -11666,6 +11686,7 @@ export namespace Prisma {
     name?: string | null
     stripeCustomerId?: string | null
     allowedTools?: ClientCreateallowedToolsInput | string[]
+    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     projects?: ProjectUncheckedCreateNestedManyWithoutClientInput
@@ -11681,6 +11702,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     allowedTools?: ClientUpdateallowedToolsInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     projects?: ProjectUpdateManyWithoutClientNestedInput
@@ -11696,6 +11718,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     allowedTools?: ClientUpdateallowedToolsInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     projects?: ProjectUncheckedUpdateManyWithoutClientNestedInput
@@ -11711,6 +11734,7 @@ export namespace Prisma {
     name?: string | null
     stripeCustomerId?: string | null
     allowedTools?: ClientCreateallowedToolsInput | string[]
+    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -11722,6 +11746,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     allowedTools?: ClientUpdateallowedToolsInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -11733,6 +11758,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     allowedTools?: ClientUpdateallowedToolsInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -12452,6 +12478,7 @@ export namespace Prisma {
     name?: SortOrder
     stripeCustomerId?: SortOrder
     allowedTools?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -12462,6 +12489,7 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     stripeCustomerId?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -12472,6 +12500,7 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     stripeCustomerId?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -13941,6 +13970,7 @@ export namespace Prisma {
     name?: string | null
     stripeCustomerId?: string | null
     allowedTools?: ClientCreateallowedToolsInput | string[]
+    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     subscriptions?: SubscriptionCreateNestedManyWithoutClientInput
@@ -13955,6 +13985,7 @@ export namespace Prisma {
     name?: string | null
     stripeCustomerId?: string | null
     allowedTools?: ClientCreateallowedToolsInput | string[]
+    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     subscriptions?: SubscriptionUncheckedCreateNestedManyWithoutClientInput
@@ -14073,6 +14104,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     allowedTools?: ClientUpdateallowedToolsInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptions?: SubscriptionUpdateManyWithoutClientNestedInput
@@ -14087,6 +14119,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     allowedTools?: ClientUpdateallowedToolsInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptions?: SubscriptionUncheckedUpdateManyWithoutClientNestedInput
@@ -14266,6 +14299,7 @@ export namespace Prisma {
     name?: string | null
     stripeCustomerId?: string | null
     allowedTools?: ClientCreateallowedToolsInput | string[]
+    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     projects?: ProjectCreateNestedManyWithoutClientInput
@@ -14280,6 +14314,7 @@ export namespace Prisma {
     name?: string | null
     stripeCustomerId?: string | null
     allowedTools?: ClientCreateallowedToolsInput | string[]
+    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     projects?: ProjectUncheckedCreateNestedManyWithoutClientInput
@@ -14310,6 +14345,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     allowedTools?: ClientUpdateallowedToolsInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     projects?: ProjectUpdateManyWithoutClientNestedInput
@@ -14324,6 +14360,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     allowedTools?: ClientUpdateallowedToolsInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     projects?: ProjectUncheckedUpdateManyWithoutClientNestedInput
@@ -14490,6 +14527,7 @@ export namespace Prisma {
     name?: string | null
     stripeCustomerId?: string | null
     allowedTools?: ClientCreateallowedToolsInput | string[]
+    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     projects?: ProjectCreateNestedManyWithoutClientInput
@@ -14504,6 +14542,7 @@ export namespace Prisma {
     name?: string | null
     stripeCustomerId?: string | null
     allowedTools?: ClientCreateallowedToolsInput | string[]
+    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     projects?: ProjectUncheckedCreateNestedManyWithoutClientInput
@@ -14534,6 +14573,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     allowedTools?: ClientUpdateallowedToolsInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     projects?: ProjectUpdateManyWithoutClientNestedInput
@@ -14548,6 +14588,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     allowedTools?: ClientUpdateallowedToolsInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     projects?: ProjectUncheckedUpdateManyWithoutClientNestedInput
@@ -14562,6 +14603,7 @@ export namespace Prisma {
     name?: string | null
     stripeCustomerId?: string | null
     allowedTools?: ClientCreateallowedToolsInput | string[]
+    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     projects?: ProjectCreateNestedManyWithoutClientInput
@@ -14576,6 +14618,7 @@ export namespace Prisma {
     name?: string | null
     stripeCustomerId?: string | null
     allowedTools?: ClientCreateallowedToolsInput | string[]
+    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     projects?: ProjectUncheckedCreateNestedManyWithoutClientInput
@@ -14606,6 +14649,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     allowedTools?: ClientUpdateallowedToolsInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     projects?: ProjectUpdateManyWithoutClientNestedInput
@@ -14620,6 +14664,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     allowedTools?: ClientUpdateallowedToolsInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     projects?: ProjectUncheckedUpdateManyWithoutClientNestedInput

@@ -7,8 +7,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Loader2, Globe, CheckCircle, AlertTriangle, CalendarClock } from "lucide-react"
-import { savePost, publishToMedium } from '@/app/actions/publishing'
-import { publishToLinkedIn, publishToInstagram, publishToFacebook } from '@/app/actions/social-publishing'
+import { savePost, publishToMedium, publishToLinkedIn, publishToInstagram, publishToFacebook } from '@/app/actions/publishing'
 import { getConfiguredProviders } from '@/app/actions/integrations'
 import { useEffect } from 'react'
 

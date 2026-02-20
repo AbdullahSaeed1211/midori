@@ -158,7 +158,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     // Blog pages - all 26 posts
     {
-      url: `${baseUrl}/blog/seo-guide-2024`,
+      url: `${baseUrl}/blog/seo-guide-2025`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
@@ -176,7 +176,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/blog/mobile-first-design-2024`,
+      url: `${baseUrl}/blog/mobile-first-design-2025`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,

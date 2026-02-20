@@ -14,6 +14,7 @@ model Client {
   name             String?
   stripeCustomerId String?  @unique
   allowedTools     String[] @default([])
+  status           String   @default("pending")
   
   projects         Project[]
   subscriptions    Subscription[]

@@ -21,6 +21,62 @@ export async function updateClientAccess(clientId: string, tools: string[]) {
 
     revalidatePath('/admin')
     revalidatePath('/portal')
+    revalidatePath('/admin')
+}
+
+export async function approveClient(clientId: string) {
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (!user || !ADMIN_EMAILS.includes(user.email || '')) {
+        throw new Error('Unauthorized')
+    }
+
+    await prisma.client.update({
+        where: { id: clientId },
+        data: { status: 'approved' }
+    })
+
+    revalidatePath('/admin')
+    revalidatePath('/portal')
+}
+
+export async function rejectClient(clientId: string) {
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (!user || !ADMIN_EMAILS.includes(user.email || '')) {
+        throw new Error('Unauthorized')
+    }
+
+    await prisma.client.update({
+        where: { id: clientId },
+        data: { status: 'rejected' }
+    })
+
+    revalidatePath('/admin')
+}
+
+export async function deleteClient(clientId: string) {
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (!user || !ADMIN_EMAILS.includes(user.email || '')) {
+        throw new Error('Unauthorized')
+    }
+
+    // Delete related records first
+    await prisma.integration.deleteMany({ where: { clientId } })
+    await prisma.post.deleteMany({ where: { clientId } })
+    await prisma.subscription.deleteMany({ where: { clientId } })
+    await prisma.project.deleteMany({ where: { clientId } })
+    
+    // Delete the client
+    await prisma.client.delete({
+        where: { id: clientId }
+    })
+
+    revalidatePath('/admin')
 }
 
 // Project CRUD operations

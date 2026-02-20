@@ -127,6 +127,7 @@ exports.Prisma.ClientScalarFieldEnum = {
   name: 'name',
   stripeCustomerId: 'stripeCustomerId',
   allowedTools: 'allowedTools',
+  status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

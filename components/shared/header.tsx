@@ -12,13 +12,13 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { createClient } from '@/lib/supabase/client';
 
 interface NavItem {
   label: string;
   href: string;
 }
 
-// Reorganized navigation - cleaner and less cluttered
 const navItems: NavItem[] = [
   { label: 'Services', href: '/#services' },
   { label: 'Pricing', href: '/#pricing' },
@@ -26,24 +26,36 @@ const navItems: NavItem[] = [
   { label: 'Work', href: '/case-studies' },
   { label: 'Audit', href: '/audit' },
   { label: 'Contact', href: '/contact' },
-  { label: 'Login', href: '/login' },
-  { label: 'Admin', href: '/admin' },
 ];
 
-// Secondary navigation items that can be accessed from main sections
 const secondaryNavItems = [
   { label: 'Testimonials', href: '/testimonials' },
   { label: 'Resources', href: '/resources' },
 ];
+
+const ADMIN_EMAILS = (process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'abdullah.saeed1724@gmail.com').split(',').map(e => e.trim());
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
+
+    // Check auth status
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (user) {
+        setIsLoggedIn(true);
+        if (ADMIN_EMAILS.includes(user.email || '')) {
+          setIsAdmin(true);
+        }
+      }
+    });
 
     function handleScroll() {
       if (window.scrollY > 10) {
@@ -118,7 +130,17 @@ export function Header() {
             </nav>
 
             {/* CTA Button */}
-            <div className="hidden md:block">
+            <div className="hidden md:flex items-center gap-2">
+              {isAdmin && (
+                <Button
+                  asChild
+                  size="sm"
+                  variant="outline"
+                  className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10"
+                >
+                  <Link href="/admin">Admin</Link>
+                </Button>
+              )}
               <Button
                 asChild
                 size="sm"
@@ -127,8 +149,8 @@ export function Header() {
                   "hover:bg-kiiro-yellow/90",
                 )}
               >
-                <Link href="/contact">
-                  Book a Call
+                <Link href={isLoggedIn ? "/portal" : "/login"}>
+                  {isLoggedIn ? "Portal" : "Book a Call"}
                 </Link>
               </Button>
             </div>
@@ -206,7 +228,19 @@ export function Header() {
                     </ul>
                   </div>
                 </nav>
-                <div className="pt-6 mt-6 border-t border-white/10">
+                <div className="pt-6 mt-6 border-t border-white/10 space-y-2">
+                  {isAdmin && (
+                    <Button
+                      asChild
+                      variant="outline"
+                      size="lg"
+                      className="border-purple-500/50 text-purple-400 hover:bg-purple-500/10 w-full"
+                    >
+                      <Link href="/admin" onClick={() => setMobileMenuOpen(false)}>
+                        Admin Panel
+                      </Link>
+                    </Button>
+                  )}
                   <Button
                     asChild
                     variant="default"
@@ -216,8 +250,8 @@ export function Header() {
                       "hover:bg-kiiro-yellow/90",
                     )}
                   >
-                    <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                      Book a Call
+                    <Link href={isLoggedIn ? "/portal" : "/contact"} onClick={() => setMobileMenuOpen(false)}>
+                      {isLoggedIn ? "Go to Portal" : "Book a Call"}
                     </Link>
                   </Button>
                 </div>
