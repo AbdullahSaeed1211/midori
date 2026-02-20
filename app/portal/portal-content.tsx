@@ -10,6 +10,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import { IntegrationsView } from '@/components/portal/integrations-view'
 import { AiStudioView } from '@/components/portal/ai-studio-view'
+import { PostsView } from '@/components/portal/posts-view'
 
 interface Project {
   id: string
@@ -37,6 +38,7 @@ interface Client {
 const SIDEBAR_ITEMS = [
   { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { id: 'projects', label: 'Projects', icon: FileText },
+  { id: 'posts', label: 'Posts', icon: FileText },
   { id: 'schedule', label: 'Schedule', icon: Calendar },
   { id: 'messages', label: 'Messages', icon: MessageSquare },
   { id: 'integrations', label: 'Integrations', icon: Plug },
@@ -341,6 +343,9 @@ export function PortalContent({ user, client, isAdmin, allowedTools = [] }: { us
               )}
             </section>
           )}
+
+          {/* Posts Tab */}
+          {activeTab === 'posts' && <PostsView />}
 
           {/* Integrations */}
           {activeTab === 'integrations' && <IntegrationsView />}
