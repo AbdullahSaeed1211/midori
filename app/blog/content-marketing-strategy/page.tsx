@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
 import { BlogTemplate, BlogSection, HighlightBox, StatsGrid, BlogCTA } from "@/components/blog/BlogTemplate";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 import { Users, TrendingUp, Target, Megaphone, Search, BarChart3, Lightbulb, CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -109,6 +110,14 @@ export default function ContentMarketingStrategy() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "Content Marketing Strategy for Entrepreneurs: Complete 2025 Guide | kiiro.cx", url: "https://kiiro.cx/blog/content-marketing-strategy" }
+        ]}
       />
 
       <BlogTemplate

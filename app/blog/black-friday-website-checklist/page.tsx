@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "Black Friday Website Checklist: Maximize Holiday Sales | kiiro.cx",
@@ -34,6 +35,13 @@ export default function BlackFridayWebsiteChecklist() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "Black Friday Website Checklist: Maximize Holiday Sales | kiiro.cx", url: "https://kiiro.cx/blog/black-friday-website-checklist" }
+        ]}
+      />
       <ArticleJsonLd
         title="Black Friday Website Checklist: Maximize Holiday Sales | kiiro.cx"
         description="Complete Black Friday website preparation checklist. Ensure your site is ready for maximum traffic, optimized for conversions, and technically sound."

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "Core Web Vitals: INP Metric Replacement Guide | kiiro.cx",
@@ -34,6 +35,13 @@ export default function INPMetricReplacement() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "Core Web Vitals: INP Metric Replacement Guide | kiiro.cx", url: "https://kiiro.cx/blog/inp-metric-replacement" }
+        ]}
+      />
       <ArticleJsonLd
         title="Core Web Vitals: INP Metric Replacement Guide | kiiro.cx"
         description="Complete guide to Google's INP (Interaction to Next Paint) metric. Learn how INP replaced FID, what it measures, and how to optimize for better Core Web Vitals scores."

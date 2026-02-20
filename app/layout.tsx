@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ChatButton } from "@/components/ui/chat-button";
+import { WebsiteJsonLd } from "@/components/seo/website-json-ld";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -267,6 +268,8 @@ export default function RootLayout({
             })
           }}
         />
+
+        <WebsiteJsonLd url="https://kiiro.cx" searchUrl="https://kiiro.cx/search?q={search_term_string}" />
       </head>
       <body
         className={`${spaceGrotesk.variable} font-body font-normal text-base antialiased bg-charcoal-black dark`}

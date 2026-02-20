@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "Conversion Rate Benchmarks by Industry in 2026 | kiiro.cx",
@@ -34,6 +35,13 @@ export default function ConversionRateBenchmarks2026() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "Conversion Rate Benchmarks by Industry in 2026 | kiiro.cx", url: "https://kiiro.cx/blog/conversion-rate-benchmarks-2026" }
+        ]}
+      />
       <ArticleJsonLd
         title="Conversion Rate Benchmarks by Industry in 2026 | kiiro.cx"
         description="Comprehensive conversion rate benchmarks across industries. Learn average rates, top performers, and how your site compares to industry standards."

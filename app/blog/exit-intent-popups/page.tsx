@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "Exit Intent Popups: Strategy and Implementation | kiiro.cx",
@@ -34,6 +35,13 @@ export default function ExitIntentPopups() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "Exit Intent Popups: Strategy and Implementation | kiiro.cx", url: "https://kiiro.cx/blog/exit-intent-popups" }
+        ]}
+      />
       <ArticleJsonLd
         title="Exit Intent Popups: Strategy and Implementation | kiiro.cx"
         description="Learn how to effectively use exit intent popups to recover abandoning visitors. Discover timing, design, and implementation strategies."

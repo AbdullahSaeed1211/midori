@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "The Psychology of Landing Page Conversions | kiiro.cx",
@@ -34,6 +35,13 @@ export default function LandingPagePsychology() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "The Psychology of Landing Page Conversions | kiiro.cx", url: "https://kiiro.cx/blog/landing-page-psychology" }
+        ]}
+      />
       <ArticleJsonLd
         title="The Psychology of Landing Page Conversions | kiiro.cx"
         description="Discover the psychological principles behind high-converting landing pages. Learn about cognitive load, social proof, urgency triggers, and strategic CTA placement backed by research."

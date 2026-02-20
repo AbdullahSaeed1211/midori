@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "How Website Speed Impacts Business Growth | kiiro.cx",
@@ -25,6 +26,13 @@ export default function WebsiteSpeedBusinessGrowth() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "How Website Speed Impacts Business Growth | kiiro.cx", url: "https://kiiro.cx/blog/website-speed-business-growth" }
+        ]}
+      />
       <ArticleJsonLd
         title="How Website Speed Impacts Business Growth | kiiro.cx"
         description="Discover the direct correlation between website speed and business metrics. Learn practical strategies to optimize your site speed and boost conversions."

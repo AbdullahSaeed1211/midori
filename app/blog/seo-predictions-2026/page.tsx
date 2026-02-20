@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "2026 SEO Predictions: What to Prepare For | kiiro.cx",
@@ -34,6 +35,13 @@ export default function SEOPredictions2026() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "2026 SEO Predictions: What to Prepare For | kiiro.cx", url: "https://kiiro.cx/blog/seo-predictions-2026" }
+        ]}
+      />
       <ArticleJsonLd
         title="2026 SEO Predictions: What to Prepare For | kiiro.cx"
         description="SEO is evolving rapidly. Discover the key SEO trends and predictions for 2026, including AI search, zero-click searches, and new ranking factors."

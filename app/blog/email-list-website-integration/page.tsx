@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "Building Your Email List: Website Integration Guide | kiiro.cx",
@@ -34,6 +35,13 @@ export default function EmailListWebsiteIntegration() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "Building Your Email List: Website Integration Guide | kiiro.cx", url: "https://kiiro.cx/blog/email-list-website-integration" }
+        ]}
+      />
       <ArticleJsonLd
         title="Building Your Email List: Website Integration Guide | kiiro.cx"
         description="Learn how to effectively build your email list from your website. Discover opt-in strategies, form placement, lead magnets, and integration best practices."

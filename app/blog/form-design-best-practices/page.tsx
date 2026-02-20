@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "Form Design Best Practices for Higher Conversions | kiiro.cx",
@@ -34,6 +35,13 @@ export default function FormDesignBestPractices() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "Form Design Best Practices for Higher Conversions | kiiro.cx", url: "https://kiiro.cx/blog/form-design-best-practices" }
+        ]}
+      />
       <ArticleJsonLd
         title="Form Design Best Practices for Higher Conversions | kiiro.cx"
         description="Learn how to design forms that convert. Discover field optimization, validation strategies, layout techniques, and psychological triggers that increase form completion rates."

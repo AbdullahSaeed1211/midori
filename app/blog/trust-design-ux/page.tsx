@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "Building Trust Online: UX Design That Converts | kiiro.cx",
@@ -34,6 +35,13 @@ export default function TrustDesignUX() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "Building Trust Online: UX Design That Converts | kiiro.cx", url: "https://kiiro.cx/blog/trust-design-ux" }
+        ]}
+      />
       <ArticleJsonLd
         title="Building Trust Online: UX Design That Converts | kiiro.cx"
         description="Learn how to design UX that builds trust and drives conversions. Discover the psychology behind trust signals, testimonial placement, security indicators, and brand credibility."

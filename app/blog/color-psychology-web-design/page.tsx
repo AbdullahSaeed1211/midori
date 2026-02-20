@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "Color Psychology in Web Design: Data-Driven Choices | kiiro.cx",
@@ -34,6 +35,13 @@ export default function ColorPsychologyWebDesign() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "Color Psychology in Web Design: Data-Driven Choices | kiiro.cx", url: "https://kiiro.cx/blog/color-psychology-web-design" }
+        ]}
+      />
       <ArticleJsonLd
         title="Color Psychology in Web Design: Data-Driven Choices | kiiro.cx"
         description="Learn how to use color psychology in web design to influence user behavior. Discover which colors drive conversions, build trust, and create the right emotional response."

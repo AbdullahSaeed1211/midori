@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "Ultimate SEO Guide for Entrepreneurs in 2026 | kiiro.cx",
@@ -32,6 +33,13 @@ export default function SEOGuide2024() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "Ultimate SEO Guide for Entrepreneurs in 2026", url: "https://kiiro.cx/blog/seo-guide-2025" }
+        ]}
+      />
       <ArticleJsonLd
         title="Ultimate SEO Guide for Entrepreneurs in 2025 | kiiro.cx"
         description="Everything you need to know about SEO in 2025. From technical fundamentals to content strategy, this comprehensive guide covers all the essential elements for ranking higher on Google."

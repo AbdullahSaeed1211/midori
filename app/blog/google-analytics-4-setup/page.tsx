@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "Google Analytics 4: Complete Setup Guide for 2025 | kiiro.cx",
@@ -34,6 +35,13 @@ export default function GoogleAnalytics4Setup() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "Google Analytics 4: Complete Setup Guide for 2025 | kiiro.cx", url: "https://kiiro.cx/blog/google-analytics-4-setup" }
+        ]}
+      />
       <ArticleJsonLd
         title="Google Analytics 4: Complete Setup Guide for 2025 | kiiro.cx"
         description="Complete guide to setting up Google Analytics 4 for your website. Learn about the new event-based tracking model, enhanced measurement, and GA4 vs Universal Analytics differences."

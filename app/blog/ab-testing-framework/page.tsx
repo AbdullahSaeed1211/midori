@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "A/B Testing Framework: From Hypothesis to Results | kiiro.cx",
@@ -34,6 +35,13 @@ export default function ABTestingFramework() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "A/B Testing Framework: From Hypothesis to Results | kiiro.cx", url: "https://kiiro.cx/blog/ab-testing-framework" }
+        ]}
+      />
       <ArticleJsonLd
         title="A/B Testing Framework: From Hypothesis to Results | kiiro.cx"
         description="Master the complete A/B testing framework from hypothesis formation to statistical significance. Learn test design, common mistakes, and tools to optimize your conversion rates."

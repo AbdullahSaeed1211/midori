@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "New Year Website Refresh: Strategy and Execution | kiiro.cx",
@@ -34,6 +35,13 @@ export default function NewYearWebsiteRefresh() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "New Year Website Refresh: Strategy and Execution | kiiro.cx", url: "https://kiiro.cx/blog/new-year-website-refresh" }
+        ]}
+      />
       <ArticleJsonLd
         title="New Year Website Refresh: Strategy and Execution | kiiro.cx"
         description="Start the new year with a fresh website. Learn strategies for redesign, content updates, and technical improvements to boost performance and conversions."

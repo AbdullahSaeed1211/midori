@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "Accessible Web Design: WCAG 2.2 Compliance Guide | kiiro.cx",
@@ -34,6 +35,13 @@ export default function WCAGAccessibilityGuide() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "Accessible Web Design: WCAG 2.2 Compliance Guide | kiiro.cx", url: "https://kiiro.cx/blog/wcag-accessibility-guide" }
+        ]}
+      />
       <ArticleJsonLd
         title="Accessible Web Design: WCAG 2.2 Compliance Guide | kiiro.cx"
         description="Complete guide to WCAG 2.2 compliance for web designers and developers. Learn accessibility requirements, testing tools, and legal considerations for building inclusive websites."

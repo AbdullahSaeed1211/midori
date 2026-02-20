@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock, X, CheckCircle, TrendingUp } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "7 Deadly Conversion Optimization Mistakes | kiiro.cx",
@@ -25,6 +26,13 @@ export default function ConversionOptimizationMistakes() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "7 Deadly Conversion Optimization Mistakes | kiiro.cx", url: "https://kiiro.cx/blog/conversion-optimization-mistakes" }
+        ]}
+      />
       <ArticleJsonLd
         title="7 Deadly Conversion Optimization Mistakes | kiiro.cx"
         description="Learn the most common conversion mistakes entrepreneurs make and how to fix them. Stop losing customers to poor website design and user experience."

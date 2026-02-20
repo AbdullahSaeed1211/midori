@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "Year-End Website Audit: Complete Checklist | kiiro.cx",
@@ -34,6 +35,13 @@ export default function YearEndWebsiteAudit() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "Year-End Website Audit: Complete Checklist | kiiro.cx", url: "https://kiiro.cx/blog/year-end-website-audit" }
+        ]}
+      />
       <ArticleJsonLd
         title="Year-End Website Audit: Complete Checklist | kiiro.cx"
         description="Complete year-end website audit checklist. Review your site's performance, SEO, security, and conversion elements to start the new year strong."

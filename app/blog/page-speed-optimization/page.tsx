@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "Page Speed Optimization: Technical Deep Dive | kiiro.cx",
@@ -32,6 +33,13 @@ export default function PageSpeedOptimization() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "Page Speed Optimization: Technical Deep Dive | kiiro.cx", url: "https://kiiro.cx/blog/page-speed-optimization" }
+        ]}
+      />
       <ArticleJsonLd
         title="Page Speed Optimization: Technical Deep Dive | kiiro.cx"
         description="Comprehensive guide to page speed optimization. Learn about Core Web Vitals, image optimization, code splitting, CDN configuration, and advanced techniques."

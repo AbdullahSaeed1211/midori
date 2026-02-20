@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { BlogTemplate, BlogSection, HighlightBox, StatsGrid, BlogCTA } from "@/components/blog/BlogTemplate";
 import { MapPin, Star, TrendingUp, Users, Phone, Globe, Target, CheckCircle2, AlertTriangle } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "Local SEO Strategies for Small Businesses | kiiro.cx",
@@ -39,6 +40,13 @@ export default function LocalSEOSmallBusiness() {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "Local SEO Strategies for Small Businesses | kiiro.cx", url: "https://kiiro.cx/blog/local-seo-small-business" }
+        ]}
+      />
       <ArticleJsonLd
         title="Local SEO Strategies for Small Businesses | kiiro.cx"
         description="Dominate your local market with proven SEO strategies. Learn how to optimize for local search and attract more customers from your area."

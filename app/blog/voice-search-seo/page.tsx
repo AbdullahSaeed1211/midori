@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "Voice Search SEO: Optimizing for Conversational Queries | kiiro.cx",
@@ -34,6 +35,13 @@ export default function VoiceSearchSEO() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "Voice Search SEO: Optimizing for Conversational Queries | kiiro.cx", url: "https://kiiro.cx/blog/voice-search-seo" }
+        ]}
+      />
       <ArticleJsonLd
         title="Voice Search SEO: Optimizing for Conversational Queries | kiiro.cx"
         description="Learn how to optimize your website for voice search. Discover conversational keyword strategies, featured snippet optimization, and technical requirements."

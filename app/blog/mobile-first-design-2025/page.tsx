@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "Mobile-First Design in 2026: Why It Matters | kiiro.cx",
@@ -25,6 +26,13 @@ export default function MobileFirstDesign2024() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "Mobile-First Design in 2026: Why It Matters | kiiro.cx", url: "https://kiiro.cx/blog/mobile-first-design-2025" }
+        ]}
+      />
       <ArticleJsonLd
         title="Mobile-First Design in 2025: Why It Matters | kiiro.cx"
         description="With mobile traffic surpassing desktop, learn why mobile-first design is crucial for your business success and how to implement it effectively."

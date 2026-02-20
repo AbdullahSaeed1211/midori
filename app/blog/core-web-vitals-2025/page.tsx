@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "Google's Core Web Vitals Update: What Changed in 2025 | kiiro.cx",
@@ -34,6 +35,13 @@ export default function CoreWebVitals2025() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "Google's Core Web Vitals Update: What Changed in 2025 | kiiro.cx", url: "https://kiiro.cx/blog/core-web-vitals-2025" }
+        ]}
+      />
       <ArticleJsonLd
         title="Google's Core Web Vitals Update: What Changed in 2025 | kiiro.cx"
         description="Complete guide to Google's February 2025 Core Web Vitals updates. Learn about the new INP metric, updated LCP thresholds, and practical optimization strategies for better rankings."

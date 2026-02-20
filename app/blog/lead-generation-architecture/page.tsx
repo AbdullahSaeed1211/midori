@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "Lead Generation Websites: Architecture That Works | kiiro.cx",
@@ -34,6 +35,13 @@ export default function LeadGenerationArchitecture() {
   return (
     <main className="flex min-h-screen flex-col bg-charcoal-black">
       <Header />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://kiiro.cx" },
+          { name: "Blog", url: "https://kiiro.cx/blog" },
+          { name: "Lead Generation Websites: Architecture That Works | kiiro.cx", url: "https://kiiro.cx/blog/lead-generation-architecture" }
+        ]}
+      />
       <ArticleJsonLd
         title="Lead Generation Websites: Architecture That Works | kiiro.cx"
         description="Learn the proven architecture patterns for high-converting lead generation websites. From landing page structure to form optimization, discover what drives more qualified leads."
