@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Check, Key, Loader2, Plus, Shield } from "lucide-react"
-import { saveIntegration, getConfiguredProviders } from '@/app/actions/integrations'
+import { Check, Key, Loader2, Plus, Shield, Trash2 } from "lucide-react"
+import { saveIntegration, getConfiguredProviders, deleteIntegration } from '@/app/actions/integrations'
 import { useRouter } from 'next/navigation'
 
 const PROVIDERS = [
@@ -53,23 +53,25 @@ export function IntegrationsView() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {PROVIDERS.map(provider => (
-          <IntegrationCard 
-            key={provider.id} 
-            provider={provider} 
-            isConnected={configured.includes(provider.id)}
-            onSaved={() => handleSaved(provider.id)}
-          />
+            <IntegrationCard 
+              key={provider.id} 
+              provider={provider} 
+              isConnected={configured.includes(provider.id)}
+              onSaved={() => handleSaved(provider.id)}
+              onDeleted={() => setConfigured(configured.filter(p => p !== provider.id))}
+            />
         ))}
       </div>
     </div>
   )
 }
 
-function IntegrationCard({ provider, isConnected, onSaved }: { provider: { id: string, name: string, description: string, link: string }, isConnected: boolean, onSaved: () => void }) {
+function IntegrationCard({ provider, isConnected, onSaved, onDeleted }: { provider: { id: string, name: string, description: string, link: string }, isConnected: boolean, onSaved: () => void, onDeleted?: () => void }) {
   const [open, setOpen] = useState(false)
   const [key, setKey] = useState('')
   const [config, setConfig] = useState<any>({})
   const [saving, setSaving] = useState(false)
+  const [deleting, setDeleting] = useState(false)
 
   const handleSave = async () => {
     if (!key) return
@@ -82,10 +84,23 @@ function IntegrationCard({ provider, isConnected, onSaved }: { provider: { id: s
       setConfig({})
     } catch (error) {
       console.error(error)
-      // Basic alert for now
       alert('Failed to save key. Please try again.')
     } finally {
       setSaving(false)
+    }
+  }
+
+  const handleDelete = async () => {
+    if (!confirm(`Are you sure you want to disconnect ${provider.name}?`)) return
+    setDeleting(true)
+    try {
+      await deleteIntegration(provider.id)
+      onDeleted?.()
+    } catch (error) {
+      console.error(error)
+      alert('Failed to disconnect. Please try again.')
+    } finally {
+      setDeleting(false)
     }
   }
 
@@ -101,10 +116,10 @@ function IntegrationCard({ provider, isConnected, onSaved }: { provider: { id: s
       <CardContent>
 
       </CardContent>
-      <CardFooter>
+      <CardFooter className="flex gap-2">
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
-            <Button variant="outline" className="w-full border-off-white/10 text-off-white hover:bg-off-white/10 hover:text-off-white">
+            <Button variant="outline" className="flex-1 border-off-white/10 text-off-white hover:bg-off-white/10 hover:text-off-white">
               {isConnected ? 'Update Key' : 'Connect'}
             </Button>
           </DialogTrigger>
@@ -196,6 +211,17 @@ function IntegrationCard({ provider, isConnected, onSaved }: { provider: { id: s
             </DialogFooter>
           </DialogContent>
         </Dialog>
+        {isConnected && (
+          <Button 
+            variant="ghost" 
+            onClick={handleDelete}
+            disabled={deleting}
+            className="text-red-400 hover:text-red-300 hover:bg-red-400/10"
+            title="Disconnect"
+          >
+            {deleting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />}
+          </Button>
+        )}
       </CardFooter>
     </Card>
   )

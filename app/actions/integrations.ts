@@ -55,6 +55,29 @@ export async function saveIntegration(provider: string, key: string, config: any
     revalidatePath('/portal')
 }
 
+export async function getIntegrations() {
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (!user) return []
+
+    const client = await prisma.client.findUnique({
+        where: { userId: user.id }
+    })
+
+    if (!client) return []
+
+    return await prisma.integration.findMany({
+        where: { clientId: client.id },
+        select: {
+            provider: true,
+            baseUrl: true,
+            modelName: true,
+            createdAt: true
+        }
+    })
+}
+
 export async function deleteIntegration(provider: string) {
     const supabase = await createClient()
     const { data: { user } } = await supabase.auth.getUser()

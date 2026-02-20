@@ -156,8 +156,11 @@ saveIntegration(provider: string, key: string, config?: object)
 // Delete API key
 deleteIntegration(provider: string)
 
-// Get configured providers
+// Get configured provider names
 getConfiguredProviders(): string[]
+
+// Get all integrations with details
+getIntegrations(): Integration[]
 
 // Generate AI content
 generateAiContent(provider: string, prompt: string): string
@@ -167,7 +170,7 @@ generateAiContent(provider: string, prompt: string): string
 
 ```typescript
 // Create post
-savePost(title: string, content: string, status: string, scheduledAt?: Date, destinations?: string[])
+savePost(title: string, content: string, status: string, scheduledAt?: Date, destinations?: string[]): Post
 
 // Get all posts
 getPosts(): Post[]
@@ -176,7 +179,7 @@ getPosts(): Post[]
 getPost(postId: string): Post
 
 // Update post
-updatePost(postId: string, title: string, content: string, status: string)
+updatePost(postId: string, title: string, content: string, status: string): Post
 
 // Delete post
 deletePost(postId: string)
@@ -270,3 +273,4 @@ Make sure to add all required environment variables in Vercel project settings.
 
 - **v1.0** - Initial release with Next.js 16, auth, portal, admin, blogs, SEO
 - **v1.1** - Added posts management, social publishing, fixed empty state CTAs
+- **v1.2** - Full CRUD for integrations (add/disconnect), complete admin features, production verification
