@@ -39,12 +39,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 7.4.0
- * Query Engine version: ab56fe763f921d033a6c195e7ddeb3e255bdbb57
+ * Prisma Client JS version: 7.4.1
+ * Query Engine version: 55ae170b1ced7fc6ed07a15f110549408c501bb3
  */
 Prisma.prismaVersion = {
-  client: "7.4.0",
-  engine: "ab56fe763f921d033a6c195e7ddeb3e255bdbb57"
+  client: "7.4.1",
+  engine: "55ae170b1ced7fc6ed07a15f110549408c501bb3"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -234,8 +234,8 @@ exports.Prisma.ModelName = {
  */
 const config = {
   "previewFeatures": [],
-  "clientVersion": "7.4.0",
-  "engineVersion": "ab56fe763f921d033a6c195e7ddeb3e255bdbb57",
+  "clientVersion": "7.4.1",
+  "engineVersion": "55ae170b1ced7fc6ed07a15f110549408c501bb3",
   "activeProvider": "postgresql",
   "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel Client {\n  id               String   @id @default(cuid())\n  userId           String   @unique\n  email            String   @unique\n  name             String?\n  stripeCustomerId String?  @unique\n  allowedTools     String[] @default([])\n  status           String   @default(\"pending\")\n\n  projects      Project[]\n  subscriptions Subscription[]\n  integrations  Integration[]\n  posts         Post[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel Project {\n  id          String    @id @default(cuid())\n  name        String\n  description String?\n  status      String    @default(\"planning\")\n  progress    Int       @default(0)\n  startDate   DateTime?\n  endDate     DateTime?\n\n  clientId   String\n  client     Client      @relation(fields: [clientId], references: [id], onDelete: Cascade)\n  milestones Milestone[]\n  files      File[]\n  messages   Message[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel Milestone {\n  id          String    @id @default(cuid())\n  title       String\n  description String?\n  status      String    @default(\"pending\")\n  dueDate     DateTime?\n  completedAt DateTime?\n\n  projectId String\n  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)\n\n  createdAt DateTime @default(now())\n}\n\nmodel Subscription {\n  id                   String    @id @default(cuid())\n  stripeSubscriptionId String?   @unique\n  stripePriceId        String?\n  plan                 String\n  status               String    @default(\"active\")\n  currentPeriodStart   DateTime?\n  currentPeriodEnd     DateTime?\n\n  clientId String\n  client   Client @relation(fields: [clientId], references: [id], onDelete: Cascade)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel Message {\n  id         String  @id @default(cuid())\n  content    String\n  senderId   String\n  senderName String?\n  isInternal Boolean @default(false)\n\n  projectId String\n  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)\n\n  createdAt DateTime @default(now())\n}\n\nmodel File {\n  id         String  @id @default(cuid())\n  name       String\n  url        String\n  type       String?\n  size       Int?\n  uploadedBy String?\n\n  projectId String\n  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)\n\n  createdAt DateTime @default(now())\n}\n\nmodel Integration {\n  id        String  @id @default(cuid())\n  provider  String // \"openai\", \"gemini\", \"minimax\", \"glm\"\n  key       String // Encrypted/Hashed ideally, raw for MVP\n  config    Json? // Extra config like orgId\n  baseUrl   String? // For custom OpenAI-compatible providers\n  modelName String? // For custom models\n\n  clientId String\n  client   Client @relation(fields: [clientId], references: [id], onDelete: Cascade)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel Post {\n  id      String  @id @default(cuid())\n  title   String\n  content String // Markdown support\n  slug    String? // For internal blog URL\n  status  String  @default(\"draft\") // draft, published\n\n  mediumUrl    String? // If syndicated to Medium\n  linkedinUrl  String?\n  instagramUrl String?\n  facebookUrl  String?\n\n  scheduledAt  DateTime? // For scheduled publishing\n  destinations String[]  @default([]) // [\"internal\", \"medium\", \"linkedin\"]\n\n  clientId String\n\n  client Client @relation(fields: [clientId], references: [id], onDelete: Cascade)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  @@unique([clientId, slug]) // Slugs unique per client\n}\n"
 }

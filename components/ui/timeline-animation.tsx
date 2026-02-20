@@ -7,9 +7,9 @@ interface TimelineContentProps {
   children: ReactNode;
   animationNum: number;
   customVariants: Variants;
-  timelineRef: RefObject<HTMLElement>;
+  timelineRef: RefObject<HTMLElement | null>;
   className?: string;
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
   onClick?: (event: React.MouseEvent) => void;
   id?: string;
   role?: string;
