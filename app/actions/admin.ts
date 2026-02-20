@@ -22,3 +22,105 @@ export async function updateClientAccess(clientId: string, tools: string[]) {
     revalidatePath('/admin')
     revalidatePath('/portal')
 }
+
+// Project CRUD operations
+export async function createProject(name: string, description?: string, clientId?: string) {
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (!user) throw new Error('Unauthorized')
+
+    // Get client - either specified or the current user's client
+    let targetClientId = clientId
+    
+    if (!targetClientId) {
+        const client = await prisma.client.findUnique({
+            where: { userId: user.id }
+        })
+        if (!client) throw new Error('Client not found')
+        targetClientId = client.id
+    }
+
+    // Check if admin
+    const isAdmin = ADMIN_EMAILS.includes(user.email || '')
+
+    if (!isAdmin && clientId) {
+        throw new Error('Unauthorized - only admins can create projects for other clients')
+    }
+
+    const project = await prisma.project.create({
+        data: {
+            clientId: targetClientId,
+            name,
+            description,
+            status: 'planning',
+            progress: 0,
+        }
+    })
+
+    revalidatePath('/portal')
+    revalidatePath('/admin')
+    return project
+}
+
+export async function updateProject(projectId: string, data: { name?: string, description?: string, status?: string, progress?: number, endDate?: Date }) {
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (!user) throw new Error('Unauthorized')
+
+    const isAdmin = ADMIN_EMAILS.includes(user.email || '')
+    
+    if (!isAdmin) {
+        // Verify ownership
+        const client = await prisma.client.findUnique({
+            where: { userId: user.id }
+        })
+        
+        if (!client) throw new Error('Client not found')
+        
+        const project = await prisma.project.findFirst({
+            where: { id: projectId, clientId: client.id }
+        })
+        
+        if (!project) throw new Error('Project not found')
+    }
+
+    await prisma.project.update({
+        where: { id: projectId },
+        data
+    })
+
+    revalidatePath('/portal')
+    revalidatePath('/admin')
+}
+
+export async function deleteProject(projectId: string) {
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (!user) throw new Error('Unauthorized')
+
+    const isAdmin = ADMIN_EMAILS.includes(user.email || '')
+    
+    if (!isAdmin) {
+        const client = await prisma.client.findUnique({
+            where: { userId: user.id }
+        })
+        
+        if (!client) throw new Error('Client not found')
+        
+        const project = await prisma.project.findFirst({
+            where: { id: projectId, clientId: client.id }
+        })
+        
+        if (!project) throw new Error('Project not found')
+    }
+
+    await prisma.project.delete({
+        where: { id: projectId }
+    })
+
+    revalidatePath('/portal')
+    revalidatePath('/admin')
+}

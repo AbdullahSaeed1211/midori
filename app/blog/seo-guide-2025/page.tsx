@@ -7,26 +7,24 @@ import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
 
 export const metadata: Metadata = {
-  title: "Ultimate SEO Guide for Entrepreneurs in 2025 | kiiro.cx",
-  description: "Everything you need to know about SEO in 2025. From technical fundamentals to content strategy, this comprehensive guide covers all the essential elements for ranking higher on Google.",
-  keywords: "SEO guide 2025, search engine optimization, entrepreneur SEO, Google ranking, SEO strategy",
+  title: "Ultimate SEO Guide for Entrepreneurs in 2026 | kiiro.cx",
+  description: "Everything you need to know about SEO in 2026. From technical fundamentals to content strategy, this comprehensive guide covers all the essential elements for ranking higher on Google.",
+  keywords: "SEO guide 2026, search engine optimization, entrepreneur SEO, Google ranking, SEO strategy",
   authors: [{ name: "kiiro.cx" }],
   alternates: {
-    canonical: 'https://kiiro.cx/blog/seo-guide-2024'
+    canonical: 'https://kiiro.cx/blog/seo-guide-2025'
   },
   openGraph: {
-    images: ["https://kiiro.cx/og/blog/seo-guide-2024.png"],
-
     type: "article",
-    title: "Ultimate SEO Guide for Entrepreneurs in 2025",
-    description: "Everything you need to know about SEO in 2025. From technical fundamentals to content strategy, this comprehensive guide covers all the essential elements for ranking higher on Google.",
+    title: "Ultimate SEO Guide for Entrepreneurs in 2026",
+    description: "Everything you need to know about SEO in 2026. From technical fundamentals to content strategy, this comprehensive guide covers all the essential elements for ranking higher on Google.",
     siteName: "kiiro.cx",
-    url: "https://kiiro.cx/blog/seo-guide-2024",
+    url: "https://kiiro.cx/blog/seo-guide-2025",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ultimate SEO Guide for Entrepreneurs in 2025 | kiiro.cx",
-    description: "Everything you need to know about SEO in 2025.",
+    title: "Ultimate SEO Guide for Entrepreneurs in 2026 | kiiro.cx",
+    description: "Everything you need to know about SEO in 2026.",
   }
 };
 

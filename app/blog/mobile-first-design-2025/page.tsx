@@ -7,15 +7,15 @@ import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { ArticleJsonLd } from "@/components/seo/article-json-ld";
 
 export const metadata: Metadata = {
-  title: "Mobile-First Design in 2025: Why It Matters | kiiro.cx",
+  title: "Mobile-First Design in 2026: Why It Matters | kiiro.cx",
   description: "With mobile traffic surpassing desktop, learn why mobile-first design is crucial for your business success and how to implement it effectively.",
-  keywords: "mobile first design, responsive design, mobile optimization, website design 2025, mobile UX",
+  keywords: "mobile first design, responsive design, mobile optimization, website design 2026, mobile UX",
   authors: [{ name: "kiiro.cx" }],
   openGraph: {
-    images: ["https://kiiro.cx/og/blog/mobile-first-design-2024.png"],
+    images: ["https://kiiro.cx/og/blog/mobile-first-design-2025.png"],
 
     type: "article",
-    title: "Mobile-First Design in 2025: Why It Matters More Than Ever",
+    title: "Mobile-First Design in 2026: Why It Matters More Than Ever",
     description: "With mobile traffic surpassing desktop, learn why mobile-first design is crucial for your business success.",
     siteName: "kiiro.cx",
   }

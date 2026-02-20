@@ -273,4 +273,5 @@ Make sure to add all required environment variables in Vercel project settings.
 
 - **v1.0** - Initial release with Next.js 16, auth, portal, admin, blogs, SEO
 - **v1.1** - Added posts management, social publishing, fixed empty state CTAs
-- **v1.2** - Full CRUD for integrations (add/disconnect), complete admin features, production verification
+- **v1.2** - Full CRUD for integrations, disconnect button, production verification
+- **v1.3** - Full CRUD for projects, updated blog dates to 2025/2026
