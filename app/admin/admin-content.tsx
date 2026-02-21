@@ -138,10 +138,17 @@ export function AdminContent({
             <div className="mt-3 flex gap-2">
               <Link 
                 href="/" 
-                className="flex-1 flex items-center justify-center gap-2 px-3 py-2 text-sm text-off-white/60 hover:text-off-white hover:bg-off-white/5 rounded-lg transition-colors"
+                className="flex-[0.5] flex items-center justify-center gap-2 px-3 py-2 text-sm text-off-white/60 hover:text-off-white hover:bg-off-white/5 rounded-lg transition-colors"
+                title="View Site"
               >
                 <Sparkles className="w-4 h-4" />
-                Site
+              </Link>
+              <Link 
+                href="/portal" 
+                className="flex-1 flex items-center justify-center gap-2 px-3 py-2 text-sm rounded-lg transition-colors bg-kiiro-yellow/5 text-kiiro-yellow/80 hover:text-kiiro-yellow hover:bg-kiiro-yellow/10"
+                title="Client Portal"
+              >
+                Portal
               </Link>
               <button 
                 onClick={handleLogout}
@@ -211,9 +218,14 @@ export function AdminContent({
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  <Link href="/" className="flex-1">
-                    <Button variant="outline" size="sm" className="w-full border-off-white/20 text-off-white">
-                      <Home className="w-4 h-4 mr-1" /> Site
+                  <Link href="/" className="flex-[0.5]">
+                    <Button variant="outline" size="sm" className="w-full border-off-white/20 text-off-white" title="View Site">
+                      <Home className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                  <Link href="/portal" className="flex-1">
+                    <Button variant="outline" size="sm" className="w-full border-kiiro-yellow/20 text-kiiro-yellow bg-kiiro-yellow/5" title="Client Portal">
+                      Portal
                     </Button>
                   </Link>
                   <Button variant="outline" size="sm" onClick={handleLogout} className="border-off-white/20 text-off-white">

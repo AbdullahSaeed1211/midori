@@ -3,6 +3,7 @@ import { Header } from "@/components/shared/header";
 import { Footer } from "@/components/shared/footer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Calendar, Clock, TrendingUp } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -149,12 +150,18 @@ export default function BlogPage() {
                   <div className="bg-charcoal-gray/40 border border-off-white/10 rounded-2xl overflow-hidden hover:border-kiiro-yellow/30 transition-all group">
                     <div className="grid md:grid-cols-2 gap-0">
                       {/* Image Side */}
-                      <div className="relative h-48 md:h-auto bg-gradient-to-br from-kiiro-yellow/20 to-purple-500/20">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="text-center">
-                            <TrendingUp className="w-12 h-12 text-kiiro-yellow mx-auto mb-2" />
-                            <span className="text-kiiro-yellow text-sm font-medium">Featured</span>
-                          </div>
+                      <div className="relative h-48 md:h-auto bg-charcoal-black">
+                        <Image
+                          src={post.image}
+                          alt={post.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-gray/80 to-transparent md:hidden" />
+                        <div className="absolute top-4 left-4 z-10">
+                          <span className="px-3 py-1 bg-kiiro-yellow/90 text-charcoal-black text-xs font-bold rounded-full shadow-lg flex items-center gap-1">
+                            <TrendingUp className="w-3 h-3" /> Featured
+                          </span>
                         </div>
                       </div>
                       
@@ -215,22 +222,19 @@ export default function BlogPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {blogPosts.filter(p => !p.featured).map((post) => (
                   <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
-                    <article className="bg-charcoal-gray/30 border border-off-white/10 rounded-xl overflow-hidden hover:border-kiiro-yellow/30 transition-all h-full">
+                    <article className="bg-charcoal-gray/30 border border-off-white/10 rounded-xl overflow-hidden hover:border-kiiro-yellow/30 transition-all h-full flex flex-col">
                       {/* Post Image */}
-                      <div className="h-36 bg-gradient-to-br from-off-white/5 to-off-white/10 relative">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="text-3xl opacity-30">
-                            {post.category === 'SEO' && '🔍'}
-                            {post.category === 'Conversion' && '📈'}
-                            {post.category === 'Design' && '🎨'}
-                            {post.category === 'Performance' && '⚡'}
-                            {post.category === 'Marketing' && '📢'}
-                          </span>
-                        </div>
+                      <div className="h-48 relative overflow-hidden bg-charcoal-black">
+                        <Image
+                          src={post.image}
+                          alt={post.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
                       </div>
                       
                       {/* Post Content */}
-                      <div className="p-5">
+                      <div className="p-5 flex-1 flex flex-col">
                         <div className="flex items-center gap-2 mb-2">
                           <span className="text-xs text-kiiro-yellow font-medium">{post.category}</span>
                           <span className="text-xs text-off-white/40">•</span>
@@ -241,7 +245,7 @@ export default function BlogPage() {
                           {post.title}
                         </h3>
                         
-                        <p className="text-xs text-off-white/60 line-clamp-2">
+                        <p className="text-xs text-off-white/60 line-clamp-2 mt-auto">
                           {post.excerpt}
                         </p>
                       </div>
